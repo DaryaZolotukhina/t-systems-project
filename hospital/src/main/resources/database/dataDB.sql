@@ -1,0 +1,1 @@
+INSERT INTO PATIENTS VALUES (1, 'Ivanov', 'Ivan', 'Ivanovich', 'flu');

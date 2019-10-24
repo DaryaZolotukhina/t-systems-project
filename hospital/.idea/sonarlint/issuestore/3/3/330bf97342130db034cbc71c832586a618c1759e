@@ -1,0 +1,5 @@
+
+‰squid:UselessImportCheck"[Remove this unused import 'org.springframework.boot.autoconfigure.EnableAutoConfiguration'.(æèşŞøÿÿÿÿ8‘ûÈß-
+gsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(Õ´ÃÚ8÷Ûáß-
+squid:UselessImportCheck"QRemove this unused import 'org.springframework.context.annotation.ComponentScan'.(æëòÒûÿÿÿÿ8‘ûÈß-
+squid:UselessImportCheck"aRemove this unused import 'org.springframework.data.jpa.repository.config.EnableJpaRepositories'.(²œ˜üÿÿÿÿ8ºŒ™àß-
