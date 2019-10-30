@@ -1,6 +1,0 @@
-hospital\service\PatientServiceImpl.class
-hospital\controller\PatientRestController.class
-hospital\model\Patient.class
-hospital\PatientDemoApplication.class
-hospital\repository\PatientRepository.class
-hospital\service\PatientService.class

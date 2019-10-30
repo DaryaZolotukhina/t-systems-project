@@ -1,0 +1,7 @@
+
+fsquid:S1192"HDefine a constant instead of duplicating this literal "patient" 4 times.(µÈÿë8éâçá-
+^squid:S4684!"@Replace this persistent entity with a simple POJO or DTO object.(ÔàŒ²8Ê©âçá-
+[squid:S3752-">Add a "method" parameter to this "@RequestMapping" annotation.(×÷àH8Ê©âçá-
+hsquid:S4488 "JReplace "@RequestMapping(method = RequestMethod.POST)" with "@PostMapping"(ÏÇ·©8Ê©âçá-
+asquid:S37524">Add a "method" parameter to this "@RequestMapping" annotation.(•¶ øÿÿÿÿ8Ê©âçá-
+ksquid:S4488"HReplace "@RequestMapping(method = RequestMethod.GET)" with "@GetMapping"(æÄşÿÿÿÿ8Ê©âçá-
