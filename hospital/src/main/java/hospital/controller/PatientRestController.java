@@ -7,13 +7,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/patients/")
+@RequestMapping("/api/")
 public class PatientRestController {
 
     private PatientService patientService;
@@ -31,20 +30,13 @@ public class PatientRestController {
         }
         PatientDto patient = this.patientService.getById(patientId);
 
-
         return new ResponseEntity<PatientDto>(patient, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "", method = RequestMethod.POST)
+    @RequestMapping(value = "", method = RequestMethod.POST, produces = "application/json")
     public ResponseEntity<Patient> addPatient(@RequestBody Patient p) {
-        /*if (p.getId() == 0){*/
             this.patientService.addPatient(p);
             return new ResponseEntity<Patient>(p,HttpStatus.CREATED);
-       /* }else{
-            //existing person, call update
-            this.patientService.updatePatient(p);
-            return new ResponseEntity<Patient>(p, HttpStatus.OK);
-        }*/
 
     }
 
@@ -57,7 +49,7 @@ public class PatientRestController {
         return new ResponseEntity<Patient>(HttpStatus.NO_CONTENT);
     }
 
-    @RequestMapping(value="", method = RequestMethod.GET)
+    @RequestMapping(value="patients", method = RequestMethod.GET)
     public ResponseEntity<List<PatientDto>> getAllPatients(){
         List<PatientDto> patients= this.patientService.getAll();
         return new ResponseEntity<List<PatientDto>>(patients, HttpStatus.OK);

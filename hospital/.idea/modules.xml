@@ -3,7 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/SpringMVCHibernate.iml" filepath="$PROJECT_DIR$/SpringMVCHibernate.iml" />
-      <module fileurl="file://$PROJECT_DIR$/SpringMVCHibernate.iml" filepath="$PROJECT_DIR$/SpringMVCHibernate.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hospital.iml" filepath="$PROJECT_DIR$/hospital.iml" />
     </modules>
   </component>
 </project>
