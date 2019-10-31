@@ -1,12 +1,13 @@
 
-Ysquid:S18545";Remove this useless assignment to local variable "patient".(ßÎ…Ÿ8Ğ·µçá-
-isquid:CommentedOutCodeLine+"<This block of commented-out lines of code should be removed.(‹ìŒá8òÕçá-
-qsquid:S44883"NReplace "@RequestMapping(method = RequestMethod.DELETE)" with "@DeleteMapping"(…Ìò³ÿÿÿÿÿ8Ğ·µçá-
-Jsquid:S14815",Remove this unused "patient" local variable.(ßÎ…Ÿ8Ğ·µçá-
-fsquid:S4488"HReplace "@RequestMapping(method = RequestMethod.GET)" with "@GetMapping"(×ØÄú8Ğ·µçá-
-vsquid:UselessImportCheck
-"FRemove this unused import 'org.springframework.stereotype.Controller'.(øŠ—Öùÿÿÿÿ8Ğ·µçá-
-fsquid:S4488<"HReplace "@RequestMapping(method = RequestMethod.GET)" with "@GetMapping"(¤úÙ8Ğ·µçá-
-isquid:CommentedOutCodeLine("<This block of commented-out lines of code should be removed.(Öƒ•û8òÕçá-
-msquid:S4488&"JReplace "@RequestMapping(method = RequestMethod.POST)" with "@PostMapping"(Õ¡¤ùÿÿÿÿ8Ğ·µçá-
-]squid:S4684'"@Replace this persistent entity with a simple POJO or DTO object.(¯û²8Ğ·µçá-
+qsquid:S4488+"NReplace "@RequestMapping(method = RequestMethod.DELETE)" with "@DeleteMapping"(…Ìò³ÿÿÿÿÿ8çœ¨ïá-
+fsquid:S4488"HReplace "@RequestMapping(method = RequestMethod.GET)" with "@GetMapping"(×ØÄú8çœ¨ïá-
+Jsquid:S1481-",Remove this unused "patient" local variable.(ßÎ…Ÿ8çœ¨ïá-
+|squid:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(„ùÖşÿÿÿÿ8çœ¨ïá-
+vsquid:S2293'"YReplace the type specification in this constructor call with the diamond operator ("<>").(Ş—„z8çœ¨ïá-
+wsquid:S22931"YReplace the type specification in this constructor call with the diamond operator ("<>").(­í±›8çœ¨ïá-
+fsquid:S44884"HReplace "@RequestMapping(method = RequestMethod.GET)" with "@GetMapping"(úËùÈ8çœ¨ïá-
+]squid:S4684%"@Replace this persistent entity with a simple POJO or DTO object.(¯û²8çœ¨ïá-
+Ysquid:S1854-";Remove this useless assignment to local variable "patient".(ßÎ…Ÿ8çœ¨ïá-
+msquid:S4488$"JReplace "@RequestMapping(method = RequestMethod.POST)" with "@PostMapping"(ÑÚøşÿÿÿÿ8çœ¨ïá-
+|squid:S2293!"YReplace the type specification in this constructor call with the diamond operator ("<>").(İ–¸”øÿÿÿÿ8çœ¨ïá-
+wsquid:S22937"YReplace the type specification in this constructor call with the diamond operator ("<>").(ì¬êí8çœ¨ïá-

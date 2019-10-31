@@ -23,3 +23,9 @@ Y
 )src/main/java/hospital/model/Patient.java,4\a\4af71a798d1760c638c0bcf92a8d11c49e2923ab
 7
 pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
+_
+/src/main/webapp/WEB-INF/views/createPatient.jsp,c\1\c18fa983ceff715637a631bb0d1db85c9bbc0cbf
+Z
+*src/main/webapp/WEB-INF/views/patients.jsp,5\5\559e0d62e4be4902f8ea4ae0e05075fb2d433158
+]
+-src/main/webapp/WEB-INF/views/editPatient.jsp,b\7\b7b8a43d09c3bc6b0e792c71292872aaef2fa9b8

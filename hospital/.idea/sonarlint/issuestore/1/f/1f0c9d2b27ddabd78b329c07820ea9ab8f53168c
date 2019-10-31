@@ -1,7 +1,14 @@
 
-fsquid:S1192"HDefine a constant instead of duplicating this literal "patient" 4 times.(µÈÿë8éâçá-
-^squid:S4684!"@Replace this persistent entity with a simple POJO or DTO object.(ÔàŒ²8Ê©âçá-
-[squid:S3752-">Add a "method" parameter to this "@RequestMapping" annotation.(×÷àH8Ê©âçá-
-hsquid:S4488 "JReplace "@RequestMapping(method = RequestMethod.POST)" with "@PostMapping"(ÏÇ·©8Ê©âçá-
-asquid:S37524">Add a "method" parameter to this "@RequestMapping" annotation.(•¶ øÿÿÿÿ8Ê©âçá-
-ksquid:S4488"HReplace "@RequestMapping(method = RequestMethod.GET)" with "@GetMapping"(æÄşÿÿÿÿ8Ê©âçá-
+hsquid:S4488+"JReplace "@RequestMapping(method = RequestMethod.POST)" with "@PostMapping"(ÏÇ·©8¿à½îá-
+hsquid:S4488:"JReplace "@RequestMapping(method = RequestMethod.POST)" with "@PostMapping"(±­÷è8åôìîá-
+[squid:UselessImportCheck"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ8¿à½îá-
+tsquid:UselessImportCheck	"DRemove this unused import 'org.springframework.http.ResponseEntity'.(¶¯ø¦úÿÿÿÿ8¿à½îá-
+ksquid:S4488"HReplace "@RequestMapping(method = RequestMethod.GET)" with "@GetMapping"(æÄşÿÿÿÿ8¿à½îá-
+ksquid:S4488%"HReplace "@RequestMapping(method = RequestMethod.GET)" with "@GetMapping"(—½£Äşÿÿÿÿ8¿à½îá-
+csquid:S4684;"@Replace this persistent entity with a simple POJO or DTO object.(¿Æíßûÿÿÿÿ8åôìîá-
+^squid:S4684,"@Replace this persistent entity with a simple POJO or DTO object.(ÔàŒ²8¿à½îá-
+lsquid:S44883"NReplace "@RequestMapping(method = RequestMethod.DELETE)" with "@DeleteMapping"(Ãƒı8åôìîá-
+psquid:UselessImportCheck"@Remove this unused import 'org.springframework.http.HttpStatus'.(íŸ¤Šúÿÿÿÿ8¿à½îá-
+dsquid:UselessImportCheck"4Remove this unused import 'hospital.dto.PatientDto'.(Å¹’˜şÿÿÿÿ8¿à½îá-
+fsquid:S4488@"HReplace "@RequestMapping(method = RequestMethod.GET)" with "@GetMapping"(Š“­¤8åôìîá-
+qsquid:S1192/"SDefine a constant instead of duplicating this literal "redirect:/patients" 3 times.(¶À©ƒ8åôìîá-
