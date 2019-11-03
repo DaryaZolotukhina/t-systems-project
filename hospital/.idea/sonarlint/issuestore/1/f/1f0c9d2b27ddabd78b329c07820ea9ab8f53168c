@@ -1,14 +1,14 @@
 
-hsquid:S4488+"JReplace "@RequestMapping(method = RequestMethod.POST)" with "@PostMapping"(ΟΗ·©8Ώΰ½ξα-
-hsquid:S4488:"JReplace "@RequestMapping(method = RequestMethod.POST)" with "@PostMapping"(±­χθ8ετμξα-
-[squid:UselessImportCheck"+Remove this unused import 'java.util.List'.(Υλ±Δψÿÿÿÿ8Ώΰ½ξα-
-tsquid:UselessImportCheck	"DRemove this unused import 'org.springframework.http.ResponseEntity'.(¶―ψ¦ϊÿÿÿÿ8Ώΰ½ξα-
-ksquid:S4488"HReplace "@RequestMapping(method = RequestMethod.GET)" with "@GetMapping"(ζΔώÿÿÿÿ8Ώΰ½ξα-
 ksquid:S4488%"HReplace "@RequestMapping(method = RequestMethod.GET)" with "@GetMapping"(—½£Δώÿÿÿÿ8Ώΰ½ξα-
-csquid:S4684;"@Replace this persistent entity with a simple POJO or DTO object.(ΏΖνίϋÿÿÿÿ8ετμξα-
 ^squid:S4684,"@Replace this persistent entity with a simple POJO or DTO object.(Τΰ²8Ώΰ½ξα-
 lsquid:S44883"NReplace "@RequestMapping(method = RequestMethod.DELETE)" with "@DeleteMapping"(Γƒύ8ετμξα-
-psquid:UselessImportCheck"@Remove this unused import 'org.springframework.http.HttpStatus'.(ν¤ϊÿÿÿÿ8Ώΰ½ξα-
-dsquid:UselessImportCheck"4Remove this unused import 'hospital.dto.PatientDto'.(ΕΉ’ώÿÿÿÿ8Ώΰ½ξα-
-fsquid:S4488@"HReplace "@RequestMapping(method = RequestMethod.GET)" with "@GetMapping"(“­¤8ετμξα-
+csquid:S4684;"@Replace this persistent entity with a simple POJO or DTO object.(ΏΖνίϋÿÿÿÿ8ετμξα-
 qsquid:S1192/"SDefine a constant instead of duplicating this literal "redirect:/patients" 3 times.(¶ΐ©ƒ8ετμξα-
+dsquid:UselessImportCheck"4Remove this unused import 'hospital.dto.PatientDto'.(ΕΉ’ώÿÿÿÿ8Ώΰ½ξα-
+psquid:UselessImportCheck"@Remove this unused import 'org.springframework.http.HttpStatus'.(ν¤ϊÿÿÿÿ8Ώΰ½ξα-
+tsquid:UselessImportCheck	"DRemove this unused import 'org.springframework.http.ResponseEntity'.(¶―ψ¦ϊÿÿÿÿ8Ώΰ½ξα-
+hsquid:S4488:"JReplace "@RequestMapping(method = RequestMethod.POST)" with "@PostMapping"(±­χθ8ετμξα-
+ksquid:S4488"HReplace "@RequestMapping(method = RequestMethod.GET)" with "@GetMapping"(ζΔώÿÿÿÿ8Ώΰ½ξα-
+fsquid:S4488@"HReplace "@RequestMapping(method = RequestMethod.GET)" with "@GetMapping"(“­¤8ετμξα-
+[squid:UselessImportCheck"+Remove this unused import 'java.util.List'.(Υλ±Δψÿÿÿÿ8Ώΰ½ξα-
+hsquid:S4488+"JReplace "@RequestMapping(method = RequestMethod.POST)" with "@PostMapping"(ΟΗ·©8Ώΰ½ξα-

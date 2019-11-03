@@ -1,25 +1,15 @@
 package hospital.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.List;
 
-/**
- * Entity bean with JPA annotations
- * Hibernate provides JPA implementation
- * @author pankaj
- *
- */
 @Entity
-@Table(name="patients", schema = "public")
+@Table(name="patients")
 public class Patient {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="id")
+	@Column(name="id_patient")
 	private Integer id;
 	@Column(name="surname")
 	private String surname;
@@ -27,8 +17,22 @@ public class Patient {
 	private String name;
 	@Column(name="patronymic")
 	private String patronymic;
-	@Column(name="diagnosis")
-	private String diagnosis;
+	@Column
+	private String insuranceNum;
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "id_doctor")
+	private Doctor doctor;
+	@Column
+	private boolean isDeleted;
+	@Column
+	private boolean isDischarged;
+
+	@OneToMany(mappedBy = "patient", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<Patient_Diagnosis> patDiag;
+	@OneToMany(mappedBy = "patient", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<Prescription> prescriptions;
+	@OneToMany(mappedBy = "patient", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<Event> events;
 
 	public Integer getId() {
 		return id;
@@ -62,11 +66,35 @@ public class Patient {
 		this.patronymic = patronymic;
 	}
 
-	public String getDiagnosis() {
-		return diagnosis;
+	public String getInsuranceNum() {
+		return insuranceNum;
 	}
 
-	public void setDiagnosis(String diagnosis) {
-		this.diagnosis = diagnosis;
+	public void setInsuranceNum(String insuranceNum) {
+		this.insuranceNum = insuranceNum;
+	}
+
+	public Doctor getDoctor() {
+		return doctor;
+	}
+
+	public void setDoctor(Doctor doctor) {
+		this.doctor = doctor;
+	}
+
+	public boolean isDeleted() {
+		return isDeleted;
+	}
+
+	public void setDeleted(boolean deleted) {
+		isDeleted = deleted;
+	}
+
+	public boolean isDischarged() {
+		return isDischarged;
+	}
+
+	public void setDischarged(boolean discharged) {
+		isDischarged = discharged;
 	}
 }
