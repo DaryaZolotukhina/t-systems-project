@@ -1,6 +1,7 @@
 package hospital.model;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name="Prescriptions")
@@ -10,6 +11,23 @@ public class Prescription {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id_prescription")
     private Integer id;
+
+    public String getDaySchedule() {
+        return daySchedule;
+    }
+
+    public void setDaySchedule(String daySchedule) {
+        this.daySchedule = daySchedule;
+    }
+
+    public String getWeekSchedule() {
+        return weekSchedule;
+    }
+
+    public void setWeekSchedule(String weekSchedule) {
+        this.weekSchedule = weekSchedule;
+    }
+
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_patient")
     private Patient patient;
@@ -17,15 +35,17 @@ public class Prescription {
     @JoinColumn(name = "id_procMed")
     private ProcMed procMed;
     @Column
-    private int[] daySchedule;
+    private String daySchedule;
     @Column
-    private int[] weekSchedule;
+    private String weekSchedule;
     @Column
     private Integer period;
     @Column
     private Float dose;
     @Column
     private boolean isDone;
+    @OneToMany(mappedBy = "prescription", cascade = CascadeType.ALL, orphanRemoval = true,fetch = FetchType.EAGER)
+    private List<Event> events;
 
     public Integer getId() {
         return id;
@@ -51,21 +71,7 @@ public class Prescription {
         this.procMed = procMed;
     }
 
-    public int[] getDaySchedule() {
-        return daySchedule;
-    }
 
-    public void setDaySchedule(int[] daySchedule) {
-        this.daySchedule = daySchedule;
-    }
-
-    public int[] getWeekSchedule() {
-        return weekSchedule;
-    }
-
-    public void setWeekSchedule(int[] weekSchedule) {
-        this.weekSchedule = weekSchedule;
-    }
 
     public Integer getPeriod() {
         return period;
@@ -89,5 +95,13 @@ public class Prescription {
 
     public void setDone(boolean done) {
         isDone = done;
+    }
+
+    public List<Event> getEvents() {
+        return events;
+    }
+
+    public void setEvents(List<Event> events) {
+        this.events = events;
     }
 }

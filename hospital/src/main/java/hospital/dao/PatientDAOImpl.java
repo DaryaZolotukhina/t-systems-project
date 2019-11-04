@@ -2,7 +2,10 @@ package hospital.dao;
 
 import java.util.List;
 
+import hospital.model.Event;
 import hospital.model.Patient;
+import hospital.model.Prescription;
+import hospital.model.StatusEvent;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
@@ -53,4 +56,29 @@ public class PatientDAOImpl implements PatientDAO {
 		}
 	}
 
+	@Override
+	public StatusEvent getEventById(int id){
+		Session session = this.sessionFactory.getCurrentSession();
+		StatusEvent statusEvent = (StatusEvent) session.load(StatusEvent.class, new Integer(id));
+		return statusEvent;
+	}
+
+	@Override
+	public Prescription getPrescriptionById(int id){
+		Session session = this.sessionFactory.getCurrentSession();
+		Prescription prescription = (Prescription) session.load(Prescription.class, new Integer(id));
+		return prescription;
+	}
+
+/*	@Override
+	public void generateEvents(Prescription presc) {
+		Session session = this.sessionFactory.getCurrentSession();
+		Patient p = (Patient) session.load(Patient.class, new Integer(id));
+	}*/
+
+	@Override
+	public void saveEvent(Event event) {
+		Session session = this.sessionFactory.getCurrentSession();
+		session.persist(event);
+	}
 }

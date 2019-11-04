@@ -97,3 +97,24 @@ CREATE TABLE public.StatusEvent
 id_StatusEvent SERIAL NOT NULL PRIMARY KEY,
     title character varying(255) NOT NULL
 );
+
+drop table events;
+	CREATE TABLE public.events
+(
+	id_event SERIAL primary key,
+	id_patient integer REFERENCES patients(id_patient),
+	dateTimeEvent timestamp,
+	id_prescription integer REFERENCES prescriptions(id_prescription),
+	id_procMed integer REFERENCES procMed(id_procMed),
+	id_StatusEvent integer REFERENCES StatusEvent(id_StatusEvent)
+);
+drop table patient_diagnosis;
+CREATE TABLE public.patient_diagnosis
+(
+	id_patient_diagnosis SERIAL PRIMARY KEY,
+    id_patient integer REFERENCES patients(id_patient),
+	id_diagnosis integer REFERENCES diagnosises(id_diagnosis)
+);
+
+select * from events;
+select * from prescriptions;

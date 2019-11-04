@@ -13,7 +13,7 @@ public class ProcMed {
     @Column
     private String title;
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "id_statusPat")
+    @JoinColumn(name = "id_type")
     private TypeProcMed typeProcMed;
 
     public Integer getId() {
@@ -50,4 +50,6 @@ public class ProcMed {
 
     @OneToMany(mappedBy = "procMed", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Prescription> prescriptions;
+    @OneToMany(mappedBy = "procMed", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Prescription> events;
 }

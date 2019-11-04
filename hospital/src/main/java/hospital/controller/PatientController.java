@@ -1,12 +1,11 @@
 package hospital.controller;
 
-import hospital.dto.PatientDto;
+import hospital.model.Event;
 import hospital.model.Patient;
+import hospital.model.Prescription;
 import hospital.service.PatientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -32,6 +31,24 @@ public class PatientController {
 		model.addAttribute("patient", new Patient());
 		model.addAttribute("listPatients", this.patientService.getAll());
 		return "patients";
+	}
+
+	@RequestMapping(value = "/patient/{id}",method = RequestMethod.GET)
+	public String getById(@PathVariable("id") int id, Model model){
+		model.addAttribute("patient", this.patientService.getById(id));
+		model.addAttribute("prescriptions",this.patientService.getById(id).getPrescriptions());
+		model.addAttribute("prescription",new Prescription());
+		return "showPatient";
+	}
+
+	@RequestMapping("/prescription/{id}")
+	public String generateEvents(@PathVariable("id") int id, Model model){
+		//model.addAttribute("patient", this.patientService.getById(id));
+		//model.addAttribute("prescriptions",this.patientService.getById(id).getPrescriptions());
+		//model.addAttribute("prescription",new Prescription());
+		model.addAttribute("events", this.patientService.generateEvents(id));
+		model.addAttribute("event", new Event());
+		return "showPatient";
 	}
 
 	@RequestMapping(value= "/patient/add", method = RequestMethod.GET)

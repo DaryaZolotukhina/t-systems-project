@@ -2,7 +2,10 @@ package hospital.dao;
 
 import java.util.List;
 
+import hospital.model.Event;
 import hospital.model.Patient;
+import hospital.model.Prescription;
+import hospital.model.StatusEvent;
 
 public interface PatientDAO {
 
@@ -15,4 +18,10 @@ public interface PatientDAO {
 	void delete(int id);
 
 	List<Patient> getAll();
+
+	public void saveEvent(Event event);
+
+	StatusEvent getEventById(int id);
+
+	Prescription getPrescriptionById(int id);
 }

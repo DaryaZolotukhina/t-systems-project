@@ -21,11 +21,10 @@
         </tr>
         <c:forEach  items="${listPatients}" var ="patient">
             <tr>
-                <td>${patient.id}</td>
+                <td><a href="/patient/${patient.id}">${patient.id}</a></td>
                 <td>${patient.surname}</td>
                 <td>${patient.name}</td>
                 <td>${patient.patronymic}</td>
-                <td>${patient.diagnosis}</td>
                 <td><a href="/remove/${patient.id}">Delete</a></td>
                 <td><a href="/update/${patient.id}">Update</a></td>
             </tr>

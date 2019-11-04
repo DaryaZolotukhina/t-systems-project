@@ -16,7 +16,7 @@ public class Doctor {
     private String name;
     @Column(name="patronymic")
     private String patronymic;
-    @Column
+    @Column(name="isdeleted")
     private boolean isDeleted;
 
     @OneToMany(mappedBy = "doctor", cascade = CascadeType.ALL, orphanRemoval = true)

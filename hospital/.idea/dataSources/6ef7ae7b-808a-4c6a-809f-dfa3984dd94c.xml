@@ -8,17 +8,18 @@
       <ObjectId>33124</ObjectId>
       <StateNumber>584</StateNumber>
       <Owner>postgres</Owner>
-      <IntrospectionStateNumber>702</IntrospectionStateNumber>
+      <IntrospectionStateNumber>726</IntrospectionStateNumber>
       <Current>1</Current>
       <Visible>1</Visible>
       <Relations>sequence|table|57759|57761|1
-sequence|table|57767|57769|1
 sequence|table|57797|57799|1
 sequence|table|57808|57810|1
 sequence|table|57852|57854|1
 sequence|table|57860|57862|1
 sequence|table|57873|57875|1
 sequence|table|57908|57910|1
+sequence|table|57977|57979|1
+sequence|table|57995|57997|1
 </Relations>
     </database>
     <database id="3" parent="1" name="poll">
@@ -202,7 +203,23 @@ sequence|table|57908|57910|1
       <CacheSize>1</CacheSize>
       <DataType>integer</DataType>
     </sequence>
-    <sequence id="31" parent="20" name="patients_id_patient_seq">
+    <sequence id="31" parent="20" name="events_id_event_seq">
+      <ObjectId>57995</ObjectId>
+      <StateNumber>722</StateNumber>
+      <Owner>postgres</Owner>
+      <SequenceIdentity>1..2147483647</SequenceIdentity>
+      <CacheSize>1</CacheSize>
+      <DataType>integer</DataType>
+    </sequence>
+    <sequence id="32" parent="20" name="patient_diagnosis_id_patient_diagnosis_seq">
+      <ObjectId>57977</ObjectId>
+      <StateNumber>716</StateNumber>
+      <Owner>postgres</Owner>
+      <SequenceIdentity>1..2147483647</SequenceIdentity>
+      <CacheSize>1</CacheSize>
+      <DataType>integer</DataType>
+    </sequence>
+    <sequence id="33" parent="20" name="patients_id_patient_seq">
       <ObjectId>57808</ObjectId>
       <StateNumber>687</StateNumber>
       <Owner>postgres</Owner>
@@ -210,7 +227,7 @@ sequence|table|57908|57910|1
       <CacheSize>1</CacheSize>
       <DataType>integer</DataType>
     </sequence>
-    <sequence id="32" parent="20" name="prescriptions_id_prescription_seq">
+    <sequence id="34" parent="20" name="prescriptions_id_prescription_seq">
       <ObjectId>57873</ObjectId>
       <StateNumber>692</StateNumber>
       <Owner>postgres</Owner>
@@ -218,7 +235,7 @@ sequence|table|57908|57910|1
       <CacheSize>1</CacheSize>
       <DataType>integer</DataType>
     </sequence>
-    <sequence id="33" parent="20" name="procmed_id_procmed_seq">
+    <sequence id="35" parent="20" name="procmed_id_procmed_seq">
       <ObjectId>57860</ObjectId>
       <StateNumber>691</StateNumber>
       <Owner>postgres</Owner>
@@ -226,7 +243,7 @@ sequence|table|57908|57910|1
       <CacheSize>1</CacheSize>
       <DataType>integer</DataType>
     </sequence>
-    <sequence id="34" parent="20" name="statusevent_id_statusevent_seq">
+    <sequence id="36" parent="20" name="statusevent_id_statusevent_seq">
       <ObjectId>57908</ObjectId>
       <StateNumber>694</StateNumber>
       <Owner>postgres</Owner>
@@ -234,15 +251,7 @@ sequence|table|57908|57910|1
       <CacheSize>1</CacheSize>
       <DataType>integer</DataType>
     </sequence>
-    <sequence id="35" parent="20" name="statuspat_id_statuspat_seq">
-      <ObjectId>57767</ObjectId>
-      <StateNumber>683</StateNumber>
-      <Owner>postgres</Owner>
-      <SequenceIdentity>1..2147483647</SequenceIdentity>
-      <CacheSize>1</CacheSize>
-      <DataType>integer</DataType>
-    </sequence>
-    <sequence id="36" parent="20" name="typeprocmed_id_type_seq">
+    <sequence id="37" parent="20" name="typeprocmed_id_type_seq">
       <ObjectId>57852</ObjectId>
       <StateNumber>690</StateNumber>
       <Owner>postgres</Owner>

@@ -1,11 +1,24 @@
 package hospital.dto;
 
+import hospital.model.Prescription;
+
+import java.util.List;
+
 public class PatientDto {
     private Integer id;
+
+    public List<Prescription> getPrescriptions() {
+        return prescriptions;
+    }
+
+    public void setPrescriptions(List<Prescription> prescriptions) {
+        this.prescriptions = prescriptions;
+    }
+
     private String surname;
     private String name;
     private String patronymic;
-    private String diagnosis;
+    private List<Prescription> prescriptions;
 
     public Integer getId() {
         return id;
@@ -39,11 +52,5 @@ public class PatientDto {
         this.patronymic = patronymic;
     }
 
-    public String getDiagnosis() {
-        return diagnosis;
-    }
 
-    public void setDiagnosis(String diagnosis) {
-        this.diagnosis = diagnosis;
-    }
 }

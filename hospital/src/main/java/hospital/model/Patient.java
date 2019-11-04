@@ -29,7 +29,7 @@ public class Patient {
 
 	@OneToMany(mappedBy = "patient", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Patient_Diagnosis> patDiag;
-	@OneToMany(mappedBy = "patient", cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(mappedBy = "patient", cascade = CascadeType.ALL, orphanRemoval = true,fetch = FetchType.EAGER)
 	private List<Prescription> prescriptions;
 	@OneToMany(mappedBy = "patient", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Event> events;
@@ -97,4 +97,28 @@ public class Patient {
 	public void setDischarged(boolean discharged) {
 		isDischarged = discharged;
 	}
+
+    public List<Patient_Diagnosis> getPatDiag() {
+        return patDiag;
+    }
+
+    public void setPatDiag(List<Patient_Diagnosis> patDiag) {
+        this.patDiag = patDiag;
+    }
+
+    public List<Prescription> getPrescriptions() {
+        return prescriptions;
+    }
+
+    public void setPrescriptions(List<Prescription> prescriptions) {
+        this.prescriptions = prescriptions;
+    }
+
+    public List<Event> getEvents() {
+        return events;
+    }
+
+    public void setEvents(List<Event> events) {
+        this.events = events;
+    }
 }
