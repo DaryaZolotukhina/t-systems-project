@@ -8,6 +8,7 @@ import hospital.dto.PatientDto;
 import hospital.model.Event;
 import hospital.model.Patient;
 import hospital.model.Prescription;
+import org.hibernate.Session;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -33,9 +34,37 @@ public class PatientServiceImpl implements PatientService {
 
 	@Override
 	@Transactional
+    public List<Event> getAllEvents(int id){
+        List<Event> events=this.patientDAO.getAllEvents(id);
+		return events;
+	}
+
+    @Override
+    @Transactional
+    public List<Prescription> getAllPrescriptions(int id){
+        List<Prescription> prescriptions=this.patientDAO.getAllPrescriptions(id);
+        return prescriptions;
+    }
+
+    @Override
+    public Prescription getPrescriptionById(int id){
+        Prescription prescription = this.patientDAO.getPrescriptionById(id);
+        return prescription;
+    }
+
+	@Override
+	@Transactional
 	public void updatePatient(Patient p) {
 		this.patientDAO.updatePatient(p);
 	}
+
+    @Override
+    @Transactional
+    public void updateDeletePatient(int id) {
+        Patient patient = this.patientDAO.getById(id);
+        patient.setIsDeleted(true);
+	    this.patientDAO.updatePatient(patient);
+    }
 
 	@Override
 	@Transactional
@@ -48,6 +77,8 @@ public class PatientServiceImpl implements PatientService {
 			patientDto.setSurname(patient.getSurname());
 			patientDto.setName(patient.getName());
 			patientDto.setPatronymic(patient.getPatronymic());
+            patientDto.setPatDiag(patient.getPatDiag());
+            patientDto.setIsDeleted(patient.getIsDeleted());
 			listPatDto.add(patientDto);
 		}
 		return listPatDto;
@@ -63,6 +94,9 @@ public class PatientServiceImpl implements PatientService {
 		patientDto.setName(patient.getName());
 		patientDto.setPatronymic(patient.getPatronymic());
 		patientDto.setPrescriptions(patient.getPrescriptions());
+		patientDto.setInsuranceNum(patient.getInsuranceNum());
+        patientDto.setPatDiag(patient.getPatDiag());
+        patientDto.setIsDeleted(patient.getIsDeleted());
 		return patientDto;
 	}
 
@@ -96,10 +130,12 @@ public class PatientServiceImpl implements PatientService {
 			event.setProcMed(presc.getProcMed());
 			event.setPrescription(presc);
 			event.setDateTimeEvent(dates.get(i));
-			event.setStatusEvent(this.patientDAO.getEventById(1));
+			event.setStatusEvent(this.patientDAO.getStatusEventById(1));
 			this.patientDAO.saveEvent(event);
 			events.add(event);
 		}
+		presc.setIsDone(true);
+		this.patientDAO.updatePrescription(presc);
 		return events;
 	}
 

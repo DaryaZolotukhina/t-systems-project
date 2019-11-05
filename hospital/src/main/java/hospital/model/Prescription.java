@@ -42,6 +42,15 @@ public class Prescription {
     private Integer period;
     @Column
     private Float dose;
+
+    public boolean getIsDone() {
+        return isDone;
+    }
+
+    public void setIsDone(boolean done) {
+        isDone = done;
+    }
+
     @Column
     private boolean isDone;
     @OneToMany(mappedBy = "prescription", cascade = CascadeType.ALL, orphanRemoval = true,fetch = FetchType.EAGER)
@@ -89,13 +98,6 @@ public class Prescription {
         this.dose = dose;
     }
 
-    public boolean isDone() {
-        return isDone;
-    }
-
-    public void setDone(boolean done) {
-        isDone = done;
-    }
 
     public List<Event> getEvents() {
         return events;

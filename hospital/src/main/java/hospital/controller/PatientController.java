@@ -13,8 +13,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import java.util.List;
-
 @Controller
 public class PatientController {
 	
@@ -36,19 +34,19 @@ public class PatientController {
 	@RequestMapping(value = "/patient/{id}",method = RequestMethod.GET)
 	public String getById(@PathVariable("id") int id, Model model){
 		model.addAttribute("patient", this.patientService.getById(id));
-		model.addAttribute("prescriptions",this.patientService.getById(id).getPrescriptions());
+		model.addAttribute("prescriptions",this.patientService.getAllPrescriptions(id));
 		model.addAttribute("prescription",new Prescription());
+		model.addAttribute("events",this.patientService.getAllEvents(id));
+		model.addAttribute("event",new Event());
 		return "showPatient";
 	}
 
-	@RequestMapping("/prescription/{id}")
-	public String generateEvents(@PathVariable("id") int id, Model model){
-		//model.addAttribute("patient", this.patientService.getById(id));
-		//model.addAttribute("prescriptions",this.patientService.getById(id).getPrescriptions());
-		//model.addAttribute("prescription",new Prescription());
-		model.addAttribute("events", this.patientService.generateEvents(id));
+	@RequestMapping("/prescription/{idPat}/{idPresc}")
+	public String generateEvents(@PathVariable("idPat") int idPat,@PathVariable("idPresc") int idPresc, Model model){
+		model.addAttribute("generatedEvents", this.patientService.generateEvents(idPresc));
+		model.addAttribute("events",this.patientService.getAllEvents(idPat));
 		model.addAttribute("event", new Event());
-		return "showPatient";
+		return "redirect:/patient/{idPat}";
 	}
 
 	@RequestMapping(value= "/patient/add", method = RequestMethod.GET)
@@ -75,6 +73,12 @@ public class PatientController {
 	@RequestMapping(value="/updatePatient",method = RequestMethod.POST)
 	public String updateUser(@ModelAttribute("patient") Patient p){
 		this.patientService.updatePatient(p);
+		return "redirect:/patients";
+	}
+
+	@RequestMapping(value="/updateDeletePatient/{id}")
+	public String updateDeletePatient(@PathVariable("id") int id){
+		this.patientService.updateDeletePatient(id);
 		return "redirect:/patients";
 	}
 

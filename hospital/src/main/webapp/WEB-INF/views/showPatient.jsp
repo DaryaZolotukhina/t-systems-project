@@ -3,36 +3,80 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>User Info</title>
+    <link type="text/css" href="/css/styles.css" rel="stylesheet">
+    <title>Patient Info</title>
 </head>
 <body>
-<h1>User Info</h1>
+<h1>Patient Info</h1>
+<img src="/css/avatar_male_l.png" alt="Photo" />
+<h2>${patient.surname} ${patient.name} ${patient.patronymic}</h2>
+<div class="info">
 <table>
     <tr>
-        <td>Id</td>
+        <td><b>Id</b></td>
         <td>${patient.id}</td>
     </tr>
     <tr>
-        <td>Name</td>
-        <td>${patient.name}</td>
+        <td><b>InsuranceNum</b></td>
+        <td>${patient.insuranceNum}</td>
     </tr>
+</table>
+</div>
+<div class="tables">
+<table border="1" class="prescEvents">
     <tr>
-        <td>Email</td>
-        <td>${patient.surname}</td>
+        <th colspan="4">Prescriptions</th>
     </tr>
-    <tr>
-        <td>Age</td>
-        <td>${patient.patronymic}</td>
-    </tr>
+<tr>
+    <th>Procedure or medicine</th>
+    <th>Period</th>
+    <th>Dose</th>
+    <th>Completed</th>
+</tr>
     <c:forEach  items="${prescriptions}" var ="prescription">
     <tr>
-        <td>Age</td>
-        <td>${prescription.id}</td>
-            <td>${prescription.events}</td>
-    </tr>
+        <td>${prescription.procMed.title}</td>
+            <td>${prescription.period} weeks</td>
+            <td>${prescription.dose}</td>
+        <c:choose>
+            <c:when test="${prescription.isDone == true}">
+                <td>yes</td>
+            </c:when>
+            <c:when test="${prescription.isDone != true}">
+                <td>no</td>
+            </c:when>
+        </c:choose>
+        <c:if test = "${prescription.isDone != true}">
+            <td><a href="/prescription/${patient.id}/${prescription.id}"><button>Complete</button></a></td>
+        </c:if>
+        </tr>
     </c:forEach>
-    </table>
+</table>
+</div>
+<div class="tables">
+<table border="1" class="prescEvents">
+    <tr>
+        <th colspan="3">Events</th>
+    </tr>
+<tr>
+    <th>Procedure or medicine</th>
+    <th>Date and time</th>
+    <th>Status</th>
+</tr>
+    <c:forEach  items="${events}" var ="event">
+        <tr>
+            <td>${event.procMed.title}</td>
+            <td>${event.dateTimeEvent}</td>
+            <td>${event.statusEvent.title}</td>
+        </tr>
+    </c:forEach>
+</table>
+</div>
+</div>
+<div style="float: left;
+clear: both;">
     <br>
-    <a href="/patients">Back</a>
+    <a href="/patients"><button>Back</button></a>
+</div>
 </body>
 </html>

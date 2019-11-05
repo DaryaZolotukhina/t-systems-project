@@ -1,0 +1,15 @@
+.info {float: left;
+    margin-bottom: 17px;
+    outline: 1px solid #000;
+    width: 225px;
+    padding: 10px;
+    clear: both;}
+
+.tables {
+float: left;
+margin-bottom: 17px;
+clear: both;}
+
+.prescEvents {width: 350px;}
+
+img{border: 2px solid #000;}

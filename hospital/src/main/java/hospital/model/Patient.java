@@ -31,7 +31,7 @@ public class Patient {
 	private List<Patient_Diagnosis> patDiag;
 	@OneToMany(mappedBy = "patient", cascade = CascadeType.ALL, orphanRemoval = true,fetch = FetchType.EAGER)
 	private List<Prescription> prescriptions;
-	@OneToMany(mappedBy = "patient", cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(mappedBy = "patient", cascade = CascadeType.ALL, orphanRemoval = true,fetch = FetchType.EAGER)
 	private List<Event> events;
 
 	public Integer getId() {
@@ -82,11 +82,11 @@ public class Patient {
 		this.doctor = doctor;
 	}
 
-	public boolean isDeleted() {
+	public boolean getIsDeleted() {
 		return isDeleted;
 	}
 
-	public void setDeleted(boolean deleted) {
+	public void setIsDeleted(boolean deleted) {
 		isDeleted = deleted;
 	}
 

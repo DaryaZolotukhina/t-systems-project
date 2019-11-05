@@ -33,13 +33,6 @@ public class Event {
         this.procMed = procMed;
     }
 
-    public Prescription getPrescription() {
-        return prescription;
-    }
-
-    public void setPrescription(Prescription prescription) {
-        this.prescription = prescription;
-    }
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_procMed")
@@ -47,7 +40,7 @@ public class Event {
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_prescription")
     private Prescription prescription;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     @JoinColumn(name = "id_statusEvent")
     private StatusEvent statusEvent;
     public Patient getPatient() {
@@ -74,4 +67,12 @@ public class Event {
         this.statusEvent = statusEvent;
     }
 
+
+    public Prescription getPrescription() {
+        return prescription;
+    }
+
+    public void setPrescription(Prescription prescription) {
+        this.prescription = prescription;
+    }
 }

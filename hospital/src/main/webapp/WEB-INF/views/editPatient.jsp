@@ -16,8 +16,6 @@
     <input title="Name" type="text" name="name" value="${patient.name}">
     <p>Patronymic</p>
     <input title="Patronymic" type="text" name="patronymic" value="${patient.patronymic}">
-    <p>Diagnosis</p>
-    <input title="Diagnosis" type="text" name="diagnosis" value="${patient.diagnosis}">
     <input type="submit" value="OK">
 </form>
 

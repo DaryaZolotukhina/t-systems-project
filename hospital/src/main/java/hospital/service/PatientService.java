@@ -20,5 +20,13 @@ public interface PatientService {
 	List<PatientDto> getAll();
 
 	List<Event> generateEvents(int id);
+
+	List<Prescription> getAllPrescriptions(int id);
+
+	List<Event> getAllEvents(int id);
+
+	Prescription getPrescriptionById(int id);
+
+	void updateDeletePatient(int id);
 	
 }

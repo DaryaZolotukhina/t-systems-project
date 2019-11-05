@@ -1,5 +1,6 @@
 package hospital.dto;
 
+import hospital.model.Patient_Diagnosis;
 import hospital.model.Prescription;
 
 import java.util.List;
@@ -18,6 +19,36 @@ public class PatientDto {
     private String surname;
     private String name;
     private String patronymic;
+    private String insuranceNum;
+
+    public boolean getIsDeleted() {
+        return isDeleted;
+    }
+
+    public void setIsDeleted(boolean deleted) {
+        isDeleted = deleted;
+    }
+
+    private boolean isDeleted;
+
+    public List<Patient_Diagnosis> getPatDiag() {
+        return patDiag;
+    }
+
+    public void setPatDiag(List<Patient_Diagnosis> patDiag) {
+        this.patDiag = patDiag;
+    }
+
+    private List<Patient_Diagnosis> patDiag;
+
+    public String getInsuranceNum() {
+        return insuranceNum;
+    }
+
+    public void setInsuranceNum(String insuranceNum) {
+        this.insuranceNum = insuranceNum;
+    }
+
     private List<Prescription> prescriptions;
 
     public Integer getId() {

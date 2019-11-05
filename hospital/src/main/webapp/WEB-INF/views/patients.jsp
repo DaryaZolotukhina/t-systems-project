@@ -8,8 +8,7 @@
 </head>
 <body>
 <h1>Patient List</h1>
-
-<br/><br/>
+<br/>
 <div>
     <table border="1">
         <tr>
@@ -17,20 +16,22 @@
             <th>Surname</th>
             <th>Name</th>
             <th>Patronymic</th>
-            <th>Diagnosis</th>
         </tr>
-        <c:forEach  items="${listPatients}" var ="patient">
+        <c:forEach items="${listPatients}" var ="patient">
+            <c:if test = "${patient.isDeleted != true}">
             <tr>
                 <td><a href="/patient/${patient.id}">${patient.id}</a></td>
                 <td>${patient.surname}</td>
                 <td>${patient.name}</td>
                 <td>${patient.patronymic}</td>
-                <td><a href="/remove/${patient.id}">Delete</a></td>
-                <td><a href="/update/${patient.id}">Update</a></td>
+                <td><a href="/updateDeletePatient/${patient.id}"><button>Delete</button></a></td>
+                <td><a href="/update/${patient.id}"><button>Update</button></a></td>
             </tr>
+            </c:if>
         </c:forEach>
     </table>
-    <a href="/patient/add">Create user</a>
+    <br>
+    <a href="/patient/add"><button>Create user</button></a>
 </div>
 </body>
 
