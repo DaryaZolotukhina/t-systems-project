@@ -4,13 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <link type="text/css" href="/css/styles.css" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/bootstrap/bootstrap.min.css">
     <title>Patient Info</title>
 </head>
 <body>
-<h1>Patient Info</h1>
-<img src="/css/avatar_male_l.png" alt="Photo" />
-<h2>${patient.surname} ${patient.name} ${patient.patronymic}</h2>
-<div class="info">
+<h1 class="ml-3 mb-4 mt-2">Patient Info</h1>
+<img src="/css/avatar_male_l.png" alt="Photo" class="ml-3 mb-4"/>
+<h2 class="mb-4 ml-3">${patient.surname} ${patient.name} ${patient.patronymic}</h2>
+<div class="col-sm-3 mb-4 pb-3 pt-3 ml-3 border border-secondary box bg-light">
 <table>
     <tr>
         <td><b>Id</b></td>
@@ -22,8 +24,9 @@
     </tr>
 </table>
 </div>
-<div class="tables">
-<table border="1" class="prescEvents">
+<div class="col-sm-8 mb-5">
+    <table class="table table-hover">
+        <thead>
     <tr>
         <th colspan="4">Prescriptions</th>
     </tr>
@@ -33,6 +36,7 @@
     <th>Dose</th>
     <th>Completed</th>
 </tr>
+        </thead>
     <c:forEach  items="${prescriptions}" var ="prescription">
     <tr>
         <td>${prescription.procMed.title}</td>
@@ -53,8 +57,9 @@
     </c:forEach>
 </table>
 </div>
-<div class="tables">
-<table border="1" class="prescEvents">
+<div class="col-sm-8">
+    <table class="table table-hover">
+        <thead>
     <tr>
         <th colspan="3">Events</th>
     </tr>
@@ -63,6 +68,7 @@
     <th>Date and time</th>
     <th>Status</th>
 </tr>
+        </thead>
     <c:forEach  items="${events}" var ="event">
         <tr>
             <td>${event.procMed.title}</td>
