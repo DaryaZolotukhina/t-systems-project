@@ -32,11 +32,6 @@ public class PatientDAOImpl implements PatientDAO {
 		session.update(p);
 	}
 
-	@Override
-	public void updatePrescription(Prescription presc) {
-		Session session = this.sessionFactory.getCurrentSession();
-		session.update(presc);
-	}
 
 	@SuppressWarnings("unchecked")
 	@Override
@@ -62,40 +57,4 @@ public class PatientDAOImpl implements PatientDAO {
 		}
 	}
 
-	@Override
-	public StatusEvent getStatusEventById(int id){
-		Session session = this.sessionFactory.getCurrentSession();
-		StatusEvent statusEvent = (StatusEvent) session.load(StatusEvent.class, new Integer(id));
-		return statusEvent;
-	}
-
-	@Override
-	public Prescription getPrescriptionById(int id){
-		Session session = this.sessionFactory.getCurrentSession();
-		Prescription prescription = (Prescription) session.load(Prescription.class, new Integer(id));
-		return prescription;
-	}
-
-	@Override
-	public List<Prescription> getAllPrescriptions(int id){
-		Session session = this.sessionFactory.getCurrentSession();
-		Patient p = (Patient) session.load(Patient.class, new Integer(id));
-		List<Prescription> prescriptions=p.getPrescriptions();
-		return prescriptions;
-	}
-
-	@Override
-	public List<Event> getAllEvents(int id){
-		Session session = this.sessionFactory.getCurrentSession();
-		Patient p = (Patient) session.load(Patient.class, new Integer(id));
-		List<Event> events=p.getEvents();
-		return events;
-	}
-
-
-	@Override
-	public void saveEvent(Event event) {
-		Session session = this.sessionFactory.getCurrentSession();
-		session.persist(event);
-	}
 }

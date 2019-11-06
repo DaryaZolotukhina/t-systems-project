@@ -1,10 +1,7 @@
 package hospital.utils;
 
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 public class Utils {
     public static Date getNearestDayOfWeek(int dayOfWeek, Calendar now){
@@ -19,7 +16,7 @@ public class Utils {
     }
 
     public static List<Date> calcDate(int period,String week){
-        List<Date> resultDate=new LinkedList<>();
+        List<Date> resultDate=new ArrayList<>();
         Calendar now = Calendar.getInstance();
         for(int i=0;i<period;i++){
             int start=0;
@@ -38,7 +35,7 @@ public class Utils {
     }
 
     public static List<Date> calcDateTime(int period,String week){
-        List<Date> resultDate=new LinkedList<>();
+        List<Date> resultDate=new ArrayList<>();
         Calendar now = Calendar.getInstance();
         now.add(Calendar.DATE, 1);
         now.set(Calendar.HOUR_OF_DAY,0);

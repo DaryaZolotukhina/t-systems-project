@@ -1,5 +1,6 @@
 package hospital.service;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
@@ -31,26 +32,6 @@ public class PatientServiceImpl implements PatientService {
 	public void addPatient(Patient p) {
 		this.patientDAO.addPatient(p);
 	}
-
-	@Override
-	@Transactional
-    public List<Event> getAllEvents(int id){
-        List<Event> events=this.patientDAO.getAllEvents(id);
-		return events;
-	}
-
-    @Override
-    @Transactional
-    public List<Prescription> getAllPrescriptions(int id){
-        List<Prescription> prescriptions=this.patientDAO.getAllPrescriptions(id);
-        return prescriptions;
-    }
-
-    @Override
-    public Prescription getPrescriptionById(int id){
-        Prescription prescription = this.patientDAO.getPrescriptionById(id);
-        return prescription;
-    }
 
 	@Override
 	@Transactional
@@ -104,39 +85,6 @@ public class PatientServiceImpl implements PatientService {
 	@Transactional
 	public void delete(int id) {
 		this.patientDAO.delete(id);
-	}
-
-	@Override
-	@Transactional
-	public List<Event> generateEvents(int id) {
-		Prescription presc=this.patientDAO.getPrescriptionById(id);
-		List<Event> events=new LinkedList<Event>();
-		int period=presc.getPeriod();
-		int eventCnt;
-		List<Date> dates;
-		int day = org.springframework.util.StringUtils.countOccurrencesOf(presc.getDaySchedule(), "1");
-		if (day>0){
-			eventCnt=period*day;
-			dates=calcDateTime(period,presc.getDaySchedule());
-		}
-		else{
-			int week = org.springframework.util.StringUtils.countOccurrencesOf(presc.getWeekSchedule(), "1");
-			eventCnt=period*week;
-			dates=calcDate(period,presc.getWeekSchedule());
-		}
-		for(int i=0;i<eventCnt;i++){
-			Event event=new Event();
-			event.setPatient(presc.getPatient());
-			event.setProcMed(presc.getProcMed());
-			event.setPrescription(presc);
-			event.setDateTimeEvent(dates.get(i));
-			event.setStatusEvent(this.patientDAO.getStatusEventById(1));
-			this.patientDAO.saveEvent(event);
-			events.add(event);
-		}
-		presc.setIsDone(true);
-		this.patientDAO.updatePrescription(presc);
-		return events;
 	}
 
 }

@@ -8,8 +8,6 @@
 <body>
 
 <form name="patient" action="/updatePatient" method="post">
-    <p>Id</p>
-    <input title="Id" type="text" name="id" value="${patient.id}">
     <p>Surname</p>
     <input title="Surname" type="text" name="surname" value="${patient.surname}">
     <p>Name</p>

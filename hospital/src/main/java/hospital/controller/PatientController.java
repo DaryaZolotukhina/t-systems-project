@@ -3,7 +3,9 @@ package hospital.controller;
 import hospital.model.Event;
 import hospital.model.Patient;
 import hospital.model.Prescription;
+import hospital.service.EventService;
 import hospital.service.PatientService;
+import hospital.service.PrescriptionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -23,6 +25,22 @@ public class PatientController {
 	public void setPatientService(PatientService ps){
 		this.patientService = ps;
 	}
+
+	private EventService eventService;
+
+	@Autowired(required=true)
+	@Qualifier(value="eventService")
+	public void setEventService(EventService es){
+		this.eventService = es;
+	}
+
+	private PrescriptionService prescriptionService;
+
+	@Autowired(required=true)
+	@Qualifier(value="prescriptionService")
+	public void setPrescriptionService(PrescriptionService prs){
+		this.prescriptionService = prs;
+	}
 	
 	@RequestMapping(value = "/patients", method = RequestMethod.GET)
 	public String listPatients(Model model) {
@@ -34,19 +52,11 @@ public class PatientController {
 	@RequestMapping(value = "/patient/{id}",method = RequestMethod.GET)
 	public String getById(@PathVariable("id") int id, Model model){
 		model.addAttribute("patient", this.patientService.getById(id));
-		model.addAttribute("prescriptions",this.patientService.getAllPrescriptions(id));
+		model.addAttribute("prescriptions",this.prescriptionService.getAllPrescriptions(id));
 		model.addAttribute("prescription",new Prescription());
-		model.addAttribute("events",this.patientService.getAllEvents(id));
+		model.addAttribute("events",this.eventService.getAllEvents(id));
 		model.addAttribute("event",new Event());
 		return "showPatient";
-	}
-
-	@RequestMapping("/prescription/{idPat}/{idPresc}")
-	public String generateEvents(@PathVariable("idPat") int idPat,@PathVariable("idPresc") int idPresc, Model model){
-		model.addAttribute("generatedEvents", this.patientService.generateEvents(idPresc));
-		model.addAttribute("events",this.patientService.getAllEvents(idPat));
-		model.addAttribute("event", new Event());
-		return "redirect:/patient/{idPat}";
 	}
 
 	@RequestMapping(value= "/patient/add", method = RequestMethod.GET)
