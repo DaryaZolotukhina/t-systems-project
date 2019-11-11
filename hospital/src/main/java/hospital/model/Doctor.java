@@ -19,7 +19,7 @@ public class Doctor {
     @Column(name="isdeleted")
     private boolean isDeleted;
 
-    @OneToMany(mappedBy = "doctor", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "doctor", cascade = CascadeType.ALL, orphanRemoval = true,fetch = FetchType.EAGER)
     private List<Patient> patients;
 
     public Integer getId() {

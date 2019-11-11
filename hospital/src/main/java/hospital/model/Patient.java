@@ -1,5 +1,7 @@
 package hospital.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -19,6 +21,7 @@ public class Patient {
 	private String patronymic;
 	@Column
 	private String insuranceNum;
+	@JsonIgnore
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "id_doctor")
 	private Doctor doctor;
@@ -90,11 +93,11 @@ public class Patient {
 		isDeleted = deleted;
 	}
 
-	public boolean isDischarged() {
+	public boolean getIsDischarged() {
 		return isDischarged;
 	}
 
-	public void setDischarged(boolean discharged) {
+	public void setIsDischarged(boolean discharged) {
 		isDischarged = discharged;
 	}
 

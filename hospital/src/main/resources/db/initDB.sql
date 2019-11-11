@@ -37,6 +37,8 @@ CREATE TABLE public.patients
 insert into patients values (2,'Ivanov','Ivan','Ivanovich',1234567,1,false,false);
 UPDATE patients SET surname = 'Petrov', name='Petr', patronymic='Petrovich',insuranceNum=7654321 where id_patient=1;
 select * from patients;
+    insert into patients values (1,'Petrov','Petr','Petrovich',7654321,1,false,false);
+insert into doctors values (1,'vd','fds','fsa',false);
 
 ALTER TABLE patients
 ADD isDeleted boolean;
@@ -68,6 +70,10 @@ select * from procMed;
 
 update procMed set title='Aspirin';
 
+update prescriptions set isDeleted=false;
+    update events set isDeleted=false;
+
+
 CREATE TABLE public.typeProcMed
 (
 	id_type SERIAL NOT NULL PRIMARY KEY,
@@ -87,9 +93,12 @@ CREATE TABLE public.prescriptions
 
 ALTER TABLE prescriptions
 ALTER dose TYPE numeric;
-
+    ALTER TABLE prescriptions DROP COLUMN daySchedule;
     ALTER TABLE prescriptions
         ALTER daySchedule TYPE character varying;
+
+    ALTER TABLE prescriptions
+        ALTER daySchedule TYPE integer USING dayschedule::integer;
 
     ALTER TABLE prescriptions
         ALTER weekSchedule TYPE character varying;
@@ -97,10 +106,21 @@ ALTER dose TYPE numeric;
 ALTER TABLE prescriptions
 ADD isDone boolean;
 
+    ALTER TABLE prescriptions
+        ADD daySchedule integer;
+
+    ALTER TABLE prescriptions
+        ADD isDeleted boolean;
+
+    ALTER TABLE events
+        ADD isDeleted boolean;
+insert into procMed values (1,'Aspirin');
 INSERT INTO prescriptions VALUES (2,1,1,'111','0000000',2,2,false);
     INSERT INTO prescriptions VALUES (3,1,1,'111','0000000',2,2,false);
     INSERT INTO prescriptions VALUES (4,2,1,'111','0000000',2,2,false);
 select * from prescriptions;
+
+    update prescriptions set daySchedule=42;
 
 CREATE TABLE public.events
 (
@@ -116,6 +136,8 @@ CREATE TABLE public.StatusEvent
 id_StatusEvent SERIAL NOT NULL PRIMARY KEY,
     title character varying(255) NOT NULL
 );
+
+insert into StatusEvent values (1,'planned');
 
 drop table events;
 	CREATE TABLE public.events
@@ -140,5 +162,8 @@ select * from prescriptions;
 truncate events;
 
 update prescriptions set isDone=false;
+    update prescriptions set isDeleted=false;
 
 update patients set isDeleted=false;
+
+select * from patients;

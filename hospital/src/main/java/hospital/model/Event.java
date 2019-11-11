@@ -1,5 +1,7 @@
 package hospital.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -11,6 +13,7 @@ public class Event {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id_event")
     private Integer id;
+    @JsonIgnore
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_patient")
     private Patient patient;
@@ -33,16 +36,26 @@ public class Event {
         this.procMed = procMed;
     }
 
-
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_procMed")
     private ProcMed procMed;
+    @JsonIgnore
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_prescription")
     private Prescription prescription;
     @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     @JoinColumn(name = "id_statusEvent")
     private StatusEvent statusEvent;
+    public boolean getIsDeleted() {
+        return isDeleted;
+    }
+
+    public void setIsDeleted(boolean deleted) {
+        isDeleted = deleted;
+    }
+
+    @Column
+    private boolean isDeleted;
     public Patient getPatient() {
         return patient;
     }

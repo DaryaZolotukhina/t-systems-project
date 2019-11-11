@@ -21,6 +21,14 @@ public class PatientDto {
     private String patronymic;
     private String insuranceNum;
 
+    public boolean getIsDischarged() {
+        return isDischarged;
+    }
+
+    public void setIsDischarged(boolean discharged) {
+        isDischarged = discharged;
+    }
+
     public boolean getIsDeleted() {
         return isDeleted;
     }
@@ -30,6 +38,8 @@ public class PatientDto {
     }
 
     private boolean isDeleted;
+
+    private boolean isDischarged;
 
     public List<Patient_Diagnosis> getPatDiag() {
         return patDiag;

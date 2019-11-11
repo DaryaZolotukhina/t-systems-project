@@ -1,5 +1,7 @@
 package hospital.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -25,9 +27,11 @@ public class Patient_Diagnosis {
         this.diagnosis = diagnosis;
     }
 
+    @JsonIgnore
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_patient")
     private Patient patient;
+    @JsonIgnore
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_diagnosis")
     private Diagnosis diagnosis;

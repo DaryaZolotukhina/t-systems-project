@@ -1,5 +1,7 @@
 package hospital.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -12,11 +14,11 @@ public class Prescription {
     @Column(name="id_prescription")
     private Integer id;
 
-    public String getDaySchedule() {
+    public Integer getDaySchedule() {
         return daySchedule;
     }
 
-    public void setDaySchedule(String daySchedule) {
+    public void setDaySchedule(Integer daySchedule) {
         this.daySchedule = daySchedule;
     }
 
@@ -28,20 +30,33 @@ public class Prescription {
         this.weekSchedule = weekSchedule;
     }
 
+    @JsonIgnore
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_patient")
     private Patient patient;
+    @JsonIgnore
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_procMed")
     private ProcMed procMed;
     @Column
-    private String daySchedule;
+    private Integer daySchedule;
     @Column
     private String weekSchedule;
     @Column
     private Integer period;
     @Column
     private Float dose;
+
+    public boolean getIsDeleted() {
+        return isDeleted;
+    }
+
+    public void setIsDeleted(boolean deleted) {
+        isDeleted = deleted;
+    }
+
+    @Column
+    private boolean isDeleted;
 
     public boolean getIsDone() {
         return isDone;

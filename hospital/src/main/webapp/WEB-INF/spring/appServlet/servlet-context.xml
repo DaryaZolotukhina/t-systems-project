@@ -17,8 +17,9 @@
 
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving 
 		up static resources in the ${webappRoot}/resources directory -->
-    <resources mapping="/css/**" location="/css/"/>
+	<resources mapping="/css/**" location="/css/"/>
 	<resources mapping="/bootstrap/**" location="/bootstrap/"/>
+	<resources mapping="/jQuery/**" location="/jQuery/"/>
 
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources 
 		in the /WEB-INF/views directory -->
@@ -66,22 +67,13 @@
 	<beans:bean id="patientDAO" class="hospital.dao.PatientDAOImpl">
 		<beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
 	</beans:bean>
-	<beans:bean id="prescriptionDAO" class="hospital.dao.PrescriptionDAOImpl">
-		<beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
-	</beans:bean>
-	<beans:bean id="eventDAO" class="hospital.dao.EventDAOImpl">
-		<beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
-	</beans:bean>
 	<beans:bean id="patientService" class="hospital.service.PatientServiceImpl">
 		<beans:property name="patientDAO" ref="patientDAO"></beans:property>
-	</beans:bean>
-	<beans:bean id="prescriptionService" class="hospital.service.PrescriptionServiceImpl">
-		<beans:property name="prescriptionDAO" ref="prescriptionDAO"></beans:property>
-	</beans:bean>
-	<beans:bean id="eventService" class="hospital.service.EventServiceImpl">
-		<beans:property name="eventDAO" ref="eventDAO"></beans:property>
+		<beans:property name="dischargeException" ref="dischargeException"></beans:property>
 	</beans:bean>
 	<context:component-scan base-package="hospital" />
+	<beans:bean id="dischargeException" class="hospital.exception.DischargeException">
+	</beans:bean>
 	
 	<tx:annotation-driven transaction-manager="transactionManager"/>
 	

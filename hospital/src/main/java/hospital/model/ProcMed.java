@@ -1,5 +1,7 @@
 package hospital.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -12,6 +14,7 @@ public class ProcMed {
     private Integer id;
     @Column
     private String title;
+    @JsonIgnore
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_type")
     private TypeProcMed typeProcMed;
@@ -48,8 +51,10 @@ public class ProcMed {
         this.prescriptions = prescriptions;
     }
 
+    @JsonIgnore
     @OneToMany(mappedBy = "procMed", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Prescription> prescriptions;
+    @JsonIgnore
     @OneToMany(mappedBy = "procMed", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Prescription> events;
 }

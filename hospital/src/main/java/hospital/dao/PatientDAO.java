@@ -19,4 +19,21 @@ public interface PatientDAO {
 
 	List<Patient> getAll();
 
+	public void saveEvent(Event event);
+
+	StatusEvent getStatusEventById(int id);
+
+	Prescription getPrescriptionById(int id);
+
+	List<Prescription> getAllPrescriptions(int id);
+
+	List<Event> getAllEvents(int id);
+
+	void updatePrescription(Prescription presc);
+
+	void deletePrescription(Prescription presc);
+
+	void deleteEvent(Event event);
+
+	void updateEvent(Event event);
 }

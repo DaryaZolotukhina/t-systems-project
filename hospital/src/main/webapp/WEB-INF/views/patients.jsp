@@ -25,15 +25,15 @@
         </thead>
         <tbody>
         <c:forEach items="${listPatients}" var ="patient">
-            <c:if test = "${patient.isDeleted != true}">
-            <tr>
-                <td><a href="/patient/${patient.id}">${patient.id}</a></td>
-                <td>${patient.surname}</td>
-                <td>${patient.name}</td>
-                <td>${patient.patronymic}</td>
-                <td><a href="/updateDeletePatient/${patient.id}"><button>Delete</button></a></td>
-                <td><a href="/update/${patient.id}"><button>Update</button></a></td>
-            </tr>
+            <c:if test = "${patient.isDeleted != true && patient.isDischarged != true}">
+                <tr>
+                    <td><a href="/patient/${patient.id}">${patient.id}</a></td>
+                    <td>${patient.surname}</td>
+                    <td>${patient.name}</td>
+                    <td>${patient.patronymic}</td>
+                    <td><a href="/updateDeletePatient/${patient.id}"><button>Delete</button></a></td>
+                    <td><a href="/update/${patient.id}"><button>Update</button></a></td>
+                </tr>
             </c:if>
         </c:forEach>
         </tbody>
