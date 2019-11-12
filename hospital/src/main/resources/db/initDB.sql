@@ -165,5 +165,6 @@ update prescriptions set isDone=false;
     update prescriptions set isDeleted=false;
 
 update patients set isDeleted=false;
+update patients set isDischarged=false;
 
 select * from patients;

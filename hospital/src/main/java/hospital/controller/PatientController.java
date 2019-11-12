@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 
 import java.util.List;
@@ -104,6 +105,22 @@ public class PatientController {
 	public String update(@PathVariable("id") int id, Model model){
 		model.addAttribute("patient",this.patientService.getById(id));
 		return "editPatient";
+	}
+
+	@RequestMapping(value= "/init/{page_id}", method= RequestMethod.GET)
+	public String paginate(@PathVariable int page_id, Model model) {
+		int total = 5;
+		if(page_id == 1) {
+			// do nothing!
+		} else {
+			page_id= (page_id-1)*total+1;
+		}
+
+		List<Patient> list = this.patientService.getPatientsByPage(page_id, total);
+		model.addAttribute("patient", new Patient());
+		model.addAttribute("listPatients",list);
+
+		return "patientsByPages";
 	}
 	
 }

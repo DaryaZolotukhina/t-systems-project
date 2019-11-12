@@ -23,6 +23,7 @@
           <element id="library" level="project" name="Maven: org.springframework:spring-expression:4.0.3.RELEASE" />
           <element id="library" level="project" name="Maven: org.hibernate:hibernate-java8:5.4.8.Final" />
           <element id="library" level="project" name="Maven: org.jboss.logging:jboss-logging:3.3.2.Final" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-jdbc:5.0.8.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-webmvc:4.0.3.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-web:4.0.3.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-tx:4.0.3.RELEASE" />
@@ -40,7 +41,6 @@
           <element id="library" level="project" name="Maven: commons-dbcp:commons-dbcp:1.4" />
           <element id="library" level="project" name="Maven: commons-pool:commons-pool:1.5.4" />
           <element id="library" level="project" name="Maven: org.springframework:spring-orm:4.0.3.RELEASE" />
-          <element id="library" level="project" name="Maven: org.springframework:spring-jdbc:4.0.3.RELEASE" />
           <element id="library" level="project" name="Maven: org.aspectj:aspectjrt:1.7.4" />
           <element id="library" level="project" name="Maven: javax.inject:javax.inject:1" />
           <element id="library" level="project" name="Maven: javax.servlet:jstl:1.2" />

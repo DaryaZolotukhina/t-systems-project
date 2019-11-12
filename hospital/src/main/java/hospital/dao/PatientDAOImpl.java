@@ -1,48 +1,45 @@
 package hospital.dao;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.List;
 
-import hospital.model.Event;
-import hospital.model.Patient;
-import hospital.model.Prescription;
-import hospital.model.StatusEvent;
+import hospital.model.*;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 
 
 @Repository
 public class PatientDAOImpl implements PatientDAO {
 
-	private JdbcTemplate template;
+	private static final EntityManagerFactory entityManagerFactory;
 
-	public JdbcTemplate getTemplate() {
-		return template;
+    static {
+        entityManagerFactory = Persistence.createEntityManagerFactory("hospital");
+    }
+
+    public static EntityManager getEntityManager() {
+        return entityManagerFactory.createEntityManager();
+    }
+
+	@Override
+	public List<Patient> getPatientsByPage(int pageid, int total) {
+		EntityManager em = getEntityManager();
+        CriteriaBuilder cb = em.getCriteriaBuilder();
+        CriteriaQuery<Patient> cq = cb.createQuery(Patient.class);
+        Root<Patient> patientRoot = cq.from(Patient.class);
+        cq.select(patientRoot);
+        return em.createQuery(cq)
+                .setFirstResult(pageid-1)
+                .setMaxResults(total)
+                .getResultList();
 	}
-
-	public void setTemplate(JdbcTemplate template) {
-		this.template = template;
-	}
-
-	/*public List<Patient> getPatientByPage(int pageid, int total) {
-		String sql= "SELECT * FROM Patients LIMIT "+(pageid-1)+","+total;
-
-		return getTemplate().query(sql, new RowMapper<Patient>() {
-			public Patient mapRow(ResultSet rs, int rowNum) throws SQLException {
-				Patient patient = new Patient();
-				patient.setId(rs.getInt("EMPLOYEE_ID"));
-				patient.setName(rs.getString("EMPLOYEE_FULLNAME"));
-				patient.setDesignation(rs.getString("EMPLOYEE_DESIGNATION"));
-				patient.setSalary(rs.getInt("EMPLOYEE_SALARY"));
-
-				return patient;
-			}
-		});
-	}*/
 
 	private SessionFactory sessionFactory;
 	

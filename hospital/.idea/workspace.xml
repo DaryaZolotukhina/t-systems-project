@@ -78,16 +78,12 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/hospital/service/PatientServiceImpl.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/hospital/controller/PatientController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2511">
-              <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
+            <state relative-caret-position="273">
+              <caret line="119" selection-start-line="119" selection-end-line="119" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#748#749#0" expanded="true" />
-                <element signature="e#783#784#0" expanded="true" />
-                <element signature="e#1996#2008#0" expanded="true" />
-                <element signature="e#4824#4831#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -96,32 +92,88 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/hospital/dao/PatientDAOImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1715">
-              <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+            <state relative-caret-position="17">
+              <caret line="1" selection-start-line="1" selection-end-line="1" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1348#1349#0" expanded="true" />
-                <element signature="e#1379#1380#0" expanded="true" />
-                <element signature="e#2247#2277#0" expanded="true" />
+                <element signature="e#954#955#0" expanded="true" />
+                <element signature="e#1011#1012#0" expanded="true" />
+                <element signature="e#1530#1531#0" expanded="true" />
+                <element signature="e#1561#1562#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/hospital/model/Patient.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="238">
+              <caret line="14" column="23" selection-start-line="14" selection-start-column="23" selection-end-line="14" selection-end-column="23" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/hospital/model/Event.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret line="9" column="21" selection-start-line="9" selection-start-column="21" selection-end-line="9" selection-end-column="21" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1163#1164#0" expanded="true" />
+                <element signature="e#1195#1196#0" expanded="true" />
+                <element signature="e#1244#1245#0" expanded="true" />
+                <element signature="e#1279#1280#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="187">
+              <caret line="11" column="10" selection-start-line="11" selection-start-column="10" selection-end-line="11" selection-end-column="10" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="167">
+              <caret line="10" selection-start-line="10" selection-end-line="10" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/spring/root-context.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="136">
+              <caret line="8" selection-start-line="8" selection-end-line="8" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/db/initDB.sql">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/spring/appServlet/servlet-context.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="186">
-              <caret line="165" lean-forward="true" selection-start-line="165" selection-end-line="165" />
+            <state relative-caret-position="119">
+              <caret line="7" column="76" lean-forward="true" selection-start-line="7" selection-start-column="76" selection-end-line="7" selection-end-column="76" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/hospital/utils/Utils.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/hospital/model/Doctor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-593">
-              <caret line="2" selection-start-line="2" selection-end-line="2" />
+            <state relative-caret-position="88">
+              <caret line="6" column="22" selection-start-line="6" selection-start-column="22" selection-end-line="6" selection-end-column="22" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -130,61 +182,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/hospital/exception/DischargeException.java">
+        <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="379">
-              <caret line="42" column="58" selection-start-line="42" selection-start-column="58" selection-end-line="42" selection-end-column="58" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/errorDischarge.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="20" column="7" selection-start-line="20" selection-start-column="7" selection-end-line="20" selection-end-column="7" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/showPatient.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="13" column="7" lean-forward="true" selection-start-line="13" selection-start-column="7" selection-end-line="13" selection-end-column="7" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/jQuery/events.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="15" column="1" selection-start-line="15" selection-start-column="1" selection-end-line="15" selection-end-column="1" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/hospital/controller/PatientController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1054">
-              <caret line="64" column="52" selection-start-line="64" selection-start-column="52" selection-end-line="64" selection-end-column="52" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/hospital/controller/PatientRestController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-440">
-              <caret line="2" column="31" selection-start-line="2" selection-start-column="31" selection-end-line="2" selection-end-column="31" />
+            <state relative-caret-position="278">
+              <caret line="52" column="20" selection-start-line="52" selection-start-column="20" selection-end-line="52" selection-end-column="20" />
             </state>
           </provider>
         </entry>
@@ -209,6 +210,7 @@
       <find>LinkedList</find>
       <find>Linked</find>
       <find>Array</find>
+      <find>criter</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -217,9 +219,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/6ef7ae7b-808a-4c6a-809f-dfa3984dd94c/console.sql" />
-        <option value="$PROJECT_DIR$/src/main/java/com/journaldev/spring/model/Person.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/journaldev/spring/dao/PersonDAO.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/journaldev/spring/service/PersonService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/journaldev/spring/service/PersonServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/journaldev/spring/PersonController.java" />
@@ -237,35 +236,40 @@
         <option value="$PROJECT_DIR$/src/main/java/hospital/model/typeProcMed.java" />
         <option value="$PROJECT_DIR$/src/main/java/hospital/model/procMed.java" />
         <option value="$PROJECT_DIR$/src/main/java/hospital/model/TypeProcMed.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/styles.css" />
         <option value="$PROJECT_DIR$/src/main/webapp/css/styles.css" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/editPatient.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/createPatient.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/hospital/model/Doctor.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" />
         <option value="$PROJECT_DIR$/src/main/java/hospital/model/Patient_Diagnosis.java" />
         <option value="$PROJECT_DIR$/src/main/java/hospital/model/StatusEvent.java" />
         <option value="$PROJECT_DIR$/src/main/java/hospital/model/ProcMed.java" />
-        <option value="$PROJECT_DIR$/src/main/java/hospital/model/Patient.java" />
         <option value="$PROJECT_DIR$/src/main/java/hospital/dto/PatientDto.java" />
         <option value="$PROJECT_DIR$/src/main/java/hospital/exception/dischargeException.java" />
         <option value="$PROJECT_DIR$/src/main/java/hospital/model/Event.java" />
-        <option value="$PROJECT_DIR$/src/main/java/hospital/dao/PatientDAO.java" />
-        <option value="$PROJECT_DIR$/src/main/java/hospital/service/PatientService.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/spring/appServlet/servlet-context.xml" />
         <option value="$PROJECT_DIR$/src/main/java/hospital/exception/DischargeException.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/errorDischarge.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/hospital/model/Prescription.java" />
         <option value="$PROJECT_DIR$/src/main/java/hospital/resources/db/initDB.sql" />
-        <option value="$PROJECT_DIR$/src/main/java/hospital/dao/PatientDAOImpl.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/patients.jsp" />
-        <option value="$PROJECT_DIR$/src/main/java/hospital/service/PatientServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/hospital/controller/PatientController.java" />
         <option value="$PROJECT_DIR$/src/main/java/hospital/controller/PatientRestController.java" />
         <option value="$PROJECT_DIR$/src/main/java/hospital/utils/Utils.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/jQuery/events.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/showPatient.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/hospital/dao/PatientDAO.java" />
+        <option value="$PROJECT_DIR$/src/main/java/hospital/service/PatientService.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/patientsByPages.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/hospital/controller/PatientController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/hospital/service/PatientServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/hospital/model/Patient.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/db/initDB.sql" />
+        <option value="$PROJECT_DIR$/src/main/java/hospital/META-INF/persistence.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/META-INF/persistence.xml" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/hospital/dao/PatientDAOImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/spring/appServlet/servlet-context.xml" />
       </list>
     </option>
   </component>
@@ -308,166 +312,151 @@
     <ConfirmationsSetting value="1" id="Add" />
   </component>
   <component name="ProjectView">
-    <navigator currentView="Scope" currentSubView="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope" proportions="" version="1">
+    <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope">
-        <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
           <expand>
             <path>
-              <item name="hospital" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="hospital" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+              <item name="hospital" type="b2602c69:ProjectViewProjectNode" />
+              <item name="hospital" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="hospital" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="hospital" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="hospital" type="b2602c69:ProjectViewProjectNode" />
+              <item name="hospital" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="hospital" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="hospital" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="hospital" type="b2602c69:ProjectViewProjectNode" />
+              <item name="hospital" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="hospital" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="hospital" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="java" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="hospital" type="b2602c69:ProjectViewProjectNode" />
+              <item name="hospital" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="hospital" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="hospital" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="java" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="hospital" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="hospital" type="b2602c69:ProjectViewProjectNode" />
+              <item name="hospital" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="hospital" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="hospital" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="hospital" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="java" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="hospital" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="controller" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="hospital" type="b2602c69:ProjectViewProjectNode" />
+              <item name="hospital" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="hospital" type="462c0819:PsiDirectoryNode" />
+              <item name="dao" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="hospital" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="hospital" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="java" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="hospital" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="dao" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="hospital" type="b2602c69:ProjectViewProjectNode" />
+              <item name="hospital" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="hospital" type="462c0819:PsiDirectoryNode" />
+              <item name="model" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="hospital" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="hospital" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="java" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="hospital" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="dto" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="hospital" type="b2602c69:ProjectViewProjectNode" />
+              <item name="hospital" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="hospital" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="hospital" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="java" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="hospital" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="exception" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="hospital" type="b2602c69:ProjectViewProjectNode" />
+              <item name="hospital" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="db" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="hospital" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="hospital" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="java" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="hospital" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="service" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="hospital" type="b2602c69:ProjectViewProjectNode" />
+              <item name="hospital" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="META-INF" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="hospital" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="hospital" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="java" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="hospital" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="utils" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="hospital" type="b2602c69:ProjectViewProjectNode" />
+              <item name="hospital" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="hospital" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="hospital" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="resources" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="hospital" type="b2602c69:ProjectViewProjectNode" />
+              <item name="hospital" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="hospital" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="hospital" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="resources" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="db" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="hospital" type="b2602c69:ProjectViewProjectNode" />
+              <item name="hospital" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
+              <item name="spring" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="hospital" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="hospital" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="webapp" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="hospital" type="b2602c69:ProjectViewProjectNode" />
+              <item name="hospital" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
+              <item name="spring" type="462c0819:PsiDirectoryNode" />
+              <item name="appServlet" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="hospital" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="hospital" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="webapp" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="bootstrap" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="hospital" type="b2602c69:ProjectViewProjectNode" />
+              <item name="hospital" type="462c0819:PsiDirectoryNode" />
+              <item name="target" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="hospital" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="hospital" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="webapp" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="css" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="hospital" type="b2602c69:ProjectViewProjectNode" />
+              <item name="hospital" type="462c0819:PsiDirectoryNode" />
+              <item name="target" type="462c0819:PsiDirectoryNode" />
+              <item name="classes" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="hospital" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="hospital" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="webapp" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="jQuery" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="hospital" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="hospital" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="webapp" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="WEB-INF" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="hospital" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="hospital" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="webapp" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="WEB-INF" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="views" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="hospital" type="b2602c69:ProjectViewProjectNode" />
+              <item name="hospital" type="462c0819:PsiDirectoryNode" />
+              <item name="target" type="462c0819:PsiDirectoryNode" />
+              <item name="generated-sources" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="ProjectPane" />
-      <pane id="PackagesPane" />
+      <pane id="PackagesPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="hospital" type="58d84e3e:PackageViewProjectNode" />
+              <item name="hospital" type="616d4139:PackageViewModuleNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -476,24 +465,28 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="database.console.LAST_STATE" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/webapp" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/target/hospital/META-INF" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="project.structure.last.edited" value="Artifacts" />
-    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Dasha\Downloads\t-systems-project-cf625134eec4358aeffb52419bc06306ef4fba3c\t-systems-project-cf625134eec4358aeffb52419bc06306ef4fba3c\hospital\target\hospital\META-INF" />
+      <recent name="C:\Users\Dasha\Downloads\t-systems-project-cf625134eec4358aeffb52419bc06306ef4fba3c\t-systems-project-cf625134eec4358aeffb52419bc06306ef4fba3c\hospital\src\main\webapp" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Dasha\Downloads\t-systems-project-cf625134eec4358aeffb52419bc06306ef4fba3c\t-systems-project-cf625134eec4358aeffb52419bc06306ef4fba3c\hospital\src\main\resources" />
+      <recent name="C:\Users\Dasha\Downloads\t-systems-project-cf625134eec4358aeffb52419bc06306ef4fba3c\t-systems-project-cf625134eec4358aeffb52419bc06306ef4fba3c\hospital\src" />
       <recent name="C:\Users\Dasha\Downloads\t-systems-project-cf625134eec4358aeffb52419bc06306ef4fba3c\t-systems-project-cf625134eec4358aeffb52419bc06306ef4fba3c\hospital\src\main" />
       <recent name="C:\Users\Dasha\Documents\t-systems-project\t-systems-project\hospital\src\main\webapp\css" />
       <recent name="C:\Users\Dasha\Documents\t-systems-project\t-systems-project\hospital\src\main\webapp" />
-      <recent name="C:\Users\Dasha\Documents\t-systems-project\t-systems-project\hospital\src\main\webapp\WEB-INF\views" />
-      <recent name="C:\Users\Dasha\Documents\t-systems-project\t-systems-project\hospital\src\main\webapp\WEB-INF\resources\css" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Dasha\Downloads\t-systems-project-cf625134eec4358aeffb52419bc06306ef4fba3c\t-systems-project-cf625134eec4358aeffb52419bc06306ef4fba3c\hospital\src\main\webapp" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -619,12 +612,14 @@
       <workItem from="1573214548608" duration="21138000" />
       <workItem from="1573304947685" duration="8255000" />
       <workItem from="1573329772051" duration="18945000" />
-      <workItem from="1573453141505" duration="3286000" />
+      <workItem from="1573453141505" duration="11331000" />
+      <workItem from="1573475251750" duration="2704000" />
+      <workItem from="1573538169618" duration="9800000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="138178000" />
+    <option name="totallyTimeSpent" value="158727000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -639,7 +634,8 @@
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23373677" />
+      <window_info id="Persistence" side_tool="true" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20121029" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Capture Tool" order="3" />
@@ -649,8 +645,8 @@
       <window_info id="Web" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.34042552" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.39934534" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3633388" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.46972176" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3289689" />
@@ -661,14 +657,14 @@
       <window_info anchor="bottom" id="Docker" order="11" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="12" side_tool="true" />
       <window_info anchor="bottom" id="Messages" order="13" weight="0.3289689" />
-      <window_info anchor="bottom" id="SonarLint" order="14" />
+      <window_info anchor="bottom" id="SonarLint" order="14" weight="0.32405892" />
       <window_info anchor="bottom" id="Java Enterprise" order="15" />
       <window_info anchor="bottom" id="Database Changes" order="16" />
       <window_info anchor="bottom" id="Version Control" order="17" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Maven" order="3" visible="true" weight="0.14674735" />
+      <window_info anchor="right" id="Maven" order="3" visible="true" weight="0.15279879" />
       <window_info anchor="right" id="Palette" order="4" />
       <window_info anchor="right" id="Capture Analysis" order="5" />
       <window_info anchor="right" id="Database" order="6" weight="0.20347957" />
@@ -690,13 +686,6 @@
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/person.jsp" />
     <entry file="file://$PROJECT_DIR$/src/main/resources/db.sql" />
     <entry file="file://$PROJECT_DIR$/src/main/java/hospital/model/StatusPat.java" />
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="291">
-          <caret line="30" selection-start-line="30" selection-end-line="30" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/css/styles.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
@@ -757,60 +746,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/spring/root-context.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" selection-start-line="8" selection-end-line="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/hospital/model/Patient.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1122">
-          <caret line="99" column="21" selection-start-line="99" selection-start-column="21" selection-end-line="99" selection-end-column="21" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="133" selection-start-line="3" selection-start-column="133" selection-end-line="3" selection-end-column="133" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/hospital/dao/PatientDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="484">
-          <caret line="37" column="34" selection-start-line="37" selection-start-column="34" selection-end-line="37" selection-end-column="34" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/hospital/service/PatientService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="444">
-          <caret line="39" column="54" selection-start-line="39" selection-start-column="54" selection-end-line="39" selection-end-column="54" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/hospital/model/Doctor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="30" lean-forward="true" selection-start-line="19" selection-start-column="30" selection-end-line="19" selection-end-column="30" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/hospital/model/ProcMed.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="552">
@@ -818,13 +753,6 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/spring/appServlet/servlet-context.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="283">
-          <caret line="74" column="69" selection-start-line="74" selection-start-column="69" selection-end-line="74" selection-end-column="69" />
         </state>
       </provider>
     </entry>
@@ -842,51 +770,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/hospital/model/Event.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="714">
-          <caret line="57" column="30" selection-start-line="57" selection-start-column="30" selection-end-line="57" selection-end-column="30" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1163#1164#0" expanded="true" />
-            <element signature="e#1195#1196#0" expanded="true" />
-            <element signature="e#1244#1245#0" expanded="true" />
-            <element signature="e#1279#1280#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/hospital/model/Prescription.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
           <caret line="27" selection-start-line="27" selection-end-line="27" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/hospital/dto/PatientDto.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="213">
-          <caret line="24" column="21" selection-start-line="24" selection-start-column="21" selection-end-line="24" selection-end-column="21" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/patients.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="29" column="79" selection-start-line="29" selection-start-column="79" selection-end-line="29" selection-end-column="79" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/hospital/controller/PatientController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1054">
-          <caret line="64" column="52" selection-start-line="64" selection-start-column="52" selection-end-line="64" selection-end-column="52" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -900,39 +787,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/hospital/dao/PatientDAOImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1715">
-          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1348#1349#0" expanded="true" />
-            <element signature="e#1379#1380#0" expanded="true" />
-            <element signature="e#2247#2277#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/hospital/exception/DischargeException.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="379">
           <caret line="42" column="58" selection-start-line="42" selection-start-column="58" selection-end-line="42" selection-end-column="58" />
           <folding>
             <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/hospital/service/PatientServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2511">
-          <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#748#749#0" expanded="true" />
-            <element signature="e#783#784#0" expanded="true" />
-            <element signature="e#1996#2008#0" expanded="true" />
-            <element signature="e#4824#4831#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -968,10 +828,227 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/hospital/service/PatientService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="495">
+          <caret line="42" column="59" selection-start-line="42" selection-start-column="59" selection-end-line="42" selection-end-column="59" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/patients.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="529">
+          <caret line="45" column="7" selection-end-line="45" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-beans/4.0.3.RELEASE/spring-beans-4.0.3.RELEASE.jar!/org/springframework/beans/factory/xml/spring-beans-3.2.xsd">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="1072" column="8" selection-start-line="1072" selection-start-column="8" selection-end-line="1072" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/patientsByPages.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="46" column="57" selection-start-line="46" selection-start-column="57" selection-end-line="46" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/4.0.3.RELEASE/spring-web-4.0.3.RELEASE.jar!/org/springframework/web/method/support/InvocableHandlerMethod.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="59" selection-start-line="59" selection-end-line="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/4.0.3.RELEASE/spring-webmvc-4.0.3.RELEASE.jar!/org/springframework/web/servlet/mvc/method/annotation/ServletInvocableHandlerMethod.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="131">
+          <caret line="53" selection-start-line="53" selection-end-line="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/4.0.3.RELEASE/spring-webmvc-4.0.3.RELEASE.jar!/org/springframework/web/servlet/mvc/method/annotation/RequestMappingHandlerAdapter.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="97">
+          <caret line="418" selection-start-line="418" selection-end-line="418" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/4.0.3.RELEASE/spring-webmvc-4.0.3.RELEASE.jar!/org/springframework/web/servlet/mvc/method/AbstractHandlerMethodAdapter.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="37" selection-start-line="37" selection-end-line="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/4.0.3.RELEASE/spring-webmvc-4.0.3.RELEASE.jar!/org/springframework/web/servlet/DispatcherServlet.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="407" column="19" selection-start-line="407" selection-start-column="19" selection-end-line="407" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-aop/4.0.3.RELEASE/spring-aop-4.0.3.RELEASE.jar!/org/springframework/aop/support/AopUtils.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2414">
+          <caret line="175" selection-start-line="175" selection-end-line="175" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/hospital/service/PatientServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="376">
+          <caret line="205" column="10" selection-start-line="205" selection-start-column="10" selection-end-line="205" selection-end-column="10" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/db/initDB.sql">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="186">
-          <caret line="165" lean-forward="true" selection-start-line="165" selection-end-line="165" />
+        <state relative-caret-position="153">
+          <caret line="9" column="45" selection-start-line="9" selection-start-column="45" selection-end-line="9" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-aop/4.0.3.RELEASE/spring-aop-4.0.3.RELEASE.jar!/org/springframework/aop/framework/JdkDynamicAopProxy.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1615">
+          <caret line="113" selection-start-line="113" selection-end-line="113" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/hospital/dao/PatientDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="561">
+          <caret line="38" selection-start-line="38" selection-end-line="38" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-jdbc/5.0.8.RELEASE/spring-jdbc-5.0.8.RELEASE.jar!/org/springframework/jdbc/core/JdbcTemplate.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3009">
+          <caret line="241" selection-start-line="241" selection-end-line="241" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/hospital/dto/PatientDto.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="24" column="21" selection-start-line="24" selection-start-column="21" selection-end-line="24" selection-end-column="21" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/hospital/controller/PatientController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="273">
+          <caret line="119" selection-start-line="119" selection-end-line="119" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/spring/root-context.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" selection-start-line="8" selection-end-line="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/target/hospital/META-INF/persistence.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="17" lean-forward="true" selection-start-line="15" selection-start-column="17" selection-end-line="15" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="278">
+          <caret line="52" column="20" selection-start-line="52" selection-start-column="20" selection-end-line="52" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/hospital/model/Event.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret line="9" column="21" selection-start-line="9" selection-start-column="21" selection-end-line="9" selection-end-column="21" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1163#1164#0" expanded="true" />
+            <element signature="e#1195#1196#0" expanded="true" />
+            <element signature="e#1244#1245#0" expanded="true" />
+            <element signature="e#1279#1280#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="10" selection-start-line="11" selection-start-column="10" selection-end-line="11" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/hospital/model/Patient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="23" selection-start-line="14" selection-start-column="23" selection-end-line="14" selection-end-column="23" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/hospital/model/Doctor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="6" column="22" selection-start-line="6" selection-start-column="22" selection-end-line="6" selection-end-column="22" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/hospital/dao/PatientDAOImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" selection-start-line="1" selection-end-line="1" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#954#955#0" expanded="true" />
+            <element signature="e#1011#1012#0" expanded="true" />
+            <element signature="e#1530#1531#0" expanded="true" />
+            <element signature="e#1561#1562#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="167">
+          <caret line="10" selection-start-line="10" selection-end-line="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/spring/appServlet/servlet-context.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="76" lean-forward="true" selection-start-line="7" selection-start-column="76" selection-end-line="7" selection-end-column="76" />
         </state>
       </provider>
     </entry>
@@ -986,7 +1063,6 @@
             <option name="proportions">
               <list>
                 <option value="0.2" />
-                <option value="0.5" />
               </list>
             </option>
           </splitter-proportions>
@@ -1017,6 +1093,7 @@
       </state>
       <state key="JdkListConfigurable.UI">
         <settings>
+          <last-edited>12</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -1028,7 +1105,7 @@
       </state>
       <state key="ModuleStructureConfigurable.UI">
         <settings>
-          <last-edited>SpringMVCHibernate</last-edited>
+          <last-edited>hospital</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

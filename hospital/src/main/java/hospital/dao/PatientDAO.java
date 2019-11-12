@@ -36,4 +36,6 @@ public interface PatientDAO {
 	void deleteEvent(Event event);
 
 	void updateEvent(Event event);
+
+	List<Patient> getPatientsByPage(int pageid, int total);
 }

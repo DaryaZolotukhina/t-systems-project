@@ -30,12 +30,14 @@ public class Patient {
 	@Column
 	private boolean isDischarged;
 
+
 	@OneToMany(mappedBy = "patient", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Patient_Diagnosis> patDiag;
 	@OneToMany(mappedBy = "patient", cascade = CascadeType.ALL, orphanRemoval = true,fetch = FetchType.EAGER)
 	private List<Prescription> prescriptions;
 	@OneToMany(mappedBy = "patient", cascade = CascadeType.ALL, orphanRemoval = true,fetch = FetchType.EAGER)
 	private List<Event> events;
+
 
 	public Integer getId() {
 		return id;

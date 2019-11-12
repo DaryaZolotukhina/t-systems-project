@@ -201,4 +201,10 @@ public class PatientServiceImpl implements PatientService {
 		return events;
 	}
 
+	@Override
+	public List<Patient> getPatientsByPage(int pageid, int total) {
+		List<Patient> list=this.patientDAO.getPatientsByPage(pageid, total);
+		return list;
+	}
+
 }

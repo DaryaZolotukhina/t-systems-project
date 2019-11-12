@@ -39,5 +39,7 @@ public interface PatientService {
 	void updateDeleteEvent(Event event);
 
 	void updateDeletePrescription(Prescription presc);
+
+	List<Patient> getPatientsByPage(int pageid, int total);
 	
 }

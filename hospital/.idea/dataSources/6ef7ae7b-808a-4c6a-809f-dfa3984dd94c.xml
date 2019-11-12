@@ -8,7 +8,7 @@
       <ObjectId>33124</ObjectId>
       <StateNumber>584</StateNumber>
       <Owner>postgres</Owner>
-      <IntrospectionStateNumber>1063</IntrospectionStateNumber>
+      <IntrospectionStateNumber>1070</IntrospectionStateNumber>
       <Current>1</Current>
       <Visible>1</Visible>
       <Relations>sequence|table|57759|57761|1
