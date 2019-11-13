@@ -43,20 +43,10 @@ public class PatientController {
 		return "showPatient";
 	}
 
-	@RequestMapping(value = "/dischargePatient/{id}")
-	public String dischargePatient(@PathVariable("id") int id){
-		DischargeException resp=this.patientService.dischargePatient(id);
-		if (null != resp){
-			return "redirect:/exceptDischarge/{id}";
-		}
-		else
-		return "redirect:/patients";
-	}
-
-	@RequestMapping(value = "/exceptDischarge/{id}", method = RequestMethod.GET, produces = "application/json")
-	public String exceptDischarge(@PathVariable("id") int id, Model model) {
-		model.addAttribute("error",this.patientService.dischargePatient(id));
-		return "errorDischarge";
+	@RequestMapping(value = "/dischargePatient/{id}", method = RequestMethod.GET)
+    @ResponseBody
+	public DischargeException dischargePatient(@PathVariable("id") int id) {
+		return this.patientService.dischargePatient(id);
 	}
 
 
