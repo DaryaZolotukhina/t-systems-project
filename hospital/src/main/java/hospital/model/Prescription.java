@@ -1,6 +1,8 @@
 package hospital.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
 import java.util.List;
@@ -31,7 +33,6 @@ public class Prescription {
     }
 
     @JsonIgnore
-    @Transient
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_patient")
     private Patient patient;
@@ -69,6 +70,7 @@ public class Prescription {
 
     @Column
     private boolean isDone;
+    @Fetch(value = FetchMode.SUBSELECT)
     @OneToMany(mappedBy = "prescription", cascade = CascadeType.ALL, orphanRemoval = true,fetch = FetchType.EAGER)
     private List<Event> events;
 

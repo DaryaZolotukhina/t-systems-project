@@ -135,4 +135,9 @@ public class PatientController {
 		return patientService.sortSurname(page_id, order);
 	}
 
+	@RequestMapping(value= "/sortEventsDate/{idPat}/{order}", method= RequestMethod.GET)
+	public @ResponseBody List<Event> sortEventsDate(@PathVariable("idPat") int idPat,@PathVariable String  order) {
+		return patientService.sortEventsDate(order,idPat);
+	}
+
 	}

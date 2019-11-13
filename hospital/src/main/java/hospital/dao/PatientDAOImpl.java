@@ -10,6 +10,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.criterion.Order;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -60,6 +61,21 @@ public class PatientDAOImpl implements PatientDAO {
         }
         else
             criteria.addOrder(Order.desc("surname"));
+        return criteria.list();
+    }
+
+    @Override
+    public List<Event> sortEventsDate(String order, int id) {
+        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+        Session session = sessionFactory.getCurrentSession();
+        Transaction tx = session.beginTransaction();
+
+        Criteria criteria = session.createCriteria(Event.class).add(Restrictions.eq("patient", getById(id)));
+        if (order.equals("asc")) {
+            criteria.addOrder(Order.asc("dateTimeEvent"));
+        }
+        else
+            criteria.addOrder(Order.desc("dateTimeEvent"));
         return criteria.list();
     }
 

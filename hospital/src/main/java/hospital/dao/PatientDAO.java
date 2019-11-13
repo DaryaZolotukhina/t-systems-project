@@ -40,4 +40,6 @@ public interface PatientDAO {
 	List<Patient> getPatientsByPage(int pageid, int total);
 
 	List<Patient> sortSurname(int pageid, String order);
+
+	List<Event> sortEventsDate(String order, int id);
 }

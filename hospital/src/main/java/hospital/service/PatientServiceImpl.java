@@ -214,4 +214,10 @@ public class PatientServiceImpl implements PatientService {
 		return patientDAO.sortSurname(pageid, order);
 	}
 
+	@Override
+	@Transactional
+	public List<Event> sortEventsDate(String order,int id){
+		return patientDAO.sortEventsDate(order,id);
+	}
+
 }

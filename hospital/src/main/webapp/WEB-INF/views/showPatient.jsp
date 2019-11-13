@@ -9,6 +9,7 @@
     <script src="/jQuery/jquery-3.4.1.min.js"></script>
     <script src="/jQuery/jquery-dateformat.min.js"></script>
     <script src="/jQuery/events.js"></script>
+    <script src="/jQuery/sortEventsDate.js"></script>
     <title>Patient Info</title>
 </head>
 <body>
@@ -74,6 +75,8 @@
                 <td>${event.procMed.title}</td>
                 <td>${event.dateTimeEvent}</td>
                 <td>${event.statusEvent.title}</td>
+                <td><input type="button" value="Sort desc" onclick="SortEventsDate(this,${patient.id},'desc')"></td>
+                <td><input type="button" value="Sort asc" onclick="SortEventsDate(this,${patient.id},'asc')"></td>
             </tr>
         </c:forEach>
         </tbody>
