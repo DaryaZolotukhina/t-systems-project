@@ -202,9 +202,16 @@ public class PatientServiceImpl implements PatientService {
 	}
 
 	@Override
+	@Transactional
 	public List<Patient> getPatientsByPage(int pageid, int total) {
-		List<Patient> list=this.patientDAO.getPatientsByPage(pageid, total);
-		return list;
+		return patientDAO.getPatientsByPage(pageid, total);
+	}
+
+
+	@Override
+	@Transactional
+	public List<Patient> sortSurname(int pageid, String order) {
+		return patientDAO.sortSurname(pageid, order);
 	}
 
 }

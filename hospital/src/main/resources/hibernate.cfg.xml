@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+    <session-factory>
+        <!-- Database connection settings -->
+        <property name="connection.driver_class">org.postgresql.Driver</property>
+        <property name="connection.url">jdbc:postgresql://localhost:5432/hospital</property>
+        <property name="connection.username">postgres</property>
+        <property name="connection.password">admin</property>
+        <property name="hibernate.format_sql">true</property>
+        <!-- JDBC connection pool (use the built-in) -->
+        <property name="connection.pool_size">1</property>
+        <!-- SQL dialect -->
+        <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQL82Dialect</property>
+        <!-- Enable Hibernate's automatic session context management -->
+        <property name="current_session_context_class">thread</property>
+        <!-- Disable the second-level cache  -->
+        <!-- Echo all executed SQL to stdout -->
+        <property name="hibernate.show_sql">true</property>
+        <!-- Drop and re-create the database schema on startup -->
+        <property name="hibernate.hbm2ddl.auto">update</property>
+        <mapping class="hospital.model.Patient" />
+        <mapping class="hospital.model.Doctor" />
+        <mapping class="hospital.model.Event" />
+        <mapping class="hospital.model.Prescription" />
+        <mapping class="hospital.model.ProcMed" />
+        <mapping class="hospital.model.Diagnosis" />
+        <mapping class="hospital.model.Patient_Diagnosis" />
+        <mapping class="hospital.model.StatusEvent" />
+        <mapping class="hospital.model.TypeProcMed" />
+    </session-factory>
+</hibernate-configuration>

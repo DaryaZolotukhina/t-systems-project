@@ -9,28 +9,9 @@
     <script src="/jQuery/jquery-3.4.1.min.js"></script>
     <script src="/jQuery/jquery-dateformat.min.js"></script>
     <script src="/jQuery/events.js"></script>
-    <script type="text/javascript" src="/css/datatables.min.js"></script>
     <title>Patient Info</title>
 </head>
 <body>
-<script>
-    /*function CompleteFunction(o,idP,idPresc) {
-        var str = '/prescription/' + idP + '/' + idPresc;
-        $.ajax({
-            type: 'GET',
-            url: str,
-        success: function(result) {
-            console.log(result);
-            $(".events1 tbody").empty();
-            for (i=0;i<result.length;i++) {
-                $('<tr>').html("<td>" + result[i].procMed.title + "</td><td>" + $.format.date(result[i].dateTimeEvent, "yyyy-MM-dd HH:mm:ss.SSS") + "</td><td>" + result[i].statusEvent.title + "</td>").appendTo('.events1');
-            }
-        }
-    });
-           var p=o.parentNode.parentNode;
-            p.parentNode.removeChild(p);
-        }*/
-</script>
 <h1 class="ml-3 mb-4 mt-2">Patient Info</h1>
 <img src="/css/avatar_male_l.png" alt="Photo" class="ml-3 mb-4"/>
 <h2 class="mb-4 ml-3">${patient.surname} ${patient.name} ${patient.patronymic}</h2>

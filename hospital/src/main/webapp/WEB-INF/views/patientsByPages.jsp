@@ -7,12 +7,15 @@
     <title>Patient List</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="/bootstrap/bootstrap.min.css">
+    <script src="/jQuery/jquery-3.4.1.min.js"></script>
+    <script src="/jQuery/jquery-dateformat.min.js"></script>
+    <script src="/jQuery/sortSurname.js"></script>
 </head>
 <body>
 <h1>Patient List</h1>
 <br/>
 <div class="col-sm-8">
-    <table class="table table-hover">
+    <table class="table table-hover patientsTb">
         <thead>
         <tr>
             <th>Id</th>
@@ -33,6 +36,8 @@
                     <td>${patient.patronymic}</td>
                     <td><a href="/updateDeletePatient/${patient.id}"><button>Delete</button></a></td>
                     <td><a href="/update/${patient.id}"><button>Update</button></a></td>
+                    <td><input type="button" value="Sort desc" onclick="SortSurname(this,${pageId},'desc')"></td>
+                    <td><input type="button" value="Sort asc" onclick="SortSurname(this,${pageId},'asc')"></td>
                 </tr>
             </c:if>
         </c:forEach>

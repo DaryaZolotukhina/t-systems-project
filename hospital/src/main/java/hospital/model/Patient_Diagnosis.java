@@ -28,6 +28,7 @@ public class Patient_Diagnosis {
     }
 
     @JsonIgnore
+    @Transient
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_patient")
     private Patient patient;

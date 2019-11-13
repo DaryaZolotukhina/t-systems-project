@@ -22,6 +22,7 @@ public class Patient {
 	@Column
 	private String insuranceNum;
 	@JsonIgnore
+	@Transient
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "id_doctor")
 	private Doctor doctor;
@@ -30,11 +31,13 @@ public class Patient {
 	@Column
 	private boolean isDischarged;
 
-
+	@Transient
 	@OneToMany(mappedBy = "patient", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Patient_Diagnosis> patDiag;
+	@Transient
 	@OneToMany(mappedBy = "patient", cascade = CascadeType.ALL, orphanRemoval = true,fetch = FetchType.EAGER)
 	private List<Prescription> prescriptions;
+	@Transient
 	@OneToMany(mappedBy = "patient", cascade = CascadeType.ALL, orphanRemoval = true,fetch = FetchType.EAGER)
 	private List<Event> events;
 

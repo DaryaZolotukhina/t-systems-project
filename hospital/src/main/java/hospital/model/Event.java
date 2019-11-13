@@ -14,6 +14,7 @@ public class Event {
     @Column(name="id_event")
     private Integer id;
     @JsonIgnore
+    @Transient
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_patient")
     private Patient patient;

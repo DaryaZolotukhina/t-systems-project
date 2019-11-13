@@ -41,5 +41,7 @@ public interface PatientService {
 	void updateDeletePrescription(Prescription presc);
 
 	List<Patient> getPatientsByPage(int pageid, int total);
+
+	List<Patient> sortSurname(int pageid, String order);
 	
 }

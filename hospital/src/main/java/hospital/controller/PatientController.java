@@ -119,8 +119,20 @@ public class PatientController {
 		List<Patient> list = this.patientService.getPatientsByPage(page_id, total);
 		model.addAttribute("patient", new Patient());
 		model.addAttribute("listPatients",list);
+		model.addAttribute("pageId", page_id);
 
 		return "patientsByPages";
 	}
-	
-}
+
+	@RequestMapping(value= "/sortSurname/{page_id}/{order}", method= RequestMethod.GET)
+	public @ResponseBody List<Patient> sortSurname(@PathVariable int page_id,@PathVariable String  order) {
+		int total = 5;
+		if(page_id == 1) {
+			// do nothing!
+		} else {
+			page_id= (page_id-1)*total+1;
+		}
+		return patientService.sortSurname(page_id, order);
+	}
+
+	}

@@ -19,6 +19,7 @@ public class Doctor {
     @Column(name="isdeleted")
     private boolean isDeleted;
 
+    @Transient
     @OneToMany(mappedBy = "doctor", cascade = CascadeType.ALL, orphanRemoval = true,fetch = FetchType.EAGER)
     private List<Patient> patients;
 

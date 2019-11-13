@@ -3,8 +3,13 @@ package hospital.dao;
 import java.util.List;
 
 import hospital.model.*;
+import hospital.utils.HibernateUtil;
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+import org.hibernate.criterion.Order;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -40,6 +45,23 @@ public class PatientDAOImpl implements PatientDAO {
                 .setMaxResults(total)
                 .getResultList();
 	}
+
+    @Override
+    public List<Patient> sortSurname(int pageid, String order) {
+        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+        Session session = sessionFactory.getCurrentSession();
+        Transaction tx = session.beginTransaction();
+
+        Criteria criteria = session.createCriteria(Patient.class);
+        criteria.setFirstResult(pageid-1);
+        criteria.setMaxResults (5);
+        if (order.equals("asc")) {
+            criteria.addOrder(Order.asc("surname"));
+        }
+        else
+            criteria.addOrder(Order.desc("surname"));
+        return criteria.list();
+    }
 
 	private SessionFactory sessionFactory;
 	

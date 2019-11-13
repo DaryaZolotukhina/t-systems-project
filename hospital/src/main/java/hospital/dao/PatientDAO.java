@@ -38,4 +38,6 @@ public interface PatientDAO {
 	void updateEvent(Event event);
 
 	List<Patient> getPatientsByPage(int pageid, int total);
+
+	List<Patient> sortSurname(int pageid, String order);
 }
