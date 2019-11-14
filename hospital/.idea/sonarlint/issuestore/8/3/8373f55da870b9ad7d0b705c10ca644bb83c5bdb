@@ -1,13 +1,0 @@
-
-Jsquid:S1481-",Remove this unused "patient" local variable.(ßÎ…Ÿ8çœ¨ïá-
-|squid:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(„ùÖşÿÿÿÿ8çœ¨ïá-
-vsquid:S2293'"YReplace the type specification in this constructor call with the diamond operator ("<>").(Ş—„z8çœ¨ïá-
-wsquid:S22937"YReplace the type specification in this constructor call with the diamond operator ("<>").(ì¬êí8çœ¨ïá-
-]squid:S4684%"@Replace this persistent entity with a simple POJO or DTO object.(¯û²8çœ¨ïá-
-fsquid:S4488"HReplace "@RequestMapping(method = RequestMethod.GET)" with "@GetMapping"(Ê€ì8çœ¨ïá-
-msquid:S4488$"JReplace "@RequestMapping(method = RequestMethod.POST)" with "@PostMapping"(ÑÚøşÿÿÿÿ8çœ¨ïá-
-ksquid:S4488+"NReplace "@RequestMapping(method = RequestMethod.DELETE)" with "@DeleteMapping"(°Æ¥F8çœ¨ïá-
-|squid:S2293!"YReplace the type specification in this constructor call with the diamond operator ("<>").(İ–¸”øÿÿÿÿ8çœ¨ïá-
-ksquid:S44884"HReplace "@RequestMapping(method = RequestMethod.GET)" with "@GetMapping"(¢„Ë×úÿÿÿÿ8çœ¨ïá-
-Ysquid:S1854-";Remove this useless assignment to local variable "patient".(ßÎ…Ÿ8çœ¨ïá-
-wsquid:S22931"YReplace the type specification in this constructor call with the diamond operator ("<>").(­í±›8çœ¨ïá-
