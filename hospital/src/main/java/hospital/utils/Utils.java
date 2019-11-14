@@ -18,20 +18,20 @@ public class Utils {
         return date;
     }
 
-    public static List<Date> calcDate(int period, String week) {
+
+    public static List<Date> calcDate(int period, int result) {
         List<Date> resultDate = new ArrayList<>();
         Calendar now = Calendar.getInstance();
         for (int i = 0; i < period; i++) {
-            int start = 0;
-            int dayOfWeek = week.indexOf("1", start);
-            while (dayOfWeek != -1) {
-                int dayOfWeekCalc = dayOfWeek + 2;
-                Date date = getNearestDayOfWeek(dayOfWeekCalc, now);
-                resultDate.add(date);
-                now.setTime(date);
-                now.add(Calendar.DATE, 1);
-                start = dayOfWeek + 1;
-                dayOfWeek = week.indexOf("1", start);
+            for (int j = 0; j < 7; j++) {
+                int cnt = (int) Math.pow(2, j);
+                if ((result & cnt) != 0) {
+                    int dayOfWeekCalc = j + 2;
+                    Date date = getNearestDayOfWeek(dayOfWeekCalc, now);
+                    resultDate.add(date);
+                    now.setTime(date);
+                    now.add(Calendar.DATE, 1);
+                }
             }
         }
         return resultDate;

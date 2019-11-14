@@ -129,6 +129,12 @@ public class PatientDAOImpl implements PatientDAO {
 		return patientsList;
 	}
 
+	@Override
+	public List<ProcMed> getAllProcMed(){
+		Session session = this.sessionFactory.getCurrentSession();
+		List<ProcMed> procMedList= session.createQuery("from ProcMed").list();
+		return procMedList;
+	}
 
 	@Override
 	public Patient getById(int id) {

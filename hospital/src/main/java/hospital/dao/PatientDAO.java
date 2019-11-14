@@ -2,10 +2,7 @@ package hospital.dao;
 
 import java.util.List;
 
-import hospital.model.Event;
-import hospital.model.Patient;
-import hospital.model.Prescription;
-import hospital.model.StatusEvent;
+import hospital.model.*;
 
 public interface PatientDAO {
 
@@ -42,4 +39,6 @@ public interface PatientDAO {
 	List<Patient> sortSurname(int pageid, String order);
 
 	List<Event> sortEventsDate(String order, int id);
+
+	List<ProcMed> getAllProcMed();
 }

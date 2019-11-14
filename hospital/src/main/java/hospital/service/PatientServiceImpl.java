@@ -9,6 +9,8 @@ import hospital.exception.DischargeException;
 import hospital.model.Event;
 import hospital.model.Patient;
 import hospital.model.Prescription;
+import hospital.model.ProcMed;
+import org.hibernate.Session;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -182,9 +184,8 @@ public class PatientServiceImpl implements PatientService {
 			eventCnt=dates.size();
 		}
 		else{
-			int week = org.springframework.util.StringUtils.countOccurrencesOf(presc.getWeekSchedule(), "1");
-			eventCnt=period*week;
 			dates=calcDate(period,presc.getWeekSchedule());
+			eventCnt=dates.size();
 		}
 		for(int i=0;i<eventCnt;i++){
 			Event event=new Event();
@@ -199,6 +200,12 @@ public class PatientServiceImpl implements PatientService {
 		presc.setIsDone(true);
 		this.patientDAO.updatePrescription(presc);
 		return events;
+	}
+
+	@Transactional
+	@Override
+	public List<ProcMed> getAllProcMed(){
+		return patientDAO.getAllProcMed();
 	}
 
 	@Override

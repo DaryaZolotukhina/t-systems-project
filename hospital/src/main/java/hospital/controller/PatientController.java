@@ -4,6 +4,7 @@ import hospital.exception.DischargeException;
 import hospital.model.Event;
 import hospital.model.Patient;
 import hospital.model.Prescription;
+import hospital.model.ProcMed;
 import hospital.service.PatientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -47,6 +49,22 @@ public class PatientController {
     @ResponseBody
 	public DischargeException dischargePatient(@PathVariable("id") int id) {
 		return this.patientService.dischargePatient(id);
+	}
+
+	@RequestMapping(value = "/allProcMed", method = RequestMethod.GET)
+	@ResponseBody
+	public List<ProcMed> getAllProcMed() {
+		return patientService.getAllProcMed();
+		/*List<String> list=new ArrayList<>();
+		list.add("csa");
+		list.add("dcsa");
+		list.add("fdxz");
+		return list;*/
+	}
+
+	@RequestMapping(value = "/createPrescription/{id}", method = RequestMethod.GET)
+	public String createPresc(@PathVariable("id") int id) {
+		return "createPrescription";
 	}
 
 

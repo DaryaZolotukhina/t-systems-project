@@ -24,11 +24,11 @@ public class Prescription {
         this.daySchedule = daySchedule;
     }
 
-    public String getWeekSchedule() {
+    public Integer getWeekSchedule() {
         return weekSchedule;
     }
 
-    public void setWeekSchedule(String weekSchedule) {
+    public void setWeekSchedule(Integer weekSchedule) {
         this.weekSchedule = weekSchedule;
     }
 
@@ -43,7 +43,7 @@ public class Prescription {
     @Column
     private Integer daySchedule;
     @Column
-    private String weekSchedule;
+    private Integer weekSchedule;
     @Column
     private Integer period;
     @Column

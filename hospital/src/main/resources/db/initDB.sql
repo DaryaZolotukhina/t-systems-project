@@ -68,6 +68,9 @@ CREATE TABLE public.procMed
 
 select * from procMed;
 
+insert into procMed values (2, 'Analgin');
+    insert into procMed values (3, 'Nospa');
+
 update procMed set title='Aspirin';
 
 update prescriptions set isDeleted=false;

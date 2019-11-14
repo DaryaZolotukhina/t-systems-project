@@ -7,6 +7,7 @@ import hospital.exception.DischargeException;
 import hospital.model.Event;
 import hospital.model.Patient;
 import hospital.model.Prescription;
+import hospital.model.ProcMed;
 
 public interface PatientService {
 
@@ -45,5 +46,7 @@ public interface PatientService {
 	List<Patient> sortSurname(int pageid, String order);
 
 	List<Event> sortEventsDate(String order,int id);
+
+	List<ProcMed> getAllProcMed();
 	
 }

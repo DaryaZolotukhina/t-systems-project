@@ -17,7 +17,7 @@ function DischargeFunction(o,idP) {
                 modal.find('.error-events').text(prescriptions)
             }
             else
-                window.location.replace("/patients");
+                window.location.href = "http://localhost:8080/patients";
         }
     });
 }

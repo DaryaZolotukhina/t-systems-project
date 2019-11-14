@@ -50,6 +50,7 @@
 </div>
 <div class="mb-4 ml-3">
     <input type="button" value="Discharge" onclick="DischargeFunction(this,${patient.id})">
+    <input type="button" value="Create prescription" onclick="location.href = '/createPrescription/${patient.id}'">
 </div>
 <div class="col-sm-8 mb-5">
     <table class="table table-hover">
