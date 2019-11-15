@@ -5,7 +5,12 @@ function DischargeFunction(o,idP) {
         url: str,
         success: function(result) {
             console.log(result);
-            if (result!=null){
+            if (typeof result.prescriptionList == 'undefined')
+            {
+                console.log(1);
+                document.location.href = 'http://localhost:8080/patients', true;
+            }
+            else {
                 var prescriptions='';
                 for (i=0;i<result.prescriptionList.length;i++) {
                     prescriptions=prescriptions+"Id: "+result.prescriptionList[i].id+', Period: '+result.prescriptionList[i].period+" weeks, Dose: "+result.prescriptionList[i].dose+";";
@@ -16,8 +21,6 @@ function DischargeFunction(o,idP) {
                 modal.find('.modal-title1').text(result.errMsg)
                 modal.find('.error-events').text(prescriptions)
             }
-            else
-                window.location.href = "http://localhost:8080/patients";
         }
     });
 }

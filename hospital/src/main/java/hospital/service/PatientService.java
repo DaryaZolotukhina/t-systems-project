@@ -48,5 +48,11 @@ public interface PatientService {
 	List<Event> sortEventsDate(String order,int id);
 
 	List<ProcMed> getAllProcMed();
-	
-}
+
+	ProcMed getProcMedByTitle(String title);
+
+	void addPrescription(int id, String procMed, String period, List<String> daySchedule, List<String> weekSchedule);
+
+	Patient getByIdPatient(int id);
+
+    }

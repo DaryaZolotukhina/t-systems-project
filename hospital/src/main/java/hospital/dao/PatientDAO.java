@@ -41,4 +41,8 @@ public interface PatientDAO {
 	List<Event> sortEventsDate(String order, int id);
 
 	List<ProcMed> getAllProcMed();
+
+	ProcMed getProcMedByTitle(String title);
+
+    void addPresc(Prescription p);
 }

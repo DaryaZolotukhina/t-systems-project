@@ -109,6 +109,12 @@ public class PatientServiceImpl implements PatientService {
 		return patientDto;
 	}
 
+    @Override
+    @Transactional
+    public Patient getByIdPatient(int id) {
+        return this.patientDAO.getById(id);
+    }
+
 	@Override
 	@Transactional
 	public void delete(int id) {
@@ -169,7 +175,125 @@ public class PatientServiceImpl implements PatientService {
 		}
 		return null;
 	}
-	
+
+	@Override
+    @Transactional
+    public ProcMed getProcMedByTitle(String title) {
+        return patientDAO.getProcMedByTitle(title);
+    }
+
+    public Integer weekToBitMask(List<String> weeks) {
+        int result=0;
+        for (String str : weeks) {
+            switch (str) {
+                case ("Monday"):
+                    result += (int) Math.pow(2, 0);
+                    break;
+                case ("Tuesday"):
+                    result += (int) Math.pow(2, 1);
+                    break;
+                case ("Wednesday"):
+                    result += (int) Math.pow(2, 2);
+                    break;
+                case ("Thursday"):
+                    result += (int) Math.pow(2, 3);
+                    break;
+                case ("Friday"):
+                    result += (int) Math.pow(2, 4);
+                    break;
+                case ("Saturday"):
+                    result += (int) Math.pow(2, 5);
+                    break;
+                case ("Sunday"):
+                    result += (int) Math.pow(2, 6);
+                    break;
+            }
+        }
+        return result;
+    }
+
+    public Integer dayToBitMask(List<String> days) {
+        int result=0;
+        for (String str : days) {
+            switch (str) {
+                case ("00:00"):
+                    result += (int) Math.pow(2, 0);
+                    break;
+                case ("01:00"):
+                    result += (int) Math.pow(2, 1);
+                    break;
+                case ("02:00"):
+                    result += (int) Math.pow(2, 2);
+                    break;
+                case ("03:00"):
+                    result += (int) Math.pow(2, 3);
+                    break;
+                case ("04:00"):
+                    result += (int) Math.pow(2, 4);
+                    break;
+                case ("05:00"):
+                    result += (int) Math.pow(2, 5);
+                    break;
+                case ("06:00"):
+                    result += (int) Math.pow(2, 6);
+                    break;
+                case ("07:00"):
+                    result += (int) Math.pow(2, 7);
+                    break;
+                case ("08:00"):
+                    result += (int) Math.pow(2, 8);
+                    break;
+                case ("09:00"):
+                    result += (int) Math.pow(2, 9);
+                    break;
+                case ("10:00"):
+                    result += (int) Math.pow(2, 10);
+                    break;
+                case ("11:00"):
+                    result += (int) Math.pow(2, 11);
+                    break;
+                case ("12:00"):
+                    result += (int) Math.pow(2, 12);
+                    break;
+                case ("13:00"):
+                    result += (int) Math.pow(2, 13);
+                    break;
+                case ("14:00"):
+                    result += (int) Math.pow(2, 14);
+                    break;
+                case ("15:00"):
+                    result += (int) Math.pow(2, 15);
+                    break;
+                case ("16:00"):
+                    result += (int) Math.pow(2, 16);
+                    break;
+                case ("17:00"):
+                    result += (int) Math.pow(2, 17);
+                    break;
+                case ("18:00"):
+                    result += (int) Math.pow(2, 18);
+                    break;
+                case ("19:00"):
+                    result += (int) Math.pow(2, 19);
+                    break;
+                case ("20:00"):
+                    result += (int) Math.pow(2, 20);
+                    break;
+                case ("21:00"):
+                    result += (int) Math.pow(2, 21);
+                    break;
+                case ("22:00"):
+                    result += (int) Math.pow(2, 22);
+                    break;
+                case ("23:00"):
+                    result += (int) Math.pow(2, 23);
+                    break;
+            }
+        }
+        return result;
+    }
+
+
 	@Override
 	@Transactional
 	public List<Event> generateEvents(int id) {
@@ -227,4 +351,28 @@ public class PatientServiceImpl implements PatientService {
 		return patientDAO.sortEventsDate(order,id);
 	}
 
+    @Override
+    @Transactional
+    public void addPrescription(int id, String procMed, String period, List<String> daySchedule, List<String> weekSchedule){
+	    Prescription p =new Prescription();
+	    p.setPatient(getByIdPatient(id));
+	    p.setProcMed(getProcMedByTitle(procMed));
+	    if (daySchedule.size()==0){
+	        p.setDaySchedule(0);
+        }
+	    else
+	        p.setDaySchedule(dayToBitMask(daySchedule));
+        if (weekSchedule.size()==0){
+            p.setWeekSchedule(0);
+        }
+        else
+            p.setWeekSchedule(weekToBitMask(weekSchedule));
+        p.setPeriod(Integer.parseInt(period));
+        p.setDose((float)0.0);
+        p.setIsDeleted(false);
+        p.setIsDone(false);
+
+        patientDAO.addPresc(p);
+
+    }
 }

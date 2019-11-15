@@ -30,9 +30,7 @@ public class PatientController {
 	
 	@RequestMapping(value = "/patients", method = RequestMethod.GET)
 	public String listPatients(Model model) {
-		model.addAttribute("patient", new Patient());
-		model.addAttribute("listPatients", this.patientService.getAll());
-		return "patients";
+		return "redirect:/init/1";
 	}
 
 	@RequestMapping(value = "/patient/{id}",method = RequestMethod.GET)
@@ -55,16 +53,23 @@ public class PatientController {
 	@ResponseBody
 	public List<ProcMed> getAllProcMed() {
 		return patientService.getAllProcMed();
-		/*List<String> list=new ArrayList<>();
-		list.add("csa");
-		list.add("dcsa");
-		list.add("fdxz");
-		return list;*/
 	}
 
 	@RequestMapping(value = "/createPrescription/{id}", method = RequestMethod.GET)
-	public String createPresc(@PathVariable("id") int id) {
+	public String createPresc(@PathVariable("id") int id, Model model) {
+		model.addAttribute("id", id);
 		return "createPrescription";
+	}
+
+	@RequestMapping(value = "/createPrescription/{id}", method = RequestMethod.POST)
+	public String createPresc(@PathVariable("id") int id,
+									@RequestParam("procMed") String procMed,
+									@RequestParam("periodSelect") String period,
+									@RequestParam(value="daySchedule",defaultValue="") List<String> daySchedule,
+									@RequestParam(value="weekSchedule",defaultValue="") List<String> weekSchedule) {
+
+		patientService.addPrescription(id, procMed, period, daySchedule, weekSchedule);
+        return "redirect:/patient/{id}";
 	}
 
 
@@ -119,7 +124,6 @@ public class PatientController {
 	public String paginate(@PathVariable int page_id, Model model) {
 		int total = 5;
 		if(page_id == 1) {
-			// do nothing!
 		} else {
 			page_id= (page_id-1)*total+1;
 		}
@@ -136,7 +140,6 @@ public class PatientController {
 	public @ResponseBody List<Patient> sortSurname(@PathVariable int page_id,@PathVariable String  order) {
 		int total = 5;
 		if(page_id == 1) {
-			// do nothing!
 		} else {
 			page_id= (page_id-1)*total+1;
 		}

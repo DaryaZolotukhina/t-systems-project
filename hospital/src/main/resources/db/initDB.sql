@@ -163,6 +163,7 @@ CREATE TABLE public.patient_diagnosis
 select * from events;
 select * from prescriptions;
 truncate events;
+    truncate events,prescriptions;
 
 update prescriptions set isDone=false;
     update prescriptions set isDeleted=false;

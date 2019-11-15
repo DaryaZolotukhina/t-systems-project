@@ -144,6 +144,19 @@ public class PatientDAOImpl implements PatientDAO {
 	}
 
 	@Override
+	public ProcMed getProcMedByTitle(String title) {
+		EntityManager em = getEntityManager();
+		CriteriaBuilder cb = em.getCriteriaBuilder();
+		CriteriaQuery<ProcMed> cq = em.getCriteriaBuilder().createQuery(ProcMed.class);
+		Root<ProcMed> from = cq.from(ProcMed.class);
+
+		cq.select(from);
+		cq.where(em.getCriteriaBuilder().equal(from.get("title"),title));
+
+		return em.createQuery(cq).getSingleResult();
+	}
+
+	@Override
 	public void delete(int id) {
 		Session session = this.sessionFactory.getCurrentSession();
 		Patient p = (Patient) session.load(Patient.class, new Integer(id));
@@ -188,4 +201,10 @@ public class PatientDAOImpl implements PatientDAO {
 		Session session = this.sessionFactory.getCurrentSession();
 		session.persist(event);
 	}
+
+	@Override
+    public void addPresc(Prescription p) {
+        Session session = this.sessionFactory.getCurrentSession();
+        session.persist(p);
+    }
 }

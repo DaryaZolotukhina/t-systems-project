@@ -5,6 +5,7 @@
   Time: 8:39
   To change this template use File | Settings | File Templates.
 --%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -46,16 +47,27 @@
     $(document).ready(function() {
         $('#weekSchedule').multiselect();
     });
+    $(document).ready(function() {
+        $('.week').hide();
+    });
+    $(document).on("click","#but1",function() {
+        $('.day').show();
+        $('.week').hide();
+    });
+    $(document).on("click","#but2",function() {
+        $('.day').hide();
+        $('.week').show();
+    });
 </script>
-<form>
+<form id="myform" action="/createPrescription/${id}" method="post">
     <div class="form-group">
         <label for="procMed">Procedure or medicine</label>
-        <input type="text" class="form-control" id="procMed" placeholder="Procedure or medicine">
+        <input type="text" class="form-control" id="procMed" name="procMed" placeholder="Procedure or medicine">
         <label for="procMed">Repeat per</label>
-        <label class="radio-inline"><input type="radio" name="optradio" checked>Day</label>
-        <label class="radio-inline"><input type="radio" name="optradio">Week</label>
+        <label class="radio-inline"><input type="radio" name="optradio" checked id="but1"/>Day</label>
+        <label class="radio-inline"><input type="radio" name="optradio" id="but2" />Week</label>
         <label for="periodSelect">Period</label>
-        <select class="form-control" id="periodSelect">
+        <select class="form-control" name="periodSelect" id="periodSelect">
             <option>1</option>
             <option>2</option>
             <option>3</option>
@@ -87,8 +99,9 @@
             <option>29</option>
             <option>30</option>
         </select>
+        <div class="day">
         <label for="procMed">Day schedule</label>
-        <select id="daySchedule" multiple="multiple">
+        <select id="daySchedule" name="daySchedule" multiple="multiple">
             <option value="00:00">00:00</option>
             <option value="01:00">01:00</option>
             <option value="01:00">02:00</option>
@@ -114,8 +127,10 @@
             <option value="22:00">22:00</option>
             <option value="23:00">23:00</option>
         </select>
+        </div>
+        <div class="week">
         <label for="procMed">Week schedule</label>
-        <select id="weekSchedule" multiple="multiple">
+        <select id="weekSchedule" name="weekSchedule" multiple="multiple">
             <option value="Monday">Monday</option>
             <option value="Tuesday">Tuesday</option>
             <option value="Wednesday">Wednesday</option>
@@ -124,6 +139,8 @@
             <option value="Saturday">Saturday</option>
             <option value="Sunday">Sunday</option>
         </select>
+            </div>
+        <input type="submit" value="OK">
     </div>
 </form>
 </body>

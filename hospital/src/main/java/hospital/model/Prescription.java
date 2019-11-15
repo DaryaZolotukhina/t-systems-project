@@ -37,7 +37,7 @@ public class Prescription {
     @JoinColumn(name = "id_patient")
     private Patient patient;
     @JsonIgnore
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "id_procMed")
     private ProcMed procMed;
     @Column
