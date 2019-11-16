@@ -1,5 +1,7 @@
 package hospital.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -18,6 +20,8 @@ public class Staff {
     private String patronymic;
     @Column(name="isdeleted")
     private boolean isDeleted;
+    @Column
+    private boolean isDoctor;
 
     public boolean getIsDoctor() {
         return isDoctor;
@@ -27,8 +31,7 @@ public class Staff {
         isDoctor = isDoctor;
     }
 
-    private boolean isDoctor;
-
+    @JsonIgnore
     @Transient
     @OneToMany(mappedBy = "staff", cascade = CascadeType.ALL, orphanRemoval = true,fetch = FetchType.EAGER)
     private List<Patient> patients;
@@ -65,12 +68,12 @@ public class Staff {
         this.patronymic = patronymic;
     }
 
-    public boolean isDeleted() {
+    public boolean getIsDeleted() {
         return isDeleted;
     }
 
-    public void setDeleted(boolean deleted) {
-        isDeleted = deleted;
+    public void setIsDeleted(boolean isDeleted) {
+        isDeleted = isDeleted;
     }
 
     public List<Patient> getPatients() {

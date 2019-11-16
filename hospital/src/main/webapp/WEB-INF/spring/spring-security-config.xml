@@ -27,6 +27,8 @@
         <intercept-url pattern="/init/{page_id}" access="ROLE_NURSE"/>
         <intercept-url pattern="/sortSurname/{page_id}/{order}" access="ROLE_NURSE"/>
         <intercept-url pattern="/sortEventsDate/{idPat}/{order}" access="ROLE_NURSE"/>
+        <intercept-url pattern="/patients" access="ROLE_NURSE"/>
+
 
 
         <form-login login-page="/login.jsp"

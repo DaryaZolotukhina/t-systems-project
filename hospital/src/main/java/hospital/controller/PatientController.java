@@ -1,10 +1,7 @@
 package hospital.controller;
 
 import hospital.exception.DischargeException;
-import hospital.model.Event;
-import hospital.model.Patient;
-import hospital.model.Prescription;
-import hospital.model.ProcMed;
+import hospital.model.*;
 import hospital.service.PatientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -48,6 +45,12 @@ public class PatientController {
 		return this.patientService.dischargePatient(id);
 	}
 
+	@RequestMapping(value = "/allDoctors", method = RequestMethod.GET)
+	@ResponseBody
+	public List<Staff> getAllDoctors() {
+		return patientService.getAllDoctors();
+	}
+
 	@RequestMapping(value = "/allProcMed", method = RequestMethod.GET)
 	@ResponseBody
 	public List<ProcMed> getAllProcMed() {
@@ -87,9 +90,13 @@ public class PatientController {
 	}
 
 	@RequestMapping(value= "/patient/add", method = RequestMethod.POST)
-	public String addPatient(@ModelAttribute("patient") Patient p){
+	public String addPatient(@RequestParam("surname") String surname,
+							 @RequestParam("name") String name,
+							 @RequestParam("patronymic") String patronymic,
+							 @RequestParam("insuranceNum") String insuranceNum,
+							 @RequestParam("doctor") String doctor){
 
-		this.patientService.addPatient(p);
+		this.patientService.addPatient(surname, name, patronymic, insuranceNum, doctor);
 		return "redirect:/patients";
 		
 	}

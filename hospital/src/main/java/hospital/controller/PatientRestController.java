@@ -33,12 +33,12 @@ public class PatientRestController {
         return new ResponseEntity<PatientDto>(patient, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "", method = RequestMethod.POST, produces = "application/json")
+   /* @RequestMapping(value = "", method = RequestMethod.POST, produces = "application/json")
     public ResponseEntity<Patient> addPatient(@RequestBody Patient p) {
             this.patientService.addPatient(p);
             return new ResponseEntity<Patient>(p,HttpStatus.CREATED);
 
-    }
+    }*/
 
     @RequestMapping(value="{id}", method = RequestMethod.DELETE, produces = "application/json")
     public ResponseEntity<Patient> deletePatient(@PathVariable("id") int id){

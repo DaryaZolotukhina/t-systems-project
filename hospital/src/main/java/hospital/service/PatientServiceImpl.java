@@ -6,15 +6,13 @@ import java.util.List;
 
 import hospital.dto.PatientDto;
 import hospital.exception.DischargeException;
-import hospital.model.Event;
-import hospital.model.Patient;
-import hospital.model.Prescription;
-import hospital.model.ProcMed;
+import hospital.model.*;
 import org.hibernate.Session;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import hospital.dao.PatientDAO;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import static hospital.utils.Utils.calcDate;
 import static hospital.utils.Utils.calcDateTime;
@@ -33,11 +31,6 @@ public class PatientServiceImpl implements PatientService {
 		this.dischargeException = dischargeException;
 	}
 
-	@Override
-	@Transactional
-	public void addPatient(Patient p) {
-		this.patientDAO.addPatient(p);
-	}
 
 	@Override
 	@Transactional
@@ -181,6 +174,12 @@ public class PatientServiceImpl implements PatientService {
     public ProcMed getProcMedByTitle(String title) {
         return patientDAO.getProcMedByTitle(title);
     }
+
+	@Override
+	@Transactional
+	public Staff getDoctorBySurname(String surname) {
+		return patientDAO.getDoctorBySurname(surname);
+	}
 
     public Integer weekToBitMask(List<String> weeks) {
         int result=0;
@@ -332,6 +331,19 @@ public class PatientServiceImpl implements PatientService {
 		return patientDAO.getAllProcMed();
 	}
 
+	@Transactional
+	@Override
+	public List<Staff> getAllDoctors(){
+		List<Staff> staffList=patientDAO.getAllDoctors();
+		List<Staff> doctList=new ArrayList<>();
+		for(Staff staff:staffList){
+			if (staff.getIsDoctor()){
+				doctList.add(staff);
+			}
+		}
+		return doctList;
+	}
+
 	@Override
 	@Transactional
 	public List<Patient> getPatientsByPage(int pageid, int total) {
@@ -375,4 +387,19 @@ public class PatientServiceImpl implements PatientService {
         patientDAO.addPresc(p);
 
     }
+
+	@Override
+	@Transactional
+	public void addPatient(String surname, String name, String patronymic, String insuranceNum, String doctor){
+		Patient p=new Patient();
+		p.setSurname(surname);
+		p.setName(name);
+		p.setPatronymic(patronymic);
+		p.setInsuranceNum(insuranceNum);
+		p.setStaff(getDoctorBySurname(doctor));
+		p.setIsDeleted(false);
+		p.setIsDischarged(false);
+
+		patientDAO.addPatient(p);
+	}
 }

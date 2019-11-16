@@ -45,4 +45,8 @@ public interface PatientDAO {
 	ProcMed getProcMedByTitle(String title);
 
     void addPresc(Prescription p);
+
+	List<Staff> getAllDoctors();
+
+	Staff getDoctorBySurname(String surname);
 }

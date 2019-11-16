@@ -49,9 +49,9 @@
 		<welcome-file>redirectPage.jsp</welcome-file>
 	</welcome-file-list>
 
-	<error-page>
-		<error-code>403</error-code>
-		<location>/accessDenied.jsp</location>
-	</error-page>
+	<!-- 	<error-page>
+            <error-code>403</error-code>
+            <location>/accessDenied.jsp</location>
+        </error-page> -->
 
-</web-app>
+    </web-app>

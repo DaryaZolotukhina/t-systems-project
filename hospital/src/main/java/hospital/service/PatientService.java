@@ -4,16 +4,11 @@ import java.util.List;
 
 import hospital.dto.PatientDto;
 import hospital.exception.DischargeException;
-import hospital.model.Event;
-import hospital.model.Patient;
-import hospital.model.Prescription;
-import hospital.model.ProcMed;
+import hospital.model.*;
 
 public interface PatientService {
 
 	PatientDto getById(int id);
-
-	void addPatient(Patient p);
 
 	void updatePatient(Patient p);
 
@@ -55,4 +50,10 @@ public interface PatientService {
 
 	Patient getByIdPatient(int id);
 
-    }
+	List<Staff> getAllDoctors();
+
+	void addPatient(String surname, String name, String patronymic, String insuranceNum, String doctor);
+
+	Staff getDoctorBySurname(String surname);
+
+	}

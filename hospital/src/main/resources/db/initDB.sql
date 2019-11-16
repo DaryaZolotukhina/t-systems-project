@@ -179,6 +179,8 @@ select * from prescriptions;
 truncate events;
     truncate events,prescriptions;
 
+    truncate patient_diagnosis,events,prescriptions,patients;
+
 update prescriptions set isDone=false;
     update prescriptions set isDeleted=false;
 
