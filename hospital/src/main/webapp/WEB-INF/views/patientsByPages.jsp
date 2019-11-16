@@ -1,4 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 
 <!DOCTYPE HTML>
 <html>
@@ -73,6 +74,10 @@
         <li class="page-item"><a class="page-link" href="/init/2">2</a></li>
         <li class="page-item"><a class="page-link" href="/init/3">3</a></li>
     </ul>
+    <form action="<c:url value="/logout"/>" method="post">
+        <input type="submit" value="Logoff"/> (also clears any remember-me cookie)
+        <security:csrfInput/>
+    </form>
 </div>
 </body>
 

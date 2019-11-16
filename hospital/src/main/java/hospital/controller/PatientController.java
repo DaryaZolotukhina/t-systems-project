@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -149,6 +148,17 @@ public class PatientController {
 	@RequestMapping(value= "/sortEventsDate/{idPat}/{order}", method= RequestMethod.GET)
 	public @ResponseBody List<Event> sortEventsDate(@PathVariable("idPat") int idPat,@PathVariable String  order) {
 		return patientService.sortEventsDate(order,idPat);
+	}
+
+	@RequestMapping(value ="/welcome", method = RequestMethod.GET)
+	public ModelAndView login(@RequestParam(value = "error", required = false) String error) {
+		ModelAndView model = new ModelAndView();
+		if (error != null) {
+			model.addObject("error", "Invalid username or password!");
+		}
+		model.setViewName("welcomePage");
+		return model;
+
 	}
 
 	}
