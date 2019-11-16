@@ -23,7 +23,7 @@
         <!-- Drop and re-create the database schema on startup -->
         <property name="hibernate.hbm2ddl.auto">update</property>
         <mapping class="hospital.model.Patient" />
-        <mapping class="hospital.model.Doctor" />
+        <mapping class="hospital.model.Staff" />
         <mapping class="hospital.model.Event" />
         <mapping class="hospital.model.Prescription" />
         <mapping class="hospital.model.ProcMed" />

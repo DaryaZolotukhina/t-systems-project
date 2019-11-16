@@ -113,7 +113,7 @@
         </tr>
         <tr>
             <th>Procedure or medicine</th>
-            <th>Date and time</th>
+            <th>Date and time   <input type="button" value="&#8595;" onclick="SortEventsDate(this,${patient.id},'desc')"><input type="button" value="&#8593;" onclick="SortEventsDate(this,${patient.id},'asc')"></th>
             <th>Status</th>
         </tr>
         </thead>
@@ -123,8 +123,6 @@
                 <td>${event.procMed.title}</td>
                 <td>${event.dateTimeEvent}</td>
                 <td>${event.statusEvent.title}</td>
-                <td><input type="button" value="Sort desc" onclick="SortEventsDate(this,${patient.id},'desc')"></td>
-                <td><input type="button" value="Sort asc" onclick="SortEventsDate(this,${patient.id},'asc')"></td>
             </tr>
         </c:forEach>
         </tbody>

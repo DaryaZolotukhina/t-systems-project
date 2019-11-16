@@ -19,9 +19,17 @@ CREATE TABLE public.doctors
     patronymic character varying(255)  NOT NULL
 );
 
+ALTER TABLE doctors RENAME TO staff;
+
 ALTER TABLE doctors
 ADD isDeleted boolean;
 
+    ALTER TABLE staff
+        ADD isDoctor boolean;
+
+    ALTER TABLE staff
+        RENAME COLUMN id_doctor TO id_staff;
+    update staff set isDoctor=true;
 CREATE TABLE public.patients
 (
     id_patient SERIAL NOT NULL PRIMARY KEY,
@@ -33,6 +41,10 @@ CREATE TABLE public.patients
 	id_doctor integer REFERENCES doctors(id_doctor),
 	id_statusPat integer REFERENCES statusPat(id_statusPat)
 );
+
+ALTER TABLE patients  DROP column id_doctor;
+ALTER TABLE patients ADD COLUMN id_staff integer references staff(id_staff);
+    update patients set id_staff=1;
 
 insert into patients values (2,'Ivanov','Ivan','Ivanovich',1234567,1,false,false);
 UPDATE patients SET surname = 'Petrov', name='Petr', patronymic='Petrovich',insuranceNum=7654321 where id_patient=1;
@@ -160,6 +172,8 @@ CREATE TABLE public.patient_diagnosis
 	id_diagnosis integer REFERENCES diagnosises(id_diagnosis)
 );
 
+select * from staff;
+select * from patients;
 select * from events;
 select * from prescriptions;
 truncate events;

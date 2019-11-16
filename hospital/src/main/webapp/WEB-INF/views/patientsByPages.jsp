@@ -9,9 +9,33 @@
     <link rel="stylesheet" href="/bootstrap/bootstrap.min.css">
     <script src="/jQuery/jquery-3.4.1.min.js"></script>
     <script src="/jQuery/jquery-dateformat.min.js"></script>
-    <script src="/jQuery/sortSurname.js"></script>
+    <!-- <script src="/jQuery/sortSurname.js"></script> -->
 </head>
 <body>
+<script>
+    function SortSurname(o,pageId,order) {
+        var str = '/sortSurname/' + pageId + '/' + order;
+        $.ajax({
+            type: 'GET',
+            url: str,
+            success: function(result) {
+                console.log(result);
+                $(".patientsTb tbody").empty();
+                for (i=0;i<result.length;i++) {
+                    if (!(result[i].isDischarged))
+                        if (!(result[i].isDeleted))
+                    {
+                        $('<tr>').html("<td>" + result[i].id + "</td><td>" + result[i].surname +
+                            "</td><td>" + result[i].name + "</td><td>" + result[i].patronymic +
+                            "</td><td><a href=\"/updateDeletePatient/" + result[i].id +
+                            " \"><button>Delete</button></a></td><td><a href=\"/update/" + result[i].id +
+                            " \"><button>Update</button></a></td>").appendTo('.patientsTb');
+                    }
+                }
+            }
+        });
+    }
+</script>
 <h1>Patient List</h1>
 <br/>
 <div class="col-sm-8">
@@ -19,7 +43,7 @@
         <thead>
         <tr>
             <th>Id</th>
-            <th>Surname</th>
+            <th>Surname   <input type="button" value="&#8595;" onclick="SortSurname(this,${pageId},'desc')"><input type="button" value="&#8593;" onclick="SortSurname(this,${pageId},'asc')"></th>
             <th>Name</th>
             <th>Patronymic</th>
             <th></th>
@@ -36,8 +60,6 @@
                     <td>${patient.patronymic}</td>
                     <td><a href="/updateDeletePatient/${patient.id}"><button>Delete</button></a></td>
                     <td><a href="/update/${patient.id}"><button>Update</button></a></td>
-                    <td><input type="button" value="Sort desc" onclick="SortSurname(this,${pageId},'desc')"></td>
-                    <td><input type="button" value="Sort asc" onclick="SortSurname(this,${pageId},'asc')"></td>
                 </tr>
             </c:if>
         </c:forEach>

@@ -4,11 +4,11 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name="doctors")
-public class Doctor {
+@Table(name="staff")
+public class Staff {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id_doctor")
+    @Column(name="id_staff")
     private Integer id;
     @Column(name="surname")
     private String surname;
@@ -19,8 +19,18 @@ public class Doctor {
     @Column(name="isdeleted")
     private boolean isDeleted;
 
+    public boolean getIsDoctor() {
+        return isDoctor;
+    }
+
+    public void setIsDoctor(boolean isDoctor) {
+        isDoctor = isDoctor;
+    }
+
+    private boolean isDoctor;
+
     @Transient
-    @OneToMany(mappedBy = "doctor", cascade = CascadeType.ALL, orphanRemoval = true,fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "staff", cascade = CascadeType.ALL, orphanRemoval = true,fetch = FetchType.EAGER)
     private List<Patient> patients;
 
     public Integer getId() {

@@ -59,10 +59,12 @@
         $('.week').show();
     });
 </script>
-<form id="myform" action="/createPrescription/${id}" method="post">
+<style>.autocomplete-suggestions{background:#ffffff;}</style>
+<h1 class="ml-3 mb-4 mt-2">Create prescription</h1>
+<form id="myform" action="/createPrescription/${id}" method="post" class="col-sm-8">
     <div class="form-group">
         <label for="procMed">Procedure or medicine</label>
-        <input type="text" class="form-control" id="procMed" name="procMed" placeholder="Procedure or medicine">
+        <input type="text" class="form-control mdb-autocomplete" id="procMed" name="procMed" placeholder="Procedure or medicine">
         <label for="procMed">Repeat per</label>
         <label class="radio-inline"><input type="radio" name="optradio" checked id="but1"/>Day</label>
         <label class="radio-inline"><input type="radio" name="optradio" id="but2" />Week</label>

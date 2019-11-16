@@ -45,7 +45,7 @@
 		<beans:property name="annotatedClasses">
 			<beans:list>
 				<beans:value>hospital.model.Patient</beans:value>
-				<beans:value>hospital.model.Doctor</beans:value>
+				<beans:value>hospital.model.Staff</beans:value>
 				<beans:value>hospital.model.Diagnosis</beans:value>
 				<beans:value>hospital.model.Event</beans:value>
 				<beans:value>hospital.model.Patient_Diagnosis</beans:value>

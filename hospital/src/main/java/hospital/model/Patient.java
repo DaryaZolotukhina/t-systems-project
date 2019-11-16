@@ -23,11 +23,20 @@ public class Patient {
 	private String patronymic;
 	@Column
 	private String insuranceNum;
+
+	public Staff getStaff() {
+		return staff;
+	}
+
+	public void setStaff(Staff staff) {
+		this.staff = staff;
+	}
+
 	@JsonIgnore
 	@Transient
 	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "id_doctor")
-	private Doctor doctor;
+	@JoinColumn(name = "id_staff")
+	private Staff staff;
 	@Column
 	private boolean isDeleted;
 	@Column
@@ -82,14 +91,6 @@ public class Patient {
 
 	public void setInsuranceNum(String insuranceNum) {
 		this.insuranceNum = insuranceNum;
-	}
-
-	public Doctor getDoctor() {
-		return doctor;
-	}
-
-	public void setDoctor(Doctor doctor) {
-		this.doctor = doctor;
 	}
 
 	public boolean getIsDeleted() {
