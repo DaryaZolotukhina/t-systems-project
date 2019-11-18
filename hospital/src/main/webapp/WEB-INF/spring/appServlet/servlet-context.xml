@@ -48,11 +48,11 @@
 				<beans:value>hospital.model.Staff</beans:value>
 				<beans:value>hospital.model.Diagnosis</beans:value>
 				<beans:value>hospital.model.Event</beans:value>
-				<beans:value>hospital.model.Patient_Diagnosis</beans:value>
+				<beans:value>hospital.model.PatientDiagnosis</beans:value>
 				<beans:value>hospital.model.Prescription</beans:value>
-				<beans:value>hospital.model.ProcMed</beans:value>
+				<beans:value>hospital.model.ProcedureMedicine</beans:value>
 				<beans:value>hospital.model.StatusEvent</beans:value>
-				<beans:value>hospital.model.TypeProcMed</beans:value>
+				<beans:value>hospital.model.TypeProcedureMedicine</beans:value>
 			</beans:list>
 		</beans:property>
 		<beans:property name="hibernateProperties">

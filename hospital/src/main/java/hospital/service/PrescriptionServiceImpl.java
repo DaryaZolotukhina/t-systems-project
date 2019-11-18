@@ -1,6 +1,5 @@
 package hospital.service;
 
-import hospital.dao.PatientDAO;
 import hospital.dao.PrescriptionDAO;
 import hospital.model.Prescription;
 import org.springframework.stereotype.Service;

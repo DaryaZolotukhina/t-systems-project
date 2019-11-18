@@ -7,7 +7,7 @@ import java.util.List;
 
 @Entity
 @Table(name="procMed")
-public class ProcMed {
+public class ProcedureMedicine {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id_procMed")
@@ -17,7 +17,7 @@ public class ProcMed {
     @JsonIgnore
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_type")
-    private TypeProcMed typeProcMed;
+    private TypeProcedureMedicine typeProcedureMedicine;
 
     public Integer getId() {
         return id;
@@ -35,12 +35,12 @@ public class ProcMed {
         this.title = title;
     }
 
-    public TypeProcMed getTypeProcMed() {
-        return typeProcMed;
+    public TypeProcedureMedicine getTypeProcedureMedicine() {
+        return typeProcedureMedicine;
     }
 
-    public void setTypeProcMed(TypeProcMed typeProcMed) {
-        this.typeProcMed = typeProcMed;
+    public void setTypeProcedureMedicine(TypeProcedureMedicine typeProcedureMedicine) {
+        this.typeProcedureMedicine = typeProcedureMedicine;
     }
 
     public List<Prescription> getPrescriptions() {
@@ -52,9 +52,9 @@ public class ProcMed {
     }
 
     @JsonIgnore
-    @OneToMany(mappedBy = "procMed", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "procedureMedicine", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Prescription> prescriptions;
     @JsonIgnore
-    @OneToMany(mappedBy = "procMed", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "procedureMedicine", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Prescription> events;
 }

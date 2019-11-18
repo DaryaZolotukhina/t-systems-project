@@ -1,8 +1,6 @@
 package hospital.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
 import java.util.List;
@@ -30,7 +28,7 @@ public class Staff {
     }
 
     public void setIsDoctor(boolean isDoctor) {
-        isDoctor = isDoctor;
+        this.isDoctor = isDoctor;
     }
 
     @JsonIgnore
@@ -74,7 +72,7 @@ public class Staff {
     }
 
     public void setIsDeleted(boolean isDeleted) {
-        isDeleted = isDeleted;
+        this.isDeleted = isDeleted;
     }
 
     public List<Patient> getPatients() {

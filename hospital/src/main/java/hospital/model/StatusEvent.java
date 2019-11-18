@@ -6,7 +6,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name="statusEvent")
+@Table(name="status_event")
 public class StatusEvent {
     public Integer getId() {
         return id;

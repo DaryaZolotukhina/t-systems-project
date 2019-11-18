@@ -1,6 +1,6 @@
 package hospital.dto;
 
-import hospital.model.Patient_Diagnosis;
+import hospital.model.PatientDiagnosis;
 import hospital.model.Prescription;
 import hospital.model.Staff;
 
@@ -52,15 +52,15 @@ public class PatientDto {
 
     private boolean isDischarged;
 
-    public List<Patient_Diagnosis> getPatDiag() {
+    public List<PatientDiagnosis> getPatDiag() {
         return patDiag;
     }
 
-    public void setPatDiag(List<Patient_Diagnosis> patDiag) {
+    public void setPatDiag(List<PatientDiagnosis> patDiag) {
         this.patDiag = patDiag;
     }
 
-    private List<Patient_Diagnosis> patDiag;
+    private List<PatientDiagnosis> patDiag;
 
     public String getInsuranceNum() {
         return insuranceNum;

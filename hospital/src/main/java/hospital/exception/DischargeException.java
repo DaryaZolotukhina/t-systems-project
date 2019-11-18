@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 @Component
-public class DischargeException {
+public class DischargeException extends RuntimeException {
 
     private String errCode;
     private String errMsg;

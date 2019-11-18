@@ -39,7 +39,7 @@ public class Prescription {
     @JsonIgnore
     @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "id_procMed")
-    private ProcMed procMed;
+    private ProcedureMedicine procedureMedicine;
     @Column
     private Integer daySchedule;
     @Column
@@ -90,12 +90,12 @@ public class Prescription {
         this.patient = patient;
     }
 
-    public ProcMed getProcMed() {
-        return procMed;
+    public ProcedureMedicine getProcedureMedicine() {
+        return procedureMedicine;
     }
 
-    public void setProcMed(ProcMed procMed) {
-        this.procMed = procMed;
+    public void setProcedureMedicine(ProcedureMedicine procedureMedicine) {
+        this.procedureMedicine = procedureMedicine;
     }
 
 

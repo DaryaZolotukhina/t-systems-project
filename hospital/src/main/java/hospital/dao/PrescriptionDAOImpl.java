@@ -18,34 +18,34 @@ public class PrescriptionDAOImpl implements PrescriptionDAO {
 
     @Override
     public void deletePrescription(Prescription presc) {
-        Session session = this.sessionFactory.getCurrentSession();
+        Session session = sessionFactory.getCurrentSession();
         session.delete(presc);
     }
 
     @Override
     public Prescription getPrescriptionById(int id){
-        Session session = this.sessionFactory.getCurrentSession();
-        Prescription prescription = (Prescription) session.load(Prescription.class, new Integer(id));
+        Session session = sessionFactory.getCurrentSession();
+        Prescription prescription = (Prescription) session.load(Prescription.class, id);
         return prescription;
     }
 
     @Override
     public List<Prescription> getAllPrescriptions(int id){
-        Session session = this.sessionFactory.getCurrentSession();
-        Patient p = (Patient) session.load(Patient.class, new Integer(id));
+        Session session = sessionFactory.getCurrentSession();
+        Patient p = (Patient) session.load(Patient.class,id);
         List<Prescription> prescriptions=p.getPrescriptions();
         return prescriptions;
     }
 
     @Override
     public void addPresc(Prescription p) {
-        Session session = this.sessionFactory.getCurrentSession();
+        Session session = sessionFactory.getCurrentSession();
         session.persist(p);
     }
 
     @Override
     public void updatePrescription(Prescription presc) {
-        Session session = this.sessionFactory.getCurrentSession();
+        Session session = sessionFactory.getCurrentSession();
         session.update(presc);
     }
 }

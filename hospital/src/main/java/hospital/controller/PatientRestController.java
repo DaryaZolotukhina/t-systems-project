@@ -26,32 +26,24 @@ public class PatientRestController {
     @RequestMapping(value = "{id}", method = RequestMethod.GET, produces = "application/json")
     public ResponseEntity<PatientDto> getPatient(@PathVariable("id") Integer patientId) {
         if (patientId == null) {
-            return new ResponseEntity<PatientDto>(HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
-        PatientDto patient = this.patientService.getById(patientId);
+        PatientDto patient = patientService.getById(patientId);
 
-        return new ResponseEntity<PatientDto>(patient, HttpStatus.OK);
+        return new ResponseEntity<>(patient, HttpStatus.OK);
     }
-
-   /* @RequestMapping(value = "", method = RequestMethod.POST, produces = "application/json")
-    public ResponseEntity<Patient> addPatient(@RequestBody Patient p) {
-            this.patientService.addPatient(p);
-            return new ResponseEntity<Patient>(p,HttpStatus.CREATED);
-
-    }*/
 
     @RequestMapping(value="{id}", method = RequestMethod.DELETE, produces = "application/json")
     public ResponseEntity<Patient> deletePatient(@PathVariable("id") int id){
-        PatientDto patient=this.patientService.getById(id);
 
-        this.patientService.delete(id);
+        patientService.delete(id);
 
-        return new ResponseEntity<Patient>(HttpStatus.NO_CONTENT);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
     @RequestMapping(value="patients", method = RequestMethod.GET, produces = "application/json")
     public ResponseEntity<List<PatientDto>> getAllPatients(){
-        List<PatientDto> patients= this.patientService.getAll();
-        return new ResponseEntity<List<PatientDto>>(patients, HttpStatus.OK);
+        List<PatientDto> patients= patientService.getAll();
+        return new ResponseEntity<>(patients, HttpStatus.OK);
     }
 }

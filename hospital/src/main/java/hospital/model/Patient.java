@@ -1,6 +1,5 @@
 package hospital.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
@@ -42,7 +41,7 @@ public class Patient {
 
 	@Transient
 	@OneToMany(mappedBy = "patient", cascade = CascadeType.ALL, orphanRemoval = true)
-	private List<Patient_Diagnosis> patDiag;
+	private List<PatientDiagnosis> patDiag;
 	@OneToMany(mappedBy = "patient", cascade = CascadeType.ALL, orphanRemoval = true,fetch = FetchType.EAGER)
 	@Fetch(value = FetchMode.SUBSELECT)
 	private List<Prescription> prescriptions;
@@ -107,11 +106,11 @@ public class Patient {
 		isDischarged = discharged;
 	}
 
-    public List<Patient_Diagnosis> getPatDiag() {
+    public List<PatientDiagnosis> getPatDiag() {
         return patDiag;
     }
 
-    public void setPatDiag(List<Patient_Diagnosis> patDiag) {
+    public void setPatDiag(List<PatientDiagnosis> patDiag) {
         this.patDiag = patDiag;
     }
 

@@ -14,7 +14,7 @@ public class Diagnosis {
     private String title;
 
     @OneToMany(mappedBy = "diagnosis", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Patient_Diagnosis> patDiag;
+    private List<PatientDiagnosis> patDiag;
 
     public Integer getId() {
         return id;

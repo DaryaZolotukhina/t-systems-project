@@ -20,13 +20,13 @@ public interface PatientService {
 
 	DischargeException dischargePatient(int id);
 
-	List<Patient> getPatientsByPage(int pageid, int total);
+	List<Patient> getPatientsByPage(int pageid);
 
 	List<Patient> sortSurname(int pageid, String order);
 
-	List<ProcMed> getAllProcMed();
+	List<ProcedureMedicine> getAllProcedureMedicine();
 
-	ProcMed getProcMedByTitle(String title);
+	ProcedureMedicine getProcedureMedicineByTitle(String title);
 
 	Patient getByIdPatient(int id);
 
@@ -36,7 +36,7 @@ public interface PatientService {
 
 	Staff getDoctorBySurname(String surname);
 
-	void addPrescription(int id, String procMed, String period, List<String> daySchedule, List<String> weekSchedule);
+	void addPrescription(int id, String procedureMedicine, String period, List<String> daySchedule, List<String> weekSchedule);
 
 	List<Event> sortEventsDate(String order,int id);
 

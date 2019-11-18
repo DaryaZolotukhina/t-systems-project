@@ -7,7 +7,7 @@ function SortEventsDate(o,idPat,order) {
             console.log(result);
             $(".events1 tbody").empty();
             for (i=0;i<result.length;i++) {
-                $('<tr>').html("<td>" + result[i].procMed.title + "</td><td>" + $.format.date(result[i].dateTimeEvent, "yyyy-MM-dd HH:mm:ss.SSS") + "</td><td>" + result[i].statusEvent.title + "</td>").appendTo('.events1');
+                $('<tr>').html("<td>" + result[i].procedureMedicine.title + "</td><td>" + $.format.date(result[i].dateTimeEvent, "yyyy-MM-dd HH:mm:ss.SSS") + "</td><td>" + result[i].statusEvent.title + "</td>").appendTo('.events1');
             }
         }
     });

@@ -26,10 +26,10 @@
         <mapping class="hospital.model.Staff" />
         <mapping class="hospital.model.Event" />
         <mapping class="hospital.model.Prescription" />
-        <mapping class="hospital.model.ProcMed" />
+        <mapping class="hospital.model.ProcedureMedicine" />
         <mapping class="hospital.model.Diagnosis" />
-        <mapping class="hospital.model.Patient_Diagnosis" />
+        <mapping class="hospital.model.PatientDiagnosis" />
         <mapping class="hospital.model.StatusEvent" />
-        <mapping class="hospital.model.TypeProcMed" />
+        <mapping class="hospital.model.TypeProcedureMedicine" />
     </session-factory>
 </hibernate-configuration>

@@ -1,4 +1,4 @@
-package hospital.utils;
+package hospital.service.utils;
 
 
 import java.util.ArrayList;
@@ -6,7 +6,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-public class Utils {
+public class CalculationDateUtils {
     public static Date getNearestDayOfWeek(int dayOfWeek, Calendar now) {
         int weekday = now.get(Calendar.DAY_OF_WEEK);
 

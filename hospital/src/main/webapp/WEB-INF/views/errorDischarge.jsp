@@ -13,7 +13,7 @@
     <h1>HTTP Status ${error.errCode}</h1>
     <h2> ${error.errMsg}</h2>
     <c:forEach  items="${error.prescriptionList}" var ="prescription">
-    <h2>Id: ${prescription.id}, ${prescription.procMed.title}, ${prescription.period} weeks, ${prescription.dose}</h2>
+    <h2>Id: ${prescription.id}, ${prescription.procedureMedicine.title}, ${prescription.period} weeks, ${prescription.dose}</h2>
     </c:forEach>
 </div>
 </div>

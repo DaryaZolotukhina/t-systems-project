@@ -3,6 +3,8 @@
 
 <html>
 <head>
+    <script src="/bootstrap/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/bootstrap/bootstrap.min.css">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Title Login Page</title>
 </head>
@@ -16,19 +18,20 @@
   </span>
 </c:if>
 
-<form name="frm" action="<c:url value='login'/>" method="post">
-    <table>
-        <tr> <td>User:</td> <td><input type="text" name="username"></td></tr>
-
-        <tr><td>Password:</td> <td><input type="password" name="password"></td></tr>
-
-        <tr><td colspan="2"><input name="submit" type="submit"></td></tr>
-        <tr><td colspan="2"><input name="reset" type="reset"></td></tr>
-    </table>
-
+<form name="frm" action="<c:url value='login'/>" method="post" class="col-sm-3">
+    <div class="form-group">
+        <label for="username">Username:</label>
+        <input class="form-control" id="username" name="username">
+    </div>
+    <div class="form-group">
+        <label for="pwd">Password:</label>
+        <input type="password" class="form-control" id="pwd" name="password">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
     <input type="hidden" name="<c:out value="${_csrf.parameterName}"/>"
            value="<c:out value="${_csrf.token}"/>"/>
 </form>
+
 
 </body>
 

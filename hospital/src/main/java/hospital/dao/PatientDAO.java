@@ -21,9 +21,9 @@ public interface PatientDAO {
 	List<Patient> sortSurname(int pageid, String order);
 
 
-	List<ProcMed> getAllProcMed();
+	List<ProcedureMedicine> getAllProcedureMedicine();
 
-	ProcMed getProcMedByTitle(String title);
+	ProcedureMedicine getProcedureMedicineByTitle(String title);
 
 	List<Staff> getAllDoctors();
 

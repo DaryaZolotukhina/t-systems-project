@@ -49,8 +49,8 @@ public class PatientController {
 
 	@RequestMapping(value = "/patient/{id}",method = RequestMethod.GET)
 	public String getById(@PathVariable("id") int id, Model model){
-		model.addAttribute("patient", this.patientService.getById(id));
-		model.addAttribute("prescriptions",this.prescriptionService.getAllPrescriptions(id));
+		model.addAttribute("patient", patientService.getById(id));
+		model.addAttribute("prescriptions",prescriptionService.getAllPrescriptions(id));
 		model.addAttribute("prescription",new Prescription());
 		model.addAttribute("events",eventService.getAllEvents(id));
 		model.addAttribute("event",new Event());
@@ -60,7 +60,7 @@ public class PatientController {
 	@RequestMapping(value = "/dischargePatient/{id}", method = RequestMethod.GET)
     @ResponseBody
 	public DischargeException dischargePatient(@PathVariable("id") int id) {
-		return this.patientService.dischargePatient(id);
+		return patientService.dischargePatient(id);
 	}
 
 	@RequestMapping(value = "/allDoctors", method = RequestMethod.GET)
@@ -71,19 +71,19 @@ public class PatientController {
 
 	@RequestMapping(value = "/allProcMed", method = RequestMethod.GET)
 	@ResponseBody
-	public List<ProcMed> getAllProcMed() {
-		return patientService.getAllProcMed();
+	public List<ProcedureMedicine> getAllProcedureMedicine() {
+		return patientService.getAllProcedureMedicine();
 	}
 
 
 	@RequestMapping(value = "/createPrescription/{id}", method = RequestMethod.POST)
 	public String createPresc(@PathVariable("id") int id,
-									@RequestParam("procMed") String procMed,
+									@RequestParam("procedureMedicine") String procedureMedicine,
 									@RequestParam("periodSelect") String period,
 									@RequestParam(value="daySchedule",defaultValue="") List<String> daySchedule,
 									@RequestParam(value="weekSchedule",defaultValue="") List<String> weekSchedule) {
 
-		patientService.addPrescription(id, procMed, period, daySchedule, weekSchedule);
+		patientService.addPrescription(id, procedureMedicine, period, daySchedule, weekSchedule);
         return "redirect:/patient/{id}";
 	}
 
@@ -101,7 +101,7 @@ public class PatientController {
 							 @RequestParam("insuranceNum") String insuranceNum,
 							 @RequestParam("doctor") String doctor){
 
-		this.patientService.addPatient(surname, name, patronymic, insuranceNum, doctor);
+		patientService.addPatient(surname, name, patronymic, insuranceNum, doctor);
 		return "redirect:/patients";
 		
 	}
@@ -109,7 +109,7 @@ public class PatientController {
 	@RequestMapping(value="/remove/{id}",method = RequestMethod.DELETE)
     public String removePerson(@PathVariable("id") int id){
 		
-        this.patientService.delete(id);
+        patientService.delete(id);
         return "redirect:/patients";
     }
 
@@ -119,31 +119,25 @@ public class PatientController {
 								@RequestParam("patronymic") String patronymic,
 								@RequestParam("insuranceNum") String insuranceNum,
 								@RequestParam("doctor") String doctor){
-		this.patientService.addPatient(surname, name, patronymic, insuranceNum, doctor);
+		patientService.addPatient(surname, name, patronymic, insuranceNum, doctor);
 		return "redirect:/patients";
 	}
 
 	@RequestMapping(value="/updateDeletePatient/{id}")
 	public String updateDeletePatient(@PathVariable("id") int id){
-		this.patientService.updateDeletePatient(id);
+		patientService.updateDeletePatient(id);
 		return "redirect:/patients";
 	}
 
 	@RequestMapping(value="/update/{id}",method = RequestMethod.GET)
 	public String update(@PathVariable("id") int id, Model model){
-		model.addAttribute("patient",this.patientService.getById(id));
+		model.addAttribute("patient",patientService.getById(id));
 		return "editPatient";
 	}
 
 	@RequestMapping(value= "/init/{page_id}", method= RequestMethod.GET)
 	public String paginate(@PathVariable int page_id, Model model) {
-		int total = 5;
-		if(page_id == 1) {
-		} else {
-			page_id= (page_id-1)*total+1;
-		}
-
-		List<Patient> list = this.patientService.getPatientsByPage(page_id, total);
+		List<Patient> list = patientService.getPatientsByPage(page_id);
 		model.addAttribute("patient", new Patient());
 		model.addAttribute("listPatients",list);
 		model.addAttribute("pageId", page_id);
@@ -153,11 +147,6 @@ public class PatientController {
 
 	@RequestMapping(value= "/sortSurname/{page_id}/{order}", method= RequestMethod.GET)
 	public @ResponseBody List<Patient> sortSurname(@PathVariable int page_id,@PathVariable String  order) {
-		int total = 5;
-		if(page_id == 1) {
-		} else {
-			page_id= (page_id-1)*total+1;
-		}
 		return patientService.sortSurname(page_id, order);
 	}
 

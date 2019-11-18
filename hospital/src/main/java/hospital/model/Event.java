@@ -28,17 +28,17 @@ public class Event {
         this.id = id;
     }
 
-    public ProcMed getProcMed() {
-        return procMed;
+    public ProcedureMedicine getProcedureMedicine() {
+        return procedureMedicine;
     }
 
-    public void setProcMed(ProcMed procMed) {
-        this.procMed = procMed;
+    public void setProcedureMedicine(ProcedureMedicine procedureMedicine) {
+        this.procedureMedicine = procedureMedicine;
     }
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_procMed")
-    private ProcMed procMed;
+    private ProcedureMedicine procedureMedicine;
     @JsonIgnore
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_prescription")

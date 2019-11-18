@@ -9,35 +9,13 @@
     <script src="/bootstrap/bootstrap.min.js"></script>
     <link rel="stylesheet" href="/bootstrap/bootstrap.min.css">
     <script src="/jQuery/jquery.autocomplete.min.js"></script>
+    <script src="/jQuery/getAllDoctors.js"></script>
     <title>Create Patient Page</title>
 </head>
 <body>
-<script>
-    $(document).ready(function() {
+<style>.autocomplete-suggestions{background:#ffffff;}</style>
 
-        $('#doctor').autocomplete({
-            serviceUrl: '${pageContext.request.contextPath}/allDoctors',
-            paramName: "surname",
-            delimiter: ",",
-            transformResult: function(response) {
-
-                return {
-                    suggestions: $.map($.parseJSON(response), function(item) {
-
-                        return { data: item.id, value: item.surname, name:item.name,
-                            patronymic:item.patronymic, isDeleted:item.isDeleted, isDoctor:item.isDoctor  };
-                    })
-
-                };
-
-            }
-
-        });
-
-    });
-</script>
-
-
+<h1 class="ml-3 mb-4 mt-2">Edit patient</h1>
 <form id="myform" action="/updatePatient" method="post" class="col-sm-8">
     <div class="form-group">
         <label for="surname">Surname</label>

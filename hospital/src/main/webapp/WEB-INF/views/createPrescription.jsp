@@ -22,7 +22,7 @@
 <script>
     $(document).ready(function() {
 
-        $('#procMed').autocomplete({
+        $('#procedureMedicine').autocomplete({
             serviceUrl: '${pageContext.request.contextPath}/allProcMed',
             paramName: "title",
             delimiter: ",",
@@ -63,13 +63,13 @@
 <h1 class="ml-3 mb-4 mt-2">Create prescription</h1>
 <form id="myform" action="/createPrescription/${id}" method="post" class="col-sm-8">
     <div class="form-group">
-        <label for="procMed">Procedure or medicine</label>
-        <input type="text" class="form-control mdb-autocomplete" id="procMed" name="procMed" placeholder="Procedure or medicine">
-        <label for="procMed">Repeat per</label>
+        <label for="procedureMedicine">Procedure or medicine</label>
+        <input type="text" class="form-control mdb-autocomplete" id="procedureMedicine" name="procedureMedicine" placeholder="Procedure or medicine">
+        <label for="procedureMedicine">Repeat per</label>
         <label class="radio-inline"><input type="radio" name="optradio" checked id="but1"/>Day</label>
         <label class="radio-inline"><input type="radio" name="optradio" id="but2" />Week</label>
         <label for="periodSelect">Period</label>
-        <select class="form-control" name="periodSelect" id="periodSelect">
+       <select class="form-control" name="periodSelect" id="periodSelect">
             <option>1</option>
             <option>2</option>
             <option>3</option>
@@ -102,7 +102,7 @@
             <option>30</option>
         </select>
         <div class="day">
-        <label for="procMed">Day schedule</label>
+        <label for="procedureMedicine">Day schedule</label>
         <select id="daySchedule" name="daySchedule" multiple="multiple">
             <option value="00:00">00:00</option>
             <option value="01:00">01:00</option>
@@ -131,7 +131,7 @@
         </select>
         </div>
         <div class="week">
-        <label for="procMed">Week schedule</label>
+        <label for="procedureMedicine">Week schedule</label>
         <select id="weekSchedule" name="weekSchedule" multiple="multiple">
             <option value="Monday">Monday</option>
             <option value="Tuesday">Tuesday</option>

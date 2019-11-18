@@ -1,22 +1,17 @@
 package hospital.service;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import hospital.dao.PrescriptionDAO;
 import hospital.dto.PatientDto;
 import hospital.exception.DischargeException;
 import hospital.model.*;
-import org.hibernate.Session;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import hospital.dao.PatientDAO;
-import org.springframework.web.bind.annotation.RequestParam;
 
-import static hospital.utils.Utils.calcDate;
-import static hospital.utils.Utils.calcDateTime;
 
 @Service
 public class PatientServiceImpl implements PatientService {
@@ -26,6 +21,8 @@ public class PatientServiceImpl implements PatientService {
 	private PatientDAO patientDAO;
 	private PrescriptionDAO prescriptionDAO;
 	private DischargeException dischargeException;
+
+    private static final int NUMBER_OF_RESULTS_PER_PAGE = 5;
 
 	public void setPrescriptionDAO(PrescriptionDAO prescriptionDAO) {
 		this.prescriptionDAO = prescriptionDAO;
@@ -57,16 +54,16 @@ public class PatientServiceImpl implements PatientService {
     @Override
     @Transactional
     public void updateDeletePatient(int id) {
-        Patient patient = this.patientDAO.getById(id);
+        Patient patient = patientDAO.getById(id);
         patient.setIsDeleted(true);
-	    this.patientDAO.updatePatient(patient);
+	    patientDAO.updatePatient(patient);
     }
 
 	@Override
 	@Transactional
 	public List<PatientDto> getAll() {
-		List<PatientDto> listPatDto=new ArrayList<PatientDto>();
-		List<Patient> listPat= this.patientDAO.getAll();
+		List<PatientDto> listPatDto=new ArrayList<>();
+		List<Patient> listPat= patientDAO.getAll();
 		for (Patient patient : listPat){
 			PatientDto patientDto=new PatientDto();
 			patientDto.setId(patient.getId());
@@ -85,7 +82,7 @@ public class PatientServiceImpl implements PatientService {
 	@Transactional
 	public PatientDto getById(int id) {
 		PatientDto patientDto=new PatientDto();
-		Patient patient = this.patientDAO.getById(id);
+		Patient patient = patientDAO.getById(id);
 		patientDto.setId(patient.getId());
 		patientDto.setSurname(patient.getSurname());
 		patientDto.setName(patient.getName());
@@ -102,13 +99,13 @@ public class PatientServiceImpl implements PatientService {
     @Override
     @Transactional
     public Patient getByIdPatient(int id) {
-        return this.patientDAO.getById(id);
+        return patientDAO.getById(id);
     }
 
 	@Override
 	@Transactional
 	public void delete(int id) {
-		this.patientDAO.delete(id);
+		patientDAO.delete(id);
 	}
 
 	@Override
@@ -122,8 +119,8 @@ public class PatientServiceImpl implements PatientService {
 				notDonePrescList.add(presc);
 			}
 		}
-		if (notDonePrescList.size() > 0) {
-			return this.dischargeException.error(notDonePrescList);
+		if (! notDonePrescList.isEmpty()) {
+			return dischargeException.error(notDonePrescList);
 		} else {
 			for (Event event : eventsList) {
 				eventService.updateDeleteEvent(event);
@@ -131,17 +128,17 @@ public class PatientServiceImpl implements PatientService {
 			for (Prescription presc : prescList) {
 				prescriptionService.updateDeletePrescription(presc);
 			}
-			Patient patient = this.patientDAO.getById(id);
+			Patient patient = patientDAO.getById(id);
 			patient.setIsDischarged(true);
-			this.patientDAO.updatePatient(patient);
+			patientDAO.updatePatient(patient);
 		}
 		return null;
 	}
 
 	@Override
     @Transactional
-    public ProcMed getProcMedByTitle(String title) {
-        return patientDAO.getProcMedByTitle(title);
+    public ProcedureMedicine getProcedureMedicineByTitle(String title) {
+        return patientDAO.getProcedureMedicineByTitle(title);
     }
 
 	@Override
@@ -175,6 +172,8 @@ public class PatientServiceImpl implements PatientService {
                 case ("Sunday"):
                     result += (int) Math.pow(2, 6);
                     break;
+                default:
+                    return null;
             }
         }
         return result;
@@ -256,6 +255,8 @@ public class PatientServiceImpl implements PatientService {
                 case ("23:00"):
                     result += (int) Math.pow(2, 23);
                     break;
+                default:
+                    return null;
             }
         }
         return result;
@@ -264,8 +265,8 @@ public class PatientServiceImpl implements PatientService {
 
 	@Transactional
 	@Override
-	public List<ProcMed> getAllProcMed(){
-		return patientDAO.getAllProcMed();
+	public List<ProcedureMedicine> getAllProcedureMedicine(){
+		return patientDAO.getAllProcedureMedicine();
 	}
 
 	@Transactional
@@ -283,15 +284,23 @@ public class PatientServiceImpl implements PatientService {
 
 	@Override
 	@Transactional
-	public List<Patient> getPatientsByPage(int pageid, int total) {
-		return patientDAO.getPatientsByPage(pageid, total);
+	public List<Patient> getPatientsByPage(int pageid) {
+        if(pageid == 1) {
+        } else {
+            pageid= (pageid-1)*NUMBER_OF_RESULTS_PER_PAGE+1;
+        }
+	    return patientDAO.getPatientsByPage(pageid, NUMBER_OF_RESULTS_PER_PAGE);
 	}
 
 
 	@Override
 	@Transactional
 	public List<Patient> sortSurname(int pageid, String order) {
-		return patientDAO.sortSurname(pageid, order);
+        if(pageid == 1) {
+        } else {
+            pageid= (pageid-1)*NUMBER_OF_RESULTS_PER_PAGE+1;
+        }
+	    return patientDAO.sortSurname(pageid, order);
 	}
 
 	@Override
@@ -302,16 +311,16 @@ public class PatientServiceImpl implements PatientService {
 
     @Override
     @Transactional
-    public void addPrescription(int id, String procMed, String period, List<String> daySchedule, List<String> weekSchedule){
+    public void addPrescription(int id, String procedureMedicine, String period, List<String> daySchedule, List<String> weekSchedule){
 	    Prescription p =new Prescription();
 	    p.setPatient(getByIdPatient(id));
-	    p.setProcMed(getProcMedByTitle(procMed));
-	    if (daySchedule.size()==0){
+	    p.setProcedureMedicine(getProcedureMedicineByTitle(procedureMedicine));
+	    if (daySchedule.isEmpty()){
 	        p.setDaySchedule(0);
         }
 	    else
 	        p.setDaySchedule(dayToBitMask(daySchedule));
-        if (weekSchedule.size()==0){
+        if (weekSchedule.isEmpty()){
             p.setWeekSchedule(0);
         }
         else
@@ -321,7 +330,7 @@ public class PatientServiceImpl implements PatientService {
         p.setIsDeleted(false);
         p.setIsDone(false);
 
-        this.prescriptionDAO.addPresc(p);
+        prescriptionDAO.addPresc(p);
 
     }
 

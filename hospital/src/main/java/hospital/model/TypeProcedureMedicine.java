@@ -5,7 +5,7 @@ import java.util.List;
 
 @Entity
 @Table(name="typeProcMed")
-public class TypeProcMed {
+public class TypeProcedureMedicine {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id_type")
@@ -13,8 +13,8 @@ public class TypeProcMed {
     @Column
     private String title;
 
-    @OneToMany(mappedBy = "typeProcMed", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<ProcMed> procMeds;
+    @OneToMany(mappedBy = "typeProcedureMedicine", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<ProcedureMedicine> procedureMedicineList;
     public Integer getId() {
         return id;
     }

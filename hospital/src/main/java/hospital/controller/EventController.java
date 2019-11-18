@@ -2,8 +2,6 @@ package hospital.controller;
 
 import hospital.model.Event;
 import hospital.service.EventService;
-import hospital.service.PatientService;
-import hospital.service.PrescriptionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;

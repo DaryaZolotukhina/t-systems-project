@@ -1,7 +1,5 @@
 package hospital.controller;
 
-import hospital.model.Prescription;
-import hospital.service.PatientService;
 import hospital.service.PrescriptionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -19,7 +17,7 @@ public class PrescriptionController {
     @Autowired(required=true)
     @Qualifier(value="prescriptionService")
     public void setPrescriptionService(PrescriptionService ps){
-        this.prescriptionService = ps;
+        prescriptionService = ps;
     }
 
     @RequestMapping(value = "/createPrescription/{id}", method = RequestMethod.GET)

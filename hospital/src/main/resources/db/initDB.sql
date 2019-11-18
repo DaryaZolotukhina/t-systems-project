@@ -80,6 +80,8 @@ CREATE TABLE public.procMed
 
 select * from procMed;
 
+    ALTER TABLE StatusEvent RENAME TO status_event;
+
 insert into procMed values (2, 'Analgin');
     insert into procMed values (3, 'Nospa');
 

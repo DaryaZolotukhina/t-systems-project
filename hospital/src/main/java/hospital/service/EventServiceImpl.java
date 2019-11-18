@@ -11,8 +11,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import static hospital.utils.Utils.calcDate;
-import static hospital.utils.Utils.calcDateTime;
+import static hospital.service.utils.CalculationDateUtils.calcDate;
+import static hospital.service.utils.CalculationDateUtils.calcDateTime;
 
 @Service
 public class EventServiceImpl implements EventService {
@@ -56,7 +56,7 @@ public class EventServiceImpl implements EventService {
     @Transactional
     public List<Event> generateEvents(int id) {
         Prescription presc=prescriptionService.getPrescriptionById(id);
-        List<Event> events=new ArrayList<Event>();
+        List<Event> events=new ArrayList<>();
         int period=presc.getPeriod();
         int eventCnt;
         List<Date> dates;
@@ -72,7 +72,7 @@ public class EventServiceImpl implements EventService {
         for(int i=0;i<eventCnt;i++){
             Event event=new Event();
             event.setPatient(presc.getPatient());
-            event.setProcMed(presc.getProcMed());
+            event.setProcedureMedicine(presc.getProcedureMedicine());
             event.setPrescription(presc);
             event.setDateTimeEvent(dates.get(i));
             event.setStatusEvent(eventDAO.getStatusEventById(1));

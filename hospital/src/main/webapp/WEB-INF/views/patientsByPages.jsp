@@ -10,33 +10,9 @@
     <link rel="stylesheet" href="/bootstrap/bootstrap.min.css">
     <script src="/jQuery/jquery-3.4.1.min.js"></script>
     <script src="/jQuery/jquery-dateformat.min.js"></script>
-    <!-- <script src="/jQuery/sortSurname.js"></script> -->
+    <script src="/jQuery/sortSurname.js"></script>
 </head>
 <body>
-<script>
-    function SortSurname(o,pageId,order) {
-        var str = '/sortSurname/' + pageId + '/' + order;
-        $.ajax({
-            type: 'GET',
-            url: str,
-            success: function(result) {
-                console.log(result);
-                $(".patientsTb tbody").empty();
-                for (i=0;i<result.length;i++) {
-                    if (!(result[i].isDischarged))
-                        if (!(result[i].isDeleted))
-                    {
-                        $('<tr>').html("<td><a href=\"/patient/" + result[i].id + " \">"+result[i].id+"</a></td><td>" + result[i].surname +
-                            "</td><td>" + result[i].name + "</td><td>" + result[i].patronymic +
-                            "</td><td><a href=\"/updateDeletePatient/" + result[i].id +
-                            " \"><button>Delete</button></a></td><td><a href=\"/update/" + result[i].id +
-                            " \"><button>Update</button></a></td>").appendTo('.patientsTb');
-                    }
-                }
-            }
-        });
-    }
-</script>
 <h1>Patient List</h1>
 <br/>
 <div class="col-sm-8">
@@ -67,15 +43,17 @@
         </tbody>
     </table>
     <br>
-    <a href="/patient/add"><button>Create user</button></a>
     <!-- Pagination links in spring mvc. -->
     <ul class="pagination pagination-sm">
         <li class="page-item"><a class="page-link" href="/init/1">1</a></li>
         <li class="page-item"><a class="page-link" href="/init/2">2</a></li>
         <li class="page-item"><a class="page-link" href="/init/3">3</a></li>
     </ul>
+    <a href="/patient/add"><button>Create user</button></a>
+    <br>
+    <br>
     <form action="<c:url value="/logout"/>" method="post">
-        <input type="submit" value="Logoff"/> (also clears any remember-me cookie)
+        <input type="submit" value="Logoff"/>
         <security:csrfInput/>
     </form>
 </div>
