@@ -99,6 +99,7 @@ public class PatientServiceImpl implements PatientService {
         patientDto.setPatDiag(patient.getPatDiag());
         patientDto.setIsDeleted(patient.getIsDeleted());
         patientDto.setIsDischarged(patient.getIsDischarged());
+        patientDto.setStaff(patient.getStaff());
 		return patientDto;
 	}
 
@@ -396,7 +397,8 @@ public class PatientServiceImpl implements PatientService {
 		p.setName(name);
 		p.setPatronymic(patronymic);
 		p.setInsuranceNum(insuranceNum);
-		p.setStaff(getDoctorBySurname(doctor));
+		Staff staff=getDoctorBySurname(doctor);
+		p.setStaff(staff);
 		p.setIsDeleted(false);
 		p.setIsDischarged(false);
 

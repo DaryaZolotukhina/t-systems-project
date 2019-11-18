@@ -135,6 +135,8 @@ INSERT INTO prescriptions VALUES (2,1,1,'111','0000000',2,2,false);
     INSERT INTO prescriptions VALUES (4,2,1,'111','0000000',2,2,false);
 select * from prescriptions;
 
+INSERT INTO STAFF VALUES (2,'Semenov','Andrey','Vitalievich',false,true);
+
     update prescriptions set daySchedule=42;
 
 CREATE TABLE public.events

@@ -173,7 +173,8 @@ public class PatientDAOImpl implements PatientDAO {
 		cq.select(from);
 		cq.where(em.getCriteriaBuilder().equal(from.get("surname"),surname));
 
-		return em.createQuery(cq).getSingleResult();
+		Staff staff=em.createQuery(cq).getSingleResult();
+		return staff;
 	}
 
 	@Override

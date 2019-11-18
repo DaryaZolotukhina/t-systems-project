@@ -2,6 +2,7 @@ package hospital.dto;
 
 import hospital.model.Patient_Diagnosis;
 import hospital.model.Prescription;
+import hospital.model.Staff;
 
 import java.util.List;
 
@@ -20,6 +21,16 @@ public class PatientDto {
     private String name;
     private String patronymic;
     private String insuranceNum;
+
+    public Staff getStaff() {
+        return staff;
+    }
+
+    public void setStaff(Staff staff) {
+        this.staff = staff;
+    }
+
+    private Staff staff;
 
     public boolean getIsDischarged() {
         return isDischarged;

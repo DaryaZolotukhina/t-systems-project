@@ -32,9 +32,7 @@ public class Patient {
 		this.staff = staff;
 	}
 
-	@JsonIgnore
-	@Transient
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne(cascade = CascadeType.MERGE)
 	@JoinColumn(name = "id_staff")
 	private Staff staff;
 	@Column

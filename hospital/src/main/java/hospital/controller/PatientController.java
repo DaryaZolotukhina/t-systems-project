@@ -109,8 +109,12 @@ public class PatientController {
     }
 
 	@RequestMapping(value="/updatePatient",method = RequestMethod.POST)
-	public String updateUser(@ModelAttribute("patient") Patient p){
-		this.patientService.updatePatient(p);
+	public String updatePatient(@RequestParam("surname") String surname,
+								@RequestParam("name") String name,
+								@RequestParam("patronymic") String patronymic,
+								@RequestParam("insuranceNum") String insuranceNum,
+								@RequestParam("doctor") String doctor){
+		this.patientService.addPatient(surname, name, patronymic, insuranceNum, doctor);
 		return "redirect:/patients";
 	}
 
