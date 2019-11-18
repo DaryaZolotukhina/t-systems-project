@@ -2,7 +2,9 @@ package hospital.controller;
 
 import hospital.exception.DischargeException;
 import hospital.model.*;
+import hospital.service.EventService;
 import hospital.service.PatientService;
+import hospital.service.PrescriptionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -17,11 +19,27 @@ import java.util.List;
 public class PatientController {
 	
 	private PatientService patientService;
-	
+	private PrescriptionService prescriptionService;
+
+	@Autowired(required=true)
+	@Qualifier(value="prescriptionService")
+	public void setPrescriptionService(PrescriptionService prescriptionService) {
+		this.prescriptionService= prescriptionService;
+	}
+
+
 	@Autowired(required=true)
 	@Qualifier(value="patientService")
 	public void setPatientService(PatientService ps){
 		this.patientService = ps;
+	}
+
+	private EventService eventService;
+
+	@Autowired(required=true)
+	@Qualifier(value="eventService")
+	public void setEventService(EventService eventService) {
+		this.eventService= eventService;
 	}
 	
 	@RequestMapping(value = "/patients", method = RequestMethod.GET)
@@ -32,9 +50,9 @@ public class PatientController {
 	@RequestMapping(value = "/patient/{id}",method = RequestMethod.GET)
 	public String getById(@PathVariable("id") int id, Model model){
 		model.addAttribute("patient", this.patientService.getById(id));
-		model.addAttribute("prescriptions",this.patientService.getAllPrescriptions(id));
+		model.addAttribute("prescriptions",this.prescriptionService.getAllPrescriptions(id));
 		model.addAttribute("prescription",new Prescription());
-		model.addAttribute("events",this.patientService.getAllEvents(id));
+		model.addAttribute("events",eventService.getAllEvents(id));
 		model.addAttribute("event",new Event());
 		return "showPatient";
 	}
@@ -57,11 +75,6 @@ public class PatientController {
 		return patientService.getAllProcMed();
 	}
 
-	@RequestMapping(value = "/createPrescription/{id}", method = RequestMethod.GET)
-	public String createPresc(@PathVariable("id") int id, Model model) {
-		model.addAttribute("id", id);
-		return "createPrescription";
-	}
 
 	@RequestMapping(value = "/createPrescription/{id}", method = RequestMethod.POST)
 	public String createPresc(@PathVariable("id") int id,
@@ -72,14 +85,6 @@ public class PatientController {
 
 		patientService.addPrescription(id, procMed, period, daySchedule, weekSchedule);
         return "redirect:/patient/{id}";
-	}
-
-
-	@RequestMapping(value = "/prescription/{idPat}/{idPresc}", method = RequestMethod.GET)
-	public @ResponseBody
-	List<Event> generateEvents(@PathVariable("idPat") int idPat, @PathVariable("idPresc") int idPresc){
-		this.patientService.generateEvents(idPresc);
-		return this.patientService.getAllEvents(idPat);
 	}
 
 

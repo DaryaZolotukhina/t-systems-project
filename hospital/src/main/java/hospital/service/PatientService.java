@@ -16,37 +16,17 @@ public interface PatientService {
 
 	List<PatientDto> getAll();
 
-	List<Event> generateEvents(int id);
-
-	List<Prescription> getAllPrescriptions(int id);
-
-	List<Event> getAllEvents(int id);
-
-	Prescription getPrescriptionById(int id);
-
 	void updateDeletePatient(int id);
 
-	void deletePrescription(Prescription presc);
-
-	void deleteEvent(Event event);
-
 	DischargeException dischargePatient(int id);
-
-	void updateDeleteEvent(Event event);
-
-	void updateDeletePrescription(Prescription presc);
 
 	List<Patient> getPatientsByPage(int pageid, int total);
 
 	List<Patient> sortSurname(int pageid, String order);
 
-	List<Event> sortEventsDate(String order,int id);
-
 	List<ProcMed> getAllProcMed();
 
 	ProcMed getProcMedByTitle(String title);
-
-	void addPrescription(int id, String procMed, String period, List<String> daySchedule, List<String> weekSchedule);
 
 	Patient getByIdPatient(int id);
 
@@ -55,5 +35,9 @@ public interface PatientService {
 	void addPatient(String surname, String name, String patronymic, String insuranceNum, String doctor);
 
 	Staff getDoctorBySurname(String surname);
+
+	void addPrescription(int id, String procMed, String period, List<String> daySchedule, List<String> weekSchedule);
+
+	List<Event> sortEventsDate(String order,int id);
 
 	}

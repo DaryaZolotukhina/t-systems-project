@@ -98,31 +98,6 @@ public class PatientDAOImpl implements PatientDAO {
 	}
 
 	@Override
-	public void updatePrescription(Prescription presc) {
-		Session session = this.sessionFactory.getCurrentSession();
-		session.update(presc);
-	}
-
-	@Override
-	public void updateEvent(Event event) {
-		Session session = this.sessionFactory.getCurrentSession();
-		session.update(event);
-	}
-
-	@Override
-	public void deletePrescription(Prescription presc) {
-		Session session = this.sessionFactory.getCurrentSession();
-		session.delete(presc);
-	}
-
-	@Override
-	public void deleteEvent(Event event) {
-		Session session = this.sessionFactory.getCurrentSession();
-		session.delete(event);
-	}
-
-	@SuppressWarnings("unchecked")
-	@Override
 	public List<Patient> getAll() {
 		Session session = this.sessionFactory.getCurrentSession();
 		List<Patient> patientsList = session.createQuery("from Patient").list();
@@ -186,46 +161,4 @@ public class PatientDAOImpl implements PatientDAO {
 		}
 	}
 
-	@Override
-	public StatusEvent getStatusEventById(int id){
-		Session session = this.sessionFactory.getCurrentSession();
-		StatusEvent statusEvent = (StatusEvent) session.load(StatusEvent.class, new Integer(id));
-		return statusEvent;
-	}
-
-	@Override
-	public Prescription getPrescriptionById(int id){
-		Session session = this.sessionFactory.getCurrentSession();
-		Prescription prescription = (Prescription) session.load(Prescription.class, new Integer(id));
-		return prescription;
-	}
-
-	@Override
-	public List<Prescription> getAllPrescriptions(int id){
-		Session session = this.sessionFactory.getCurrentSession();
-		Patient p = (Patient) session.load(Patient.class, new Integer(id));
-		List<Prescription> prescriptions=p.getPrescriptions();
-		return prescriptions;
-	}
-
-	@Override
-	public List<Event> getAllEvents(int id){
-		Session session = this.sessionFactory.getCurrentSession();
-		Patient p = (Patient) session.load(Patient.class, new Integer(id));
-		List<Event> events=p.getEvents();
-		return events;
-	}
-
-
-	@Override
-	public void saveEvent(Event event) {
-		Session session = this.sessionFactory.getCurrentSession();
-		session.persist(event);
-	}
-
-	@Override
-    public void addPresc(Prescription p) {
-        Session session = this.sessionFactory.getCurrentSession();
-        session.persist(p);
-    }
 }

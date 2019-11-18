@@ -26,7 +26,7 @@
                     if (!(result[i].isDischarged))
                         if (!(result[i].isDeleted))
                     {
-                        $('<tr>').html("<td>" + result[i].id + "</td><td>" + result[i].surname +
+                        $('<tr>').html("<td><a href=\"/patient/" + result[i].id + " \">"+result[i].id+"</a></td><td>" + result[i].surname +
                             "</td><td>" + result[i].name + "</td><td>" + result[i].patronymic +
                             "</td><td><a href=\"/updateDeletePatient/" + result[i].id +
                             " \"><button>Delete</button></a></td><td><a href=\"/update/" + result[i].id +
