@@ -44,13 +44,6 @@ public class PatientServiceImpl implements PatientService {
 		this.dischargeException = dischargeException;
 	}
 
-
-	@Override
-	@Transactional
-	public void updatePatient(Patient p) {
-		this.patientDAO.updatePatient(p);
-	}
-
     @Override
     @Transactional
     public void updateDeletePatient(int id) {
@@ -326,7 +319,7 @@ public class PatientServiceImpl implements PatientService {
         else
             p.setWeekSchedule(weekToBitMask(weekSchedule));
         p.setPeriod(Integer.parseInt(period));
-        p.setDose((float)0.0);
+        p.setDose((float)1.0);
         p.setIsDeleted(false);
         p.setIsDone(false);
 
@@ -349,4 +342,19 @@ public class PatientServiceImpl implements PatientService {
 
 		patientDAO.addPatient(p);
 	}
+
+    @Override
+    @Transactional
+    public void updatePatient(int id,String surname, String name, String patronymic, String insuranceNum, String doctor) {
+	    Patient p=getByIdPatient(id);
+        p.setSurname(surname);
+        p.setName(name);
+        p.setPatronymic(patronymic);
+        p.setInsuranceNum(insuranceNum);
+        Staff staff=getDoctorBySurname(doctor);
+        p.setStaff(staff);
+        p.setIsDeleted(false);
+        p.setIsDischarged(false);
+        this.patientDAO.updatePatient(p);
+    }
 }

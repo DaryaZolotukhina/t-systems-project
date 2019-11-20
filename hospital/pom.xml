@@ -155,6 +155,11 @@
             <artifactId>jackson-databind</artifactId>
             <version>${jackson.version}</version>
         </dependency>
+		<dependency>
+			<groupId>com.googlecode.flyway</groupId>
+			<artifactId>flyway-core</artifactId>
+			<version>1.5</version>
+		</dependency>
 	</dependencies>
     <build>
         <plugins>
@@ -178,6 +183,18 @@
                     <mainClass>org.test.int1.Main</mainClass>
                 </configuration>
             </plugin>
+			<plugin>
+				<groupId>com.googlecode.flyway</groupId>
+				<artifactId>flyway-maven-plugin</artifactId>
+				<version>1.5</version>
+				<configuration>
+					<user>postgres</user>
+					<password>admin</password>
+					<driver>org.postgresql.Driver</driver>
+					<url>jdbc:postgresql://localhost:5432/hospital?autoReconnect=true&amp;useUnicode=true&amp;characterEncoding=UTF-8&amp;connectionCollation=utf8_general_ci&amp;characterSetResults=UTF-8</url>
+					<baseDir>db/migration</baseDir>
+				</configuration>
+			</plugin>
         </plugins>
         <finalName>${project.artifactId}</finalName>
     </build>

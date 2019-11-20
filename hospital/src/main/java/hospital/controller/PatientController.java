@@ -118,8 +118,9 @@ public class PatientController {
 								@RequestParam("name") String name,
 								@RequestParam("patronymic") String patronymic,
 								@RequestParam("insuranceNum") String insuranceNum,
-								@RequestParam("doctor") String doctor){
-		patientService.addPatient(surname, name, patronymic, insuranceNum, doctor);
+								@RequestParam("doctor") String doctor,
+								@RequestParam("id") int id){
+		patientService.updatePatient(id, surname, name, patronymic, insuranceNum, doctor);
 		return "redirect:/patients";
 	}
 

@@ -1,7 +1,7 @@
 $(document).ready(function() {
 
     $('#doctor').autocomplete({
-        serviceUrl: '${pageContext.request.contextPath}/allDoctors',
+        serviceUrl: '/allDoctors',
         paramName: "surname",
         delimiter: ",",
         transformResult: function(response) {

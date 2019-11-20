@@ -17,48 +17,9 @@
 
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/js/bootstrap-multiselect.js"></script>
     <link rel="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/css/bootstrap-multiselect.css" type="text/css"/>
+    <script src="/jQuery/createPrescription.js"></script>
 </head>
 <body>
-<script>
-    $(document).ready(function() {
-
-        $('#procedureMedicine').autocomplete({
-            serviceUrl: '${pageContext.request.contextPath}/allProcMed',
-            paramName: "title",
-            delimiter: ",",
-            transformResult: function(response) {
-
-                return {
-                    suggestions: $.map($.parseJSON(response), function(item) {
-
-                        return { value: item.title, data: item.id };
-                    })
-
-                };
-
-            }
-
-        });
-
-    });
-    $(document).ready(function() {
-        $('#daySchedule').multiselect();
-    });
-    $(document).ready(function() {
-        $('#weekSchedule').multiselect();
-    });
-    $(document).ready(function() {
-        $('.week').hide();
-    });
-    $(document).on("click","#but1",function() {
-        $('.day').show();
-        $('.week').hide();
-    });
-    $(document).on("click","#but2",function() {
-        $('.day').hide();
-        $('.week').show();
-    });
-</script>
 <style>.autocomplete-suggestions{background:#ffffff;}</style>
 <h1 class="ml-3 mb-4 mt-2">Create prescription</h1>
 <form id="myform" action="/createPrescription/${id}" method="post" class="col-sm-8">

@@ -138,6 +138,10 @@ INSERT INTO prescriptions VALUES (2,1,1,'111','0000000',2,2,false);
 select * from prescriptions;
 
 INSERT INTO STAFF VALUES (2,'Semenov','Andrey','Vitalievich',false,true);
+    update staff set surname='Andreev', name='Vladimir', patronymic='Vitalievich', isDeleted=false, isDoctor='true'
+    where id_staff=1;
+    INSERT INTO STAFF VALUES (3,'Danilova','Inna','Semenovna',false,false);
+    INSERT INTO STAFF VALUES (4,'Anatoliev','Ivan','Antonovich',false,true);
 
     update prescriptions set daySchedule=42;
 

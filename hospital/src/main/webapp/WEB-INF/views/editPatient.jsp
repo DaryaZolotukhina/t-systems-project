@@ -18,6 +18,8 @@
 <h1 class="ml-3 mb-4 mt-2">Edit patient</h1>
 <form id="myform" action="/updatePatient" method="post" class="col-sm-8">
     <div class="form-group">
+        <label for="surname">Id</label>
+        <input   type="text" class="form-control" id="id" name="id" placeholder="Id" value="${patient.id}">
         <label for="surname">Surname</label>
         <input type="text" class="form-control" id="surname" name="surname" placeholder="Surname" value="${patient.surname}">
         <label for="name">Name</label>
