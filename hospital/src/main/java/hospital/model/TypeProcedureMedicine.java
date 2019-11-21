@@ -12,7 +12,6 @@ public class TypeProcedureMedicine {
     private Integer id;
     @Column
     private String title;
-
     @OneToMany(mappedBy = "typeProcedureMedicine", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ProcedureMedicine> procedureMedicineList;
     public Integer getId() {

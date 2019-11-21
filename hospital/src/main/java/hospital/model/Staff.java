@@ -22,6 +22,9 @@ public class Staff {
     private boolean isDeleted;
     @Column
     private boolean isDoctor;
+    @JsonIgnore
+    @OneToMany(mappedBy = "staff", cascade = CascadeType.MERGE, orphanRemoval = true,fetch = FetchType.EAGER)
+    private List<Patient> patients;
 
     public boolean getIsDoctor() {
         return isDoctor;
@@ -30,10 +33,6 @@ public class Staff {
     public void setIsDoctor(boolean isDoctor) {
         this.isDoctor = isDoctor;
     }
-
-    @JsonIgnore
-    @OneToMany(mappedBy = "staff", cascade = CascadeType.MERGE, orphanRemoval = true,fetch = FetchType.EAGER)
-    private List<Patient> patients;
 
     public Integer getId() {
         return id;

@@ -8,6 +8,15 @@ import java.util.List;
 @Entity
 @Table(name="status_event")
 public class StatusEvent {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="id_statusEvent")
+    private Integer id;
+    @Column
+    private String title;
+    @JsonIgnore
+    @OneToMany(mappedBy = "statusEvent", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Event> events;
     public Integer getId() {
         return id;
     }
@@ -24,13 +33,4 @@ public class StatusEvent {
         this.title = title;
     }
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id_statusEvent")
-    private Integer id;
-    @Column
-    private String title;
-    @JsonIgnore
-    @OneToMany(mappedBy = "statusEvent", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Event> events;
 }

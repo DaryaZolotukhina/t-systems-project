@@ -11,6 +11,16 @@ public class PatientDiagnosis {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id_patient_diagnosis")
     private Integer id;
+    @JsonIgnore
+    @Transient
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_patient")
+    private Patient patient;
+    @JsonIgnore
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_diagnosis")
+    private Diagnosis diagnosis;
+
     public Patient getPatient() {
         return patient;
     }
@@ -26,14 +36,4 @@ public class PatientDiagnosis {
     public void setDiagnosis(Diagnosis diagnosis) {
         this.diagnosis = diagnosis;
     }
-
-    @JsonIgnore
-    @Transient
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "id_patient")
-    private Patient patient;
-    @JsonIgnore
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "id_diagnosis")
-    private Diagnosis diagnosis;
 }

@@ -18,6 +18,12 @@ public class ProcedureMedicine {
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_type")
     private TypeProcedureMedicine typeProcedureMedicine;
+    @JsonIgnore
+    @OneToMany(mappedBy = "procedureMedicine", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Prescription> prescriptions;
+    @JsonIgnore
+    @OneToMany(mappedBy = "procedureMedicine", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Prescription> events;
 
     public Integer getId() {
         return id;
@@ -50,11 +56,4 @@ public class ProcedureMedicine {
     public void setPrescriptions(List<Prescription> prescriptions) {
         this.prescriptions = prescriptions;
     }
-
-    @JsonIgnore
-    @OneToMany(mappedBy = "procedureMedicine", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Prescription> prescriptions;
-    @JsonIgnore
-    @OneToMany(mappedBy = "procedureMedicine", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Prescription> events;
 }

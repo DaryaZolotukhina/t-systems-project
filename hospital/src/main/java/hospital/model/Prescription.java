@@ -15,6 +15,29 @@ public class Prescription {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id_prescription")
     private Integer id;
+    @JsonIgnore
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_patient")
+    private Patient patient;
+    @JsonIgnore
+    @ManyToOne(cascade = CascadeType.MERGE)
+    @JoinColumn(name = "id_procMed")
+    private ProcedureMedicine procedureMedicine;
+    @Column
+    private Integer daySchedule;
+    @Column
+    private Integer weekSchedule;
+    @Column
+    private Integer period;
+    @Column
+    private Float dose;
+    @Column
+    private boolean isDone;
+    @Fetch(value = FetchMode.SUBSELECT)
+    @OneToMany(mappedBy = "prescription", cascade = CascadeType.ALL, orphanRemoval = true,fetch = FetchType.EAGER)
+    private List<Event> events;
+    @Column
+    private boolean isDeleted;
 
     public Integer getDaySchedule() {
         return daySchedule;
@@ -32,23 +55,6 @@ public class Prescription {
         this.weekSchedule = weekSchedule;
     }
 
-    @JsonIgnore
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "id_patient")
-    private Patient patient;
-    @JsonIgnore
-    @ManyToOne(cascade = CascadeType.MERGE)
-    @JoinColumn(name = "id_procMed")
-    private ProcedureMedicine procedureMedicine;
-    @Column
-    private Integer daySchedule;
-    @Column
-    private Integer weekSchedule;
-    @Column
-    private Integer period;
-    @Column
-    private Float dose;
-
     public boolean getIsDeleted() {
         return isDeleted;
     }
@@ -57,9 +63,6 @@ public class Prescription {
         isDeleted = deleted;
     }
 
-    @Column
-    private boolean isDeleted;
-
     public boolean getIsDone() {
         return isDone;
     }
@@ -67,12 +70,6 @@ public class Prescription {
     public void setIsDone(boolean done) {
         isDone = done;
     }
-
-    @Column
-    private boolean isDone;
-    @Fetch(value = FetchMode.SUBSELECT)
-    @OneToMany(mappedBy = "prescription", cascade = CascadeType.ALL, orphanRemoval = true,fetch = FetchType.EAGER)
-    private List<Event> events;
 
     public Integer getId() {
         return id;
@@ -97,8 +94,6 @@ public class Prescription {
     public void setProcedureMedicine(ProcedureMedicine procedureMedicine) {
         this.procedureMedicine = procedureMedicine;
     }
-
-
 
     public Integer getPeriod() {
         return period;

@@ -22,15 +22,6 @@ public class Patient {
 	private String patronymic;
 	@Column
 	private String insuranceNum;
-
-	public Staff getStaff() {
-		return staff;
-	}
-
-	public void setStaff(Staff staff) {
-		this.staff = staff;
-	}
-
 	@ManyToOne(cascade = CascadeType.MERGE)
 	@JoinColumn(name = "id_staff")
 	private Staff staff;
@@ -38,7 +29,6 @@ public class Patient {
 	private boolean isDeleted;
 	@Column
 	private boolean isDischarged;
-
 	@Transient
 	@OneToMany(mappedBy = "patient", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<PatientDiagnosis> patDiag;
@@ -49,6 +39,13 @@ public class Patient {
 	@OneToMany(mappedBy = "patient", cascade = CascadeType.ALL, orphanRemoval = true,fetch = FetchType.EAGER)
 	private List<Event> events;
 
+	public Staff getStaff() {
+		return staff;
+	}
+
+	public void setStaff(Staff staff) {
+		this.staff = staff;
+	}
 
 	public Integer getId() {
 		return id;

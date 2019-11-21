@@ -19,6 +19,18 @@ public class Event {
     private Patient patient;
     @Column
     private Date dateTimeEvent;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_procMed")
+    private ProcedureMedicine procedureMedicine;
+    @JsonIgnore
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_prescription")
+    private Prescription prescription;
+    @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @JoinColumn(name = "id_statusEvent")
+    private StatusEvent statusEvent;
+    @Column
+    private boolean isDeleted;
 
     public Integer getId() {
         return id;
@@ -36,16 +48,6 @@ public class Event {
         this.procedureMedicine = procedureMedicine;
     }
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "id_procMed")
-    private ProcedureMedicine procedureMedicine;
-    @JsonIgnore
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "id_prescription")
-    private Prescription prescription;
-    @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-    @JoinColumn(name = "id_statusEvent")
-    private StatusEvent statusEvent;
     public boolean getIsDeleted() {
         return isDeleted;
     }
@@ -54,8 +56,6 @@ public class Event {
         isDeleted = deleted;
     }
 
-    @Column
-    private boolean isDeleted;
     public Patient getPatient() {
         return patient;
     }
@@ -79,7 +79,6 @@ public class Event {
     public void setStatusEvent(StatusEvent statusEvent) {
         this.statusEvent = statusEvent;
     }
-
 
     public Prescription getPrescription() {
         return prescription;
