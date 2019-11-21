@@ -7,6 +7,7 @@ import hospital.dao.PrescriptionDAO;
 import hospital.dto.PatientDto;
 import hospital.exception.DischargeException;
 import hospital.model.*;
+import hospital.service.utils.CalculatingBitMasks;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -16,6 +17,7 @@ import hospital.dao.PatientDAO;
 @Service
 public class PatientServiceImpl implements PatientService {
 
+    private CalculatingBitMasks calculatingBitMasks;
 	private PrescriptionService prescriptionService;
 	private EventService eventService;
 	private PatientDAO patientDAO;
@@ -23,6 +25,10 @@ public class PatientServiceImpl implements PatientService {
 	private DischargeException dischargeException;
 
     private static final int NUMBER_OF_RESULTS_PER_PAGE = 5;
+
+    public void setCalculatingBitMasks(CalculatingBitMasks calculatingBitMasks) {
+        this.calculatingBitMasks= calculatingBitMasks;
+    }
 
 	public void setPrescriptionDAO(PrescriptionDAO prescriptionDAO) {
 		this.prescriptionDAO = prescriptionDAO;
@@ -140,6 +146,7 @@ public class PatientServiceImpl implements PatientService {
 		return patientDAO.getDoctorBySurname(surname);
 	}
 
+<<<<<<< Updated upstream
     public Integer weekToBitMask(List<String> weeks) {
         int result=0;
         for (String str : weeks) {
@@ -255,6 +262,8 @@ public class PatientServiceImpl implements PatientService {
         return result;
     }
 
+=======
+>>>>>>> Stashed changes
 
 	@Transactional
 	@Override
@@ -312,12 +321,12 @@ public class PatientServiceImpl implements PatientService {
 	        p.setDaySchedule(0);
         }
 	    else
-	        p.setDaySchedule(dayToBitMask(daySchedule));
+	        p.setDaySchedule(calculatingBitMasks.dayToBitMask(daySchedule));
         if (weekSchedule.isEmpty()){
             p.setWeekSchedule(0);
         }
         else
-            p.setWeekSchedule(weekToBitMask(weekSchedule));
+            p.setWeekSchedule(calculatingBitMasks.weekToBitMask(weekSchedule));
         p.setPeriod(Integer.parseInt(period));
         p.setDose((float)1.0);
         p.setIsDeleted(false);
