@@ -1,6 +1,8 @@
 package hospital.service;
 
+import java.time.DayOfWeek;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import hospital.dao.PrescriptionDAO;
@@ -141,117 +143,65 @@ public class PatientServiceImpl implements PatientService {
 	}
 
     public Integer weekToBitMask(List<String> weeks) {
+        DayOfWeek[] dayOfWeeks = DayOfWeek.values();
         int result=0;
         for (String str : weeks) {
-            switch (str) {
-                case ("Monday"):
-                    result += (int) Math.pow(2, 0);
-                    break;
-                case ("Tuesday"):
-                    result += (int) Math.pow(2, 1);
-                    break;
-                case ("Wednesday"):
-                    result += (int) Math.pow(2, 2);
-                    break;
-                case ("Thursday"):
-                    result += (int) Math.pow(2, 3);
-                    break;
-                case ("Friday"):
-                    result += (int) Math.pow(2, 4);
-                    break;
-                case ("Saturday"):
-                    result += (int) Math.pow(2, 5);
-                    break;
-                case ("Sunday"):
-                    result += (int) Math.pow(2, 6);
-                    break;
-                default:
-                    return null;
+            for (int i = 0; i < dayOfWeeks.length; i++) {
+                if (str.toUpperCase().equals(dayOfWeeks[i].toString())){
+                    result += (int) Math.pow(2, i);
+                }
             }
         }
         return result;
     }
 
-    public Integer dayToBitMask(List<String> days) {
-        int result=0;
-        for (String str : days) {
-            switch (str) {
-                case ("00:00"):
-                    result += (int) Math.pow(2, 0);
-                    break;
-                case ("01:00"):
-                    result += (int) Math.pow(2, 1);
-                    break;
-                case ("02:00"):
-                    result += (int) Math.pow(2, 2);
-                    break;
-                case ("03:00"):
-                    result += (int) Math.pow(2, 3);
-                    break;
-                case ("04:00"):
-                    result += (int) Math.pow(2, 4);
-                    break;
-                case ("05:00"):
-                    result += (int) Math.pow(2, 5);
-                    break;
-                case ("06:00"):
-                    result += (int) Math.pow(2, 6);
-                    break;
-                case ("07:00"):
-                    result += (int) Math.pow(2, 7);
-                    break;
-                case ("08:00"):
-                    result += (int) Math.pow(2, 8);
-                    break;
-                case ("09:00"):
-                    result += (int) Math.pow(2, 9);
-                    break;
-                case ("10:00"):
-                    result += (int) Math.pow(2, 10);
-                    break;
-                case ("11:00"):
-                    result += (int) Math.pow(2, 11);
-                    break;
-                case ("12:00"):
-                    result += (int) Math.pow(2, 12);
-                    break;
-                case ("13:00"):
-                    result += (int) Math.pow(2, 13);
-                    break;
-                case ("14:00"):
-                    result += (int) Math.pow(2, 14);
-                    break;
-                case ("15:00"):
-                    result += (int) Math.pow(2, 15);
-                    break;
-                case ("16:00"):
-                    result += (int) Math.pow(2, 16);
-                    break;
-                case ("17:00"):
-                    result += (int) Math.pow(2, 17);
-                    break;
-                case ("18:00"):
-                    result += (int) Math.pow(2, 18);
-                    break;
-                case ("19:00"):
-                    result += (int) Math.pow(2, 19);
-                    break;
-                case ("20:00"):
-                    result += (int) Math.pow(2, 20);
-                    break;
-                case ("21:00"):
-                    result += (int) Math.pow(2, 21);
-                    break;
-                case ("22:00"):
-                    result += (int) Math.pow(2, 22);
-                    break;
-                case ("23:00"):
-                    result += (int) Math.pow(2, 23);
-                    break;
-                default:
-                    return null;
-            }
+    enum Hours {
+        h0("00:00"),
+        h1("01:00"),
+        h2("02:00"),
+        h3("03:00"),
+        h4("04:00"),
+        h5("05:00"),
+        h6("06:00"),
+        h7("07:00"),
+        h8("08:00"),
+        h9("09:00"),
+        h10("10:00"),
+        h11("11:00"),
+        h12("12:00"),
+        h13("13:00"),
+        h14("14:00"),
+        h15("15:00"),
+        h16("16:00"),
+        h17("17:00"),
+        h18("18:00"),
+        h19("19:00"),
+        h20("20:00"),
+        h21("21:00"),
+        h22("22:00"),
+        h23("23:00");
+        private final String text;
+
+        Hours(final String text) {
+            this.text = text;
         }
+
+        @Override
+        public String toString() {
+            return text;
+        }
+    }
+
+    public Integer dayToBitMask(List<String> days) {
+	    Hours[] hours = Hours.values();
+	    int result=0;
+	    for (String str : days) {
+	        for (int i = 0; i < hours.length; i++) {
+	            if (str.equals(hours[i].toString())){
+	                result += (int) Math.pow(2, i);
+	            }
+	        }
+	    }
         return result;
     }
 
