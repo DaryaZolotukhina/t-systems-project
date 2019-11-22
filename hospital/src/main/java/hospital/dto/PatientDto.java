@@ -8,15 +8,6 @@ import java.util.List;
 
 public class PatientDto {
     private Integer id;
-    private String surname;
-    private String name;
-    private String patronymic;
-    private String insuranceNum;
-    private Staff staff;
-    private boolean isDeleted;
-    private boolean isDischarged;
-    private List<PatientDiagnosis> patDiag;
-    private List<Prescription> prescriptions;
 
     public List<Prescription> getPrescriptions() {
         return prescriptions;
@@ -26,6 +17,11 @@ public class PatientDto {
         this.prescriptions = prescriptions;
     }
 
+    private String surname;
+    private String name;
+    private String patronymic;
+    private String insuranceNum;
+
     public Staff getStaff() {
         return staff;
     }
@@ -33,6 +29,8 @@ public class PatientDto {
     public void setStaff(Staff staff) {
         this.staff = staff;
     }
+
+    private Staff staff;
 
     public boolean getIsDischarged() {
         return isDischarged;
@@ -50,6 +48,10 @@ public class PatientDto {
         isDeleted = deleted;
     }
 
+    private boolean isDeleted;
+
+    private boolean isDischarged;
+
     public List<PatientDiagnosis> getPatDiag() {
         return patDiag;
     }
@@ -58,6 +60,8 @@ public class PatientDto {
         this.patDiag = patDiag;
     }
 
+    private List<PatientDiagnosis> patDiag;
+
     public String getInsuranceNum() {
         return insuranceNum;
     }
@@ -65,6 +69,8 @@ public class PatientDto {
     public void setInsuranceNum(String insuranceNum) {
         this.insuranceNum = insuranceNum;
     }
+
+    private List<Prescription> prescriptions;
 
     public Integer getId() {
         return id;
