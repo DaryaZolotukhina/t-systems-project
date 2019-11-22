@@ -16,7 +16,7 @@ public class Prescription {
     @Column(name="id_prescription")
     private Integer id;
     @JsonIgnore
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "id_patient")
     private Patient patient;
     @JsonIgnore
@@ -34,7 +34,7 @@ public class Prescription {
     @Column
     private boolean isDone;
     @Fetch(value = FetchMode.SUBSELECT)
-    @OneToMany(mappedBy = "prescription", cascade = CascadeType.ALL, orphanRemoval = true,fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "prescription", cascade = CascadeType.MERGE, orphanRemoval = true,fetch = FetchType.EAGER)
     private List<Event> events;
     @Column
     private boolean isDeleted;

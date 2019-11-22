@@ -71,6 +71,8 @@
 		</beans:property>
 	</beans:bean>
 
+	<beans:bean id="calculatingBitMasks" class="hospital.service.utils.CalculatingBitMasks">
+	</beans:bean>
 	<beans:bean id="eventDAO" class="hospital.dao.EventDAOImpl">
 		<beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
 	</beans:bean>
@@ -80,20 +82,21 @@
 	<beans:bean id="prescriptionDAO" class="hospital.dao.PrescriptionDAOImpl">
 		<beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
 	</beans:bean>
-	<beans:bean id="prescriptionService" class="hospital.service.PrescriptionServiceImpl">
+	<beans:bean id="prescriptionService" class="hospital.service.serviceImpls.PrescriptionServiceImpl">
 		<beans:property name="prescriptionDAO" ref="prescriptionDAO"></beans:property>
 	</beans:bean>
-	<beans:bean id="eventService" class="hospital.service.EventServiceImpl">
+	<beans:bean id="eventService" class="hospital.service.serviceImpls.EventServiceImpl">
 		<beans:property name="prescriptionDAO" ref="prescriptionDAO"></beans:property>
 		<beans:property name="eventDAO" ref="eventDAO"></beans:property>
 		<beans:property name="prescriptionService" ref="prescriptionService"></beans:property>
 	</beans:bean>
-	<beans:bean id="patientService" class="hospital.service.PatientServiceImpl">
+	<beans:bean id="patientService" class="hospital.service.serviceImpls.PatientServiceImpl">
 		<beans:property name="patientDAO" ref="patientDAO"></beans:property>
 		<beans:property name="eventService" ref="eventService"></beans:property>
 		<beans:property name="prescriptionDAO" ref="prescriptionDAO"></beans:property>
 		<beans:property name="prescriptionService" ref="prescriptionService"></beans:property>
 		<beans:property name="dischargeException" ref="dischargeException"></beans:property>
+		<beans:property name="calculatingBitMasks" ref="calculatingBitMasks"></beans:property>
 	</beans:bean>
 	<context:component-scan base-package="hospital" />
 	<beans:bean id="dischargeException" class="hospital.exception.DischargeException">

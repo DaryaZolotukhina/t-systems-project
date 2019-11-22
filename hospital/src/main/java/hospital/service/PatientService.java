@@ -3,6 +3,8 @@ package hospital.service;
 import java.util.List;
 
 import hospital.dto.PatientDto;
+import hospital.dto.ProcedureMedicineTitleDto;
+import hospital.dto.StaffDto;
 import hospital.exception.DischargeException;
 import hospital.model.*;
 
@@ -24,17 +26,15 @@ public interface PatientService {
 
 	List<Patient> sortSurname(int pageid, String order);
 
-	List<ProcedureMedicine> getAllProcedureMedicine();
+	List<ProcedureMedicineTitleDto> getAllProcedureMedicine();
 
-	ProcedureMedicine getProcedureMedicineByTitle(String title);
+	ProcedureMedicineTitleDto getProcedureMedicineByTitle(String title);
 
-	Patient getByIdPatient(int id);
-
-	List<Staff> getAllDoctors();
+	List<StaffDto> getAllDoctors();
 
 	void addPatient(String surname, String name, String patronymic, String insuranceNum, String doctor);
 
-	Staff getDoctorBySurname(String surname);
+	StaffDto getDoctorBySurname(String surname);
 
 	void addPrescription(int id, String procedureMedicine, String period, List<String> daySchedule, List<String> weekSchedule);
 

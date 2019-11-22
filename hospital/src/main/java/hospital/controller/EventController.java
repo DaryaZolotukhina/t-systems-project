@@ -1,5 +1,6 @@
 package hospital.controller;
 
+import hospital.dto.EventDto;
 import hospital.model.Event;
 import hospital.service.EventService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +26,7 @@ public class EventController {
 
     @RequestMapping(value = "/prescription/{idPat}/{idPresc}", method = RequestMethod.GET)
     public @ResponseBody
-    List<Event> generateEvents(@PathVariable("idPat") int idPat, @PathVariable("idPresc") int idPresc){
+    List<EventDto> generateEvents(@PathVariable("idPat") int idPat, @PathVariable("idPresc") int idPresc){
         eventService.generateEvents(idPresc);
         return eventService.getAllEvents(idPat);
     }

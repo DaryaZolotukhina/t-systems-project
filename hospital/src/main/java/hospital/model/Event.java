@@ -1,6 +1,7 @@
 package hospital.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -8,13 +9,14 @@ import java.util.Date;
 
 @Entity
 @Table(name="Events")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Event {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id_event")
     private Integer id;
     @JsonIgnore
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "id_patient")
     private Patient patient;
     @Column
@@ -23,7 +25,7 @@ public class Event {
     @JoinColumn(name = "id_procMed")
     private ProcedureMedicine procedureMedicine;
     @JsonIgnore
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "id_prescription")
     private Prescription prescription;
     @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)

@@ -1,5 +1,6 @@
 package hospital.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
@@ -8,6 +9,7 @@ import java.util.List;
 
 @Entity
 @Table(name="patients")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Patient {
 
 	@Id
@@ -32,11 +34,11 @@ public class Patient {
 	@Transient
 	@OneToMany(mappedBy = "patient", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<PatientDiagnosis> patDiag;
-	@OneToMany(mappedBy = "patient", cascade = CascadeType.ALL, orphanRemoval = true,fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "patient", cascade = CascadeType.MERGE, orphanRemoval = true,fetch = FetchType.EAGER)
 	@Fetch(value = FetchMode.SUBSELECT)
 	private List<Prescription> prescriptions;
 	@Fetch(value = FetchMode.SUBSELECT)
-	@OneToMany(mappedBy = "patient", cascade = CascadeType.ALL, orphanRemoval = true,fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "patient", cascade = CascadeType.MERGE, orphanRemoval = true,fetch = FetchType.EAGER)
 	private List<Event> events;
 
 	public Staff getStaff() {

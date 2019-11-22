@@ -1,5 +1,7 @@
 package hospital.controller;
 
+import hospital.dto.ProcedureMedicineTitleDto;
+import hospital.dto.StaffDto;
 import hospital.exception.DischargeException;
 import hospital.model.*;
 import hospital.service.EventService;
@@ -65,13 +67,13 @@ public class PatientController {
 
 	@RequestMapping(value = "/allDoctors", method = RequestMethod.GET)
 	@ResponseBody
-	public List<Staff> getAllDoctors() {
+	public List<StaffDto> getAllDoctors() {
 		return patientService.getAllDoctors();
 	}
 
 	@RequestMapping(value = "/allProcMed", method = RequestMethod.GET)
 	@ResponseBody
-	public List<ProcedureMedicine> getAllProcedureMedicine() {
+	public List<ProcedureMedicineTitleDto> getAllProcedureMedicine() {
 		return patientService.getAllProcedureMedicine();
 	}
 
@@ -89,7 +91,7 @@ public class PatientController {
 
 
 	@RequestMapping(value= "/patient/add", method = RequestMethod.GET)
-	public String addPatient(){
+	public String getCreatePatientPage(){
 
 		return "createPatient";
 	}
