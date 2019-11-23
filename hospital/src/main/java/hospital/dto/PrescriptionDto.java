@@ -2,7 +2,9 @@ package hospital.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import hospital.model.Event;
+import hospital.model.Medicine;
 import hospital.model.Patient;
+import hospital.model.Procedure;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
@@ -12,8 +14,25 @@ import java.util.List;
 public class PrescriptionDto {
     private Integer id;
     private Patient patient;
-    private ProcedureMedicine procedureMedicine;
+    private Medicine medicine;
+    private Procedure procedure;
     private Integer daySchedule;
+
+    public Medicine getMedicine() {
+        return medicine;
+    }
+
+    public void setMedicine(Medicine medicine) {
+        this.medicine = medicine;
+    }
+
+    public Procedure getProcedure() {
+        return procedure;
+    }
+
+    public void setProcedure(Procedure procedure) {
+        this.procedure = procedure;
+    }
 
     public Integer getId() {
         return id;

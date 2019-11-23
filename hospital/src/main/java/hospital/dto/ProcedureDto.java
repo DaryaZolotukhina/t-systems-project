@@ -4,20 +4,11 @@ import hospital.model.Prescription;
 
 import java.util.List;
 
-public class ProcedureMedicineTitleDto {
+public class ProcedureDto {
     private Integer id;
     private String title;
-    private TypeProcedureMedicine typeProcedureMedicine;
     private List<Prescription> prescriptions;
     private List<Prescription> events;
-
-    public TypeProcedureMedicine getTypeProcedureMedicine() {
-        return typeProcedureMedicine;
-    }
-
-    public void setTypeProcedureMedicine(TypeProcedureMedicine typeProcedureMedicine) {
-        this.typeProcedureMedicine = typeProcedureMedicine;
-    }
 
     public List<Prescription> getPrescriptions() {
         return prescriptions;

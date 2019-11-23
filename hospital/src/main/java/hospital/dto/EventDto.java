@@ -1,10 +1,7 @@
 package hospital.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import hospital.model.Patient;
-import hospital.model.Prescription;
-import hospital.model.ProcedureMedicine;
-import hospital.model.StatusEvent;
+import hospital.model.*;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -13,9 +10,26 @@ public class EventDto {
     private Integer id;
     private Patient patient;
     private Date dateTimeEvent;
-    private ProcedureMedicine procedureMedicine;
+    private Medicine medicine;
+    private Procedure procedure;
     private Prescription prescription;
     private StatusEvent statusEvent;
+
+    public Medicine getMedicine() {
+        return medicine;
+    }
+
+    public void setMedicine(Medicine medicine) {
+        this.medicine = medicine;
+    }
+
+    public Procedure getProcedure() {
+        return procedure;
+    }
+
+    public void setProcedure(Procedure procedure) {
+        this.procedure = procedure;
+    }
 
     public Integer getId() {
         return id;
@@ -39,14 +53,6 @@ public class EventDto {
 
     public void setDateTimeEvent(Date dateTimeEvent) {
         this.dateTimeEvent = dateTimeEvent;
-    }
-
-    public ProcedureMedicine getProcedureMedicine() {
-        return procedureMedicine;
-    }
-
-    public void setProcedureMedicine(ProcedureMedicine procedureMedicine) {
-        this.procedureMedicine = procedureMedicine;
     }
 
     public Prescription getPrescription() {
