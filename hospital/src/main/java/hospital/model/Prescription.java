@@ -10,7 +10,6 @@ import java.util.List;
 @Entity
 @Table(name="Prescriptions")
 public class Prescription {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id_prescription")
@@ -21,8 +20,11 @@ public class Prescription {
     private Patient patient;
     @JsonIgnore
     @ManyToOne(cascade = CascadeType.MERGE)
-    @JoinColumn(name = "id_procMed")
-    private ProcedureMedicine procedureMedicine;
+    @JoinColumn(name = "id_medicine")
+    private Medicine medicine;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_procedure")
+    private Procedure procedure;
     @Column
     private Integer daySchedule;
     @Column
@@ -38,6 +40,22 @@ public class Prescription {
     private List<Event> events;
     @Column
     private boolean isDeleted;
+
+    public Procedure getProcedure() {
+        return procedure;
+    }
+
+    public void setProcedure(Procedure procedure) {
+        this.procedure = procedure;
+    }
+
+    public Medicine getMedicine() {
+        return medicine;
+    }
+
+    public void setMedicine(Medicine medicine) {
+        this.medicine = medicine;
+    }
 
     public Integer getDaySchedule() {
         return daySchedule;
@@ -85,14 +103,6 @@ public class Prescription {
 
     public void setPatient(Patient patient) {
         this.patient = patient;
-    }
-
-    public ProcedureMedicine getProcedureMedicine() {
-        return procedureMedicine;
-    }
-
-    public void setProcedureMedicine(ProcedureMedicine procedureMedicine) {
-        this.procedureMedicine = procedureMedicine;
     }
 
     public Integer getPeriod() {

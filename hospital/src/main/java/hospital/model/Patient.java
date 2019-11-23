@@ -31,15 +31,19 @@ public class Patient {
 	private boolean isDeleted;
 	@Column
 	private boolean isDischarged;
-	@Transient
-	@OneToMany(mappedBy = "patient", cascade = CascadeType.ALL, orphanRemoval = true)
-	private List<PatientDiagnosis> patDiag;
 	@OneToMany(mappedBy = "patient", cascade = CascadeType.MERGE, orphanRemoval = true,fetch = FetchType.EAGER)
 	@Fetch(value = FetchMode.SUBSELECT)
 	private List<Prescription> prescriptions;
 	@Fetch(value = FetchMode.SUBSELECT)
 	@OneToMany(mappedBy = "patient", cascade = CascadeType.MERGE, orphanRemoval = true,fetch = FetchType.EAGER)
 	private List<Event> events;
+	@ManyToMany
+	@JoinTable(
+			name="patient_diagnosis",
+			joinColumns=@JoinColumn(name="id_patient", referencedColumnName="id_patient"),
+			inverseJoinColumns=@JoinColumn(name="id_diagnosis", referencedColumnName="id_diagnosis"))
+	private List<Diagnosis> diagnosises;
+
 
 	public Staff getStaff() {
 		return staff;
@@ -105,14 +109,6 @@ public class Patient {
 		isDischarged = discharged;
 	}
 
-    public List<PatientDiagnosis> getPatDiag() {
-        return patDiag;
-    }
-
-    public void setPatDiag(List<PatientDiagnosis> patDiag) {
-        this.patDiag = patDiag;
-    }
-
     public List<Prescription> getPrescriptions() {
         return prescriptions;
     }
@@ -128,4 +124,12 @@ public class Patient {
     public void setEvents(List<Event> events) {
         this.events = events;
     }
+
+	public List<Diagnosis> getDiagnosises() {
+		return diagnosises;
+	}
+
+	public void setDiagnosises(List<Diagnosis> diagnosises) {
+		this.diagnosises = diagnosises;
+	}
 }

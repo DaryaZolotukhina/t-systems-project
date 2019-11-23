@@ -6,24 +6,22 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name="procMed")
-public class ProcedureMedicine {
+@Table(name="Medicines")
+public class Medicine {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id_procMed")
+    @Column(name="id_medicine")
     private Integer id;
     @Column
     private String title;
     @JsonIgnore
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "id_type")
-    private TypeProcedureMedicine typeProcedureMedicine;
-    @JsonIgnore
-    @OneToMany(mappedBy = "procedureMedicine", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "medicine", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Prescription> prescriptions;
     @JsonIgnore
-    @OneToMany(mappedBy = "procedureMedicine", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "medicine", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Prescription> events;
+    @ManyToMany(mappedBy="medicines")
+    private List<DiagnosisType> diagnosisTypes;
 
     public Integer getId() {
         return id;
@@ -39,14 +37,6 @@ public class ProcedureMedicine {
 
     public void setTitle(String title) {
         this.title = title;
-    }
-
-    public TypeProcedureMedicine getTypeProcedureMedicine() {
-        return typeProcedureMedicine;
-    }
-
-    public void setTypeProcedureMedicine(TypeProcedureMedicine typeProcedureMedicine) {
-        this.typeProcedureMedicine = typeProcedureMedicine;
     }
 
     public List<Prescription> getPrescriptions() {

@@ -1,7 +1,6 @@
 package hospital.dto;
 
 import hospital.model.Prescription;
-import hospital.model.TypeProcedureMedicine;
 
 import java.util.List;
 

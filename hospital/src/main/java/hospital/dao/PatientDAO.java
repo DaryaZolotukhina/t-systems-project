@@ -20,7 +20,6 @@ public interface PatientDAO {
 
 	List<Patient> sortSurname(int pageid, String order);
 
-
 	List<ProcedureMedicine> getAllProcedureMedicine();
 
 	ProcedureMedicine getProcedureMedicineByTitle(String title);

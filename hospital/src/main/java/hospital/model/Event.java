@@ -22,8 +22,11 @@ public class Event {
     @Column
     private Date dateTimeEvent;
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "id_procMed")
-    private ProcedureMedicine procedureMedicine;
+    @JoinColumn(name = "id_medicine")
+    private Medicine medicine;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_procedure")
+    private Procedure procedure;
     @JsonIgnore
     @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "id_prescription")
@@ -34,20 +37,20 @@ public class Event {
     @Column
     private boolean isDeleted;
 
+    public Procedure getProcedure() {
+        return procedure;
+    }
+
+    public void setProcedure(Procedure procedure) {
+        this.procedure = procedure;
+    }
+
     public Integer getId() {
         return id;
     }
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public ProcedureMedicine getProcedureMedicine() {
-        return procedureMedicine;
-    }
-
-    public void setProcedureMedicine(ProcedureMedicine procedureMedicine) {
-        this.procedureMedicine = procedureMedicine;
     }
 
     public boolean getIsDeleted() {
@@ -88,5 +91,13 @@ public class Event {
 
     public void setPrescription(Prescription prescription) {
         this.prescription = prescription;
+    }
+
+    public Medicine getMedicine() {
+        return medicine;
+    }
+
+    public void setMedicine(Medicine medicine) {
+        this.medicine = medicine;
     }
 }
