@@ -196,3 +196,6 @@ update patients set isDeleted=false;
 update patients set isDischarged=false;
 
 select * from patients;
+
+select * from diagnosis_type;
+

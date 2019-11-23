@@ -38,9 +38,23 @@
 		<beans:property name="password" value="admin" />
 	</beans:bean>
 
-    <beans:bean id="flyway" class="com.googlecode.flyway.core.Flyway" init-method="migrate">
+	<beans:bean id="flywayConfig" class="org.flywaydb.core.api.configuration.ClassicConfiguration">
+		<beans:property name="dataSource" ref="dataSource"/>
+	</beans:bean>
+
+	<beans:bean id="flyway" class="org.flywaydb.core.Flyway" init-method="migrate">
+		<beans:constructor-arg ref="flywayConfig"/>
+	</beans:bean>
+
+	<!-- The rest of the application (incl. Hibernate) -->
+	<!-- Must be run after Flyway to ensure the database is compatible with the code
+	<bean id="sessionFactory" class="..." depends-on="flyway">
+		...
+	</bean>
+
+    <beans:bean id="flyway" class="org.flywaydb.core.Flyway" init-method="migrate">
         <beans:property name="dataSource" ref="dataSource"/>
-    </beans:bean>
+    </beans:bean> -->
 
 	<beans:bean class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean" id="entityManagerFactory" depends-on="flyway">
 	</beans:bean>

@@ -156,11 +156,18 @@
             <version>${jackson.version}</version>
         </dependency>
 		<!-- https://mvnrepository.com/artifact/com.googlecode.flyway/flyway-core -->
-		<dependency>
+		<!-- <dependency>
 			<groupId>com.googlecode.flyway</groupId>
 			<artifactId>flyway-core</artifactId>
 			<version>2.3.1</version>
+		</dependency>-->
+		<!-- https://mvnrepository.com/artifact/org.flywaydb/flyway-core -->
+		<dependency>
+			<groupId>org.flywaydb</groupId>
+			<artifactId>flyway-core</artifactId>
+			<version>6.0.8</version>
 		</dependency>
+
 		<!-- https://mvnrepository.com/artifact/org.mapstruct/mapstruct -->
 		<dependency>
 			<groupId>org.mapstruct</groupId>
@@ -202,9 +209,9 @@
                 </configuration>
             </plugin>
 			<plugin>
-				<groupId>com.googlecode.flyway</groupId>
+				<groupId>org.flywaydb</groupId>
 				<artifactId>flyway-maven-plugin</artifactId>
-				<version>2.3.1</version>
+				<version>6.0.3</version>
 				<configuration>
 					<user>postgres</user>
 					<password>admin</password>
