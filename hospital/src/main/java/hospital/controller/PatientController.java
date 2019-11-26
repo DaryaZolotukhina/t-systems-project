@@ -1,6 +1,7 @@
 package hospital.controller;
 
-import hospital.dto.ProcedureMedicineTitleDto;
+import hospital.dto.DiagnosisTypeDto;
+import hospital.dto.ProcedureDto;
 import hospital.dto.StaffDto;
 import hospital.exception.DischargeException;
 import hospital.model.*;
@@ -71,10 +72,22 @@ public class PatientController {
 		return patientService.getAllDoctors();
 	}
 
-	@RequestMapping(value = "/allProcMed", method = RequestMethod.GET)
+	/*@RequestMapping(value = "/allProcMed", method = RequestMethod.GET)
 	@ResponseBody
 	public List<ProcedureMedicineTitleDto> getAllProcedureMedicine() {
 		return patientService.getAllProcedureMedicine();
+	}*/
+
+	@RequestMapping(value = "/allDiagnosisType", method = RequestMethod.GET)
+	@ResponseBody
+	public List<DiagnosisTypeDto> getAllDiagnosisType() {
+		return patientService.getAllDiagnosisType();
+	}
+
+	@RequestMapping(value = "/allProcedureForDiagnosis/{diagTypeTitle}", method = RequestMethod.GET)
+	@ResponseBody
+	public List<ProcedureDto> getAllProcedureForDiagnosis(@PathVariable("diagTypeTitle") String diagTypeTitle) {
+		return patientService.getAllProcedureForDiagnosis(diagTypeTitle);
 	}
 
 

@@ -49,11 +49,11 @@
         <li class="page-item"><a class="page-link" href="/init/2">2</a></li>
         <li class="page-item"><a class="page-link" href="/init/3">3</a></li>
     </ul>
-    <a href="/patient/add"><button>Create user</button></a>
+    <a href="/patient/add"><button>Create patient</button></a>
     <br>
     <br>
     <form action="<c:url value="/logout"/>" method="post">
-        <input type="submit" value="Logoff"/>
+        <input type="submit" value="Log off"/>
         <security:csrfInput/>
     </form>
 </div>

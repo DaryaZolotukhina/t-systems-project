@@ -104,10 +104,24 @@ public class PatientDAOImpl implements PatientDAO {
 	}
 
 	@Override
-	public List<ProcedureMedicine> getAllProcedureMedicine(){
+	public List<Procedure> getAllProcedure(){
 		Session session = sessionFactory.getCurrentSession();
-		List<ProcedureMedicine> procedureMedicineList= session.createQuery("from ProcedureMedicine").list();
-		return procedureMedicineList;
+		List<Procedure> procedureList= session.createQuery("from Procedure").list();
+		return procedureList;
+	}
+
+	@Override
+	public List<Medicine> getAllMedicine(){
+		Session session = sessionFactory.getCurrentSession();
+		List<Medicine> medicineList= session.createQuery("from Medicine").list();
+		return medicineList;
+	}
+
+	@Override
+	public List<DiagnosisType> getAllDiagnosisType(){
+		Session session = sessionFactory.getCurrentSession();
+		List<DiagnosisType> diagnosisTypeList= session.createQuery("from DiagnosisType").list();
+		return diagnosisTypeList;
 	}
 
 	@Override
@@ -125,10 +139,34 @@ public class PatientDAOImpl implements PatientDAO {
 	}
 
 	@Override
-	public ProcedureMedicine getProcedureMedicineByTitle(String title) {
+	public DiagnosisType getDiagnosisTypeByTitle(String title) {
 		EntityManager em = getEntityManager();
-		CriteriaQuery<ProcedureMedicine> cq = em.getCriteriaBuilder().createQuery(ProcedureMedicine.class);
-		Root<ProcedureMedicine> from = cq.from(ProcedureMedicine.class);
+		CriteriaQuery<DiagnosisType> cq = em.getCriteriaBuilder().createQuery(DiagnosisType.class);
+		Root<DiagnosisType> from = cq.from(DiagnosisType.class);
+
+		cq.select(from);
+		cq.where(em.getCriteriaBuilder().equal(from.get("title"),title));
+
+		return em.createQuery(cq).getSingleResult();
+	}
+
+	@Override
+	public Procedure getProcedureByTitle(String title) {
+		EntityManager em = getEntityManager();
+		CriteriaQuery<Procedure> cq = em.getCriteriaBuilder().createQuery(Procedure.class);
+		Root<Procedure> from = cq.from(Procedure.class);
+
+		cq.select(from);
+		cq.where(em.getCriteriaBuilder().equal(from.get("title"),title));
+
+		return em.createQuery(cq).getSingleResult();
+	}
+
+	@Override
+	public Medicine getMedicineByTitle(String title) {
+		EntityManager em = getEntityManager();
+		CriteriaQuery<Medicine> cq = em.getCriteriaBuilder().createQuery(Medicine.class);
+		Root<Medicine> from = cq.from(Medicine.class);
 
 		cq.select(from);
 		cq.where(em.getCriteriaBuilder().equal(from.get("title"),title));

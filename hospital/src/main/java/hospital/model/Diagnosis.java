@@ -1,5 +1,8 @@
 package hospital.model;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -15,10 +18,17 @@ public class Diagnosis {
     @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     @JoinColumn(name = "id_diagnosis_type")
     private DiagnosisType diagnosisType;
+    @Fetch(value = FetchMode.SUBSELECT)
+    @OneToMany(mappedBy = "diagnosis", cascade = CascadeType.MERGE, orphanRemoval = true,fetch = FetchType.EAGER)
+    private List<Prescription> prescriptions;
 
-    @ManyToMany(mappedBy="diagnosises")
-    private List<Patient> patients;
+    public List<Prescription> getPrescriptions() {
+        return prescriptions;
+    }
 
+    public void setPrescriptions(List<Prescription> prescriptions) {
+        this.prescriptions = prescriptions;
+    }
 
     public DiagnosisType getDiagnosisType() {
         return diagnosisType;
@@ -44,11 +54,4 @@ public class Diagnosis {
         this.title = title;
     }
 
-    public List<Patient> getPatients() {
-        return patients;
-    }
-
-    public void setPatients(List<Patient> patients) {
-        this.patients = patients;
-    }
 }

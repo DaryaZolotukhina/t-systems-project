@@ -38,8 +38,21 @@ public class Prescription {
     @Fetch(value = FetchMode.SUBSELECT)
     @OneToMany(mappedBy = "prescription", cascade = CascadeType.MERGE, orphanRemoval = true,fetch = FetchType.EAGER)
     private List<Event> events;
+
+    @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @JoinColumn(name = "id_diagnosis")
+    private Diagnosis diagnosis;
     @Column
     private boolean isDeleted;
+
+
+    public Diagnosis getDiagnosis() {
+        return diagnosis;
+    }
+
+    public void setDiagnosis(Diagnosis diagnosis) {
+        this.diagnosis = diagnosis;
+    }
 
     public Procedure getProcedure() {
         return procedure;

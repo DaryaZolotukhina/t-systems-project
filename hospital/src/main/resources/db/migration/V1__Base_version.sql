@@ -26,7 +26,6 @@ CREATE TABLE public.patients
     surname character varying(255) NOT NULL,
     name character varying(255)  NOT NULL,
     patronymic character varying(255)  NOT NULL,
-    --id_diagnosis REFERENCES diagnosis(id_diagnosis),
     insuranceNum character varying(16) NOT NULL,
 	id_staff integer references staff(id_staff)
 );

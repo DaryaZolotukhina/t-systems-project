@@ -199,3 +199,11 @@ select * from patients;
 
 select * from diagnosis_type;
 
+insert into diagnosis_type values (1,'volchanka');
+insert into diagnosis_type values (2,'flu');
+
+insert into procedures values (1, 'injection');
+insert into procedures values (2, 'operation');
+
+insert into diagnosis_type_procedures values (1,1);
+    insert into diagnosis_type_procedures values (2,2);

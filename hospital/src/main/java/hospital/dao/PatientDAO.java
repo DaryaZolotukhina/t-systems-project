@@ -20,13 +20,21 @@ public interface PatientDAO {
 
 	List<Patient> sortSurname(int pageid, String order);
 
-	List<ProcedureMedicine> getAllProcedureMedicine();
+	public List<Procedure> getAllProcedure();
 
-	ProcedureMedicine getProcedureMedicineByTitle(String title);
+	Procedure getProcedureByTitle(String title);
 
 	List<Staff> getAllDoctors();
 
 	Staff getDoctorBySurname(String surname);
 
 	List<Event> sortEventsDate(String order, int id);
+
+	Medicine getMedicineByTitle(String title);
+
+	List<Medicine> getAllMedicine();
+
+	List<DiagnosisType> getAllDiagnosisType();
+
+	DiagnosisType getDiagnosisTypeByTitle(String title);
 }

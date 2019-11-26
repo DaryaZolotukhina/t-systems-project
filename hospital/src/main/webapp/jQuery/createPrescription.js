@@ -20,6 +20,27 @@ $(document).ready(function() {
 
 });
 $(document).ready(function() {
+
+    $('#diagnosisType').autocomplete({
+        serviceUrl: '/allDiagnosisType',
+        paramName: "title",
+        delimiter: ",",
+        transformResult: function(response) {
+
+            return {
+                suggestions: $.map($.parseJSON(response), function(item) {
+
+                    return { value: item.title, data: item.id };
+                })
+
+            };
+
+        }
+
+    });
+
+});
+$(document).ready(function() {
     $('#daySchedule').multiselect();
 });
 $(document).ready(function() {

@@ -23,6 +23,22 @@ public class Medicine {
     @ManyToMany(mappedBy="medicines")
     private List<DiagnosisType> diagnosisTypes;
 
+    public List<DiagnosisType> getDiagnosisTypes() {
+        return diagnosisTypes;
+    }
+
+    public void setDiagnosisTypes(List<DiagnosisType> diagnosisTypes) {
+        this.diagnosisTypes = diagnosisTypes;
+    }
+
+    public List<Prescription> getEvents() {
+        return events;
+    }
+
+    public void setEvents(List<Prescription> events) {
+        this.events = events;
+    }
+
     public Integer getId() {
         return id;
     }

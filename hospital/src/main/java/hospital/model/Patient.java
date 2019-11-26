@@ -37,12 +37,6 @@ public class Patient {
 	@Fetch(value = FetchMode.SUBSELECT)
 	@OneToMany(mappedBy = "patient", cascade = CascadeType.MERGE, orphanRemoval = true,fetch = FetchType.EAGER)
 	private List<Event> events;
-	@ManyToMany
-	@JoinTable(
-			name="patient_diagnosis",
-			joinColumns=@JoinColumn(name="id_patient", referencedColumnName="id_patient"),
-			inverseJoinColumns=@JoinColumn(name="id_diagnosis", referencedColumnName="id_diagnosis"))
-	private List<Diagnosis> diagnosises;
 
 
 	public Staff getStaff() {
@@ -125,11 +119,4 @@ public class Patient {
         this.events = events;
     }
 
-	public List<Diagnosis> getDiagnosises() {
-		return diagnosises;
-	}
-
-	public void setDiagnosises(List<Diagnosis> diagnosises) {
-		this.diagnosises = diagnosises;
-	}
 }

@@ -20,13 +20,52 @@
     <script src="/jQuery/createPrescription.js"></script>
 </head>
 <body>
+<script>
+    function GenerateSourceProcedure(o,diagnosis) {
+        var str = '/allProcedureForDiagnosis/'+diagnosis;
+        $.ajax({
+            type: 'GET',
+            url: str,
+            success: function(result) {
+                console.log(result)
+                var arr=[];
+                for (i=0;i<result.length;i++) {
+                    arr.push(result[i].title);
+                }
+                console.log(arr)
+                for (i=0;i<result.length;i++) {
+                    $('#procedureSelect').html("<option>" + arr[i] + "</option>").appendTo('.procSelect');
+                }
+            }
+
+        });
+    }
+</script>
 <style>.autocomplete-suggestions{background:#ffffff;}</style>
 <h1 class="ml-3 mb-4 mt-2">Create prescription</h1>
 <form id="myform" action="/createPrescription/${id}" method="post" class="col-sm-8">
     <div class="form-group">
-        <label for="procedureMedicine">Procedure or medicine</label>
+        <label for="diagnosisType">Type of diagnosis</label>
+        <input type="text" class="form-control mdb-autocomplete" id="diagnosisType" name="diagnosisType" placeholder="Type of diagnosis">
+        <label for="diagnosis">Title of diagnosis</label>
+        <input type="text" class="form-control" id="diagnosis" name="diagnosis" placeholder="Title of diagnosis">
+       <!-- <label for="procedureMedicine">Procedure or medicine</label>
         <input type="text" class="form-control mdb-autocomplete" id="procedureMedicine" name="procedureMedicine" placeholder="Procedure or medicine">
-        <label for="procedureMedicine">Repeat per</label>
+      -->
+        <input type="button" value="Choose procedure" onclick="GenerateSourceProcedure(this,$('#diagnosisType').val())">
+        <input type="button" value="Choose medicine" onclick="GenerateSourceMedicine(this,$('#diagnosisType').val())">
+        <label for="but3">Procedure or medicine</label>
+        <label class="radio-inline"><input type="radio" name="optradio1" checked id="but3"/>Procedure</label>
+        <label class="radio-inline"><input type="radio" name="optradio1" id="but4" />Medicine</label>
+       <div class="procSelect">
+        <select class="form-control" name="procedureSelect" id="procedureSelect">
+        </select>
+        </div>
+        <div class="medSelect">
+        <select class="form-control" name="procedureSelect" id="medicineSelect">
+        </select>
+        </div>
+        <label for="but1">Repeat per</label>
         <label class="radio-inline"><input type="radio" name="optradio" checked id="but1"/>Day</label>
         <label class="radio-inline"><input type="radio" name="optradio" id="but2" />Week</label>
         <label for="periodSelect">Period</label>

@@ -1,6 +1,5 @@
 package hospital.dto.mappers;
 
-import hospital.dto.ProcedureMedicineTitleDto;
 import hospital.dto.StaffDto;
 import hospital.model.Staff;
 import org.mapstruct.InheritInverseConfiguration;

@@ -2,9 +2,7 @@ package hospital.service;
 
 import java.util.List;
 
-import hospital.dto.PatientDto;
-import hospital.dto.ProcedureMedicineTitleDto;
-import hospital.dto.StaffDto;
+import hospital.dto.*;
 import hospital.exception.DischargeException;
 import hospital.model.*;
 
@@ -26,9 +24,9 @@ public interface PatientService {
 
 	List<Patient> sortSurname(int pageid, String order);
 
-	List<ProcedureMedicineTitleDto> getAllProcedureMedicine();
+	List<ProcedureDto> getAllProcedureMedicine();
 
-	ProcedureMedicineTitleDto getProcedureMedicineByTitle(String title);
+	ProcedureDto getProcedureMedicineByTitle(String title);
 
 	List<StaffDto> getAllDoctors();
 
@@ -40,4 +38,11 @@ public interface PatientService {
 
 	List<Event> sortEventsDate(String order,int id);
 
+	List<DiagnosisTypeDto> getAllDiagnosisType();
+
+	DiagnosisType getDiagnosisTypeByTitle(String title);
+
+	List<ProcedureDto> getAllProcedureForDiagnosis(String titleDiag);
+
+	List<MedicineDto> getAllMedicineForDiagnosis(String titleDiag);
 	}

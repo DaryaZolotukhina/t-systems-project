@@ -1,6 +1,5 @@
 package hospital.dto;
 
-import hospital.model.PatientDiagnosis;
 import hospital.model.Prescription;
 import hospital.model.Staff;
 
@@ -51,16 +50,6 @@ public class PatientDto {
     private boolean isDeleted;
 
     private boolean isDischarged;
-
-    public List<PatientDiagnosis> getPatDiag() {
-        return patDiag;
-    }
-
-    public void setPatDiag(List<PatientDiagnosis> patDiag) {
-        this.patDiag = patDiag;
-    }
-
-    private List<PatientDiagnosis> patDiag;
 
     public String getInsuranceNum() {
         return insuranceNum;

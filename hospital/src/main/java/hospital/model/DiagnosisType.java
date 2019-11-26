@@ -14,14 +14,17 @@ public class DiagnosisType {
     private Integer id;
     @Column
     private String title;
+    @JsonIgnore
     @OneToMany(mappedBy = "diagnosisType", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Diagnosis> diagnosises;
+    @JsonIgnore
     @ManyToMany
     @JoinTable(
             name="diagnosis_type_procedures",
             joinColumns=@JoinColumn(name="id_diagnosis_type", referencedColumnName="id_diagnosis_type"),
             inverseJoinColumns=@JoinColumn(name="id_procedure", referencedColumnName="id_procedure"))
     private List<Procedure> procedures;
+    @JsonIgnore
     @ManyToMany
     @JoinTable(
             name="diagnosis_type_medicines",

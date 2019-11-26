@@ -20,8 +20,17 @@ public class Procedure {
     @JsonIgnore
     @OneToMany(mappedBy = "procedure", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Prescription> events;
+    @JsonIgnore
     @ManyToMany(mappedBy="procedures")
     private List<DiagnosisType> diagnosisTypes;
+
+    public List<Prescription> getEvents() {
+        return events;
+    }
+
+    public void setEvents(List<Prescription> events) {
+        this.events = events;
+    }
 
     public List<DiagnosisType> getDiagnosisTypes() {
         return diagnosisTypes;

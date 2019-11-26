@@ -81,7 +81,7 @@ public class EventServiceImpl implements EventService {
         for(int i=0;i<eventCnt;i++){
             EventDto eventDto=new EventDto();
             eventDto.setPatient(presc.getPatient());
-            eventDto.setProcedureMedicine(presc.getProcedureMedicine());
+            //eventDto.setProcedureMedicine(presc.getProcedureMedicine());
             eventDto.setPrescription(presc);
             eventDto.setDateTimeEvent(dates.get(i));
             eventDto.setStatusEvent(eventDAO.getStatusEventById(1));

@@ -122,12 +122,12 @@ public class PatientServiceImpl implements PatientService {
 		return null;
 	}
 
-	@Override
+	/*@Override
     @Transactional
     public ProcedureMedicineTitleDto getProcedureMedicineByTitle(String title) {
 		ProcedureMedicine procMed=patientDAO.getProcedureMedicineByTitle(title);
         return ProcedureMedicineMapper.PROCEDURE_MEDICINE_MAPPER.fromProcedureMedicine(procMed);
-    }
+    }*/
 
 	@Override
 	@Transactional
@@ -136,7 +136,7 @@ public class PatientServiceImpl implements PatientService {
 
 	}
 
-	@Transactional
+/*	@Transactional
 	@Override
 	public List<ProcedureMedicineTitleDto> getAllProcedureMedicine(){
 		List<ProcedureMedicine> listProcMed=patientDAO.getAllProcedureMedicine();
@@ -145,6 +145,62 @@ public class PatientServiceImpl implements PatientService {
 			listProcMedDto.add(ProcedureMedicineMapper.PROCEDURE_MEDICINE_MAPPER.fromProcedureMedicine(procMed));
 		}
 		return listProcMedDto;
+	}*/
+
+	@Override
+	@Transactional
+	public DiagnosisType getDiagnosisTypeByTitle(String title) {
+		DiagnosisType diagnosisType=patientDAO.getDiagnosisTypeByTitle(title);
+		return diagnosisType;
+	}
+
+	@Transactional
+	@Override
+	public List<ProcedureDto> getAllProcedureForDiagnosis(String titleDiag) {
+		//DiagnosisType diagnosis = getDiagnosisTypeByTitle(titleDiag);
+		List<Procedure> listProc = patientDAO.getAllProcedure();
+		List<Procedure> listProcForDiag = new ArrayList<>();
+		for (Procedure proc : listProc) {
+			for (DiagnosisType diagnosisType : proc.getDiagnosisTypes()){
+				if (diagnosisType.getTitle().equals(titleDiag)){
+					listProcForDiag.add(proc);
+					continue;
+				}
+			}
+		}
+		List<ProcedureDto> listProcDto=new ArrayList<>();
+		for (Procedure proc : listProcForDiag){
+			listProcDto.add(ProcedureMapper.PROCEDURE_MAPPER.fromProcedure(proc));
+		}
+		return listProcDto;
+	}
+
+	@Transactional
+	@Override
+	public List<MedicineDto> getAllMedicineForDiagnosis(String titleDiag) {
+		DiagnosisType diagnosis = getDiagnosisTypeByTitle(titleDiag);
+		List<Medicine> listMedicine = patientDAO.getAllMedicine();
+		List<Medicine> listMedicineForDiag = new ArrayList<>();
+		for (Medicine med : listMedicine) {
+			if (med.getDiagnosisTypes().contains(diagnosis))
+				listMedicineForDiag.add(med);
+		}
+		List<MedicineDto> listMedicineDto=new ArrayList<>();
+		for (Medicine med : listMedicineForDiag){
+			listMedicineDto.add(MedicineMapper.MEDICINE_MAPPER.fromMedicine(med));
+		}
+		return listMedicineDto;
+	}
+
+	@Transactional
+	@Override
+	public List<DiagnosisTypeDto> getAllDiagnosisType(){
+		List<DiagnosisType> listDiagnosisType=patientDAO.getAllDiagnosisType();
+		List<DiagnosisTypeDto> listDiagnosisTypeDto=new ArrayList<>();
+		for (DiagnosisType diagnosisType : listDiagnosisType){
+			listDiagnosisTypeDto.add(DiagnosisTypeMapper.DIAGNOSIS_TYPE_MAPPER.fromDiagnosisType(diagnosisType));
+		}
+		return listDiagnosisTypeDto;
 	}
 
 	@Transactional
@@ -180,6 +236,16 @@ public class PatientServiceImpl implements PatientService {
 	}
 
 	@Override
+	public List<ProcedureDto> getAllProcedureMedicine() {
+		return null;
+	}
+
+	@Override
+	public ProcedureDto getProcedureMedicineByTitle(String title) {
+		return null;
+	}
+
+	@Override
 	@Transactional
 	public List<Event> sortEventsDate(String order,int id){
 		return patientDAO.sortEventsDate(order,id);
@@ -190,7 +256,7 @@ public class PatientServiceImpl implements PatientService {
     public void addPrescription(int id, String procedureMedicine, String period, List<String> daySchedule, List<String> weekSchedule){
 	    PrescriptionDto p =new PrescriptionDto();
 	    p.setPatient(PatientMapper.PATIENT_MAPPER.toPatient(getById(id)));
-	    p.setProcedureMedicine(ProcedureMedicineMapper.PROCEDURE_MEDICINE_MAPPER.toProcedureMedicine(getProcedureMedicineByTitle(procedureMedicine)));
+	   // p.setProcedureMedicine(ProcedureMedicineMapper.PROCEDURE_MEDICINE_MAPPER.toProcedureMedicine(getProcedureMedicineByTitle(procedureMedicine)));
 	    if (daySchedule.isEmpty()){
 	        p.setDaySchedule(0);
         }
