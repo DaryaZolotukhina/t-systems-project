@@ -68,7 +68,12 @@
         <c:forEach  items="${prescriptions}" var ="prescription">
             <c:if test = "${prescription.isDone != true}">
             <tr>
-                <td>${prescription.procedureMedicine.title}</td>
+                <c:if test = "${prescription.procedure != null}">
+                    <td>${prescription.procedure.title}</td>
+                </c:if>
+                <c:if test = "${prescription.medicine != null}">
+                    <td>${prescription.medicine.title}</td>
+                </c:if>
                 <td>${prescription.period} weeks</td>
                 <td>${prescription.dose}</td>
                 <td>no</td>
@@ -93,7 +98,12 @@
         <tbody>
         <c:forEach  items="${events}" var ="event">
             <tr>
-                <td>${event.procedureMedicine.title}</td>
+                <c:if test = "${event.procedure != null}">
+                <td>${event.procedure.title}</td>
+                </c:if>
+                <c:if test = "${prescription.medicine != null}">
+                    <td>${event.medicine.title}</td>
+                </c:if>
                 <td>${event.dateTimeEvent}</td>
                 <td>${event.statusEvent.title}</td>
             </tr>

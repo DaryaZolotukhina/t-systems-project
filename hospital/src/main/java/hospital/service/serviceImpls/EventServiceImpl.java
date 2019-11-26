@@ -3,8 +3,8 @@ package hospital.service.serviceImpls;
 import hospital.dao.EventDAO;
 import hospital.dao.PrescriptionDAO;
 import hospital.dto.EventDto;
+import hospital.dto.EventUIDto;
 import hospital.dto.mappers.EventMapper;
-import hospital.dto.mappers.PrescriptionMapper;
 import hospital.model.Event;
 import hospital.model.Prescription;
 import hospital.service.EventService;
@@ -39,13 +39,19 @@ public class EventServiceImpl implements EventService {
 
     @Override
     @Transactional
-    public List<EventDto> getAllEvents(int id){
-        List<EventDto> listEventDto=new ArrayList<>();
+    public List<EventUIDto> getAllEvents(int id){
+        List<EventUIDto> listEventUIDto=new ArrayList<>();
         List<Event> listEvent= eventDAO.getAllEvents(id);
         for (Event event : listEvent){
-            listEventDto.add(EventMapper.EVENT_MAPPER.fromEvent(event));
+            EventUIDto eventUIDto=new EventUIDto();
+            eventUIDto.setId(event.getId());
+            eventUIDto.setDateTimeEvent(event.getDateTimeEvent());
+            eventUIDto.setMedicine(event.getMedicine());
+            eventUIDto.setProcedure(event.getProcedure());
+            eventUIDto.setStatusEvent(event.getStatusEvent());
+            listEventUIDto.add(eventUIDto);
         }
-        return listEventDto;
+        return listEventUIDto;
     }
 
     @Override
@@ -81,7 +87,10 @@ public class EventServiceImpl implements EventService {
         for(int i=0;i<eventCnt;i++){
             EventDto eventDto=new EventDto();
             eventDto.setPatient(presc.getPatient());
-            //eventDto.setProcedureMedicine(presc.getProcedureMedicine());
+            if (presc.getProcedure()!=null)
+                eventDto.setProcedure(presc.getProcedure());
+            else
+                eventDto.setMedicine(presc.getMedicine());
             eventDto.setPrescription(presc);
             eventDto.setDateTimeEvent(dates.get(i));
             eventDto.setStatusEvent(eventDAO.getStatusEventById(1));

@@ -91,6 +91,12 @@ public class PatientDAOImpl implements PatientDAO {
 	}
 
 	@Override
+	public void addDiagnosis(Diagnosis d) {
+		Session session = sessionFactory.getCurrentSession();
+		session.persist(d);
+	}
+
+	@Override
 	public void updatePatient(Patient p) {
 		Session session = sessionFactory.getCurrentSession();
 		session.update(p);
@@ -155,6 +161,18 @@ public class PatientDAOImpl implements PatientDAO {
 		EntityManager em = getEntityManager();
 		CriteriaQuery<Procedure> cq = em.getCriteriaBuilder().createQuery(Procedure.class);
 		Root<Procedure> from = cq.from(Procedure.class);
+
+		cq.select(from);
+		cq.where(em.getCriteriaBuilder().equal(from.get("title"),title));
+
+		return em.createQuery(cq).getSingleResult();
+	}
+
+	@Override
+	public Diagnosis getDiagnosisByTitle(String title) {
+		EntityManager em = getEntityManager();
+		CriteriaQuery<Diagnosis> cq = em.getCriteriaBuilder().createQuery(Diagnosis.class);
+		Root<Diagnosis> from = cq.from(Diagnosis.class);
 
 		cq.select(from);
 		cq.where(em.getCriteriaBuilder().equal(from.get("title"),title));

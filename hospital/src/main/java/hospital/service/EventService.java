@@ -1,6 +1,6 @@
 package hospital.service;
 
-import hospital.dto.EventDto;
+import hospital.dto.EventUIDto;
 import hospital.model.Event;
 
 import java.util.List;
@@ -8,7 +8,7 @@ import java.util.List;
 public interface EventService {
     List<Event> generateEvents(int id);
 
-    List<EventDto> getAllEvents(int id);
+    List<EventUIDto> getAllEvents(int id);
 
     void deleteEvent(Event event);
 

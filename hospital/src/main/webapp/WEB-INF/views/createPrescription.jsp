@@ -33,8 +33,29 @@
                     arr.push(result[i].title);
                 }
                 console.log(arr)
+                for (i=0;i<arr.length;i++) {
+                    var newOption = new Option(arr[i], i, true, true);
+                    $('#procedureSelect').append(newOption);
+                }
+            }
+
+        });
+    }
+    function GenerateSourceMedicine(o,diagnosis) {
+        var str = '/allMedicineForDiagnosis/'+diagnosis;
+        $.ajax({
+            type: 'GET',
+            url: str,
+            success: function(result) {
+                console.log(result)
+                var arr=[];
                 for (i=0;i<result.length;i++) {
-                    $('#procedureSelect').html("<option>" + arr[i] + "</option>").appendTo('.procSelect');
+                    arr.push(result[i].title);
+                }
+                console.log(arr)
+                for (i=0;i<arr.length;i++) {
+                    var newOption = new Option(arr[i], i, true, true);
+                    $('#medicineSelect').append(newOption);
                 }
             }
 
@@ -62,7 +83,7 @@
         </select>
         </div>
         <div class="medSelect">
-        <select class="form-control" name="procedureSelect" id="medicineSelect">
+        <select class="form-control" name="medicineSelect" id="medicineSelect">
         </select>
         </div>
         <label for="but1">Repeat per</label>

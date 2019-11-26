@@ -160,7 +160,7 @@ id_StatusEvent SERIAL NOT NULL PRIMARY KEY,
     title character varying(255) NOT NULL
 );
 
-insert into StatusEvent values (1,'planned');
+insert into Status_Event values (1,'planned');
 
 drop table events;
 	CREATE TABLE public.events
@@ -204,6 +204,19 @@ insert into diagnosis_type values (2,'flu');
 
 insert into procedures values (1, 'injection');
 insert into procedures values (2, 'operation');
+    insert into procedures values (3, 'dropper');
+
+    insert into medicines values (1, 'aspirin');
+    insert into medicines values (2, 'analgin');
+    insert into medicines values (3, 'nospa');
 
 insert into diagnosis_type_procedures values (1,1);
+    insert into diagnosis_type_procedures values (3,1);
     insert into diagnosis_type_procedures values (2,2);
+
+    insert into diagnosis_type_medicines values (1,1);
+    insert into diagnosis_type_medicines values (3,1);
+    insert into diagnosis_type_medicines values (2,2);
+
+select * from diagnosises;
+truncate events, prescriptions, diagnosises;

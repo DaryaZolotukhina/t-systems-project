@@ -16,7 +16,7 @@ public class Event {
     @Column(name="id_event")
     private Integer id;
     @JsonIgnore
-    @ManyToOne(cascade = CascadeType.MERGE)
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_patient")
     private Patient patient;
     @Column
@@ -28,7 +28,7 @@ public class Event {
     @JoinColumn(name = "id_procedure")
     private Procedure procedure;
     @JsonIgnore
-    @ManyToOne(cascade = CascadeType.MERGE)
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_prescription")
     private Prescription prescription;
     @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)

@@ -1,6 +1,7 @@
 package hospital.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import java.util.List;
@@ -14,18 +15,18 @@ public class DiagnosisType {
     private Integer id;
     @Column
     private String title;
-    @JsonIgnore
-    @OneToMany(mappedBy = "diagnosisType", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
+    @OneToMany(mappedBy = "diagnosisType", cascade = CascadeType.MERGE, orphanRemoval = true,fetch = FetchType.EAGER)
     private List<Diagnosis> diagnosises;
     @JsonIgnore
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.MERGE)
     @JoinTable(
             name="diagnosis_type_procedures",
             joinColumns=@JoinColumn(name="id_diagnosis_type", referencedColumnName="id_diagnosis_type"),
             inverseJoinColumns=@JoinColumn(name="id_procedure", referencedColumnName="id_procedure"))
     private List<Procedure> procedures;
     @JsonIgnore
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.MERGE)
     @JoinTable(
             name="diagnosis_type_medicines",
             joinColumns=@JoinColumn(name="id_diagnosis_type", referencedColumnName="id_diagnosis_type"),

@@ -1,5 +1,7 @@
 package hospital.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
@@ -15,7 +17,8 @@ public class Diagnosis {
     private Integer id;
     @Column
     private String title;
-    @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @JsonBackReference
+    @ManyToOne(cascade = CascadeType.MERGE,fetch = FetchType.EAGER)
     @JoinColumn(name = "id_diagnosis_type")
     private DiagnosisType diagnosisType;
     @Fetch(value = FetchMode.SUBSELECT)

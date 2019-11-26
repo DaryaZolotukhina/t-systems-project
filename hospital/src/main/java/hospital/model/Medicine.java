@@ -15,12 +15,12 @@ public class Medicine {
     @Column
     private String title;
     @JsonIgnore
-    @OneToMany(mappedBy = "medicine", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "medicine", cascade = CascadeType.MERGE, orphanRemoval = true)
     private List<Prescription> prescriptions;
     @JsonIgnore
-    @OneToMany(mappedBy = "medicine", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "medicine", cascade = CascadeType.MERGE, orphanRemoval = true)
     private List<Prescription> events;
-    @ManyToMany(mappedBy="medicines")
+    @ManyToMany(mappedBy="medicines",cascade = CascadeType.MERGE,fetch = FetchType.EAGER)
     private List<DiagnosisType> diagnosisTypes;
 
     public List<DiagnosisType> getDiagnosisTypes() {

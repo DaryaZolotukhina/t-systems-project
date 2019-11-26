@@ -24,25 +24,29 @@ public interface PatientService {
 
 	List<Patient> sortSurname(int pageid, String order);
 
-	List<ProcedureDto> getAllProcedureMedicine();
-
-	ProcedureDto getProcedureMedicineByTitle(String title);
-
 	List<StaffDto> getAllDoctors();
 
 	void addPatient(String surname, String name, String patronymic, String insuranceNum, String doctor);
 
 	StaffDto getDoctorBySurname(String surname);
 
-	void addPrescription(int id, String procedureMedicine, String period, List<String> daySchedule, List<String> weekSchedule);
+	void addPrescription(int id, String diagnosis, String procedure, String medicine, String period, List<String> daySchedule, List<String> weekSchedule);
 
 	List<Event> sortEventsDate(String order,int id);
 
-	List<DiagnosisTypeDto> getAllDiagnosisType();
+	List<DiagnosisTypeTitleDto> getAllDiagnosisType();
 
 	DiagnosisType getDiagnosisTypeByTitle(String title);
 
-	List<ProcedureDto> getAllProcedureForDiagnosis(String titleDiag);
+	List<ProcedureTitleDto> getAllProcedureForDiagnosis(String titleDiag);
 
-	List<MedicineDto> getAllMedicineForDiagnosis(String titleDiag);
+	List<MedicineTitleDto> getAllMedicineForDiagnosis(String titleDiag);
+
+	void addDiagnosis(String title, String diagnosisType);
+
+	Procedure getProcedureByTitle(String title);
+
+	Medicine getMedicineByTitle(String title);
+
+	Diagnosis getDiagnosisByTitle(String title);
 	}

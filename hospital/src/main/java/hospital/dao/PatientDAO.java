@@ -37,4 +37,8 @@ public interface PatientDAO {
 	List<DiagnosisType> getAllDiagnosisType();
 
 	DiagnosisType getDiagnosisTypeByTitle(String title);
+
+	void addDiagnosis(Diagnosis d);
+
+	Diagnosis getDiagnosisByTitle(String title);
 }

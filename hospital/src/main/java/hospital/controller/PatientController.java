@@ -1,8 +1,6 @@
 package hospital.controller;
 
-import hospital.dto.DiagnosisTypeDto;
-import hospital.dto.ProcedureDto;
-import hospital.dto.StaffDto;
+import hospital.dto.*;
 import hospital.exception.DischargeException;
 import hospital.model.*;
 import hospital.service.EventService;
@@ -80,25 +78,36 @@ public class PatientController {
 
 	@RequestMapping(value = "/allDiagnosisType", method = RequestMethod.GET)
 	@ResponseBody
-	public List<DiagnosisTypeDto> getAllDiagnosisType() {
+	public List<DiagnosisTypeTitleDto> getAllDiagnosisType() {
 		return patientService.getAllDiagnosisType();
 	}
 
 	@RequestMapping(value = "/allProcedureForDiagnosis/{diagTypeTitle}", method = RequestMethod.GET)
 	@ResponseBody
-	public List<ProcedureDto> getAllProcedureForDiagnosis(@PathVariable("diagTypeTitle") String diagTypeTitle) {
+	public List<ProcedureTitleDto> getAllProcedureForDiagnosis(@PathVariable("diagTypeTitle") String diagTypeTitle) {
 		return patientService.getAllProcedureForDiagnosis(diagTypeTitle);
+	}
+
+	@RequestMapping(value = "/allMedicineForDiagnosis/{diagTypeTitle}", method = RequestMethod.GET)
+	@ResponseBody
+	public List<MedicineTitleDto> getAllMedicineForDiagnosis(@PathVariable("diagTypeTitle") String diagTypeTitle) {
+		return patientService.getAllMedicineForDiagnosis(diagTypeTitle);
 	}
 
 
 	@RequestMapping(value = "/createPrescription/{id}", method = RequestMethod.POST)
 	public String createPresc(@PathVariable("id") int id,
-									@RequestParam("procedureMedicine") String procedureMedicine,
 									@RequestParam("periodSelect") String period,
 									@RequestParam(value="daySchedule",defaultValue="") List<String> daySchedule,
-									@RequestParam(value="weekSchedule",defaultValue="") List<String> weekSchedule) {
+									@RequestParam(value="weekSchedule",defaultValue="") List<String> weekSchedule,
+							  @RequestParam("diagnosisType") String diagnosisType,
+							  @RequestParam("diagnosis") String diagnosis,
+							  @RequestParam(value="procedureSelect",defaultValue="") String procedure,
+							  @RequestParam(value="medicineSelect",defaultValue="") String medicine) {
 
-		patientService.addPrescription(id, procedureMedicine, period, daySchedule, weekSchedule);
+		patientService.addDiagnosis(diagnosis,diagnosisType);
+		patientService.addPrescription(id, diagnosis, procedure, medicine, period, daySchedule, weekSchedule);
+
         return "redirect:/patient/{id}";
 	}
 

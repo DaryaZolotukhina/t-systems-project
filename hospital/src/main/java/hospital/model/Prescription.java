@@ -22,7 +22,7 @@ public class Prescription {
     @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "id_medicine")
     private Medicine medicine;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "id_procedure")
     private Procedure procedure;
     @Column
@@ -39,12 +39,11 @@ public class Prescription {
     @OneToMany(mappedBy = "prescription", cascade = CascadeType.MERGE, orphanRemoval = true,fetch = FetchType.EAGER)
     private List<Event> events;
 
-    @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @ManyToOne(cascade = CascadeType.MERGE,fetch = FetchType.EAGER)
     @JoinColumn(name = "id_diagnosis")
     private Diagnosis diagnosis;
     @Column
     private boolean isDeleted;
-
 
     public Diagnosis getDiagnosis() {
         return diagnosis;
