@@ -74,6 +74,8 @@
 				<beans:value>hospital.model.Medicine</beans:value>
 				<beans:value>hospital.model.StatusEvent</beans:value>
 				<beans:value>hospital.model.DiagnosisType</beans:value>
+				<beans:value>hospital.model.StaffType</beans:value>
+				<beans:value>hospital.model.Specialization</beans:value>
 			</beans:list>
 		</beans:property>
 		<beans:property name="hibernateProperties">

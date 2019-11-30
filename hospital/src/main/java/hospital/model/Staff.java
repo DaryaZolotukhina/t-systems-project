@@ -20,18 +20,19 @@ public class Staff {
     private String patronymic;
     @Column(name="isdeleted")
     private boolean isDeleted;
-    @Column
-    private boolean isDoctor;
+    @ManyToOne(cascade = CascadeType.MERGE,fetch = FetchType.EAGER)
+    @JoinColumn(name = "id_staff_type")
+    private DiagnosisType staffType;
     @JsonIgnore
     @OneToMany(mappedBy = "staff", cascade = CascadeType.MERGE, orphanRemoval = true,fetch = FetchType.EAGER)
     private List<Patient> patients;
 
-    public boolean getIsDoctor() {
-        return isDoctor;
+    public DiagnosisType getStaffType() {
+        return staffType;
     }
 
-    public void setIsDoctor(boolean isDoctor) {
-        this.isDoctor = isDoctor;
+    public void setStaffType(DiagnosisType staffType) {
+        this.staffType = staffType;
     }
 
     public Integer getId() {

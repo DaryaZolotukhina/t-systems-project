@@ -23,6 +23,16 @@ public class Procedure {
     @JsonIgnore
     @ManyToMany(mappedBy="procedures",cascade = CascadeType.MERGE,fetch = FetchType.EAGER)
     private List<DiagnosisType> diagnosisTypes;
+    @ManyToMany(mappedBy="procedures",cascade = CascadeType.MERGE,fetch = FetchType.EAGER)
+    private List<Specialization> specializations;
+
+    public List<Specialization> getSpecializations() {
+        return specializations;
+    }
+
+    public void setSpecializations(List<Specialization> specializations) {
+        this.specializations = specializations;
+    }
 
     public List<Prescription> getEvents() {
         return events;

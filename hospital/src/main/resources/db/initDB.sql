@@ -137,7 +137,7 @@ INSERT INTO prescriptions VALUES (2,1,1,'111','0000000',2,2,false);
     INSERT INTO prescriptions VALUES (4,2,1,'111','0000000',2,2,false);
 select * from prescriptions;
 
-INSERT INTO STAFF VALUES (2,'Semenov','Andrey','Vitalievich',false,true);
+INSERT INTO STAFF VALUES (1,'Semenov','Andrey','Vitalievich',false,1);
     update staff set surname='Andreev', name='Vladimir', patronymic='Vitalievich', isDeleted=false, isDoctor='true'
     where id_staff=1;
     INSERT INTO STAFF VALUES (3,'Danilova','Inna','Semenovna',false,false);
@@ -221,3 +221,5 @@ insert into diagnosis_type_procedures values (1,1);
 select * from diagnosises;
 truncate events, prescriptions, diagnosises;
 select * from procedures;
+
+insert into staff_type values (1,'immunologist');
