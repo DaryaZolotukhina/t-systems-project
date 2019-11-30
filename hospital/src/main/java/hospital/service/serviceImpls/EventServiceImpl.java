@@ -2,19 +2,14 @@ package hospital.service.serviceImpls;
 
 import hospital.dao.EventDAO;
 import hospital.dao.PrescriptionDAO;
-import hospital.dto.EventAjax;
-import hospital.dto.EventDto;
-import hospital.dto.EventUIDto;
-import hospital.dto.MedicineTitleDto;
+import hospital.dto.*;
 import hospital.dto.mappers.EventMapper;
-import hospital.dto.mappers.MedicineMapper;
 import hospital.dto.mappers.StaffMapper;
-import hospital.model.Event;
-import hospital.model.Prescription;
-import hospital.model.Staff;
+import hospital.model.*;
 import hospital.service.EventService;
 import hospital.service.PatientService;
 import hospital.service.PrescriptionService;
+import org.hibernate.collection.internal.PersistentSet;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -73,6 +68,7 @@ public class EventServiceImpl implements EventService {
         for (Event event : listEvent){
             EventAjax eventAjax=new EventAjax();
             eventAjax.setId(event.getId());
+            eventAjax.setPatient(event.getPatient());
             eventAjax.setDateTimeEvent(event.getDateTimeEvent());
             if (event.getMedicine()!=null)
                 eventAjax.setMedicine(event.getMedicine().getTitle());
@@ -87,7 +83,7 @@ public class EventServiceImpl implements EventService {
     @Override
     @Transactional
     public List<EventDto> eventsForStaff(int id){
-        List<Event> listEvent= eventDAO.getAllEvents(id);
+        List<Event> listEvent= eventDAO.getAllEvents();
         List<EventDto> eventDtoList=new ArrayList<>();
         Date date = new Date();
         for (Event event : listEvent){
@@ -96,6 +92,34 @@ public class EventServiceImpl implements EventService {
                 eventDtoList.add(EventMapper.EVENT_MAPPER.fromEvent(event));
         }
         return eventDtoList;
+    }
+
+    @Override
+    @Transactional
+    public Event getById(int id) {
+        return eventDAO.getEventById(id);
+    }
+
+    @Override
+    @Transactional
+    public StatusEvent getStatusEventByTitle(String title) {
+        StatusEvent statusEvent=eventDAO.getStatusEventByTitle(title);
+        return statusEvent;
+    }
+
+    @Override
+    @Transactional
+    public void update(Event event){
+        eventDAO.updateEvent(event);
+    }
+
+    @Override
+    @Transactional
+    public void changeStatus(String status, int id){
+        Event event=getById(id);
+        StatusEvent statusEvent=getStatusEventByTitle(status);
+        event.setStatusEvent(statusEvent);
+        update(event);
     }
 
     @Override

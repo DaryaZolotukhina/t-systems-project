@@ -1,6 +1,7 @@
 package hospital.dto;
 
 import hospital.model.Medicine;
+import hospital.model.Patient;
 import hospital.model.Procedure;
 import hospital.model.StatusEvent;
 
@@ -12,10 +13,19 @@ public class EventAjax {
         private String medicine;
         private String procedure;
         private StatusEvent statusEvent;
+        private Patient patient;
+
+        public Patient getPatient() {
+            return patient;
+        }
+
+        public void setPatient(Patient patient) {
+            this.patient = patient;
+        }
 
         public Integer getId() {
-            return id;
-        }
+                return id;
+            }
 
         public void setId(Integer id) {
             this.id = id;

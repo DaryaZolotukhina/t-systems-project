@@ -1,13 +1,16 @@
 package hospital.dao;
 
-import hospital.model.Event;
-import hospital.model.Patient;
-import hospital.model.StatusEvent;
+import hospital.model.*;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
 
+import javax.persistence.EntityManager;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 import java.util.List;
+
+import static hospital.dao.PatientDAOImpl.getEntityManager;
 
 @Repository
 public class EventDAOImpl implements EventDAO {
@@ -45,6 +48,13 @@ public class EventDAOImpl implements EventDAO {
         return events;
     }
 
+    @Override
+    public List<Event> getAllEvents(){
+        Session session = sessionFactory.getCurrentSession();
+        List<Event> eventList= session.createQuery("from Event").list();
+        return eventList;
+    }
+
 
     @Override
     public void saveEvent(Event event) {
@@ -52,4 +62,28 @@ public class EventDAOImpl implements EventDAO {
         session.persist(event);
     }
 
+    @Override
+    public Event getEventById(int id){
+        Session session = sessionFactory.getCurrentSession();
+        Event event = (Event) session.load(Event.class, id);
+        return event;
+    }
+
+    @Override
+    public StatusEvent getStatusEventByTitle(String title) {
+        EntityManager em = getEntityManager();
+        CriteriaQuery<StatusEvent> cq = em.getCriteriaBuilder().createQuery(StatusEvent.class);
+        Root<StatusEvent> from = cq.from(StatusEvent.class);
+
+        cq.select(from);
+        cq.where(em.getCriteriaBuilder().equal(from.get("title"),title));
+
+        return em.createQuery(cq).getSingleResult();
+    }
+
+    @Override
+    public void update(Event event) {
+       sessionFactory.getCurrentSession().merge(event);
+        //session.update(event);
+    }
 }

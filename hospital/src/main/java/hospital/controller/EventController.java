@@ -42,4 +42,11 @@ public class EventController {
         return "eventsForStaff";
     }
 
+    @RequestMapping(value = "/changeStatus/{idEvent}/{idStaff}/{status}", method = RequestMethod.GET)
+    public @ResponseBody
+    List<EventDto> changeStatus(@PathVariable("status") String status, @PathVariable("idEvent") int idEvent,
+                                @PathVariable("idStaff") int idStaff){
+        eventService.changeStatus(status,idEvent);
+        return eventService.eventsForStaff(idStaff);
+    }
 }

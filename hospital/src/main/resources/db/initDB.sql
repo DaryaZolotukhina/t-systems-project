@@ -161,6 +161,8 @@ id_StatusEvent SERIAL NOT NULL PRIMARY KEY,
 );
 
 insert into Status_Event values (1,'planned');
+    insert into Status_Event values (2,'completed');
+    insert into Status_Event values (3,'canceled');
 
 drop table events;
 	CREATE TABLE public.events

@@ -59,6 +59,7 @@
             <th colspan="4">Prescriptions</th>
         </tr>
         <tr>
+            <th>Patient surname</th>
             <th>Type of diagnosis</th>
             <th>Title of diagnosis</th>
             <th>Procedure or medicine</th>

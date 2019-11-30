@@ -6,7 +6,7 @@ import hospital.model.StatusEvent;
 import java.util.List;
 
 public interface EventDAO {
-    public void saveEvent(Event event);
+    void saveEvent(Event event);
 
     StatusEvent getStatusEventById(int id);
 
@@ -15,5 +15,13 @@ public interface EventDAO {
     void deleteEvent(Event event);
 
     void updateEvent(Event event);
+
+    Event getEventById(int id);
+
+    StatusEvent getStatusEventByTitle(String title);
+
+    void update(Event event);
+
+    List<Event> getAllEvents();
 
 }
