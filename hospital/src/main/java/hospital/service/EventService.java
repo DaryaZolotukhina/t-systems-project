@@ -1,6 +1,7 @@
 package hospital.service;
 
 import hospital.dto.EventAjax;
+import hospital.dto.EventDto;
 import hospital.dto.EventUIDto;
 import hospital.model.Event;
 
@@ -16,5 +17,7 @@ public interface EventService {
     void updateDeleteEvent(Event event);
 
     List<EventAjax> getAllEventsForAjax(int id);
+
+    List<EventDto> eventsForStaff(int id);
 
 }

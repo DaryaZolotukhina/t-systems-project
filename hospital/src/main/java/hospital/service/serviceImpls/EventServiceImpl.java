@@ -8,9 +8,12 @@ import hospital.dto.EventUIDto;
 import hospital.dto.MedicineTitleDto;
 import hospital.dto.mappers.EventMapper;
 import hospital.dto.mappers.MedicineMapper;
+import hospital.dto.mappers.StaffMapper;
 import hospital.model.Event;
 import hospital.model.Prescription;
+import hospital.model.Staff;
 import hospital.service.EventService;
+import hospital.service.PatientService;
 import hospital.service.PrescriptionService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -33,6 +36,11 @@ public class EventServiceImpl implements EventService {
     private PrescriptionService prescriptionService;
     public void setPrescriptionService(PrescriptionService prescriptionService) {
         this.prescriptionService= prescriptionService;
+    }
+
+    private PatientService patientService;
+    public void setPatientService(PatientService patientService) {
+        this.patientService= patientService;
     }
 
     private PrescriptionDAO prescriptionDAO;
@@ -74,6 +82,20 @@ public class EventServiceImpl implements EventService {
             listEventAjax.add(eventAjax);
         }
         return listEventAjax;
+    }
+
+    @Override
+    @Transactional
+    public List<EventDto> eventsForStaff(int id){
+        List<Event> listEvent= eventDAO.getAllEvents(id);
+        List<EventDto> eventDtoList=new ArrayList<>();
+        Date date = new Date();
+        for (Event event : listEvent){
+            if ((event.getStaff().getId()==id) && (event.getDateTimeEvent().getYear()==date.getYear()) &&
+                    (event.getDateTimeEvent().getMonth()==date.getMonth()) && (event.getDateTimeEvent().getDay()==date.getDay()))
+                eventDtoList.add(EventMapper.EVENT_MAPPER.fromEvent(event));
+        }
+        return eventDtoList;
     }
 
     @Override
@@ -121,6 +143,7 @@ public class EventServiceImpl implements EventService {
         List<Event> listEvent= new ArrayList<>();
         for (EventDto eventDto : eventsDto){
             Event event=EventMapper.EVENT_MAPPER.toEvent(eventDto);
+            event.setStaff(StaffMapper.STAFF_MAPPER.toStaff(patientService.getDoctorBySurname("Semenov")));
             listEvent.add(event);
             eventDAO.saveEvent(event);
         }

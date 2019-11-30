@@ -3,6 +3,7 @@ package hospital.service.serviceImpls;
 import java.util.ArrayList;
 import java.util.List;
 
+import hospital.dao.EventDAO;
 import hospital.dao.PrescriptionDAO;
 import hospital.dto.*;
 import hospital.dto.mappers.*;
@@ -25,6 +26,7 @@ public class PatientServiceImpl implements PatientService {
 	private PrescriptionService prescriptionService;
 	private EventService eventService;
 	private PatientDAO patientDAO;
+	private EventDAO eventDAO;
 	private PrescriptionDAO prescriptionDAO;
 	private DischargeException dischargeException;
 
@@ -36,6 +38,10 @@ public class PatientServiceImpl implements PatientService {
 
 	public void setPrescriptionDAO(PrescriptionDAO prescriptionDAO) {
 		this.prescriptionDAO = prescriptionDAO;
+	}
+
+	public void setEventDAO(EventDAO eventDAO) {
+		this.eventDAO = eventDAO;
 	}
 
 	public void setPatientDAO(PatientDAO patientDAO) {
@@ -96,11 +102,7 @@ public class PatientServiceImpl implements PatientService {
 		for (PrescriptionDto prescriptionDto : prescDtoList){
 			listPrescription.add(PrescriptionMapper.PRESCRIPTION_MAPPER.toPrescription(prescriptionDto));
 		}
-		/*List<EventDto> eventsDtoList = eventService.getAllEvents(id);
-		List<Event> listEvent=new ArrayList<>();
-		for (EventDto eventDto : eventsDtoList){
-			listEvent.add(EventMapper.EVENT_MAPPER.toEvent(eventDto));
-		}*/
+		List<Event> listEvent = eventDAO.getAllEvents(id);
 		for (Prescription presc : listPrescription) {
 			if (!presc.getIsDone()) {
 				notDonePrescList.add(presc);
@@ -109,9 +111,9 @@ public class PatientServiceImpl implements PatientService {
 		if (! notDonePrescList.isEmpty()) {
 			return dischargeException.error(notDonePrescList);
 		} else {
-			/*for (Event event : listEvent) {
+			for (Event event : listEvent) {
 				eventService.updateDeleteEvent(event);
-			}*/
+			}
 			for (Prescription presc : listPrescription) {
 				prescriptionService.updateDeletePrescription(presc);
 			}

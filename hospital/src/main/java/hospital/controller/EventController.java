@@ -4,10 +4,12 @@ import hospital.dto.EventAjax;
 import hospital.dto.EventDto;
 import hospital.dto.EventUIDto;
 import hospital.model.Event;
+import hospital.model.Prescription;
 import hospital.service.EventService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -32,4 +34,12 @@ public class EventController {
         eventService.generateEvents(idPresc);
         return eventService.getAllEventsForAjax(idPat);
     }
+
+    @RequestMapping(value = "/events/{idStaff}", method = RequestMethod.GET)
+    public String eventsForStaff(@PathVariable("idStaff") int id, Model model){
+        model.addAttribute("events",eventService.eventsForStaff(id));
+        model.addAttribute("event",new Event());
+        return "eventsForStaff";
+    }
+
 }

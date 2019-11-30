@@ -14,6 +14,15 @@ public class EventDto {
     private Procedure procedure;
     private Prescription prescription;
     private StatusEvent statusEvent;
+    private Staff staff;
+
+    public Staff getStaff() {
+        return staff;
+    }
+
+    public void setStaff(Staff staff) {
+        this.staff = staff;
+    }
 
     public Medicine getMedicine() {
         return medicine;

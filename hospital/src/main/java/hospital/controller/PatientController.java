@@ -70,11 +70,6 @@ public class PatientController {
 		return patientService.getAllDoctors();
 	}
 
-	/*@RequestMapping(value = "/allProcMed", method = RequestMethod.GET)
-	@ResponseBody
-	public List<ProcedureMedicineTitleDto> getAllProcedureMedicine() {
-		return patientService.getAllProcedureMedicine();
-	}*/
 
 	@RequestMapping(value = "/allDiagnosisType", method = RequestMethod.GET)
 	@ResponseBody
