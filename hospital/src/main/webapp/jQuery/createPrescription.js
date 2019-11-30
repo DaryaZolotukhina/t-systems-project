@@ -49,6 +49,19 @@ $(document).ready(function() {
 $(document).ready(function() {
     $('.week').hide();
 });
+
+$(document).ready(function() {
+    $('.procSelect').hide();
+});
+
+$(document).on("click","#butProc",function() {
+    $('.procSelect').show();
+    $('.medSelect').hide();
+});
+$(document).on("click","#butMed",function() {
+    $('.procSelect').hide();
+    $('.medSelect').show();
+});
 $(document).on("click","#but1",function() {
     $('.day').show();
     $('.week').hide();

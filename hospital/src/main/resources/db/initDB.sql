@@ -220,3 +220,4 @@ insert into diagnosis_type_procedures values (1,1);
 
 select * from diagnosises;
 truncate events, prescriptions, diagnosises;
+select * from procedures;

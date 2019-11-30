@@ -15,6 +15,12 @@ public class PrescriptionDto {
     private Procedure procedure;
     private Integer daySchedule;
     private Diagnosis diagnosis;
+    private Integer weekSchedule;
+    private Integer period;
+    private Float dose;
+    private boolean isDone;
+    private List<Event> events;
+    private boolean isDeleted;
 
     public Diagnosis getDiagnosis() {
         return diagnosis;
@@ -112,10 +118,4 @@ public class PrescriptionDto {
         isDeleted = deleted;
     }
 
-    private Integer weekSchedule;
-    private Integer period;
-    private Float dose;
-    private boolean isDone;
-    private List<Event> events;
-    private boolean isDeleted;
 }

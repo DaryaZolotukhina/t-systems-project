@@ -26,7 +26,9 @@ public class PrescriptionServiceImpl implements PrescriptionService {
         List<PrescriptionDto> listPrescriptionDto=new ArrayList<>();
         List<Prescription> listPrescription= prescriptionDAO.getAllPrescriptions(id);
         for (Prescription prescription : listPrescription){
-            listPrescriptionDto.add(PrescriptionMapper.PRESCRIPTION_MAPPER.fromPrescription(prescription));
+            PrescriptionDto prescriptionDto=PrescriptionMapper.PRESCRIPTION_MAPPER.fromPrescription(prescription);
+            prescriptionDto.setDiagnosis(prescription.getDiagnosis());
+            listPrescriptionDto.add(prescriptionDto);
         }
         return listPrescriptionDto;
     }

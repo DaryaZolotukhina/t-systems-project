@@ -1,5 +1,6 @@
 package hospital.controller;
 
+import hospital.dto.EventAjax;
 import hospital.dto.EventDto;
 import hospital.dto.EventUIDto;
 import hospital.model.Event;
@@ -27,8 +28,8 @@ public class EventController {
 
     @RequestMapping(value = "/prescription/{idPat}/{idPresc}", method = RequestMethod.GET)
     public @ResponseBody
-    List<EventUIDto> generateEvents(@PathVariable("idPat") int idPat, @PathVariable("idPresc") int idPresc){
+    List<EventAjax> generateEvents(@PathVariable("idPat") int idPat, @PathVariable("idPresc") int idPresc){
         eventService.generateEvents(idPresc);
-        return eventService.getAllEvents(idPat);
+        return eventService.getAllEventsForAjax(idPat);
     }
 }

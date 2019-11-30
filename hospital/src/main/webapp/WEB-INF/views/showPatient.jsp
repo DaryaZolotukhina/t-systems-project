@@ -59,6 +59,8 @@
             <th colspan="4">Prescriptions</th>
         </tr>
         <tr>
+            <th>Type of diagnosis</th>
+            <th>Title of diagnosis</th>
             <th>Procedure or medicine</th>
             <th>Period</th>
             <th>Dose</th>
@@ -68,6 +70,8 @@
         <c:forEach  items="${prescriptions}" var ="prescription">
             <c:if test = "${prescription.isDone != true}">
             <tr>
+                <td>${prescription.diagnosis.diagnosisType.title}</td>
+                <td>${prescription.diagnosis.title}</td>
                 <c:if test = "${prescription.procedure != null}">
                     <td>${prescription.procedure.title}</td>
                 </c:if>
@@ -101,7 +105,7 @@
                 <c:if test = "${event.procedure != null}">
                 <td>${event.procedure.title}</td>
                 </c:if>
-                <c:if test = "${prescription.medicine != null}">
+                <c:if test = "${event.medicine != null}">
                     <td>${event.medicine.title}</td>
                 </c:if>
                 <td>${event.dateTimeEvent}</td>

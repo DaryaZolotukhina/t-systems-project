@@ -34,7 +34,7 @@
                 }
                 console.log(arr)
                 for (i=0;i<arr.length;i++) {
-                    var newOption = new Option(arr[i], i, true, true);
+                    var newOption = new Option(arr[i], arr[i], true, true);
                     $('#procedureSelect').append(newOption);
                 }
             }
@@ -54,7 +54,7 @@
                 }
                 console.log(arr)
                 for (i=0;i<arr.length;i++) {
-                    var newOption = new Option(arr[i], i, true, true);
+                    var newOption = new Option(arr[i],arr[i], true, true);
                     $('#medicineSelect').append(newOption);
                 }
             }
@@ -70,15 +70,12 @@
         <input type="text" class="form-control mdb-autocomplete" id="diagnosisType" name="diagnosisType" placeholder="Type of diagnosis">
         <label for="diagnosis">Title of diagnosis</label>
         <input type="text" class="form-control" id="diagnosis" name="diagnosis" placeholder="Title of diagnosis">
-       <!-- <label for="procedureMedicine">Procedure or medicine</label>
-        <input type="text" class="form-control mdb-autocomplete" id="procedureMedicine" name="procedureMedicine" placeholder="Procedure or medicine">
-      -->
-        <input type="button" value="Choose procedure" onclick="GenerateSourceProcedure(this,$('#diagnosisType').val())">
-        <input type="button" value="Choose medicine" onclick="GenerateSourceMedicine(this,$('#diagnosisType').val())">
-        <label for="but3">Procedure or medicine</label>
-        <label class="radio-inline"><input type="radio" name="optradio1" checked id="but3"/>Procedure</label>
-        <label class="radio-inline"><input type="radio" name="optradio1" id="but4" />Medicine</label>
-       <div class="procSelect">
+        <input type="button" id="butProc" value="Choose procedure" onclick="GenerateSourceProcedure(this,$('#diagnosisType').val())">
+        <input type="button" id="butMed" value="Choose medicine" onclick="GenerateSourceMedicine(this,$('#diagnosisType').val())">
+        <div class="procOrMedSelect">
+        <label for="procedureSelect">Procedure or medicine</label>
+        </div>
+        <div class="procSelect">
         <select class="form-control" name="procedureSelect" id="procedureSelect">
         </select>
         </div>

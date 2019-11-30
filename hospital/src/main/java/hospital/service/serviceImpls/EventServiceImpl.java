@@ -2,9 +2,12 @@ package hospital.service.serviceImpls;
 
 import hospital.dao.EventDAO;
 import hospital.dao.PrescriptionDAO;
+import hospital.dto.EventAjax;
 import hospital.dto.EventDto;
 import hospital.dto.EventUIDto;
+import hospital.dto.MedicineTitleDto;
 import hospital.dto.mappers.EventMapper;
+import hospital.dto.mappers.MedicineMapper;
 import hospital.model.Event;
 import hospital.model.Prescription;
 import hospital.service.EventService;
@@ -52,6 +55,25 @@ public class EventServiceImpl implements EventService {
             listEventUIDto.add(eventUIDto);
         }
         return listEventUIDto;
+    }
+
+    @Override
+    @Transactional
+    public List<EventAjax> getAllEventsForAjax(int id){
+        List<EventAjax> listEventAjax=new ArrayList<>();
+        List<Event> listEvent= eventDAO.getAllEvents(id);
+        for (Event event : listEvent){
+            EventAjax eventAjax=new EventAjax();
+            eventAjax.setId(event.getId());
+            eventAjax.setDateTimeEvent(event.getDateTimeEvent());
+            if (event.getMedicine()!=null)
+                eventAjax.setMedicine(event.getMedicine().getTitle());
+            if (event.getProcedure()!=null)
+                eventAjax.setProcedure(event.getProcedure().getTitle());
+            eventAjax.setStatusEvent(event.getStatusEvent());
+            listEventAjax.add(eventAjax);
+        }
+        return listEventAjax;
     }
 
     @Override
