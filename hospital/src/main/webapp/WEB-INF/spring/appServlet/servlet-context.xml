@@ -112,13 +112,10 @@
 		<beans:property name="eventService" ref="eventService"></beans:property>
 		<beans:property name="prescriptionDAO" ref="prescriptionDAO"></beans:property>
 		<beans:property name="prescriptionService" ref="prescriptionService"></beans:property>
-		<beans:property name="dischargeException" ref="dischargeException"></beans:property>
 		<beans:property name="calculatingBitMasks" ref="calculatingBitMasks"></beans:property>
 		<beans:property name="eventDAO" ref="eventDAO"></beans:property>
 	</beans:bean>
 	<context:component-scan base-package="hospital" />
-	<beans:bean id="dischargeException" class="hospital.exception.DischargeException">
-	</beans:bean>
 	
 	<tx:annotation-driven transaction-manager="transactionManager"/>
 	

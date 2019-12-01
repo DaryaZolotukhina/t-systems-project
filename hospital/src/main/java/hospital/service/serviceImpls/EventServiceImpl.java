@@ -3,13 +3,12 @@ package hospital.service.serviceImpls;
 import hospital.dao.EventDAO;
 import hospital.dao.PrescriptionDAO;
 import hospital.dto.*;
-import hospital.dto.mappers.EventMapper;
-import hospital.dto.mappers.StaffMapper;
+import hospital.mappers.EventMapper;
+import hospital.mappers.StaffMapper;
 import hospital.model.*;
 import hospital.service.EventService;
 import hospital.service.PatientService;
 import hospital.service.PrescriptionService;
-import org.hibernate.collection.internal.PersistentSet;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

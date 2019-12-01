@@ -1,12 +1,9 @@
-package hospital.dto.mappers;
+package hospital.mappers;
 
-import hospital.dto.MedicineDto;
 import hospital.dto.MedicineTitleDto;
-import hospital.model.Event;
 import hospital.model.Medicine;
 import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
 
 @Mapper

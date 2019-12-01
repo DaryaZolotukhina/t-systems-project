@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 
+import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 public class PatientController {
@@ -59,9 +61,26 @@ public class PatientController {
 	}
 
 	@RequestMapping(value = "/dischargePatient/{id}", method = RequestMethod.GET)
-    @ResponseBody
-	public DischargeException dischargePatient(@PathVariable("id") int id) {
-		return patientService.dischargePatient(id);
+	public String dischargePatient(@PathVariable("id") int id) throws DischargeException
+	{
+		List<Prescription> list=patientService.dischargePatient(id);
+		if (list!=null)
+			throw new DischargeException(list);
+		else
+		return "redirect:/init/1";
+	}
+
+	@ExceptionHandler(DischargeException.class)
+	public ModelAndView handleCustomException(DischargeException ex) {
+		List<Patient> list = patientService.getPatientsByPage(1);
+		ModelAndView model = new ModelAndView("dischargePage");
+		model.addObject("errMsq", ex.getErrMsg());
+		model.addObject("prescList",ex.getPrescriptionList());
+		model.addObject("patient", new Patient());
+		model.addObject("presc", new Prescription());
+		model.addObject("listPatients",list);
+		model.addObject("pageId", 1);
+		return model;
 	}
 
 	@RequestMapping(value = "/allDoctors", method = RequestMethod.GET)

@@ -18,7 +18,7 @@ public interface PatientService {
 
 	void updateDeletePatient(int id);
 
-	DischargeException dischargePatient(int id);
+	List<Prescription> dischargePatient(int id);
 
 	List<Patient> getPatientsByPage(int pageid);
 

@@ -2,7 +2,7 @@ package hospital.service.serviceImpls;
 
 import hospital.dao.PrescriptionDAO;
 import hospital.dto.PrescriptionDto;
-import hospital.dto.mappers.PrescriptionMapper;
+import hospital.mappers.PrescriptionMapper;
 import hospital.model.Prescription;
 import hospital.service.PrescriptionService;
 import org.springframework.stereotype.Service;

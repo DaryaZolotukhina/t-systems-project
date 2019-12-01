@@ -5,20 +5,15 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-@Component
 public class DischargeException extends RuntimeException {
 
-    private String errCode;
+    public DischargeException (List<Prescription> prescriptionList){
+        this.prescriptionList=prescriptionList;
+        this.errMsg="Not all prescriptions were completed:";
+    }
+
     private String errMsg;
     private List<Prescription> prescriptionList;
-
-    public String getErrCode() {
-        return errCode;
-    }
-
-    public void setErrCode(String errCode) {
-        this.errCode = errCode;
-    }
 
     public String getErrMsg() {
         return errMsg;
@@ -36,11 +31,4 @@ public class DischargeException extends RuntimeException {
         this.prescriptionList = prescriptionList;
     }
 
-
-    public DischargeException error(List<Prescription> prescriptionList){
-        this.prescriptionList=prescriptionList;
-        this.errCode="200";
-        this.errMsg="Not all prescriptions were completed:";
-        return this;
-    }
 }

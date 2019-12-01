@@ -1,4 +1,4 @@
-package hospital.dto.mappers;
+package hospital.mappers;
 
 import hospital.dto.StaffDto;
 import hospital.model.Staff;

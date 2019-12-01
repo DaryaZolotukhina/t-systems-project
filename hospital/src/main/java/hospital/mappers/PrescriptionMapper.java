@@ -1,8 +1,6 @@
-package hospital.dto.mappers;
+package hospital.mappers;
 
-import hospital.dto.EventDto;
 import hospital.dto.PrescriptionDto;
-import hospital.model.Event;
 import hospital.model.Prescription;
 import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;

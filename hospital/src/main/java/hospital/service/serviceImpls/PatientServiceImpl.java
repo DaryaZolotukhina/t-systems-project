@@ -6,7 +6,7 @@ import java.util.List;
 import hospital.dao.EventDAO;
 import hospital.dao.PrescriptionDAO;
 import hospital.dto.*;
-import hospital.dto.mappers.*;
+import hospital.mappers.*;
 import hospital.exception.DischargeException;
 import hospital.model.*;
 import hospital.service.EventService;
@@ -28,7 +28,6 @@ public class PatientServiceImpl implements PatientService {
 	private PatientDAO patientDAO;
 	private EventDAO eventDAO;
 	private PrescriptionDAO prescriptionDAO;
-	private DischargeException dischargeException;
 
     private static final int NUMBER_OF_RESULTS_PER_PAGE = 5;
 
@@ -54,10 +53,6 @@ public class PatientServiceImpl implements PatientService {
 
 	public void setEventService(EventService eventService) {
 		this.eventService= eventService;
-	}
-
-	public void setDischargeException(DischargeException dischargeException) {
-		this.dischargeException = dischargeException;
 	}
 
     @Override
@@ -95,7 +90,7 @@ public class PatientServiceImpl implements PatientService {
 
 	@Override
 	@Transactional
-	public DischargeException dischargePatient(int id) {
+	public List<Prescription> dischargePatient(int id){
 		List<Prescription> notDonePrescList = new ArrayList<>();
 		List<PrescriptionDto> prescDtoList = prescriptionService.getAllPrescriptions(id);
 		List<Prescription> listPrescription=new ArrayList<>();
@@ -109,7 +104,8 @@ public class PatientServiceImpl implements PatientService {
 			}
 		}
 		if (! notDonePrescList.isEmpty()) {
-			return dischargeException.error(notDonePrescList);
+			//throw new DischargeException();
+			return notDonePrescList;
 		} else {
 			for (Event event : listEvent) {
 				eventService.updateDeleteEvent(event);

@@ -11,28 +11,9 @@
     <script src="/jQuery/jquery-dateformat.min.js"></script>
     <script src="/jQuery/events.js"></script>
     <script src="/jQuery/sortEventsDate.js"></script>
-    <script src="/jQuery/discharge.js"></script>
     <title>Patient Info</title>
 </head>
 <body>
-<div class="bd-example">
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">New message</h4>
-                </div>
-                <div class="modal-body">
-                    <h4 class="modal-title1">New message</h4>
-                    <h5 class="error-events"></h5>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 <h1 class="ml-3 mb-4 mt-2">Patient Info</h1>
 <img src="/css/avatar_male_l.png" alt="Photo" class="ml-3 mb-4"/>
 <h2 class="mb-4 ml-3">${patient.surname} ${patient.name} ${patient.patronymic}</h2>
@@ -49,7 +30,7 @@
     </table>
 </div>
 <div class="mb-4 ml-3">
-    <input type="button" value="Discharge" onclick="DischargeFunction(this,${patient.id})">
+    <input type="button" value="Discharge" onclick="location.href = '/dischargePatient/${patient.id}'">
     <input type="button" value="Create prescription" onclick="location.href = '/createPrescription/${patient.id}'">
 </div>
 <div class="col-sm-8 mb-5">
