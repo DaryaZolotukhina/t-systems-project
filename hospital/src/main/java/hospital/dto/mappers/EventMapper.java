@@ -1,5 +1,6 @@
 package hospital.dto.mappers;
 
+import hospital.dto.EventAjax;
 import hospital.dto.EventDto;
 import hospital.dto.PatientDto;
 import hospital.model.Event;

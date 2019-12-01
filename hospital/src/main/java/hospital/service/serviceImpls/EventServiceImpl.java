@@ -68,7 +68,9 @@ public class EventServiceImpl implements EventService {
         for (Event event : listEvent){
             EventAjax eventAjax=new EventAjax();
             eventAjax.setId(event.getId());
-            eventAjax.setPatient(event.getPatient());
+            eventAjax.setIdPatient(event.getPatient().getId());
+            eventAjax.setSurnamePatient(event.getPatient().getSurname());
+            eventAjax.setIdStaff(event.getStaff().getId());
             eventAjax.setDateTimeEvent(event.getDateTimeEvent());
             if (event.getMedicine()!=null)
                 eventAjax.setMedicine(event.getMedicine().getTitle());
@@ -82,16 +84,28 @@ public class EventServiceImpl implements EventService {
 
     @Override
     @Transactional
-    public List<EventDto> eventsForStaff(int id){
+    public List<EventAjax> eventsForStaff(int id){
         List<Event> listEvent= eventDAO.getAllEvents();
-        List<EventDto> eventDtoList=new ArrayList<>();
-        Date date = new Date();
+        List<EventAjax> listEventAjax=new ArrayList<>();
+        Date date = new Date();/////////////////!!!!!!!
         for (Event event : listEvent){
             if ((event.getStaff().getId()==id) && (event.getDateTimeEvent().getYear()==date.getYear()) &&
-                    (event.getDateTimeEvent().getMonth()==date.getMonth()) && (event.getDateTimeEvent().getDay()==date.getDay()))
-                eventDtoList.add(EventMapper.EVENT_MAPPER.fromEvent(event));
+                    (event.getDateTimeEvent().getMonth()==date.getMonth()) && (event.getDateTimeEvent().getDay()==(date.getDay()+1))) {
+                EventAjax eventAjax = new EventAjax();
+                eventAjax.setId(event.getId());
+                eventAjax.setIdPatient(event.getPatient().getId());
+                eventAjax.setIdStaff(event.getStaff().getId());
+                eventAjax.setSurnamePatient(event.getPatient().getSurname());
+                eventAjax.setDateTimeEvent(event.getDateTimeEvent());
+                if (event.getMedicine() != null)
+                    eventAjax.setMedicine(event.getMedicine().getTitle());
+                if (event.getProcedure() != null)
+                    eventAjax.setProcedure(event.getProcedure().getTitle());
+                eventAjax.setStatusEvent(event.getStatusEvent());
+                listEventAjax.add(eventAjax);
+            }
         }
-        return eventDtoList;
+        return listEventAjax;
     }
 
     @Override

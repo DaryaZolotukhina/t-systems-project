@@ -10,12 +10,11 @@
     <link rel="stylesheet" href="/bootstrap/bootstrap.min.css">
     <script src="/jQuery/jquery-3.4.1.min.js"></script>
     <script src="/jQuery/jquery-dateformat.min.js"></script>
-    <script src="/jQuery/sortSurname.js"></script>
 </head>
 <body>
 <script>
 function CompleteFunction(o,idEvent,idStaff,status) {
-var str = '/changeStatus/' + id + '/' + idStaff+'/'+status;
+var str = '/changeStatus/' + idEvent + '/' + idStaff+'/'+status;
 $.ajax({
 type: 'GET',
 url: str,
@@ -24,12 +23,14 @@ console.log(result);
 $(".events1 tbody").empty();
 for (i=0;i<result.length;i++) {
 if(result[i].procedure!=null)
-$('<tr>').html("<td>" + result[i].patient.surname + "</td><td>" + result[i].procedure.title+
-    "</td><td>" + result[i].dateTimeEvent + "</td><td>" + result[i].statusEvent.title+
+$('<tr>').html("<td><a href=\"/patient/" + result[i].idPatient + " \">"+result[i].surnamePatient+"</a></td><td>" + result[i].procedure+
+    "</td><td>" + $.format.date(result[i].dateTimeEvent,
+        "yyyy-MM-dd HH:mm:ss.SSS") + "</td><td>" + result[i].statusEvent.title+
     "</td>").appendTo('.events1');
     else
-    $('<tr>').html("<td>" + result[i].patient.surname + "</td><td>" + result[i].medicine.title+
-        "</td><td>" + result[i].dateTimeEvent + "</td><td>" + result[i].statusEvent.title+
+    $('<tr>').html("<td><a href=\"/patient/" + result[i].idPatient + " \">"+result[i].surnamePatient+"</a></td><td>" + result[i].medicine+
+        "</td><td>" + $.format.date(result[i].dateTimeEvent,
+            "yyyy-MM-dd HH:mm:ss.SSS") + "</td><td>" + result[i].statusEvent.title+
         "</td>").appendTo('.events1');
     }
     }
@@ -55,17 +56,17 @@ $('<tr>').html("<td>" + result[i].patient.surname + "</td><td>" + result[i].proc
         <tbody>
         <c:forEach items="${events}" var ="event">
                 <tr>
-                    <td><a href="/patient/${event.patient.id}">${event.patient.surname}</a></td>
+                    <td id="td1"><a href="/patient/${event.idPatient}">${event.surnamePatient}</a></td>
                     <c:if test = "${event.procedure != null}">
-                        <td>${event.procedure.title}</td>
+                        <td id="td2">${event.procedure}</td>
                     </c:if>
                     <c:if test = "${event.medicine != null}">
-                        <td>${event.medicine.title}</td>
+                        <td id="td3">${event.medicine}</td>
                     </c:if>
-                    <td>${event.dateTimeEvent}</td>
-                    <td>${event.statusEvent.title}</td>
-                    <td><input type="button" value="Complete" onclick="CompleteFunction(this,${event.id},${event.staff.id},'completed')"></td>
-                    <td><input type="button" value="Cancel" onclick="CompleteFunction(this,${event.id},'canceled')"></td>
+                    <td id="td4">${event.dateTimeEvent}</td>
+                    <td id="td5">${event.statusEvent.title}</td>
+                    <td><input type="button" value="Complete" onclick="CompleteFunction(this,${event.id},${event.idStaff},'completed')"></td>
+                    <td><input type="button" value="Cancel" onclick="CompleteFunction(this,${event.id},${event.idStaff},'canceled')"></td>
                 </tr>
         </c:forEach>
         </tbody>

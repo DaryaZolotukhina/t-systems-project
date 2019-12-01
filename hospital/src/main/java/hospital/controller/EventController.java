@@ -44,7 +44,7 @@ public class EventController {
 
     @RequestMapping(value = "/changeStatus/{idEvent}/{idStaff}/{status}", method = RequestMethod.GET)
     public @ResponseBody
-    List<EventDto> changeStatus(@PathVariable("status") String status, @PathVariable("idEvent") int idEvent,
+    List<EventAjax> changeStatus(@PathVariable("status") String status, @PathVariable("idEvent") int idEvent,
                                 @PathVariable("idStaff") int idStaff){
         eventService.changeStatus(status,idEvent);
         return eventService.eventsForStaff(idStaff);

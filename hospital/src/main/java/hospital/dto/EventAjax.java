@@ -13,19 +13,37 @@ public class EventAjax {
         private String medicine;
         private String procedure;
         private StatusEvent statusEvent;
-        private Patient patient;
+        private int idPatient;
+        private String surnamePatient;
+        private int idStaff;
 
-        public Patient getPatient() {
-            return patient;
+    public int getIdStaff() {
+        return idStaff;
+    }
+
+    public void setIdStaff(int idStaff) {
+        this.idStaff = idStaff;
+    }
+
+    public int getIdPatient() {
+            return idPatient;
         }
 
-        public void setPatient(Patient patient) {
-            this.patient = patient;
+        public void setIdPatient(int idPatient) {
+            this.idPatient = idPatient;
+        }
+
+        public String getSurnamePatient() {
+            return surnamePatient;
+        }
+
+        public void setSurnamePatient(String surnamePatient) {
+            this.surnamePatient = surnamePatient;
         }
 
         public Integer getId() {
-                return id;
-            }
+                    return id;
+                }
 
         public void setId(Integer id) {
             this.id = id;
