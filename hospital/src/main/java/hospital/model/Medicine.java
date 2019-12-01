@@ -14,10 +14,8 @@ public class Medicine {
     private Integer id;
     @Column
     private String title;
-    @JsonIgnore
     @OneToMany(mappedBy = "medicine", cascade = CascadeType.MERGE, orphanRemoval = true)
     private List<Prescription> prescriptions;
-    @JsonIgnore
     @OneToMany(mappedBy = "medicine", cascade = CascadeType.MERGE, orphanRemoval = true)
     private List<Prescription> events;
     @ManyToMany(mappedBy="medicines",cascade = CascadeType.MERGE,fetch = FetchType.EAGER)

@@ -15,7 +15,6 @@ public class Event {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id_event")
     private Integer id;
-    @JsonIgnore
     @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     @JoinColumn(name = "id_patient")
     private Patient patient;
@@ -27,7 +26,6 @@ public class Event {
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_procedure")
     private Procedure procedure;
-    @JsonIgnore
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_prescription")
     private Prescription prescription;

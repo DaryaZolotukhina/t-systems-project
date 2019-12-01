@@ -49,13 +49,7 @@ public class EventServiceImpl implements EventService {
         List<EventUIDto> listEventUIDto=new ArrayList<>();
         List<Event> listEvent= eventDAO.getAllEvents(id);
         for (Event event : listEvent){
-            EventUIDto eventUIDto=new EventUIDto();
-            eventUIDto.setId(event.getId());
-            eventUIDto.setDateTimeEvent(event.getDateTimeEvent());
-            eventUIDto.setMedicine(event.getMedicine());
-            eventUIDto.setProcedure(event.getProcedure());
-            eventUIDto.setStatusEvent(event.getStatusEvent());
-            listEventUIDto.add(eventUIDto);
+            listEventUIDto.add(EventMapper.EVENT_MAPPER.fromEventUI(event));
         }
         return listEventUIDto;
     }
@@ -66,18 +60,7 @@ public class EventServiceImpl implements EventService {
         List<EventAjax> listEventAjax=new ArrayList<>();
         List<Event> listEvent= eventDAO.getAllEvents(id);
         for (Event event : listEvent){
-            EventAjax eventAjax=new EventAjax();
-            eventAjax.setId(event.getId());
-            eventAjax.setIdPatient(event.getPatient().getId());
-            eventAjax.setSurnamePatient(event.getPatient().getSurname());
-            eventAjax.setIdStaff(event.getStaff().getId());
-            eventAjax.setDateTimeEvent(event.getDateTimeEvent());
-            if (event.getMedicine()!=null)
-                eventAjax.setMedicine(event.getMedicine().getTitle());
-            if (event.getProcedure()!=null)
-                eventAjax.setProcedure(event.getProcedure().getTitle());
-            eventAjax.setStatusEvent(event.getStatusEvent());
-            listEventAjax.add(eventAjax);
+            listEventAjax.add(EventMapper.EVENT_MAPPER.fromEventAjax(event));
         }
         return listEventAjax;
     }
@@ -91,18 +74,7 @@ public class EventServiceImpl implements EventService {
         for (Event event : listEvent){
             if ((event.getStaff().getId()==id) && (event.getDateTimeEvent().getYear()==date.getYear()) &&
                     (event.getDateTimeEvent().getMonth()==date.getMonth()) && (event.getDateTimeEvent().getDay()==(date.getDay()+1))) {
-                EventAjax eventAjax = new EventAjax();
-                eventAjax.setId(event.getId());
-                eventAjax.setIdPatient(event.getPatient().getId());
-                eventAjax.setIdStaff(event.getStaff().getId());
-                eventAjax.setSurnamePatient(event.getPatient().getSurname());
-                eventAjax.setDateTimeEvent(event.getDateTimeEvent());
-                if (event.getMedicine() != null)
-                    eventAjax.setMedicine(event.getMedicine().getTitle());
-                if (event.getProcedure() != null)
-                    eventAjax.setProcedure(event.getProcedure().getTitle());
-                eventAjax.setStatusEvent(event.getStatusEvent());
-                listEventAjax.add(eventAjax);
+                listEventAjax.add(EventMapper.EVENT_MAPPER.fromEventAjax(event));
             }
         }
         return listEventAjax;

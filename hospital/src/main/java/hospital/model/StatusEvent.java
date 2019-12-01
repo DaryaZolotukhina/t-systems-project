@@ -14,7 +14,6 @@ public class StatusEvent {
     private Integer id;
     @Column
     private String title;
-    @JsonIgnore
     @OneToMany(mappedBy = "statusEvent", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Event> events;
     public Integer getId() {

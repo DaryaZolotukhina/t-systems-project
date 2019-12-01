@@ -17,7 +17,6 @@ public class Diagnosis {
     private Integer id;
     @Column
     private String title;
-    @JsonBackReference
     @ManyToOne(cascade = CascadeType.MERGE,fetch = FetchType.EAGER)
     @JoinColumn(name = "id_diagnosis_type")
     private DiagnosisType diagnosisType;

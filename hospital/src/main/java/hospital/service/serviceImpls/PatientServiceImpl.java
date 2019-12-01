@@ -175,10 +175,7 @@ public class PatientServiceImpl implements PatientService {
 		}
 		List<ProcedureTitleDto> listProcTitleDto=new ArrayList<>();
 		for (Procedure proc : listProcForDiag){
-			ProcedureTitleDto procedureTitleDto=new ProcedureTitleDto();
-			procedureTitleDto.setId(proc.getId());
-			procedureTitleDto.setTitle(proc.getTitle());
-			listProcTitleDto.add(procedureTitleDto);
+			listProcTitleDto.add(ProcedureMapper.PROCEDURE_MAPPER.fromProcedure(proc));
 		}
 		return listProcTitleDto;
 	}
@@ -198,10 +195,7 @@ public class PatientServiceImpl implements PatientService {
         }
         List<MedicineTitleDto> listMedicineTitleDto=new ArrayList<>();
         for (Medicine med : listMedicineForDiag){
-			MedicineTitleDto medicineTitleDto=new MedicineTitleDto();
-			medicineTitleDto.setId(med.getId());
-			medicineTitleDto.setTitle(med.getTitle());
-            listMedicineTitleDto.add(medicineTitleDto);
+            listMedicineTitleDto.add(MedicineMapper.MEDICINE_MAPPER.fromMedicine(med));
         }
         return listMedicineTitleDto;
 	}
@@ -212,10 +206,7 @@ public class PatientServiceImpl implements PatientService {
 		List<DiagnosisType> listDiagnosisType=patientDAO.getAllDiagnosisType();
 		List<DiagnosisTypeTitleDto> listDiagnosisTypeTitleDto=new ArrayList<>();
 		for (DiagnosisType diagnosisType : listDiagnosisType){
-			DiagnosisTypeTitleDto diag=new DiagnosisTypeTitleDto();
-			diag.setId(diagnosisType.getId());
-			diag.setTitle(diagnosisType.getTitle());
-			listDiagnosisTypeTitleDto.add(diag);
+			listDiagnosisTypeTitleDto.add(DiagnosisTypeMapper.DIAGNOSIS_TYPE_MAPPER.fromDiagnosisTypeTitle(diagnosisType));
 		}
 		return listDiagnosisTypeTitleDto;
 	}

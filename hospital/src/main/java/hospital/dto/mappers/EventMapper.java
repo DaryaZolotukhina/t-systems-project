@@ -2,11 +2,13 @@ package hospital.dto.mappers;
 
 import hospital.dto.EventAjax;
 import hospital.dto.EventDto;
+import hospital.dto.EventUIDto;
 import hospital.dto.PatientDto;
 import hospital.model.Event;
 import hospital.model.Patient;
 import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
 
 @Mapper
@@ -15,4 +17,15 @@ public interface EventMapper {
     EventDto fromEvent(Event event);
     @InheritInverseConfiguration
     Event toEvent(EventDto eventDto);
+    EventUIDto fromEventUI(Event event);
+    @InheritInverseConfiguration
+    Event toEventUI(EventUIDto eventDto);
+    @Mapping(source = "medicine.title", target = "medicine")
+    @Mapping(source = "procedure.title", target = "procedure")
+    @Mapping(source = "patient.id", target = "idPatient")
+    @Mapping(source = "staff.id", target = "idStaff")
+    @Mapping(source = "patient.surname", target = "surnamePatient")
+    EventAjax fromEventAjax(Event event);
+    @InheritInverseConfiguration
+    Event toEventAjax(EventAjax eventDto);
 }

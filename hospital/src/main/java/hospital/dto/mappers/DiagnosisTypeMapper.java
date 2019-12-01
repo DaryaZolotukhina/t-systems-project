@@ -15,7 +15,9 @@ public interface DiagnosisTypeMapper {
     @InheritInverseConfiguration
     DiagnosisType toDiagnosisType(DiagnosisTypeDto diagnosisTypeDto);
 
-
+    DiagnosisTypeTitleDto fromDiagnosisTypeTitle(DiagnosisType diagnosisType);
+    @InheritInverseConfiguration
+    DiagnosisType toDiagnosisTypeTitle(DiagnosisTypeTitleDto diagnosisTypeTitleDto);
    /* @Mapping(target = "")
     DiagnosisTypeTitleDto fromDiagnosisTypeToTitle(DiagnosisType diagnosisType);
     @InheritInverseConfiguration
