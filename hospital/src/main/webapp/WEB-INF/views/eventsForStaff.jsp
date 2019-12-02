@@ -13,7 +13,7 @@
 </head>
 <body>
 <script>
-function CompleteFunction(o,idEvent,idStaff,status) {
+function CompleteFunction(idEvent,idStaff,status) {
 var str = '/changeStatus/' + idEvent + '/' + idStaff+'/'+status;
 $.ajax({
 type: 'GET',
@@ -22,21 +22,26 @@ success: function(result) {
 console.log(result);
 $(".events1 tbody").empty();
 for (i=0;i<result.length;i++) {
-if(result[i].procedure!=null)
-$('<tr>').html("<td><a href=\"/patient/" + result[i].idPatient + " \">"+result[i].surnamePatient+"</a></td><td>" + result[i].procedure+
+
+    if(result[i].procedure!=null)
+    $('<tr>').html("<td><a href=\"/patient/" + result[i].idPatient + " \">"+result[i].surnamePatient+"</a></td><td>" + result[i].procedure+
     "</td><td>" + $.format.date(result[i].dateTimeEvent,
         "yyyy-MM-dd HH:mm:ss.SSS") + "</td><td>" + result[i].statusEvent.title+
-    "</td>").appendTo('.events1');
+    "</td><td><button id='but1'>Complete</button></td><td><button id='but2'>Cancel</button></a></td>").appendTo('.events1');
     else
     $('<tr>').html("<td><a href=\"/patient/" + result[i].idPatient + " \">"+result[i].surnamePatient+"</a></td><td>" + result[i].medicine+
         "</td><td>" + $.format.date(result[i].dateTimeEvent,
             "yyyy-MM-dd HH:mm:ss.SSS") + "</td><td>" + result[i].statusEvent.title+
-        "</td>").appendTo('.events1');
+        "</td><td><button id='but1'>Complete</button></td><td><button id='but2'>Cancel</button></a></td>").appendTo('.events1');
+   // $(document).on("click","#but1",CompleteFunction(result[i].id,result[i].idStaff,'completed'));
+  //  $(document).on("click","#but2",CompleteFunction(result[i].id,result[i].idStaff,'canceled'));
     }
-    }
+
+
+}
     });
-    var p=o.parentNode.parentNode;
-    p.parentNode.removeChild(p);
+    //var p=o.parentNode.parentNode;
+   // p.parentNode.removeChild(p);
     }
 </script>
 <h1>Events List</h1>
@@ -65,8 +70,8 @@ $('<tr>').html("<td><a href=\"/patient/" + result[i].idPatient + " \">"+result[i
                     </c:if>
                     <td id="td4">${event.dateTimeEvent}</td>
                     <td id="td5">${event.statusEvent.title}</td>
-                    <td><input type="button" value="Complete" onclick="CompleteFunction(this,${event.id},${event.idStaff},'completed')"></td>
-                    <td><input type="button" value="Cancel" onclick="CompleteFunction(this,${event.id},${event.idStaff},'canceled')"></td>
+                    <td><input type="button" value="Complete" onclick="CompleteFunction(${event.id},${event.idStaff},'completed')"></td>
+                    <td><input type="button" value="Cancel" onclick="CompleteFunction(${event.id},${event.idStaff},'canceled')"></td>
                 </tr>
         </c:forEach>
         </tbody>

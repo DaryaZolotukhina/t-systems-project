@@ -1,11 +1,10 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page pageEncoding="UTF-8" %>
-
+<!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8">
     <script src="/bootstrap/bootstrap.min.js"></script>
     <link rel="stylesheet" href="/bootstrap/bootstrap.min.css">
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Title Login Page</title>
 </head>
 <body>
@@ -18,7 +17,7 @@
   </span>
 </c:if>
 
-<form name="frm" action="<c:url value='login'/>" method="post" class="col-sm-3">
+<form name="frm" action="<c:url value="login"/>" method="post" class="col-sm-3">
     <div class="form-group">
         <label for="username">Username:</label>
         <input class="form-control" id="username" name="username">

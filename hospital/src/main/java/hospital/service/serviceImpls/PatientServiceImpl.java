@@ -92,13 +92,13 @@ public class PatientServiceImpl implements PatientService {
 	@Transactional
 	public List<Prescription> dischargePatient(int id){
 		List<Prescription> notDonePrescList = new ArrayList<>();
-		List<PrescriptionDto> prescDtoList = prescriptionService.getAllPrescriptions(id);
+		List<Prescription> prescList = prescriptionService.getAllPrescriptions(id);
 		List<Prescription> listPrescription=new ArrayList<>();
-		for (PrescriptionDto prescriptionDto : prescDtoList){
+		/*for (PrescriptionDto prescriptionDto : prescDtoList){
 			listPrescription.add(PrescriptionMapper.PRESCRIPTION_MAPPER.toPrescription(prescriptionDto));
-		}
+		}*/
 		List<Event> listEvent = eventDAO.getAllEvents(id);
-		for (Prescription presc : listPrescription) {
+		for (Prescription presc : prescList) {
 			if (!presc.getIsDone()) {
 				notDonePrescList.add(presc);
 			}
@@ -110,7 +110,7 @@ public class PatientServiceImpl implements PatientService {
 			for (Event event : listEvent) {
 				eventService.updateDeleteEvent(event);
 			}
-			for (Prescription presc : listPrescription) {
+			for (Prescription presc : prescList) {
 				prescriptionService.updateDeletePrescription(presc);
 			}
 			Patient patient = patientDAO.getById(id);

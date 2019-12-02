@@ -7,6 +7,13 @@
 <br>
 <h1>Welcome!</h1>
 <br>
-<h3><a href="<c:url value="/patients"/>">Patients list</a></h3>
+<div class="list-group col-sm-3">
+    <a href="<c:url value="/patients"/>" class="list-group-item">
+        Patients list
+    </a>
+    <a href="<c:url value="/events/1"/>" class="list-group-item">
+        Events list
+    </a>
+</div>
 </body>
 </html>

@@ -63,7 +63,7 @@ public class PatientController {
 	@RequestMapping(value = "/dischargePatient/{id}", method = RequestMethod.GET)
 	public String dischargePatient(@PathVariable("id") int id) throws DischargeException
 	{
-		List<Prescription> list=patientService.dischargePatient(id);
+		List<Prescription>list=patientService.dischargePatient(id);
 		if (list!=null)
 			throw new DischargeException(list);
 		else

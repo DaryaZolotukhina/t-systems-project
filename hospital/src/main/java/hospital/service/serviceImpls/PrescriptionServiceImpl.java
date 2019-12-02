@@ -22,15 +22,16 @@ public class PrescriptionServiceImpl implements PrescriptionService {
 
     @Override
     @Transactional
-    public List<PrescriptionDto> getAllPrescriptions(int id){
-        List<PrescriptionDto> listPrescriptionDto=new ArrayList<>();
+    public List<Prescription> getAllPrescriptions(int id){
+        /*List<PrescriptionDto> listPrescriptionDto=new ArrayList<>();
         List<Prescription> listPrescription= prescriptionDAO.getAllPrescriptions(id);
         for (Prescription prescription : listPrescription){
             PrescriptionDto prescriptionDto=PrescriptionMapper.PRESCRIPTION_MAPPER.fromPrescription(prescription);
             prescriptionDto.setDiagnosis(prescription.getDiagnosis());
             listPrescriptionDto.add(prescriptionDto);
         }
-        return listPrescriptionDto;
+        return listPrescriptionDto;*/
+        return prescriptionDAO.getAllPrescriptions(id);
     }
 
     @Override

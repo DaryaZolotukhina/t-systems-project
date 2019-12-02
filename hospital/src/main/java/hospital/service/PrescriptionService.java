@@ -6,7 +6,7 @@ import hospital.model.Prescription;
 import java.util.List;
 
 public interface PrescriptionService {
-    List<PrescriptionDto> getAllPrescriptions(int id);
+    List<Prescription> getAllPrescriptions(int id);
 
     PrescriptionDto getPrescriptionById(int id);
 

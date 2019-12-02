@@ -69,10 +69,10 @@ public class EventServiceImpl implements EventService {
     public List<EventAjax> eventsForStaff(int id){
         List<Event> listEvent= eventDAO.getAllEvents();
         List<EventAjax> listEventAjax=new ArrayList<>();
-        Date date = new Date();/////////////////!!!!!!!
+        Date date = new Date();
         for (Event event : listEvent){
             if ((event.getStaff().getId()==id) && (event.getDateTimeEvent().getYear()==date.getYear()) &&
-                    (event.getDateTimeEvent().getMonth()==date.getMonth()) && (event.getDateTimeEvent().getDay()==(date.getDay()+1))) {
+                    (event.getDateTimeEvent().getMonth()==date.getMonth()) && (event.getDateTimeEvent().getDay()==(date.getDay()))) {
                 listEventAjax.add(EventMapper.EVENT_MAPPER.fromEventAjax(event));
             }
         }
