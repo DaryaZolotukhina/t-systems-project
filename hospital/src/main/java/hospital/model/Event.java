@@ -20,10 +20,10 @@ public class Event {
     private Patient patient;
     @Column
     private Date dateTimeEvent;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "id_medicine")
     private Medicine medicine;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "id_procedure")
     private Procedure procedure;
     @ManyToOne(cascade = CascadeType.ALL)

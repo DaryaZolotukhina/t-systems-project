@@ -101,6 +101,8 @@
 	<beans:bean id="prescriptionService" class="hospital.service.serviceImpls.PrescriptionServiceImpl">
 		<beans:property name="prescriptionDAO" ref="prescriptionDAO"></beans:property>
 	</beans:bean>
+	<beans:bean id="simpleCORSFilter" class="hospital.utils.SimpleCORSFilter">
+	</beans:bean>
 	<beans:bean id="eventService" class="hospital.service.serviceImpls.EventServiceImpl">
 		<beans:property name="prescriptionDAO" ref="prescriptionDAO"></beans:property>
 		<beans:property name="eventDAO" ref="eventDAO"></beans:property>

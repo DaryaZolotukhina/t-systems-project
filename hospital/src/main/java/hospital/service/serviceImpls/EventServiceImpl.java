@@ -72,7 +72,7 @@ public class EventServiceImpl implements EventService {
         Date date = new Date();
         for (Event event : listEvent){
             if ((event.getStaff().getId()==id) && (event.getDateTimeEvent().getYear()==date.getYear()) &&
-                    (event.getDateTimeEvent().getMonth()==date.getMonth()) && (event.getDateTimeEvent().getDay()==(date.getDay()))) {
+                    (event.getDateTimeEvent().getMonth()==date.getMonth()) && (event.getDateTimeEvent().getDay()==(date.getDay()+1))) {
                 listEventAjax.add(EventMapper.EVENT_MAPPER.fromEventAjax(event));
             }
         }
@@ -140,10 +140,14 @@ public class EventServiceImpl implements EventService {
         for(int i=0;i<eventCnt;i++){
             EventDto eventDto=new EventDto();
             eventDto.setPatient(presc.getPatient());
-            if (presc.getProcedure()!=null)
+            if (presc.getProcedure()!=null) {
                 eventDto.setProcedure(presc.getProcedure());
-            else
+                eventDto.setMedicine(patientService.getMedicineByTitle(""));
+            }
+            else {
                 eventDto.setMedicine(presc.getMedicine());
+                eventDto.setProcedure(patientService.getProcedureByTitle(""));
+            }
             eventDto.setPrescription(presc);
             eventDto.setDateTimeEvent(dates.get(i));
             eventDto.setStatusEvent(eventDAO.getStatusEventById(1));

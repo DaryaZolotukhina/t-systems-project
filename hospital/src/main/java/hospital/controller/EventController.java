@@ -10,13 +10,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin("*")
 @Controller
 public class EventController {
 
@@ -36,11 +34,18 @@ public class EventController {
     }
 
     @RequestMapping(value = "/events/{idStaff}", method = RequestMethod.GET)
+    public @ResponseBody List<EventAjax> eventsForStaff(@PathVariable("idStaff") int id){
+       return eventService.eventsForStaff(id);
+        //model.addAttribute("event",new Event());
+        //return "eventsForStaff";
+    }
+
+   /* @RequestMapping(value = "/events/{idStaff}", method = RequestMethod.GET)
     public String eventsForStaff(@PathVariable("idStaff") int id, Model model){
         model.addAttribute("events",eventService.eventsForStaff(id));
         model.addAttribute("event",new Event());
         return "eventsForStaff";
-    }
+    }*/
 
     @RequestMapping(value = "/changeStatus/{idEvent}/{idStaff}/{status}", method = RequestMethod.GET)
     public @ResponseBody

@@ -207,10 +207,12 @@ insert into diagnosis_type values (2,'flu');
 insert into procedures values (1, 'injection');
 insert into procedures values (2, 'operation');
     insert into procedures values (3, 'dropper');
+    insert into procedures values (4, '');
 
     insert into medicines values (1, 'aspirin');
     insert into medicines values (2, 'analgin');
     insert into medicines values (3, 'nospa');
+    d
 
 insert into diagnosis_type_procedures values (1,1);
     insert into diagnosis_type_procedures values (3,1);

@@ -7,6 +7,8 @@
 	http://www.springframework.org/schema/security/spring-security.xsd
 	http://www.springframework.org/schema/beans
 	http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <b:bean id="simpleCORSFilter" class="hospital.utils.SimpleCORSFilter">
+    </b:bean>
 
     <http realm="JavaStudy example" use-expressions="false">
         <intercept-url pattern="/" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
@@ -20,6 +22,7 @@
         <intercept-url pattern="/update/{id}" access="ROLE_DOCTOR"/>
 
         <intercept-url pattern="/exitUser*" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
+        <intercept-url pattern="/events/1*" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
         <intercept-url pattern="/**" access="ROLE_NURSE"/>
         <intercept-url pattern="/patient/{id}" access="ROLE_NURSE"/>
         <intercept-url pattern="/allProcMed" access="ROLE_NURSE"/>
@@ -30,6 +33,7 @@
         <intercept-url pattern="/patients" access="ROLE_NURSE"/>
 
 
+        <custom-filter after="BASIC_AUTH_FILTER" ref="simpleCORSFilter" />
 
         <form-login login-page="/login.jsp"
                     authentication-failure-url="/login.jsp?login_error=1"/>
