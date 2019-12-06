@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<b:beans xmlns="http://www.springframework.org/schema/security"
+         xmlns:b="http://www.springframework.org/schema/beans"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="
+	http://www.springframework.org/schema/security
+	http://www.springframework.org/schema/security/spring-security.xsd
+	http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <b:bean id="simpleCORSFilter" class="hospital.utils.SimpleCORSFilter">
+    </b:bean>
+
+    <http realm="JavaStudy example" use-expressions="false">
+        <intercept-url pattern="/" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
+        <intercept-url pattern="/login.jsp*" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
+        <intercept-url pattern="/patient/add" access="ROLE_DOCTOR"/>
+        <intercept-url pattern="/dischargePatient/{id}" access="ROLE_DOCTOR"/>
+        <intercept-url pattern="/createPrescription/{id}" access="ROLE_DOCTOR"/>
+        <intercept-url pattern="/remove/{id}" access="ROLE_DOCTOR"/>
+        <intercept-url pattern="/updatePatient" access="ROLE_DOCTOR"/>
+        <intercept-url pattern="/updateDeletePatient/{id}" access="ROLE_DOCTOR"/>
+        <intercept-url pattern="/update/{id}" access="ROLE_DOCTOR"/>
+
+        <intercept-url pattern="/exitUser*" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
+        <intercept-url pattern="/events/1*" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
+        <intercept-url pattern="/**" access="ROLE_NURSE"/>
+        <intercept-url pattern="/patient/{id}" access="ROLE_NURSE"/>
+        <intercept-url pattern="/allProcMed" access="ROLE_NURSE"/>
+        <intercept-url pattern="/prescription/{idPat}/{idPresc}" access="ROLE_NURSE"/>
+        <intercept-url pattern="/init/{page_id}" access="ROLE_NURSE"/>
+        <intercept-url pattern="/sortSurname/{page_id}/{order}" access="ROLE_NURSE"/>
+        <intercept-url pattern="/sortEventsDate/{idPat}/{order}" access="ROLE_NURSE"/>
+        <intercept-url pattern="/patients" access="ROLE_NURSE"/>
+
+
+        <custom-filter after="BASIC_AUTH_FILTER" ref="simpleCORSFilter" />
+
+        <form-login login-page="/login.jsp"
+                    authentication-failure-url="/login.jsp?login_error=1"/>
+        <http-basic/>
+        <logout logout-success-url="/exitUser.jsp"/>
+        <remember-me />
+        <headers/>
+        <csrf/>
+    </http>
+
+    <authentication-manager>
+        <authentication-provider>
+            <user-service>
+                <user name="doctor" password="doctor" authorities="ROLE_DOCTOR, ROLE_NURSE" />
+                <user name="nurse" password="nurse" authorities="ROLE_NURSE" />
+            </user-service>
+        </authentication-provider>
+    </authentication-manager>
+</b:beans>
