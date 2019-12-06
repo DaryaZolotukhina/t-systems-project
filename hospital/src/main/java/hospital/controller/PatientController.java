@@ -60,7 +60,7 @@ public class PatientController {
 		return "showPatient";
 	}
 
-	@RequestMapping(value = "/dischargePatient/{id}", method = RequestMethod.GET)
+	/*@RequestMapping(value = "/dischargePatient/{id}", method = RequestMethod.GET)
 	public String dischargePatient(@PathVariable("id") int id) throws DischargeException
 	{
 		List<Prescription>list=patientService.dischargePatient(id);
@@ -68,19 +68,12 @@ public class PatientController {
 			throw new DischargeException(list);
 		else
 		return "redirect:/init/1";
-	}
+	}*/
 
-	@ExceptionHandler(DischargeException.class)
-	public ModelAndView handleCustomException(DischargeException ex) {
-		List<Patient> list = patientService.getPatientsByPage(1);
-		ModelAndView model = new ModelAndView("dischargePage");
-		model.addObject("errMsq", ex.getErrMsg());
-		model.addObject("prescList",ex.getPrescriptionList());
-		model.addObject("patient", new Patient());
-		model.addObject("presc", new Prescription());
-		model.addObject("listPatients",list);
-		model.addObject("pageId", 1);
-		return model;
+	@RequestMapping(value = "/dischargePatient/{id}", method = RequestMethod.GET)
+	@ResponseBody
+	public ErrorMessage dischargePatient(@PathVariable("id") int id) {
+		return patientService.dischargePatient(id);
 	}
 
 	@RequestMapping(value = "/allDoctors", method = RequestMethod.GET)

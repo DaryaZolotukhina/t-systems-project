@@ -212,7 +212,8 @@ insert into procedures values (2, 'operation');
     insert into medicines values (1, 'aspirin');
     insert into medicines values (2, 'analgin');
     insert into medicines values (3, 'nospa');
-    d
+    insert into medicines values (4, '');
+
 
 insert into diagnosis_type_procedures values (1,1);
     insert into diagnosis_type_procedures values (3,1);
@@ -227,3 +228,5 @@ truncate events, prescriptions, diagnosises;
 select * from procedures;
 
 insert into staff_type values (1,'immunologist');
+
+select * from staff;

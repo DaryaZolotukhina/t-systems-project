@@ -4,7 +4,7 @@ function DischargeFunction(o,idP) {
         type: 'GET',
         url: str,
         success: function(result) {
-         console.log(result);
+            console.log(result)
             if (typeof result.prescriptionList == 'undefined')
             {
                 console.log(1);
@@ -17,7 +17,7 @@ function DischargeFunction(o,idP) {
                 }
                 $('#myModal').modal('show');
                 var modal = $('#myModal')
-                modal.find('.modal-title').text('HTTP Status'+result.errCode)
+                modal.find('.modal-title').text('Error!');
                 modal.find('.modal-title1').text(result.errMsg)
                 modal.find('.error-events').text(prescriptions)
             }
@@ -25,9 +25,5 @@ function DischargeFunction(o,idP) {
     });
 }
 
-$(document).ready(function() {$('#myModal').modal('show');
-    var modal = $('#myModal')
-    modal.find('.modal-title').text('Error!')
-    modal.find('.modal-title1').text(result.errMsg)
-    modal.find('.error-events').text(prescriptions)
+$(document).ready(function() {$('#myModal').modal('hide');
 });

@@ -18,8 +18,6 @@ public interface PatientService {
 
 	void updateDeletePatient(int id);
 
-	List<Prescription> dischargePatient(int id);
-
 	List<Patient> getPatientsByPage(int pageid);
 
 	List<Patient> sortSurname(int pageid, String order);
@@ -49,4 +47,6 @@ public interface PatientService {
 	Medicine getMedicineByTitle(String title);
 
 	Diagnosis getDiagnosisByTitle(String title);
+
+	ErrorMessage dischargePatient(int id);
 	}

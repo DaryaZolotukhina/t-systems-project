@@ -7,7 +7,7 @@ import java.util.List;
 
 public class DischargeException extends RuntimeException {
 
-    public DischargeException (List<Prescription> prescriptionList){
+   /* public DischargeException (List<Prescription> prescriptionList){
         this.prescriptionList=prescriptionList;
         this.errMsg="Not all prescriptions were completed:";
     }
@@ -29,6 +29,10 @@ public class DischargeException extends RuntimeException {
 
     public void setPrescriptionList(List<Prescription> prescriptionList) {
         this.prescriptionList = prescriptionList;
+    }*/
+
+    public DischargeException() {
+        super("Not all prescriptions were completed:");
     }
 
 }

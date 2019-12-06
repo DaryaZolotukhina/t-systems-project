@@ -142,11 +142,9 @@ public class EventServiceImpl implements EventService {
             eventDto.setPatient(presc.getPatient());
             if (presc.getProcedure()!=null) {
                 eventDto.setProcedure(presc.getProcedure());
-                eventDto.setMedicine(patientService.getMedicineByTitle(""));
             }
             else {
                 eventDto.setMedicine(presc.getMedicine());
-                eventDto.setProcedure(patientService.getProcedureByTitle(""));
             }
             eventDto.setPrescription(presc);
             eventDto.setDateTimeEvent(dates.get(i));

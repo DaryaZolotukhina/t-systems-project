@@ -1,6 +1,7 @@
 package hospital.mappers;
 
 import hospital.dto.PrescriptionDto;
+import hospital.dto.PrescriptionError;
 import hospital.model.Prescription;
 import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;
@@ -12,4 +13,7 @@ public interface PrescriptionMapper {
     PrescriptionDto fromPrescription(Prescription prescription);
     @InheritInverseConfiguration
     Prescription toPrescription(PrescriptionDto prescriptionDto);
+    PrescriptionError fromPrescriptionError(Prescription prescription);
+    @InheritInverseConfiguration
+    Prescription toPrescriptionError(PrescriptionError prescriptionDto);
 }

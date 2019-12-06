@@ -90,23 +90,26 @@ public class PatientServiceImpl implements PatientService {
 
 	@Override
 	@Transactional
-	public List<Prescription> dischargePatient(int id){
-		List<Prescription> notDonePrescList = new ArrayList<>();
+	public ErrorMessage dischargePatient(int id){
+		List<PrescriptionError> notDonePrescList = new ArrayList<>();
 		List<Prescription> prescList = prescriptionService.getAllPrescriptions(id);
-		List<Prescription> listPrescription=new ArrayList<>();
-		/*for (PrescriptionDto prescriptionDto : prescDtoList){
-			listPrescription.add(PrescriptionMapper.PRESCRIPTION_MAPPER.toPrescription(prescriptionDto));
-		}*/
 		List<Event> listEvent = eventDAO.getAllEvents(id);
 		for (Prescription presc : prescList) {
 			if (!presc.getIsDone()) {
-				notDonePrescList.add(presc);
+				notDonePrescList.add(PrescriptionMapper.PRESCRIPTION_MAPPER.fromPrescriptionError(presc));
 			}
 		}
-		if (! notDonePrescList.isEmpty()) {
-			//throw new DischargeException();
-			return notDonePrescList;
-		} else {
+		try {
+			if (!notDonePrescList.isEmpty()) {
+				throw new DischargeException();
+			}
+		}
+		catch(DischargeException e){
+				ErrorMessage errorMessage=new ErrorMessage();
+				errorMessage.setErrMsg(e.getMessage());
+				errorMessage.setPrescriptionList(notDonePrescList);
+				return  errorMessage;
+			}
 			for (Event event : listEvent) {
 				eventService.updateDeleteEvent(event);
 			}
@@ -116,7 +119,6 @@ public class PatientServiceImpl implements PatientService {
 			Patient patient = patientDAO.getById(id);
 			patient.setIsDischarged(true);
 			patientDAO.updatePatient(patient);
-		}
 		return null;
 	}
 
