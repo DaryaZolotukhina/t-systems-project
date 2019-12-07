@@ -7,6 +7,5 @@ export class Event{
     statusEvent: StatusEvent;
     idPatient: number;
     surnamePatient: string;
-    idStaff:number; 
-    
+    idStaff:number;
 }

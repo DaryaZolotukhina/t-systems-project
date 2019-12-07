@@ -21,7 +21,7 @@ public interface EventService {
 
     List<EventAjax> eventsForStaff(int id);
 
-    void changeStatus(String status, int id);
+    EventAjax changeStatus(String status, int id);
 
     Event getById(int id);
 

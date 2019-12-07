@@ -12,9 +12,7 @@ import hospital.service.PrescriptionService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 import static hospital.service.utils.CalculationDateUtils.calcDate;
 import static hospital.service.utils.CalculationDateUtils.calcDateTime;
@@ -69,10 +67,15 @@ public class EventServiceImpl implements EventService {
     public List<EventAjax> eventsForStaff(int id){
         List<Event> listEvent= eventDAO.getAllEvents();
         List<EventAjax> listEventAjax=new ArrayList<>();
-        Date date = new Date();
+        Calendar date = Calendar.getInstance();
+
         for (Event event : listEvent){
-            if ((event.getStaff().getId()==id) && (event.getDateTimeEvent().getYear()==date.getYear()) &&
-                    (event.getDateTimeEvent().getMonth()==date.getMonth()) && (event.getDateTimeEvent().getDay()==(date.getDay()+1))) {
+            Calendar c = new GregorianCalendar();
+            c.setTime(event.getDateTimeEvent());
+
+            if ((event.getStaff().getId()==id) && (c.get(Calendar.DAY_OF_MONTH)==(date.get(Calendar.DAY_OF_MONTH)+1))
+                    && (c.get(Calendar.MONTH)==date.get(Calendar.MONTH))
+                    && (c.get(Calendar.YEAR)==(date.get(Calendar.YEAR)))) {
                 listEventAjax.add(EventMapper.EVENT_MAPPER.fromEventAjax(event));
             }
         }
@@ -98,13 +101,23 @@ public class EventServiceImpl implements EventService {
         eventDAO.updateEvent(event);
     }
 
-    @Override
+    /*@Override
     @Transactional
     public void changeStatus(String status, int id){
         Event event=getById(id);
         StatusEvent statusEvent=getStatusEventByTitle(status);
         event.setStatusEvent(statusEvent);
         update(event);
+    }*/
+
+    @Override
+    @Transactional
+    public EventAjax changeStatus(String status, int id){
+        Event event=getById(id);
+        StatusEvent statusEvent=getStatusEventByTitle(status);
+        event.setStatusEvent(statusEvent);
+        update(event);
+        return EventMapper.EVENT_MAPPER.fromEventAjax(event);
     }
 
     @Override

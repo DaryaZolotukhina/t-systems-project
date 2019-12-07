@@ -47,11 +47,19 @@ public class EventController {
         return "eventsForStaff";
     }*/
 
-    @RequestMapping(value = "/changeStatus/{idEvent}/{idStaff}/{status}", method = RequestMethod.GET)
+   /* @RequestMapping(value = "/changeStatus/{idEvent}/{idStaff}/{status}", method = RequestMethod.GET)
     public @ResponseBody
     List<EventAjax> changeStatus(@PathVariable("status") String status, @PathVariable("idEvent") int idEvent,
                                 @PathVariable("idStaff") int idStaff){
         eventService.changeStatus(status,idEvent);
         return eventService.eventsForStaff(idStaff);
+    }*/
+
+    @RequestMapping(value = "/changeStatus/{idEvent}/{idStaff}/{status}", method = RequestMethod.GET)
+    public @ResponseBody
+    EventAjax changeStatus(@PathVariable("status") String status, @PathVariable("idEvent") int idEvent,
+                                 @PathVariable("idStaff") int idStaff){
+        return eventService.changeStatus(status,idEvent);
+        // eventService.eventsForStaff(idStaff);
     }
 }

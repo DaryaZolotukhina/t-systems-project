@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, NgModule, OnInit} from '@angular/core';
 import { ApiService } from '../api.service';
 import {Event} from '../event';
-import { Observable,Subject } from 'rxjs';
-//import {FormControl,FormGroup,Validators} from '@angular/forms'; 
-//import {DataTables} from 'angular-datatables' ; 
+import { Observable} from 'rxjs';
+import {MatDialog} from '@angular/material';
+import {DialogService} from "../dialog.service";
 
 @Component({
   selector: 'app-event',
@@ -12,40 +12,45 @@ import { Observable,Subject } from 'rxjs';
 })
 export class EventComponent implements OnInit {
 
-data: Event[] = [];
-isLoadingResults = true;
-events: Observable<Event[]>;  
-  event : Event=new Event();  
-  
+    data: Event[] = [];
+    events: Observable<Event[]>;
+    event: Event = new Event();
 
-  constructor(private api: ApiService) { }
+    constructor(private api: ApiService,
+                public dialog: MatDialog,
+                private dialogService: DialogService) {
+    }
 
-  ngOnInit() {
-    this.api.getProducts(1)
-    .subscribe(data =>{  
-      this.events =data;   
-      //this.data = res;
-      console.log(this.data);
-      this.isLoadingResults = false;
-    }, err => {
-      console.log(err);
-      this.isLoadingResults = false;
-    });
-  }
+    ngOnInit() {
+        this.api.getEvents(1)
+            .subscribe(data => {
+                this.events = data;
+                console.log(this.data);
+            }, err => {
+                console.log(err);
+            });
+    }
 
-  ajaxEngine(idEvent: number,idStaff: number,status:string){
-    let result,
-          self = this;
-  this.api.ajaxEngine(idEvent,idStaff,status)
-    .subscribe(
-      data => {
-        console.log('events' + data);
-        result=data;
-      },
-      error => {
-        console.log(error);
-      }
-    );
-  }
+    statusChange(idEvent: number, idStaff: number, status: string, i: number) {
 
+        /* this.api.statusChange(idEvent, idStaff, status)
+             .subscribe(data => {
+                 console.log(data);
+                 this.events[i] = data;
+             }, error => console.log(error));
+     }*/
+
+        this.dialogService.openConfirmDialog('Are you sure to change this event status?')
+            .afterClosed().subscribe(res => {
+                if(res){
+                    this.api.statusChange(idEvent, idStaff, status)
+                        .subscribe(data => {
+                            console.log(data);
+                            this.events[i] = data;
+                        }, error => console.log(error));
+                }
+        });
+
+    }
 }
+
