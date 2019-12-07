@@ -1,1 +1,0 @@
-alter table events add column id_staff integer references staff(id_staff);

@@ -1,1 +1,0 @@
-ALTER TABLE PRESCRIPTIONS ADD COLUMN id_diagnosis integer REFERENCES diagnosises(id_diagnosis);
