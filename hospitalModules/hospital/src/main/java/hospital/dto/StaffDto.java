@@ -15,8 +15,7 @@ public class StaffDto {
     private String name;
     private String patronymic;
     private boolean isDeleted;
-    private boolean isDoctor;
-    private List<Patient> patients;
+    //private List<Patient> patients;
 
     public Integer getId() {
         return id;
@@ -50,27 +49,19 @@ public class StaffDto {
         this.patronymic = patronymic;
     }
 
-    public boolean isDeleted() {
+    public boolean getIsDeleted() {
         return isDeleted;
     }
 
-    public void setDeleted(boolean deleted) {
+    public void setIsDeleted(boolean deleted) {
         isDeleted = deleted;
     }
 
-    public boolean isDoctor() {
-        return isDoctor;
-    }
-
-    public void setDoctor(boolean doctor) {
-        isDoctor = doctor;
-    }
-
-    public List<Patient> getPatients() {
+    /*public List<Patient> getPatients() {
         return patients;
     }
 
     public void setPatients(List<Patient> patients) {
         this.patients = patients;
-    }
+    }*/
 }

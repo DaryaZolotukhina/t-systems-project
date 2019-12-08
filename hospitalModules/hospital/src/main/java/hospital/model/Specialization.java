@@ -18,6 +18,16 @@ public class Specialization {
             joinColumns=@JoinColumn(name="id_specialization", referencedColumnName="id_specialization"),
             inverseJoinColumns=@JoinColumn(name="id_procedure", referencedColumnName="id_procedure"))
     private List<Procedure> procedures;
+    @OneToMany(mappedBy = "specialization", cascade = CascadeType.MERGE, orphanRemoval = true,fetch = FetchType.EAGER)
+    private List<Staff> staff;
+
+    public List<Staff> getStaff() {
+        return staff;
+    }
+
+    public void setStaff(List<Staff> staff) {
+        this.staff = staff;
+    }
 
     public Integer getId() {
         return id;

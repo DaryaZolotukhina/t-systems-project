@@ -215,7 +215,8 @@ public class PatientServiceImpl implements PatientService {
 		List<Staff> staffList=patientDAO.getAllDoctors();
 		List<StaffDto> listStaffDto=new ArrayList<>();
 		for (Staff staff : staffList){
-			listStaffDto.add(StaffMapper.STAFF_MAPPER.fromStaff(staff));
+			if (staff.getStaffType().getId()==1)
+				listStaffDto.add(StaffMapper.STAFF_MAPPER.fromStaff(staff));
 		}
 		return listStaffDto;
 	}

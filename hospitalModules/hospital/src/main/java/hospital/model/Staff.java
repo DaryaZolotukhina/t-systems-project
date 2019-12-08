@@ -22,11 +22,22 @@ public class Staff {
     private boolean isDeleted;
     @ManyToOne(cascade = CascadeType.MERGE,fetch = FetchType.EAGER)
     @JoinColumn(name = "id_staff_type")
-    private DiagnosisType staffType;
+    private StaffType staffType;
+    @ManyToOne(cascade = CascadeType.MERGE,fetch = FetchType.EAGER)
+    @JoinColumn(name = "id_specialization")
+    private Specialization specialization;
     @OneToMany(mappedBy = "staff", cascade = CascadeType.MERGE, orphanRemoval = true,fetch = FetchType.EAGER)
     private List<Patient> patients;
     @OneToMany(mappedBy = "staff", cascade = CascadeType.MERGE, orphanRemoval = true,fetch = FetchType.EAGER)
     private List<Event> events;
+
+    public Specialization getSpecialization() {
+        return specialization;
+    }
+
+    public void setSpecialization(Specialization specialization) {
+        this.specialization = specialization;
+    }
 
     public List<Event> getEvents() {
         return events;
@@ -36,11 +47,11 @@ public class Staff {
         this.events = events;
     }
 
-    public DiagnosisType getStaffType() {
+    public StaffType getStaffType() {
         return staffType;
     }
 
-    public void setStaffType(DiagnosisType staffType) {
+    public void setStaffType(StaffType staffType) {
         this.staffType = staffType;
     }
 

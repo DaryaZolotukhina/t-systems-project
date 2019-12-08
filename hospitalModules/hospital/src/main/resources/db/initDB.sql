@@ -137,7 +137,12 @@ INSERT INTO prescriptions VALUES (2,1,1,'111','0000000',2,2,false);
     INSERT INTO prescriptions VALUES (4,2,1,'111','0000000',2,2,false);
 select * from prescriptions;
 
-INSERT INTO STAFF VALUES (1,'Semenov','Andrey','Vitalievich',false,1);
+INSERT INTO STAFF VALUES (1,'Semenov','Andrey','Vitalievich',false,1,1);
+    INSERT INTO STAFF VALUES (2,'Zaycev','Nikolay','Andreevich',false,1,2);
+    INSERT INTO STAFF VALUES (3,'Bodrov','Aleksey','Vladimirovich',false,1,3);
+    INSERT INTO STAFF VALUES (4,'Petrova','Svetlana','Igorevna',false,2,4);
+    INSERT INTO STAFF VALUES (5,'Mashkova','Anna','Vladimirovna',false,2,4);
+
     update staff set surname='Andreev', name='Vladimir', patronymic='Vitalievich', isDeleted=false, isDoctor='true'
     where id_staff=1;
     INSERT INTO STAFF VALUES (3,'Danilova','Inna','Semenovna',false,false);
@@ -207,12 +212,12 @@ insert into diagnosis_type values (2,'flu');
 insert into procedures values (1, 'injection');
 insert into procedures values (2, 'operation');
     insert into procedures values (3, 'dropper');
-    insert into procedures values (4, '');
+    insert into procedures values (5, 'ophthalmoscopy');
+    insert into procedures values (6, 'pachymetry');
 
     insert into medicines values (1, 'aspirin');
     insert into medicines values (2, 'analgin');
     insert into medicines values (3, 'nospa');
-    insert into medicines values (4, '');
 
 
 insert into diagnosis_type_procedures values (1,1);
@@ -227,7 +232,26 @@ select * from diagnosises;
 truncate events, prescriptions, diagnosises;
 select * from procedures;
 
-insert into staff_type values (1,'immunologist');
+insert into staff_type values (1, 'doctor');
+insert into staff_type values (2, 'nurse');
+
+insert into Specializations values (1,'immunologist');
+insert into Specializations values (2,'surgeon');
+insert into Specializations values (3,'oculist');
+insert into Specializations values (4,'nurse');
+
+select * from Specialization_procedures;
+
+    insert into Specialization_procedures values (1,1);
+    insert into Specialization_procedures values (3,1);
+
+    insert into Specialization_procedures values (2,2);
+    insert into Specialization_procedures values (1,2);
+
+    insert into Specialization_procedures values (5,3);
+    insert into Specialization_procedures values (6,3);
+
+truncate staff_type CASCADE;
 
 select * from staff;
 
