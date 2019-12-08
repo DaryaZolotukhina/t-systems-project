@@ -82,6 +82,12 @@ public class PatientController {
 		return patientService.getAllDoctors();
 	}
 
+	@RequestMapping(value = "/doctorsForProcedure/{procedure}", method = RequestMethod.GET)
+	@ResponseBody
+	public List<StaffDto> getDoctorsForProcedure(@PathVariable("procedure") String procedure)
+	{
+		return patientService.getDoctorsForProcedure(procedure);
+	}
 
 	@RequestMapping(value = "/allDiagnosisType", method = RequestMethod.GET)
 	@ResponseBody

@@ -22,6 +22,8 @@
 <body>
 <script>
     function GenerateSourceProcedure(o,diagnosis) {
+        $('#medicineSelect').find('option').remove();
+        $('#procedureSelect').find('option').remove();
         var str = '/allProcedureForDiagnosis/'+diagnosis;
         $.ajax({
             type: 'GET',
@@ -42,6 +44,8 @@
         });
     }
     function GenerateSourceMedicine(o,diagnosis) {
+        $('#medicineSelect').find('option').remove();
+        $('#procedureSelect').find('option').remove();
         var str = '/allMedicineForDiagnosis/'+diagnosis;
         $.ajax({
             type: 'GET',
@@ -60,6 +64,49 @@
             }
 
         });
+    }
+    function GenerateSourceDoctor(o,procedure) {
+        $('#doctorSelect').find('option').remove();
+        if (procedure == undefined) {
+            var str = '/allDoctors';
+            $.ajax({
+                type: 'GET',
+                url: str,
+                success: function (result) {
+                    console.log(result)
+                    var arr = [];
+                    for (i = 0; i < result.length; i++) {
+                        arr.push(result[i].surname);
+                    }
+                    console.log(arr)
+                    for (i = 0; i < arr.length; i++) {
+                        var newOption = new Option(arr[i], arr[i], true, true);
+                        $('#doctorSelect').append(newOption);
+                    }
+                }
+
+            });
+        } else
+            {
+            var str = /doctorsForProcedure/ + procedure;
+            $.ajax({
+                type: 'GET',
+                url: str,
+                success: function (result) {
+                    console.log(result)
+                    var arr = [];
+                    for (i = 0; i < result.length; i++) {
+                        arr.push(result[i].surname);
+                    }
+                    console.log(arr)
+                    for (i = 0; i < arr.length; i++) {
+                        var newOption = new Option(arr[i], arr[i], true, true);
+                        $('#doctorSelect').append(newOption);
+                    }
+                }
+
+            });
+        }
     }
 </script>
 <style>.autocomplete-suggestions{background:#ffffff;}</style>
@@ -82,6 +129,14 @@
         <div class="medSelect">
         <select class="form-control" name="medicineSelect" id="medicineSelect">
         </select>
+        </div>
+        <input type="button" id="butDoctor" value="Choose doctor" onclick="GenerateSourceDoctor(this,$('#procedureSelect').val())">
+        <div class="doctorSelect">
+            <label for="doctorSelect">Doctor</label>
+        </div>
+        <div class="doctorSelect">
+            <select class="form-control" name="doctorSelect" id="doctorSelect">
+            </select>
         </div>
         <label for="but1">Repeat per</label>
         <label class="radio-inline"><input type="radio" name="optradio" checked id="but1"/>Day</label>

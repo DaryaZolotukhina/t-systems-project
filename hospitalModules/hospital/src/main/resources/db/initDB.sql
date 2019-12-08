@@ -208,12 +208,16 @@ select * from diagnosis_type;
 
 insert into diagnosis_type values (1,'volchanka');
 insert into diagnosis_type values (2,'flu');
+    insert into diagnosis_type values (3,'glaucoma');
 
 insert into procedures values (1, 'injection');
 insert into procedures values (2, 'operation');
     insert into procedures values (3, 'dropper');
     insert into procedures values (5, 'ophthalmoscopy');
     insert into procedures values (6, 'pachymetry');
+
+    update procedures set title='pahometry'
+    where id_procedure=6;
 
     insert into medicines values (1, 'aspirin');
     insert into medicines values (2, 'analgin');
@@ -223,10 +227,14 @@ insert into procedures values (2, 'operation');
 insert into diagnosis_type_procedures values (1,1);
     insert into diagnosis_type_procedures values (3,1);
     insert into diagnosis_type_procedures values (2,2);
+    insert into diagnosis_type_procedures values (5,3);
+    insert into diagnosis_type_procedures values (6,3);
 
     insert into diagnosis_type_medicines values (1,1);
     insert into diagnosis_type_medicines values (3,1);
     insert into diagnosis_type_medicines values (2,2);
+    insert into diagnosis_type_medicines values (3,3);
+    insert into diagnosis_type_medicines values (1,3);
 
 select * from diagnosises;
 truncate events, prescriptions, diagnosises;

@@ -221,6 +221,26 @@ public class PatientServiceImpl implements PatientService {
 		return listStaffDto;
 	}
 
+    @Transactional
+    @Override
+    public List<StaffDto> getDoctorsForProcedure(String procedureTitle){
+        List<Staff> staffList=patientDAO.getAllDoctors();
+        List<Staff> staffForProcedureList=new ArrayList<>();
+        List<StaffDto> listStaffDto=new ArrayList<>();
+        for (Staff staff : staffList) {
+            for (Procedure procedure : staff.getSpecialization().getProcedures()) {
+                if (procedure.getTitle().equals(procedureTitle)) {
+                    staffForProcedureList.add(staff);
+                    continue;
+                }
+            }
+        }
+        for (Staff staff : staffForProcedureList) {
+                listStaffDto.add(StaffMapper.STAFF_MAPPER.fromStaff(staff));
+        }
+        return listStaffDto;
+    }
+
 	@Override
 	@Transactional
 	public List<Patient> getPatientsByPage(int pageid) {

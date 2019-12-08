@@ -49,4 +49,6 @@ public interface PatientService {
 	Diagnosis getDiagnosisByTitle(String title);
 
 	ErrorMessage dischargePatient(int id);
+
+	List<StaffDto> getDoctorsForProcedure(String procedureTitle);
 	}
