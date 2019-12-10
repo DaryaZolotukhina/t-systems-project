@@ -83,3 +83,19 @@ mat-footer-row mat-footer-cell{
     text-align: center;
     font-size: 20px;
 }
+
+.table thead tr:nth-child(1){
+    background: #B0C4DE;
+}
+.table thead tr:nth-child(2){
+    background: #B0C4DE;
+}
+.table tr:nth-child(3n){
+    background: #F0F8FF;
+}
+.table tr:nth-child(3n+1){
+    background: #FFF0F7;
+}
+.table tr:nth-child(3n+2){
+    background: #F7FFF0;
+}

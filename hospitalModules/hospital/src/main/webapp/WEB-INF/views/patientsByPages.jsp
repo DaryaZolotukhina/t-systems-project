@@ -7,15 +7,19 @@
     <meta charset="UTF-8" />
     <title>Patient List</title>
     <!-- Bootstrap CSS -->
+    <link type="text/css" href="/css/styles.css" rel="stylesheet">
     <link rel="stylesheet" href="/bootstrap/bootstrap.min.css">
     <script src="/jQuery/jquery-3.4.1.min.js"></script>
     <script src="/jQuery/jquery-dateformat.min.js"></script>
     <script src="/jQuery/sortSurname.js"></script>
 </head>
 <body>
-<h1>Patient List</h1>
+<div class="container">
+    <div class="row justify-content-md-center">
+<h1 class="ml-3 mb-3 mt-2">Patients List</h1>
+    </div>
 <br/>
-<div class="col-sm-8">
+<div>
     <table class="table table-hover patientsTb">
         <thead>
         <tr>
@@ -56,6 +60,7 @@
         <input type="submit" value="Log off"/>
         <security:csrfInput/>
     </form>
+</div>
 </div>
 </body>
 
