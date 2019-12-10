@@ -20,10 +20,6 @@ public interface PatientDAO {
 
 	List<Patient> sortSurname(int pageid, String order);
 
-	public List<Procedure> getAllProcedure();
-
-	Procedure getProcedureByTitle(String title);
-
 	List<Event> sortEventsDate(String order, int id);
 
 }

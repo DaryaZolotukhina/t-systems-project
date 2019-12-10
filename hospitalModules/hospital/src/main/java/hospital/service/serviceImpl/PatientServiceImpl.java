@@ -30,8 +30,10 @@ public class PatientServiceImpl implements PatientService {
 	private DoctorService doctorService;
 	private DiagnosisService diagnosisService;
 	private MedicineService medicineService;
+	private ProcedureService procedureService;
 
-    private static final int NUMBER_OF_RESULTS_PER_PAGE = 5;
+
+	private static final int NUMBER_OF_RESULTS_PER_PAGE = 5;
 
     public void setCalculatingBitMasks(CalculatingBitMasks calculatingBitMasks) {
         this.calculatingBitMasks= calculatingBitMasks;
@@ -55,6 +57,10 @@ public class PatientServiceImpl implements PatientService {
 
 	public void setMedicineService(MedicineService medicineService) {
 		this.medicineService= medicineService;
+	}
+
+	public void setProcedureService(ProcedureService procedureService) {
+		this.procedureService= procedureService;
 	}
 
 	public void setDiagnosisService(DiagnosisService diagnosisService) {
@@ -136,33 +142,6 @@ public class PatientServiceImpl implements PatientService {
 		return null;
 	}
 
-    @Override
-    @Transactional
-    public Procedure getProcedureByTitle(String title) {
-        Procedure procedure=patientDAO.getProcedureByTitle(title);
-        return procedure;
-    }
-
-	@Transactional
-	@Override
-	public List<ProcedureTitleDto> getAllProcedureForDiagnosis(String titleDiag) {
-		List<Procedure> listProc = patientDAO.getAllProcedure();
-		List<Procedure> listProcForDiag = new ArrayList<>();
-		for (Procedure proc : listProc) {
-			for (DiagnosisType diagnosisType : proc.getDiagnosisTypes()){
-				if (diagnosisType.getTitle().equals(titleDiag)){
-					listProcForDiag.add(proc);
-					continue;
-				}
-			}
-		}
-		List<ProcedureTitleDto> listProcTitleDto=new ArrayList<>();
-		for (Procedure proc : listProcForDiag){
-			listProcTitleDto.add(ProcedureMapper.PROCEDURE_MAPPER.fromProcedure(proc));
-		}
-		return listProcTitleDto;
-	}
-
 
 	@Override
 	@Transactional
@@ -197,7 +176,7 @@ public class PatientServiceImpl implements PatientService {
 	    PrescriptionDto p =new PrescriptionDto();
 	    p.setPatient(PatientMapper.PATIENT_MAPPER.toPatient(getById(id)));
 	    if (!procedure.equals("")) {
-            p.setProcedure(getProcedureByTitle(procedure));
+            p.setProcedure(procedureService.getProcedureByTitle(procedure));
         }
 	    else
 	        p.setMedicine(medicineService.getMedicineByTitle(medicine));

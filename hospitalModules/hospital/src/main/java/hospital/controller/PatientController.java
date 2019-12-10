@@ -75,13 +75,6 @@ public class PatientController {
 	}
 
 
-	@RequestMapping(value = "/allProcedureForDiagnosis/{diagTypeTitle}", method = RequestMethod.GET)
-	@ResponseBody
-	public List<ProcedureTitleDto> getAllProcedureForDiagnosis(@PathVariable("diagTypeTitle") String diagTypeTitle) {
-		return patientService.getAllProcedureForDiagnosis(diagTypeTitle);
-	}
-
-
 	@RequestMapping(value = "/createPrescription/{id}", method = RequestMethod.POST)
 	public String createPresc(@PathVariable("id") int id,
 									@RequestParam("periodSelect") String period,

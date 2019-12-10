@@ -104,29 +104,10 @@ public class PatientDAOImpl implements PatientDAO {
 	}
 
 	@Override
-	public List<Procedure> getAllProcedure(){
-		Session session = sessionFactory.getCurrentSession();
-		List<Procedure> procedureList= session.createQuery("from Procedure").list();
-		return procedureList;
-	}
-
-	@Override
 	public Patient getById(int id) {
 		Session session = sessionFactory.getCurrentSession();
 		Patient p = (Patient) session.load(Patient.class, id);
 		return p;
-	}
-
-	@Override
-	public Procedure getProcedureByTitle(String title) {
-		EntityManager em = getEntityManager();
-		CriteriaQuery<Procedure> cq = em.getCriteriaBuilder().createQuery(Procedure.class);
-		Root<Procedure> from = cq.from(Procedure.class);
-
-		cq.select(from);
-		cq.where(em.getCriteriaBuilder().equal(from.get("title"),title));
-
-		return em.createQuery(cq).getSingleResult();
 	}
 
 	@Override
