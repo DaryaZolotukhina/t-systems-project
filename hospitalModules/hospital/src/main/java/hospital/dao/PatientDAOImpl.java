@@ -131,13 +131,6 @@ public class PatientDAOImpl implements PatientDAO {
 	}
 
 	@Override
-	public List<Staff> getAllDoctors(){
-		Session session = sessionFactory.getCurrentSession();
-		List<Staff> staffList= session.createQuery("from Staff").list();
-		return staffList;
-	}
-
-	@Override
 	public Patient getById(int id) {
 		Session session = sessionFactory.getCurrentSession();
 		Patient p = (Patient) session.load(Patient.class, id);
@@ -190,19 +183,6 @@ public class PatientDAOImpl implements PatientDAO {
 		cq.where(em.getCriteriaBuilder().equal(from.get("title"),title));
 
 		return em.createQuery(cq).getSingleResult();
-	}
-
-	@Override
-	public Staff getDoctorBySurname(String surname) {
-		EntityManager em = getEntityManager();
-		CriteriaQuery<Staff> cq = em.getCriteriaBuilder().createQuery(Staff.class);
-		Root<Staff> from = cq.from(Staff.class);
-
-		cq.select(from);
-		cq.where(em.getCriteriaBuilder().equal(from.get("surname"),surname));
-
-		Staff staff=em.createQuery(cq).getSingleResult();
-		return staff;
 	}
 
 	@Override

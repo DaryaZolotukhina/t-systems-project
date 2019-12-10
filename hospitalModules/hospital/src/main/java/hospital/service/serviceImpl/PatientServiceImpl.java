@@ -3,12 +3,14 @@ package hospital.service.serviceImpl;
 import java.util.ArrayList;
 import java.util.List;
 
+import hospital.dao.DoctorDAO;
 import hospital.dao.EventDAO;
 import hospital.dao.PrescriptionDAO;
 import hospital.dto.*;
 import hospital.mappers.*;
 import hospital.exception.DischargeException;
 import hospital.model.*;
+import hospital.service.DoctorService;
 import hospital.service.EventService;
 import hospital.service.PatientService;
 import hospital.service.PrescriptionService;
@@ -28,6 +30,7 @@ public class PatientServiceImpl implements PatientService {
 	private PatientDAO patientDAO;
 	private EventDAO eventDAO;
 	private PrescriptionDAO prescriptionDAO;
+	private DoctorService doctorService;
 
     private static final int NUMBER_OF_RESULTS_PER_PAGE = 5;
 
@@ -53,6 +56,10 @@ public class PatientServiceImpl implements PatientService {
 
 	public void setEventService(EventService eventService) {
 		this.eventService= eventService;
+	}
+
+	public void setDoctorService(DoctorService doctorService) {
+		this.doctorService= doctorService;
 	}
 
     @Override
@@ -120,13 +127,6 @@ public class PatientServiceImpl implements PatientService {
 			patient.setIsDischarged(true);
 			patientDAO.updatePatient(patient);
 		return null;
-	}
-
-	@Override
-	@Transactional
-	public StaffDto getDoctorBySurname(String surname) {
-		return StaffMapper.STAFF_MAPPER.fromStaff(patientDAO.getDoctorBySurname(surname));
-
 	}
 
 	@Override
@@ -209,37 +209,6 @@ public class PatientServiceImpl implements PatientService {
 		return listDiagnosisTypeTitleDto;
 	}
 
-	@Transactional
-	@Override
-	public List<StaffDto> getAllDoctors(){
-		List<Staff> staffList=patientDAO.getAllDoctors();
-		List<StaffDto> listStaffDto=new ArrayList<>();
-		for (Staff staff : staffList){
-			if (staff.getStaffType().getId()==1)
-				listStaffDto.add(StaffMapper.STAFF_MAPPER.fromStaff(staff));
-		}
-		return listStaffDto;
-	}
-
-    @Transactional
-    @Override
-    public List<StaffDto> getDoctorsForProcedure(String procedureTitle){
-        List<Staff> staffList=patientDAO.getAllDoctors();
-        List<Staff> staffForProcedureList=new ArrayList<>();
-        List<StaffDto> listStaffDto=new ArrayList<>();
-        for (Staff staff : staffList) {
-            for (Procedure procedure : staff.getSpecialization().getProcedures()) {
-                if (procedure.getTitle().equals(procedureTitle)) {
-                    staffForProcedureList.add(staff);
-                    continue;
-                }
-            }
-        }
-        for (Staff staff : staffForProcedureList) {
-                listStaffDto.add(StaffMapper.STAFF_MAPPER.fromStaff(staff));
-        }
-        return listStaffDto;
-    }
 
 	@Override
 	@Transactional
@@ -307,7 +276,7 @@ public class PatientServiceImpl implements PatientService {
 		p.setName(name);
 		p.setPatronymic(patronymic);
 		p.setInsuranceNum(insuranceNum);
-		Staff staff=StaffMapper.STAFF_MAPPER.toStaff(getDoctorBySurname(doctor));
+		Staff staff=StaffMapper.STAFF_MAPPER.toStaff(doctorService.getDoctorBySurname(doctor));
 		p.setStaff(staff);
 		p.setIsDeleted(false);
 		p.setIsDischarged(false);
@@ -332,7 +301,7 @@ public class PatientServiceImpl implements PatientService {
 		patDto.setName(name);
 		patDto.setPatronymic(patronymic);
 		patDto.setInsuranceNum(insuranceNum);
-        Staff staff=StaffMapper.STAFF_MAPPER.toStaff(getDoctorBySurname(doctor));
+        Staff staff=StaffMapper.STAFF_MAPPER.toStaff(doctorService.getDoctorBySurname(doctor));
 		patDto.setStaff(staff);
 		patDto.setIsDeleted(false);
 		patDto.setIsDischarged(false);

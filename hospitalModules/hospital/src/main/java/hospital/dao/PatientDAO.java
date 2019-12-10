@@ -24,10 +24,6 @@ public interface PatientDAO {
 
 	Procedure getProcedureByTitle(String title);
 
-	List<Staff> getAllDoctors();
-
-	Staff getDoctorBySurname(String surname);
-
 	List<Event> sortEventsDate(String order, int id);
 
 	Medicine getMedicineByTitle(String title);

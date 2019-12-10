@@ -60,33 +60,10 @@ public class PatientController {
 		return "showPatient";
 	}
 
-	/*@RequestMapping(value = "/dischargePatient/{id}", method = RequestMethod.GET)
-	public String dischargePatient(@PathVariable("id") int id) throws DischargeException
-	{
-		List<Prescription>list=patientService.dischargePatient(id);
-		if (list!=null)
-			throw new DischargeException(list);
-		else
-		return "redirect:/init/1";
-	}*/
-
 	@RequestMapping(value = "/dischargePatient/{id}", method = RequestMethod.GET)
 	@ResponseBody
 	public ErrorMessage dischargePatient(@PathVariable("id") int id) {
 		return patientService.dischargePatient(id);
-	}
-
-	@RequestMapping(value = "/allDoctors", method = RequestMethod.GET)
-	@ResponseBody
-	public List<StaffDto> getAllDoctors() {
-		return patientService.getAllDoctors();
-	}
-
-	@RequestMapping(value = "/doctorsForProcedure/{procedure}", method = RequestMethod.GET)
-	@ResponseBody
-	public List<StaffDto> getDoctorsForProcedure(@PathVariable("procedure") String procedure)
-	{
-		return patientService.getDoctorsForProcedure(procedure);
 	}
 
 	@RequestMapping(value = "/allDiagnosisType", method = RequestMethod.GET)

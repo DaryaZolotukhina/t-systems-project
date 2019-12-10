@@ -6,6 +6,7 @@ import hospital.dto.*;
 import hospital.mappers.EventMapper;
 import hospital.mappers.StaffMapper;
 import hospital.model.*;
+import hospital.service.DoctorService;
 import hospital.service.EventService;
 import hospital.service.PatientService;
 import hospital.service.PrescriptionService;
@@ -28,6 +29,11 @@ public class EventServiceImpl implements EventService {
     private PrescriptionService prescriptionService;
     public void setPrescriptionService(PrescriptionService prescriptionService) {
         this.prescriptionService= prescriptionService;
+    }
+
+    private DoctorService doctorService;
+    public void setDoctorService(DoctorService doctorService) {
+        this.doctorService= doctorService;
     }
 
     private PatientService patientService;
@@ -161,7 +167,7 @@ public class EventServiceImpl implements EventService {
         List<Event> listEvent= new ArrayList<>();
         for (EventDto eventDto : eventsDto){
             Event event=EventMapper.EVENT_MAPPER.toEvent(eventDto);
-            event.setStaff(StaffMapper.STAFF_MAPPER.toStaff(patientService.getDoctorBySurname("Semenov")));
+            event.setStaff(StaffMapper.STAFF_MAPPER.toStaff(doctorService.getDoctorBySurname("Semenov")));
             listEvent.add(event);
             eventDAO.saveEvent(event);
         }

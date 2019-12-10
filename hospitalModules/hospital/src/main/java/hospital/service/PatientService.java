@@ -22,11 +22,7 @@ public interface PatientService {
 
 	List<Patient> sortSurname(int pageid, String order);
 
-	List<StaffDto> getAllDoctors();
-
 	void addPatient(String surname, String name, String patronymic, String insuranceNum, String doctor);
-
-	StaffDto getDoctorBySurname(String surname);
 
 	void addPrescription(int id, String diagnosis, String procedure, String medicine, String period, List<String> daySchedule, List<String> weekSchedule);
 
@@ -49,6 +45,4 @@ public interface PatientService {
 	Diagnosis getDiagnosisByTitle(String title);
 
 	ErrorMessage dischargePatient(int id);
-
-	List<StaffDto> getDoctorsForProcedure(String procedureTitle);
 	}
