@@ -10,6 +10,7 @@
     <b:bean id="simpleCORSFilter" class="hospital.utils.SimpleCORSFilter">
     </b:bean>
 
+    <http pattern="/bootstrap/**" security="none"/>
     <http realm="JavaStudy example" use-expressions="false">
         <intercept-url pattern="/" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
         <intercept-url pattern="/login.jsp*" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
@@ -24,6 +25,11 @@
         <intercept-url pattern="/exitUser*" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
         <intercept-url pattern="/changeStatus/**" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
         <intercept-url pattern="/events/**" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
+        <!--<intercept-url pattern="/events/doctor_1" access="ROLE_DOCTOR_1"/>
+        <intercept-url pattern="/events/doctor_2" access="ROLE_DOCTOR_2"/>
+        <intercept-url pattern="/events/doctor_3" access="ROLE_DOCTOR_3"/>
+        <intercept-url pattern="/events/nurse_4" access="ROLE_NURSE_4"/>
+        <intercept-url pattern="/events/nurse_5" access="ROLE_NURSE_5"/>-->
         <intercept-url pattern="/**" access="ROLE_NURSE"/>
         <intercept-url pattern="/patient/{id}" access="ROLE_NURSE"/>
         <intercept-url pattern="/allProcMed" access="ROLE_NURSE"/>
@@ -32,6 +38,7 @@
         <intercept-url pattern="/sortSurname/{page_id}/{order}" access="ROLE_NURSE"/>
         <intercept-url pattern="/sortEventsDate/{idPat}/{order}" access="ROLE_NURSE"/>
         <intercept-url pattern="/patients" access="ROLE_NURSE"/>
+        <intercept-url pattern="/bootstrap/bootstrap.min.css*" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
 
         <custom-filter after="BASIC_AUTH_FILTER" ref="simpleCORSFilter" />
 
@@ -47,9 +54,11 @@
     <authentication-manager>
         <authentication-provider>
             <user-service>
-                <user name="doctor_1" password="doctor_1" authorities="ROLE_DOCTOR, ROLE_NURSE"/>
-                <user name="doctor_2" password="doctor_2" authorities="ROLE_DOCTOR, ROLE_NURSE"/>
-                <user name="nurse" password="nurse" authorities="ROLE_NURSE" />
+                <user name="doctor_1" password="doctor" authorities="ROLE_DOCTOR,ROLE_DOCTOR_1, ROLE_NURSE"/>
+                <user name="doctor_2" password="doctor" authorities="ROLE_DOCTOR,ROLE_DOCTOR_2, ROLE_NURSE"/>
+                <user name="doctor_3" password="doctor" authorities="ROLE_DOCTOR, ROLE_DOCTOR_3, ROLE_NURSE"/>
+                <user name="nurse_4" password="nurse" authorities="ROLE_NURSE, ROLE_NURSE_4" />
+                <user name="nurse_5" password="nurse" authorities="ROLE_NURSE, ROLE_NURSE_5" />
             </user-service>
         </authentication-provider>
     </authentication-manager>
