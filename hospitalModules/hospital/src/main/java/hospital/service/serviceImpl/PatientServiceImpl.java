@@ -3,15 +3,14 @@ package hospital.service.serviceImpl;
 import java.util.ArrayList;
 import java.util.List;
 
+import hospital.dao.DoctorDAO;
 import hospital.dao.EventDAO;
 import hospital.dao.PrescriptionDAO;
 import hospital.dto.*;
 import hospital.mappers.*;
 import hospital.exception.DischargeException;
 import hospital.model.*;
-import hospital.service.EventService;
-import hospital.service.PatientService;
-import hospital.service.PrescriptionService;
+import hospital.service.*;
 import hospital.service.utils.CalculatingBitMasks;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -28,8 +27,13 @@ public class PatientServiceImpl implements PatientService {
 	private PatientDAO patientDAO;
 	private EventDAO eventDAO;
 	private PrescriptionDAO prescriptionDAO;
+	private DoctorService doctorService;
+	private DiagnosisService diagnosisService;
+	private MedicineService medicineService;
+	private ProcedureService procedureService;
 
-    private static final int NUMBER_OF_RESULTS_PER_PAGE = 5;
+
+	private static final int NUMBER_OF_RESULTS_PER_PAGE = 5;
 
     public void setCalculatingBitMasks(CalculatingBitMasks calculatingBitMasks) {
         this.calculatingBitMasks= calculatingBitMasks;
@@ -51,8 +55,24 @@ public class PatientServiceImpl implements PatientService {
 		this.prescriptionService= prescriptionService;
 	}
 
+	public void setMedicineService(MedicineService medicineService) {
+		this.medicineService= medicineService;
+	}
+
+	public void setProcedureService(ProcedureService procedureService) {
+		this.procedureService= procedureService;
+	}
+
+	public void setDiagnosisService(DiagnosisService diagnosisService) {
+		this.diagnosisService= diagnosisService;
+	}
+
 	public void setEventService(EventService eventService) {
 		this.eventService= eventService;
+	}
+
+	public void setDoctorService(DoctorService doctorService) {
+		this.doctorService= doctorService;
 	}
 
     @Override
@@ -122,124 +142,6 @@ public class PatientServiceImpl implements PatientService {
 		return null;
 	}
 
-	@Override
-	@Transactional
-	public StaffDto getDoctorBySurname(String surname) {
-		return StaffMapper.STAFF_MAPPER.fromStaff(patientDAO.getDoctorBySurname(surname));
-
-	}
-
-	@Override
-	@Transactional
-	public DiagnosisType getDiagnosisTypeByTitle(String title) {
-		DiagnosisType diagnosisType=patientDAO.getDiagnosisTypeByTitle(title);
-		return diagnosisType;
-	}
-
-
-	@Override
-	@Transactional
-	public Diagnosis getDiagnosisByTitle(String title) {
-		Diagnosis diagnosis=patientDAO.getDiagnosisByTitle(title);
-		return diagnosis;
-	}
-
-    @Override
-    @Transactional
-    public Procedure getProcedureByTitle(String title) {
-        Procedure procedure=patientDAO.getProcedureByTitle(title);
-        return procedure;
-    }
-
-    @Override
-    @Transactional
-    public Medicine getMedicineByTitle(String title) {
-        Medicine medicine=patientDAO.getMedicineByTitle(title);
-        return medicine;
-    }
-
-	@Transactional
-	@Override
-	public List<ProcedureTitleDto> getAllProcedureForDiagnosis(String titleDiag) {
-		List<Procedure> listProc = patientDAO.getAllProcedure();
-		List<Procedure> listProcForDiag = new ArrayList<>();
-		for (Procedure proc : listProc) {
-			for (DiagnosisType diagnosisType : proc.getDiagnosisTypes()){
-				if (diagnosisType.getTitle().equals(titleDiag)){
-					listProcForDiag.add(proc);
-					continue;
-				}
-			}
-		}
-		List<ProcedureTitleDto> listProcTitleDto=new ArrayList<>();
-		for (Procedure proc : listProcForDiag){
-			listProcTitleDto.add(ProcedureMapper.PROCEDURE_MAPPER.fromProcedure(proc));
-		}
-		return listProcTitleDto;
-	}
-
-	@Transactional
-	@Override
-	public List<MedicineTitleDto> getAllMedicineForDiagnosis(String titleDiag) {
-        List<Medicine> listMedicine = patientDAO.getAllMedicine();
-        List<Medicine> listMedicineForDiag = new ArrayList<>();
-        for (Medicine med : listMedicine) {
-            for (DiagnosisType diagnosisType : med.getDiagnosisTypes()){
-                if (diagnosisType.getTitle().equals(titleDiag)){
-                    listMedicineForDiag.add(med);
-                    continue;
-                }
-            }
-        }
-        List<MedicineTitleDto> listMedicineTitleDto=new ArrayList<>();
-        for (Medicine med : listMedicineForDiag){
-            listMedicineTitleDto.add(MedicineMapper.MEDICINE_MAPPER.fromMedicine(med));
-        }
-        return listMedicineTitleDto;
-	}
-
-	@Transactional
-	@Override
-	public List<DiagnosisTypeTitleDto> getAllDiagnosisType(){
-		List<DiagnosisType> listDiagnosisType=patientDAO.getAllDiagnosisType();
-		List<DiagnosisTypeTitleDto> listDiagnosisTypeTitleDto=new ArrayList<>();
-		for (DiagnosisType diagnosisType : listDiagnosisType){
-			listDiagnosisTypeTitleDto.add(DiagnosisTypeMapper.DIAGNOSIS_TYPE_MAPPER.fromDiagnosisTypeTitle(diagnosisType));
-		}
-		return listDiagnosisTypeTitleDto;
-	}
-
-	@Transactional
-	@Override
-	public List<StaffDto> getAllDoctors(){
-		List<Staff> staffList=patientDAO.getAllDoctors();
-		List<StaffDto> listStaffDto=new ArrayList<>();
-		for (Staff staff : staffList){
-			if (staff.getStaffType().getId()==1)
-				listStaffDto.add(StaffMapper.STAFF_MAPPER.fromStaff(staff));
-		}
-		return listStaffDto;
-	}
-
-    @Transactional
-    @Override
-    public List<StaffDto> getDoctorsForProcedure(String procedureTitle){
-        List<Staff> staffList=patientDAO.getAllDoctors();
-        List<Staff> staffForProcedureList=new ArrayList<>();
-        List<StaffDto> listStaffDto=new ArrayList<>();
-        for (Staff staff : staffList) {
-            for (Procedure procedure : staff.getSpecialization().getProcedures()) {
-                if (procedure.getTitle().equals(procedureTitle)) {
-                    staffForProcedureList.add(staff);
-                    continue;
-                }
-            }
-        }
-        for (Staff staff : staffForProcedureList) {
-                listStaffDto.add(StaffMapper.STAFF_MAPPER.fromStaff(staff));
-        }
-        return listStaffDto;
-    }
 
 	@Override
 	@Transactional
@@ -274,10 +176,10 @@ public class PatientServiceImpl implements PatientService {
 	    PrescriptionDto p =new PrescriptionDto();
 	    p.setPatient(PatientMapper.PATIENT_MAPPER.toPatient(getById(id)));
 	    if (!procedure.equals("")) {
-            p.setProcedure(getProcedureByTitle(procedure));
+            p.setProcedure(procedureService.getProcedureByTitle(procedure));
         }
 	    else
-	        p.setMedicine(getMedicineByTitle(medicine));
+	        p.setMedicine(medicineService.getMedicineByTitle(medicine));
 	   if (daySchedule.isEmpty()){
 	        p.setDaySchedule(0);
         }
@@ -294,7 +196,7 @@ public class PatientServiceImpl implements PatientService {
         p.setIsDone(false);
 
         Prescription presc=PrescriptionMapper.PRESCRIPTION_MAPPER.toPrescription(p);
-        presc.setDiagnosis(getDiagnosisByTitle(diagnosis));
+        presc.setDiagnosis(diagnosisService.getDiagnosisByTitle(diagnosis));
         prescriptionDAO.addPresc(presc);
 
     }
@@ -307,7 +209,7 @@ public class PatientServiceImpl implements PatientService {
 		p.setName(name);
 		p.setPatronymic(patronymic);
 		p.setInsuranceNum(insuranceNum);
-		Staff staff=StaffMapper.STAFF_MAPPER.toStaff(getDoctorBySurname(doctor));
+		Staff staff=StaffMapper.STAFF_MAPPER.toStaff(doctorService.getDoctorBySurname(doctor));
 		p.setStaff(staff);
 		p.setIsDeleted(false);
 		p.setIsDischarged(false);
@@ -317,22 +219,13 @@ public class PatientServiceImpl implements PatientService {
 
     @Override
     @Transactional
-    public void addDiagnosis(String title, String diagnosisType){
-        Diagnosis diagnosis=new Diagnosis();
-        diagnosis.setTitle(title);
-        diagnosis.setDiagnosisType(getDiagnosisTypeByTitle(diagnosisType));
-        patientDAO.addDiagnosis(diagnosis);
-    }
-
-    @Override
-    @Transactional
     public void updatePatient(int id, String surname, String name, String patronymic, String insuranceNum, String doctor) {
 	    PatientDto patDto=getById(id);
 		patDto.setSurname(surname);
 		patDto.setName(name);
 		patDto.setPatronymic(patronymic);
 		patDto.setInsuranceNum(insuranceNum);
-        Staff staff=StaffMapper.STAFF_MAPPER.toStaff(getDoctorBySurname(doctor));
+        Staff staff=StaffMapper.STAFF_MAPPER.toStaff(doctorService.getDoctorBySurname(doctor));
 		patDto.setStaff(staff);
 		patDto.setIsDeleted(false);
 		patDto.setIsDischarged(false);

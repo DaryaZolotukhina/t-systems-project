@@ -92,11 +92,35 @@
 	<beans:bean id="eventDAO" class="hospital.dao.EventDAOImpl">
 		<beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
 	</beans:bean>
+	<beans:bean id="medicineDAO" class="hospital.dao.MedicineDAOImpl">
+		<beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+	</beans:bean>
+	<beans:bean id="procedureDAO" class="hospital.dao.ProcedureDAOImpl">
+		<beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+	</beans:bean>
+	<beans:bean id="diagnosisDAO" class="hospital.dao.DiagnosisDAOImpl">
+		<beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+	</beans:bean>
+	<beans:bean id="doctorDAO" class="hospital.dao.DoctorDAOImpl">
+		<beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+	</beans:bean>
 	<beans:bean id="patientDAO" class="hospital.dao.PatientDAOImpl">
 		<beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
 	</beans:bean>
 	<beans:bean id="prescriptionDAO" class="hospital.dao.PrescriptionDAOImpl">
 		<beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+	</beans:bean>
+	<beans:bean id="doctorService" class="hospital.service.serviceImpl.DoctorServiceImpl">
+		<beans:property name="doctorDAO" ref="doctorDAO"></beans:property>
+	</beans:bean>
+	<beans:bean id="procedureService" class="hospital.service.serviceImpl.ProcedureServiceImpl">
+		<beans:property name="procedureDAO" ref="procedureDAO"></beans:property>
+	</beans:bean>
+	<beans:bean id="medicineService" class="hospital.service.serviceImpl.MedicineServiceImpl">
+		<beans:property name="medicineDAO" ref="medicineDAO"></beans:property>
+	</beans:bean>
+	<beans:bean id="diagnosisService" class="hospital.service.serviceImpl.DiagnosisServiceImpl">
+		<beans:property name="diagnosisDAO" ref="diagnosisDAO"></beans:property>
 	</beans:bean>
 	<beans:bean id="prescriptionService" class="hospital.service.serviceImpl.PrescriptionServiceImpl">
 		<beans:property name="prescriptionDAO" ref="prescriptionDAO"></beans:property>
@@ -108,14 +132,19 @@
 		<beans:property name="eventDAO" ref="eventDAO"></beans:property>
 		<beans:property name="prescriptionService" ref="prescriptionService"></beans:property>
 		<beans:property name="patientService" ref="patientService"></beans:property>
+		<beans:property name="doctorService" ref="doctorService"></beans:property>
 	</beans:bean>
 	<beans:bean id="patientService" class="hospital.service.serviceImpl.PatientServiceImpl">
 		<beans:property name="patientDAO" ref="patientDAO"></beans:property>
 		<beans:property name="eventService" ref="eventService"></beans:property>
 		<beans:property name="prescriptionDAO" ref="prescriptionDAO"></beans:property>
+		<beans:property name="doctorService" ref="doctorService"></beans:property>
+		<beans:property name="diagnosisService" ref="diagnosisService"></beans:property>
 		<beans:property name="prescriptionService" ref="prescriptionService"></beans:property>
 		<beans:property name="calculatingBitMasks" ref="calculatingBitMasks"></beans:property>
 		<beans:property name="eventDAO" ref="eventDAO"></beans:property>
+		<beans:property name="medicineService" ref="medicineService"></beans:property>
+		<beans:property name="procedureService" ref="procedureService"></beans:property>
 	</beans:bean>
 	<context:component-scan base-package="hospital" />
 	

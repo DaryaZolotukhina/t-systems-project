@@ -772,7 +772,7 @@
           \***************************/
         /*! no static exports found */
         /***/ (function (module, exports, __webpack_require__) {
-            module.exports = __webpack_require__(/*! /Users/dasazolotuhina/Documents/t-system-project1/t-systems-project/hospitalModules/front/src/main.ts */ "./src/main.ts");
+            module.exports = __webpack_require__(/*! /Users/dasazolotuhina/Documents/актуальный/hospitalModules/front/src/main.ts */ "./src/main.ts");
             /***/ 
         })
     }, [[0, "runtime", "vendor"]]]);

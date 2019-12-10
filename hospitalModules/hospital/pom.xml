@@ -157,12 +157,6 @@
             <artifactId>jackson-databind</artifactId>
             <version>${jackson.version}</version>
         </dependency>
-		<!-- https://mvnrepository.com/artifact/com.googlecode.flyway/flyway-core -->
-		<!-- <dependency>
-			<groupId>com.googlecode.flyway</groupId>
-			<artifactId>flyway-core</artifactId>
-			<version>2.3.1</version>
-		</dependency>-->
 		<!-- https://mvnrepository.com/artifact/org.flywaydb/flyway-core -->
 		<dependency>
 			<groupId>org.flywaydb</groupId>
