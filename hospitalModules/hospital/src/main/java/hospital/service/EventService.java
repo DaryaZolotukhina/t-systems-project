@@ -19,7 +19,7 @@ public interface EventService {
 
     List<EventAjax> getAllEventsForAjax(int id);
 
-    List<EventAjax> eventsForStaff(int id);
+    List<EventAjax> eventsForStaff(String staffName);
 
     EventAjax changeStatus(String status, int id);
 

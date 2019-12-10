@@ -36,7 +36,6 @@ CREATE TABLE public.patients
     surname character varying(255) NOT NULL,
     name character varying(255)  NOT NULL,
     patronymic character varying(255)  NOT NULL,
-    --id_diagnosis REFERENCES diagnosis(id_diagnosis),
     insuranceNum character varying(16) NOT NULL,
 	id_doctor integer REFERENCES doctors(id_doctor),
 	id_statusPat integer REFERENCES statusPat(id_statusPat)

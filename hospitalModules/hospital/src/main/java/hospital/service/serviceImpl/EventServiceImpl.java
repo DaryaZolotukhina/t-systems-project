@@ -62,9 +62,11 @@ public class EventServiceImpl implements EventService {
         return listEventAjax;
     }
 
+
     @Override
     @Transactional
-    public List<EventAjax> eventsForStaff(int id){
+    public List<EventAjax> eventsForStaff(String staffName){
+        int id=Integer. parseInt(staffName.substring(staffName.indexOf('_')+1));
         List<Event> listEvent= eventDAO.getAllEvents();
         List<EventAjax> listEventAjax=new ArrayList<>();
         Calendar date = Calendar.getInstance();
@@ -101,14 +103,6 @@ public class EventServiceImpl implements EventService {
         eventDAO.updateEvent(event);
     }
 
-    /*@Override
-    @Transactional
-    public void changeStatus(String status, int id){
-        Event event=getById(id);
-        StatusEvent statusEvent=getStatusEventByTitle(status);
-        event.setStatusEvent(statusEvent);
-        update(event);
-    }*/
 
     @Override
     @Transactional

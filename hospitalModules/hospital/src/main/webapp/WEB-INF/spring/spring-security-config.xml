@@ -33,7 +33,6 @@
         <intercept-url pattern="/sortEventsDate/{idPat}/{order}" access="ROLE_NURSE"/>
         <intercept-url pattern="/patients" access="ROLE_NURSE"/>
 
-
         <custom-filter after="BASIC_AUTH_FILTER" ref="simpleCORSFilter" />
 
         <form-login login-page="/login.jsp"
@@ -48,7 +47,8 @@
     <authentication-manager>
         <authentication-provider>
             <user-service>
-                <user name="doctor" password="doctor" authorities="ROLE_DOCTOR, ROLE_NURSE" />
+                <user name="doctor_1" password="doctor_1" authorities="ROLE_DOCTOR, ROLE_NURSE"/>
+                <user name="doctor_2" password="doctor_2" authorities="ROLE_DOCTOR, ROLE_NURSE"/>
                 <user name="nurse" password="nurse" authorities="ROLE_NURSE" />
             </user-service>
         </authentication-provider>

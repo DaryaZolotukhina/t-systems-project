@@ -11,7 +11,7 @@
     <a href="<c:url value="/patients"/>" class="list-group-item">
         Patients list
     </a>
-    <a href="<c:url value="/events/1"/>" class="list-group-item">
+    <a href="<c:url value="/events/${pageContext.request.remoteUser}"/>" class="list-group-item">
         Events list
     </a>
 </div>

@@ -33,33 +33,15 @@ public class EventController {
         return eventService.getAllEventsForAjax(idPat);
     }
 
-    @RequestMapping(value = "/events/{idStaff}", method = RequestMethod.GET)
-    public @ResponseBody List<EventAjax> eventsForStaff(@PathVariable("idStaff") int id){
-       return eventService.eventsForStaff(id);
-        //model.addAttribute("event",new Event());
-        //return "eventsForStaff";
+    @RequestMapping(value = "/events/{staffName}", method = RequestMethod.GET)
+    public @ResponseBody List<EventAjax> eventsForStaff(@PathVariable("staffName") String staffName){
+       return eventService.eventsForStaff(staffName);
     }
-
-   /* @RequestMapping(value = "/events/{idStaff}", method = RequestMethod.GET)
-    public String eventsForStaff(@PathVariable("idStaff") int id, Model model){
-        model.addAttribute("events",eventService.eventsForStaff(id));
-        model.addAttribute("event",new Event());
-        return "eventsForStaff";
-    }*/
-
-   /* @RequestMapping(value = "/changeStatus/{idEvent}/{idStaff}/{status}", method = RequestMethod.GET)
-    public @ResponseBody
-    List<EventAjax> changeStatus(@PathVariable("status") String status, @PathVariable("idEvent") int idEvent,
-                                @PathVariable("idStaff") int idStaff){
-        eventService.changeStatus(status,idEvent);
-        return eventService.eventsForStaff(idStaff);
-    }*/
 
     @RequestMapping(value = "/changeStatus/{idEvent}/{idStaff}/{status}", method = RequestMethod.GET)
     public @ResponseBody
     EventAjax changeStatus(@PathVariable("status") String status, @PathVariable("idEvent") int idEvent,
                                  @PathVariable("idStaff") int idStaff){
         return eventService.changeStatus(status,idEvent);
-        // eventService.eventsForStaff(idStaff);
     }
 }
