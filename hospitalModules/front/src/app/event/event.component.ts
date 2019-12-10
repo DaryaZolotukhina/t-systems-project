@@ -33,13 +33,6 @@ export class EventComponent implements OnInit {
 
     statusChange(idEvent: number, idStaff: number, status: string, i: number) {
 
-        /* this.api.statusChange(idEvent, idStaff, status)
-             .subscribe(data => {
-                 console.log(data);
-                 this.events[i] = data;
-             }, error => console.log(error));
-     }*/
-
         this.dialogService.openConfirmDialog('Are you sure to change this event status?')
             .afterClosed().subscribe(res => {
                 if(res){

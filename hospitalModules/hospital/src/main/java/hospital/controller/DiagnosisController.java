@@ -13,12 +13,11 @@ import java.util.List;
 
 @Controller
 public class DiagnosisController {
-    private DiagnosisService diagnosisService;
+    private final DiagnosisService diagnosisService;
 
-    @Autowired(required=true)
-    @Qualifier(value="diagnosisService")
-    public void setDiagnosisService(DiagnosisService diagnosisService) {
-        this.diagnosisService= diagnosisService;
+    @Autowired
+    public DiagnosisController(DiagnosisService diagnosisService) {
+        this.diagnosisService = diagnosisService;
     }
 
     @RequestMapping(value = "/allDiagnosisType", method = RequestMethod.GET)

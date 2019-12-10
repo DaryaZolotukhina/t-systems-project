@@ -220,16 +220,16 @@ public class PatientServiceImpl implements PatientService {
     @Override
     @Transactional
     public void updatePatient(int id, String surname, String name, String patronymic, String insuranceNum, String doctor) {
-	    PatientDto patDto=getById(id);
-		patDto.setSurname(surname);
-		patDto.setName(name);
-		patDto.setPatronymic(patronymic);
-		patDto.setInsuranceNum(insuranceNum);
+	    Patient pat=patientDAO.getById(id);
+		pat.setSurname(surname);
+		pat.setName(name);
+		pat.setPatronymic(patronymic);
+		pat.setInsuranceNum(insuranceNum);
         Staff staff=StaffMapper.STAFF_MAPPER.toStaff(doctorService.getDoctorBySurname(doctor));
-		patDto.setStaff(staff);
-		patDto.setIsDeleted(false);
-		patDto.setIsDischarged(false);
+		pat.setStaff(staff);
+		pat.setIsDeleted(false);
+		pat.setIsDischarged(false);
 
-        this.patientDAO.updatePatient(PatientMapper.PATIENT_MAPPER.toPatient(patDto));
+        this.patientDAO.updatePatient(pat);
     }
 }

@@ -11,7 +11,9 @@ public class CalculationDateUtils {
         int weekday = now.get(Calendar.DAY_OF_WEEK);
 
         int days = dayOfWeek - weekday;
-        if (days < 0) days += 7;
+        if (days < 0) {
+            days += 7;
+        }
         now.add(Calendar.DAY_OF_YEAR, days);
 
         Date date = now.getTime();

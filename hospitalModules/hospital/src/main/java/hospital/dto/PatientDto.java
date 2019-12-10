@@ -7,6 +7,10 @@ import java.util.List;
 
 public class PatientDto {
     private Integer id;
+    private String surname;
+    private String name;
+    private String patronymic;
+    private String insuranceNum;
 
     public List<Prescription> getPrescriptions() {
         return prescriptions;
@@ -15,12 +19,6 @@ public class PatientDto {
     public void setPrescriptions(List<Prescription> prescriptions) {
         this.prescriptions = prescriptions;
     }
-
-    private String surname;
-    private String name;
-    private String patronymic;
-    private String insuranceNum;
-
     public Staff getStaff() {
         return staff;
     }

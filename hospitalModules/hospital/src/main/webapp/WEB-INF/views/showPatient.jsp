@@ -33,10 +33,19 @@
         </div>
     </div>
 </div>
+<div class="container">
+    <div>
+        <div class="row justify-content-md-center">
 <h1 class="ml-3 mb-4 mt-2">Patient Info</h1>
+        </div>
+        <div class="row justify-content-md-center">
 <img src="/css/avatar_male_l.png" alt="Photo" class="ml-3 mb-4"/>
+        </div>
+            <div class="row justify-content-md-center">
 <h2 class="mb-4 ml-3">${patient.surname} ${patient.name} ${patient.patronymic}</h2>
-<div class="col-sm-3 mb-4 pb-3 pt-3 ml-3 border border-secondary box bg-light">
+            </div>
+        <div class="row justify-content-md-center">
+<div class="col-sm-3 mb-4 pb-3 pt-3 ml-3 border border-secondary box">
     <table>
         <tr>
             <td><b>Id</b></td>
@@ -48,15 +57,19 @@
         </tr>
     </table>
 </div>
+        </div>
+            <div class="row justify-content-md-center">
 <div class="mb-4 ml-3">
     <input type="button" value="Discharge" onclick="DischargeFunction(this,${patient.id})">
     <input type="button" value="Create prescription" onclick="location.href = '/createPrescription/${patient.id}'">
 </div>
-<div class="col-sm-8 mb-5">
-    <table class="table table-hover">
+
+    </div>
+<div class="mb-5">
+    <table class="table table-hover table-bordered">
         <thead>
         <tr>
-            <th colspan="4">Prescriptions</th>
+            <th style="text-align: center !important;" colspan="7">Prescriptions</th>
         </tr>
         <tr>
             <th>Type of diagnosis</th>
@@ -65,6 +78,7 @@
             <th>Period</th>
             <th>Dose</th>
             <th>Completed</th>
+            <th></th>
         </tr>
         </thead>
         <c:forEach  items="${prescriptions}" var ="prescription">
@@ -87,11 +101,11 @@
         </c:forEach>
     </table>
 </div>
-<div class="col-sm-8">
-    <table class="table table-hover events1">
+<div>
+    <table class="table table-hover table-bordered events1">
         <thead>
         <tr>
-            <th colspan="3">Events</th>
+            <th colspan="3" style="text-align: center !important;">Events</th>
         </tr>
         <tr>
             <th>Procedure or medicine</th>
@@ -118,6 +132,7 @@
 </div>
 <div class="mb-4 ml-3">
     <a href="/patients"><button>Back</button></a>
+</div>
 </div>
 </body>
 </html>

@@ -1,15 +1,22 @@
-.info {float: left;
-    margin-bottom: 17px;
-    outline: 1px solid #000;
-    width: 225px;
-    padding: 10px;
-    clear: both;}
-
-.tables {
-float: left;
-margin-bottom: 17px;
-clear: both;}
-
+.box{
+    background: #F0F8FF;
+}
 .prescEvents {width: 350px;}
 
 img{border: 2px solid #000;}
+
+.table thead tr:nth-child(1){
+    background: #B0C4DE;
+}
+.table thead tr:nth-child(2){
+    background: #B0C4DE;
+}
+.table tr:nth-child(3n){
+    background: #F0F8FF;
+}
+.table tr:nth-child(3n+1){
+    background: #FFF0F7;
+}
+.table tr:nth-child(3n+2){
+    background: #F7FFF0;
+}

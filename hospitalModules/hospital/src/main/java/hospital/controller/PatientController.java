@@ -98,8 +98,8 @@ public class PatientController {
 		return "createPatient";
 	}
 
-	@RequestMapping(value= "/patient/add", method = RequestMethod.POST)
-	public String addPatient(@RequestParam("surname") String surname,
+
+/*	public String addPatient(@RequestParam("surname") String surname,
 							 @RequestParam("name") String name,
 							 @RequestParam("patronymic") String patronymic,
 							 @RequestParam("insuranceNum") String insuranceNum,
@@ -108,6 +108,15 @@ public class PatientController {
 		patientService.addPatient(surname, name, patronymic, insuranceNum, doctor);
 		return "redirect:/patients";
 		
+	}*/
+
+	@RequestMapping(value= "/patient/add", method = RequestMethod.POST)
+	public String addPatient(@RequestBody CreatePatientRequest patientRequest){
+
+		patientService.addPatient(patientRequest.getSurname(), patientRequest.getName(), patientRequest.getPatronymic(),
+				patientRequest.getInsuranceNum(), patientRequest.getStaffId().toString());
+		return "redirect:/patients";
+
 	}
 	
 	@RequestMapping(value="/remove/{id}",method = RequestMethod.DELETE)
@@ -128,7 +137,7 @@ public class PatientController {
 		return "redirect:/patients";
 	}
 
-	@RequestMapping(value="/updateDeletePatient/{id}")
+	@RequestMapping(value="/updateDeletePatient/{id}",method = RequestMethod.GET)
 	public String updateDeletePatient(@PathVariable("id") int id){
 		patientService.updateDeletePatient(id);
 		return "redirect:/patients";
