@@ -3,6 +3,7 @@ package hospital.controller;
 import hospital.dto.*;
 import hospital.exception.DischargeException;
 import hospital.model.*;
+import hospital.service.DiagnosisService;
 import hospital.service.EventService;
 import hospital.service.PatientService;
 import hospital.service.PrescriptionService;
@@ -23,11 +24,18 @@ public class PatientController {
 	
 	private PatientService patientService;
 	private PrescriptionService prescriptionService;
+	private DiagnosisService diagnosisService;
 
 	@Autowired(required=true)
 	@Qualifier(value="prescriptionService")
 	public void setPrescriptionService(PrescriptionService prescriptionService) {
 		this.prescriptionService= prescriptionService;
+	}
+
+	@Autowired(required=true)
+	@Qualifier(value="diagnosisService")
+	public void setDiagnosisService(DiagnosisService diagnosisService) {
+		this.diagnosisService= diagnosisService;
 	}
 
 
@@ -66,22 +74,11 @@ public class PatientController {
 		return patientService.dischargePatient(id);
 	}
 
-	@RequestMapping(value = "/allDiagnosisType", method = RequestMethod.GET)
-	@ResponseBody
-	public List<DiagnosisTypeTitleDto> getAllDiagnosisType() {
-		return patientService.getAllDiagnosisType();
-	}
 
 	@RequestMapping(value = "/allProcedureForDiagnosis/{diagTypeTitle}", method = RequestMethod.GET)
 	@ResponseBody
 	public List<ProcedureTitleDto> getAllProcedureForDiagnosis(@PathVariable("diagTypeTitle") String diagTypeTitle) {
 		return patientService.getAllProcedureForDiagnosis(diagTypeTitle);
-	}
-
-	@RequestMapping(value = "/allMedicineForDiagnosis/{diagTypeTitle}", method = RequestMethod.GET)
-	@ResponseBody
-	public List<MedicineTitleDto> getAllMedicineForDiagnosis(@PathVariable("diagTypeTitle") String diagTypeTitle) {
-		return patientService.getAllMedicineForDiagnosis(diagTypeTitle);
 	}
 
 
@@ -95,7 +92,7 @@ public class PatientController {
 							  @RequestParam(value="procedureSelect",defaultValue="") String procedure,
 							  @RequestParam(value="medicineSelect",defaultValue="") String medicine) {
 
-		patientService.addDiagnosis(diagnosis,diagnosisType);
+		diagnosisService.addDiagnosis(diagnosis,diagnosisType);
 		patientService.addPrescription(id, diagnosis, procedure, medicine, period, daySchedule, weekSchedule);
 
         return "redirect:/patient/{id}";

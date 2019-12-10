@@ -10,10 +10,7 @@ import hospital.dto.*;
 import hospital.mappers.*;
 import hospital.exception.DischargeException;
 import hospital.model.*;
-import hospital.service.DoctorService;
-import hospital.service.EventService;
-import hospital.service.PatientService;
-import hospital.service.PrescriptionService;
+import hospital.service.*;
 import hospital.service.utils.CalculatingBitMasks;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -31,6 +28,8 @@ public class PatientServiceImpl implements PatientService {
 	private EventDAO eventDAO;
 	private PrescriptionDAO prescriptionDAO;
 	private DoctorService doctorService;
+	private DiagnosisService diagnosisService;
+	private MedicineService medicineService;
 
     private static final int NUMBER_OF_RESULTS_PER_PAGE = 5;
 
@@ -52,6 +51,14 @@ public class PatientServiceImpl implements PatientService {
 
 	public void setPrescriptionService(PrescriptionService prescriptionService) {
 		this.prescriptionService= prescriptionService;
+	}
+
+	public void setMedicineService(MedicineService medicineService) {
+		this.medicineService= medicineService;
+	}
+
+	public void setDiagnosisService(DiagnosisService diagnosisService) {
+		this.diagnosisService= diagnosisService;
 	}
 
 	public void setEventService(EventService eventService) {
@@ -129,33 +136,11 @@ public class PatientServiceImpl implements PatientService {
 		return null;
 	}
 
-	@Override
-	@Transactional
-	public DiagnosisType getDiagnosisTypeByTitle(String title) {
-		DiagnosisType diagnosisType=patientDAO.getDiagnosisTypeByTitle(title);
-		return diagnosisType;
-	}
-
-
-	@Override
-	@Transactional
-	public Diagnosis getDiagnosisByTitle(String title) {
-		Diagnosis diagnosis=patientDAO.getDiagnosisByTitle(title);
-		return diagnosis;
-	}
-
     @Override
     @Transactional
     public Procedure getProcedureByTitle(String title) {
         Procedure procedure=patientDAO.getProcedureByTitle(title);
         return procedure;
-    }
-
-    @Override
-    @Transactional
-    public Medicine getMedicineByTitle(String title) {
-        Medicine medicine=patientDAO.getMedicineByTitle(title);
-        return medicine;
     }
 
 	@Transactional
@@ -176,37 +161,6 @@ public class PatientServiceImpl implements PatientService {
 			listProcTitleDto.add(ProcedureMapper.PROCEDURE_MAPPER.fromProcedure(proc));
 		}
 		return listProcTitleDto;
-	}
-
-	@Transactional
-	@Override
-	public List<MedicineTitleDto> getAllMedicineForDiagnosis(String titleDiag) {
-        List<Medicine> listMedicine = patientDAO.getAllMedicine();
-        List<Medicine> listMedicineForDiag = new ArrayList<>();
-        for (Medicine med : listMedicine) {
-            for (DiagnosisType diagnosisType : med.getDiagnosisTypes()){
-                if (diagnosisType.getTitle().equals(titleDiag)){
-                    listMedicineForDiag.add(med);
-                    continue;
-                }
-            }
-        }
-        List<MedicineTitleDto> listMedicineTitleDto=new ArrayList<>();
-        for (Medicine med : listMedicineForDiag){
-            listMedicineTitleDto.add(MedicineMapper.MEDICINE_MAPPER.fromMedicine(med));
-        }
-        return listMedicineTitleDto;
-	}
-
-	@Transactional
-	@Override
-	public List<DiagnosisTypeTitleDto> getAllDiagnosisType(){
-		List<DiagnosisType> listDiagnosisType=patientDAO.getAllDiagnosisType();
-		List<DiagnosisTypeTitleDto> listDiagnosisTypeTitleDto=new ArrayList<>();
-		for (DiagnosisType diagnosisType : listDiagnosisType){
-			listDiagnosisTypeTitleDto.add(DiagnosisTypeMapper.DIAGNOSIS_TYPE_MAPPER.fromDiagnosisTypeTitle(diagnosisType));
-		}
-		return listDiagnosisTypeTitleDto;
 	}
 
 
@@ -246,7 +200,7 @@ public class PatientServiceImpl implements PatientService {
             p.setProcedure(getProcedureByTitle(procedure));
         }
 	    else
-	        p.setMedicine(getMedicineByTitle(medicine));
+	        p.setMedicine(medicineService.getMedicineByTitle(medicine));
 	   if (daySchedule.isEmpty()){
 	        p.setDaySchedule(0);
         }
@@ -263,7 +217,7 @@ public class PatientServiceImpl implements PatientService {
         p.setIsDone(false);
 
         Prescription presc=PrescriptionMapper.PRESCRIPTION_MAPPER.toPrescription(p);
-        presc.setDiagnosis(getDiagnosisByTitle(diagnosis));
+        presc.setDiagnosis(diagnosisService.getDiagnosisByTitle(diagnosis));
         prescriptionDAO.addPresc(presc);
 
     }
@@ -283,15 +237,6 @@ public class PatientServiceImpl implements PatientService {
 
 		patientDAO.addPatient(PatientMapper.PATIENT_MAPPER.toPatient(p));
 	}
-
-    @Override
-    @Transactional
-    public void addDiagnosis(String title, String diagnosisType){
-        Diagnosis diagnosis=new Diagnosis();
-        diagnosis.setTitle(title);
-        diagnosis.setDiagnosisType(getDiagnosisTypeByTitle(diagnosisType));
-        patientDAO.addDiagnosis(diagnosis);
-    }
 
     @Override
     @Transactional

@@ -26,15 +26,4 @@ public interface PatientDAO {
 
 	List<Event> sortEventsDate(String order, int id);
 
-	Medicine getMedicineByTitle(String title);
-
-	List<Medicine> getAllMedicine();
-
-	List<DiagnosisType> getAllDiagnosisType();
-
-	DiagnosisType getDiagnosisTypeByTitle(String title);
-
-	void addDiagnosis(Diagnosis d);
-
-	Diagnosis getDiagnosisByTitle(String title);
 }

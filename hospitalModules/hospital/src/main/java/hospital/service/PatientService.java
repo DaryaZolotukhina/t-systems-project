@@ -28,21 +28,9 @@ public interface PatientService {
 
 	List<Event> sortEventsDate(String order,int id);
 
-	List<DiagnosisTypeTitleDto> getAllDiagnosisType();
-
-	DiagnosisType getDiagnosisTypeByTitle(String title);
-
 	List<ProcedureTitleDto> getAllProcedureForDiagnosis(String titleDiag);
 
-	List<MedicineTitleDto> getAllMedicineForDiagnosis(String titleDiag);
-
-	void addDiagnosis(String title, String diagnosisType);
-
 	Procedure getProcedureByTitle(String title);
-
-	Medicine getMedicineByTitle(String title);
-
-	Diagnosis getDiagnosisByTitle(String title);
 
 	ErrorMessage dischargePatient(int id);
 	}
