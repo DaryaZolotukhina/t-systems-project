@@ -1,22 +1,30 @@
 package hospital.dto;
 
-import hospital.model.Staff;
-import org.springframework.web.bind.annotation.RequestParam;
-
-import java.math.BigInteger;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
 public class CreatePatientRequest {
+    @NotBlank(message = "Surname is mandatory")
+    @Pattern(regexp = "^[A-z]+$")
     private String surname;
+    @NotBlank(message = "Name is mandatory")
+    @Pattern(regexp = "^[A-z]+$")
     private String name;
+    @NotBlank(message = "Patronymic is mandatory")
+    @Pattern(regexp = "^[A-z]+$")
     private String patronymic;
+    @NotBlank(message = "Insurance number is mandatory")
+    @Pattern(regexp="^[0-9]+$")
     private String insuranceNum;
-    private BigInteger staffId;
+    @NotNull(message= "Doctor is mandatory")
+    private int staffId;
 
-    public BigInteger getStaffId() {
+    public int getStaffId() {
         return staffId;
     }
 
-    public void setStaffId(BigInteger staffId) {
+    public void setStaffId(int staffId) {
         this.staffId = staffId;
     }
 

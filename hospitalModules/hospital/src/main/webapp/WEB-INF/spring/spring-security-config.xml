@@ -14,7 +14,7 @@
     <http realm="JavaStudy example" use-expressions="false">
         <intercept-url pattern="/" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
         <intercept-url pattern="/login.jsp*" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
-        <intercept-url pattern="/patient/add" access="ROLE_DOCTOR"/>
+        <intercept-url pattern="/patient/add**" access="ROLE_DOCTOR"/>
         <intercept-url pattern="/dischargePatient/{id}" access="ROLE_DOCTOR"/>
         <intercept-url pattern="/createPrescription/{id}" access="ROLE_DOCTOR"/>
         <intercept-url pattern="/remove/{id}" access="ROLE_DOCTOR"/>
@@ -48,7 +48,7 @@
         <logout logout-success-url="/exitUser.jsp"/>
         <remember-me />
         <headers/>
-        <csrf/>
+        <csrf disabled="true" />
     </http>
 
     <authentication-manager>

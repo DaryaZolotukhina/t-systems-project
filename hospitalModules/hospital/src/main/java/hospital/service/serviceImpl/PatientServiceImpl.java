@@ -203,13 +203,13 @@ public class PatientServiceImpl implements PatientService {
 
 	@Override
 	@Transactional
-	public void addPatient(String surname, String name, String patronymic, String insuranceNum, String doctor){
+	public void addPatient(String surname, String name, String patronymic, String insuranceNum, int idDoctor){
 		PatientDto p=new PatientDto();
 		p.setSurname(surname);
 		p.setName(name);
 		p.setPatronymic(patronymic);
 		p.setInsuranceNum(insuranceNum);
-		Staff staff=StaffMapper.STAFF_MAPPER.toStaff(doctorService.getDoctorBySurname(doctor));
+		Staff staff=StaffMapper.STAFF_MAPPER.toStaff(doctorService.getById(idDoctor));
 		p.setStaff(staff);
 		p.setIsDeleted(false);
 		p.setIsDischarged(false);

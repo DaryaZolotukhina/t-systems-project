@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 
+import javax.validation.Valid;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
@@ -97,25 +98,13 @@ public class PatientController {
 
 		return "createPatient";
 	}
-
-
-/*	public String addPatient(@RequestParam("surname") String surname,
-							 @RequestParam("name") String name,
-							 @RequestParam("patronymic") String patronymic,
-							 @RequestParam("insuranceNum") String insuranceNum,
-							 @RequestParam("doctor") String doctor){
-
-		patientService.addPatient(surname, name, patronymic, insuranceNum, doctor);
-		return "redirect:/patients";
-		
-	}*/
-
+	
 	@RequestMapping(value= "/patient/add", method = RequestMethod.POST)
-	public String addPatient(@RequestBody CreatePatientRequest patientRequest){
+	public @ResponseBody CreatePatientRequest addPatient(@Valid @RequestBody CreatePatientRequest patientRequest){
 
 		patientService.addPatient(patientRequest.getSurname(), patientRequest.getName(), patientRequest.getPatronymic(),
-				patientRequest.getInsuranceNum(), patientRequest.getStaffId().toString());
-		return "redirect:/patients";
+				patientRequest.getInsuranceNum(), patientRequest.getStaffId());
+		return patientRequest;
 
 	}
 	

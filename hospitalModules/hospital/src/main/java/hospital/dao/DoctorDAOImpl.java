@@ -1,5 +1,6 @@
 package hospital.dao;
 
+import hospital.model.Patient;
 import hospital.model.Staff;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -39,5 +40,12 @@ public class DoctorDAOImpl implements DoctorDAO{
 
         Staff staff=em.createQuery(cq).getSingleResult();
         return staff;
+    }
+
+    @Override
+    public Staff getById(int id) {
+        Session session = sessionFactory.getCurrentSession();
+        Staff s = (Staff) session.load(Staff.class, id);
+        return s;
     }
 }

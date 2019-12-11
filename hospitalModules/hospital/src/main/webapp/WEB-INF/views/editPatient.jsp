@@ -30,7 +30,7 @@
         <input type="text" class="form-control" id="insuranceNum" name="insuranceNum" placeholder="Insurance number" value="${patient.insuranceNum}">
         <label for="doctor">Doctor surname</label>
         <input type="text" class="form-control mdb-autocomplete" id="doctor" name="doctor" placeholder="Doctor surname" value="${patient.staff.surname}">
-        <input type="hidden"  name="${_csrf.parameterName}"   value="${_csrf.token}"/>
+
     </div>
     <input type="submit" value="OK">
     </div>

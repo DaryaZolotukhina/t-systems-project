@@ -13,9 +13,38 @@
      <title>Create Patient Page</title>
 </head>
 <body>
+<script>
+    function AddPatientFunction() {
+        var patient = {}
+        patient["surname"]= $("#surname").val();
+        patient["name"]= $("#name").val();
+        patient["patronymic"]= $("#patronymic").val();
+        patient["insuranceNum"]= $("#insuranceNum").val();
+        patient["staffId"]= $("#doctor").val().split(':')[0];
+        $.ajax({
+            type : "POST",
+            contentType : "application/json",
+            url: '/patient/add',
+            data : JSON.stringify(patient),
+            dataType : 'json',
+            timeout : 100000,
+            success : function(response) {
+                console.log('1');
+                document.location.href = 'http://localhost:18080/patients', true;
+            },
+            error : function(e) {
+                console.log("ERROR: ", e);
+                console.log('2');
+            },
+            done : function() {
+                console.log('3');
+            }
+        });
+    }
+</script>
 <style>.autocomplete-suggestions{background:#ffffff;}</style>
 <h1 class="ml-3 mb-4 mt-2">Create patient</h1>
-<form id="myform" action="/patient/add/" method="post" class="col-sm-8">
+<form id="myform" class="col-sm-8">
     <div class="form-group">
         <label for="surname">Surname</label>
         <input type="text" class="form-control" id="surname" name="surname" placeholder="Surname">
@@ -29,7 +58,8 @@
         <input type="text" class="form-control mdb-autocomplete" id="doctor" name="doctor" placeholder="Doctor surname">
         <input type="hidden"  name="${_csrf.parameterName}"   value="${_csrf.token}"/>
     </div>
-    <input type="submit" value="OK">
+    <!--<input type="submit" value="OK">-->
+   <input type="button" value="OK" onclick="AddPatientFunction()">
     </div>
 </form>
 
