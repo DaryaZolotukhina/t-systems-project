@@ -76,7 +76,7 @@
                     console.log(result)
                     var arr = [];
                     for (i = 0; i < result.length; i++) {
-                        arr.push(result[i].surname);
+                        arr.push(result[i].id+': '+result[i].surname);
                     }
                     console.log(arr)
                     for (i = 0; i < arr.length; i++) {
@@ -96,7 +96,7 @@
                     console.log(result)
                     var arr = [];
                     for (i = 0; i < result.length; i++) {
-                        arr.push(result[i].surname);
+                        arr.push(result[i].id+': '+result[i].surname);
                     }
                     console.log(arr)
                     for (i = 0; i < arr.length; i++) {

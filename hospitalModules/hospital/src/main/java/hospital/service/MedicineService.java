@@ -1,6 +1,6 @@
 package hospital.service;
 
-import hospital.dto.MedicineTitleDto;
+import hospital.dto.medicine.MedicineTitleDto;
 import hospital.model.Medicine;
 
 import java.util.List;

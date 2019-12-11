@@ -1,4 +1,4 @@
-package hospital.dto;
+package hospital.dto.event;
 
 import hospital.model.Medicine;
 import hospital.model.Patient;

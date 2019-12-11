@@ -29,7 +29,17 @@ public class Staff {
     @OneToMany(mappedBy = "staff", cascade = CascadeType.MERGE, orphanRemoval = true,fetch = FetchType.EAGER)
     private List<Patient> patients;
     @OneToMany(mappedBy = "staff", cascade = CascadeType.MERGE, orphanRemoval = true,fetch = FetchType.EAGER)
+    private List<Patient> prescription;
+    @OneToMany(mappedBy = "staff", cascade = CascadeType.MERGE, orphanRemoval = true,fetch = FetchType.EAGER)
     private List<Event> events;
+
+    public List<Patient> getPrescription() {
+        return prescription;
+    }
+
+    public void setPrescription(List<Patient> prescription) {
+        this.prescription = prescription;
+    }
 
     public Specialization getSpecialization() {
         return specialization;

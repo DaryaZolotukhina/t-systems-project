@@ -3,10 +3,12 @@ package hospital.service.serviceImpl;
 import java.util.ArrayList;
 import java.util.List;
 
-import hospital.dao.DoctorDAO;
 import hospital.dao.EventDAO;
 import hospital.dao.PrescriptionDAO;
 import hospital.dto.*;
+import hospital.dto.patient.PatientDto;
+import hospital.dto.prescription.PrescriptionDto;
+import hospital.dto.prescription.PrescriptionError;
 import hospital.mappers.*;
 import hospital.exception.DischargeException;
 import hospital.model.*;
@@ -172,7 +174,8 @@ public class PatientServiceImpl implements PatientService {
 
     @Override
     @Transactional
-    public void addPrescription(int id, String diagnosis, String procedure, String medicine, String period, List<String> daySchedule, List<String> weekSchedule){
+    public void addPrescription(int id, String diagnosis, String procedure, String medicine, String period,
+								List<String> daySchedule, List<String> weekSchedule, int idDoctor){
 	    PrescriptionDto p =new PrescriptionDto();
 	    p.setPatient(PatientMapper.PATIENT_MAPPER.toPatient(getById(id)));
 	    if (!procedure.equals("")) {
@@ -190,6 +193,8 @@ public class PatientServiceImpl implements PatientService {
         }
         else
             p.setWeekSchedule(calculatingBitMasks.weekToBitMask(weekSchedule));
+		Staff staff=StaffMapper.STAFF_MAPPER.toStaff(doctorService.getById(idDoctor));
+		p.setStaff(staff);
         p.setPeriod(Integer.parseInt(period));
         p.setDose((float)1.0);
         p.setIsDeleted(false);
@@ -219,13 +224,13 @@ public class PatientServiceImpl implements PatientService {
 
     @Override
     @Transactional
-    public void updatePatient(int id, String surname, String name, String patronymic, String insuranceNum, String doctor) {
+    public void updatePatient(int id, String surname, String name, String patronymic, String insuranceNum, int idDoctor) {
 	    Patient pat=patientDAO.getById(id);
 		pat.setSurname(surname);
 		pat.setName(name);
 		pat.setPatronymic(patronymic);
 		pat.setInsuranceNum(insuranceNum);
-        Staff staff=StaffMapper.STAFF_MAPPER.toStaff(doctorService.getDoctorBySurname(doctor));
+		Staff staff=StaffMapper.STAFF_MAPPER.toStaff(doctorService.getById(idDoctor));
 		pat.setStaff(staff);
 		pat.setIsDeleted(false);
 		pat.setIsDischarged(false);

@@ -1,4 +1,4 @@
-package hospital.dto;
+package hospital.dto.patient;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;

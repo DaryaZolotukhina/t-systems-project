@@ -1,6 +1,6 @@
 package hospital.dto;
 
-import hospital.model.Prescription;
+import hospital.dto.prescription.PrescriptionError;
 
 import java.util.List;
 

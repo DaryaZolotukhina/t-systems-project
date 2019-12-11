@@ -1,6 +1,6 @@
 package hospital.service;
 
-import hospital.dto.DiagnosisTypeTitleDto;
+import hospital.dto.diagnosis.DiagnosisTypeTitleDto;
 import hospital.model.Diagnosis;
 import hospital.model.DiagnosisType;
 

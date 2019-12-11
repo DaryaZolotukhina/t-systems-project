@@ -1,8 +1,7 @@
 package hospital.service;
 
-import hospital.dto.EventAjax;
-import hospital.dto.EventDto;
-import hospital.dto.EventUIDto;
+import hospital.dto.event.EventAjax;
+import hospital.dto.event.EventUIDto;
 import hospital.model.Event;
 import hospital.model.StatusEvent;
 

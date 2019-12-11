@@ -1,4 +1,4 @@
-package hospital.dto;
+package hospital.dto.prescription;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import hospital.model.*;
@@ -21,6 +21,15 @@ public class PrescriptionDto {
     private boolean isDone;
     private List<Event> events;
     private boolean isDeleted;
+    private Staff staff;
+
+    public Staff getStaff() {
+        return staff;
+    }
+
+    public void setStaff(Staff staff) {
+        this.staff = staff;
+    }
 
     public Diagnosis getDiagnosis() {
         return diagnosis;

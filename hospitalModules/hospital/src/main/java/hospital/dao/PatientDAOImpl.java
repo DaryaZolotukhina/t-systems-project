@@ -17,6 +17,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.ParameterExpression;
 import javax.persistence.criteria.Root;
 
 
@@ -40,6 +41,11 @@ public class PatientDAOImpl implements PatientDAO {
         CriteriaQuery<Patient> cq = cb.createQuery(Patient.class);
         Root<Patient> patientRoot = cq.from(Patient.class);
         cq.select(patientRoot);
+		cq.where(
+		em.getCriteriaBuilder().isFalse(patientRoot.get("isDeleted").as(Boolean.class)),
+				em.getCriteriaBuilder().isFalse(patientRoot.get("isDischarged").as(Boolean.class))
+		);
+		//cq.where(em.getCriteriaBuilder().isFalse(patientRoot.get("isDischarged").as(Boolean.class)));
         return em.createQuery(cq)
                 .setFirstResult(pageid-1)
                 .setMaxResults(total)

@@ -1,15 +1,10 @@
 package hospital.controller;
 
-import hospital.dto.EventAjax;
-import hospital.dto.EventDto;
-import hospital.dto.EventUIDto;
-import hospital.model.Event;
-import hospital.model.Prescription;
+import hospital.dto.event.EventAjax;
 import hospital.service.EventService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

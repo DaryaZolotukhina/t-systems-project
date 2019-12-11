@@ -10,16 +10,15 @@
     <link rel="stylesheet" href="/bootstrap/bootstrap.min.css">
     <script src="/jQuery/jquery.autocomplete.min.js"></script>
     <script src="/jQuery/getAllDoctors.js"></script>
-    <title>Create Patient Page</title>
+    <script src="/jQuery/updatePatient.js"></script>
+    <title>Edit Patient Page</title>
 </head>
 <body>
 <style>.autocomplete-suggestions{background:#ffffff;}</style>
 
 <h1 class="ml-3 mb-4 mt-2">Edit patient</h1>
-<form id="myform" action="/updatePatient" method="post" class="col-sm-8">
+<form id="myform" class="col-sm-8">
     <div class="form-group">
-        <label for="surname">Id</label>
-        <input   type="text" class="form-control" id="id" name="id" placeholder="Id" value="${patient.id}">
         <label for="surname">Surname</label>
         <input type="text" class="form-control" id="surname" name="surname" placeholder="Surname" value="${patient.surname}">
         <label for="name">Name</label>
@@ -29,10 +28,9 @@
         <label for="insuranceNum">Insurance number</label>
         <input type="text" class="form-control" id="insuranceNum" name="insuranceNum" placeholder="Insurance number" value="${patient.insuranceNum}">
         <label for="doctor">Doctor surname</label>
-        <input type="text" class="form-control mdb-autocomplete" id="doctor" name="doctor" placeholder="Doctor surname" value="${patient.staff.surname}">
-
+        <input type="text" class="form-control mdb-autocomplete" id="doctor" name="doctor" placeholder="Doctor surname" value="${patient.staff.id}: ${patient.staff.surname}">
     </div>
-    <input type="submit" value="OK">
+    <input type="button" value="OK" onclick="UpdatePatientFunction(${patient.id})">
     </div>
 </form>
 
