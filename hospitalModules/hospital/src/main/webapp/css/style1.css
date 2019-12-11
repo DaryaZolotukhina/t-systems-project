@@ -1,0 +1,16 @@
+.content{
+	margin-top: 50px;
+}
+.red{
+	color: #ff0000;
+}
+.form-control-feedback{
+	right: 10px;
+}
+.help-block {
+	color: #a94442;
+	background-color: #f2dede;
+	border-color: #ebccd1;
+	padding:1px 20px 1px 20px;
+}
+input[aria-invalid='true'] {border-color: red;}
