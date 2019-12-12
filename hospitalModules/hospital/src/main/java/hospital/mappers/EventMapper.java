@@ -1,8 +1,8 @@
 package hospital.mappers;
 
-import hospital.dto.EventAjax;
-import hospital.dto.EventDto;
-import hospital.dto.EventUIDto;
+import hospital.dto.event.EventAjax;
+import hospital.dto.event.EventDto;
+import hospital.dto.event.EventUIDto;
 import hospital.model.Event;
 import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;

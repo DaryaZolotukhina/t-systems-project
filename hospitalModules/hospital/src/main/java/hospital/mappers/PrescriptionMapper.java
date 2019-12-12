@@ -1,7 +1,7 @@
 package hospital.mappers;
 
-import hospital.dto.PrescriptionDto;
-import hospital.dto.PrescriptionError;
+import hospital.dto.prescription.PrescriptionDto;
+import hospital.dto.prescription.PrescriptionError;
 import hospital.model.Prescription;
 import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;

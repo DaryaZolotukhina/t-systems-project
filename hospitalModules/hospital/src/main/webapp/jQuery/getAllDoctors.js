@@ -9,8 +9,7 @@ $(document).ready(function() {
             return {
                 suggestions: $.map($.parseJSON(response), function(item) {
 
-                    return { data: item.id, value: item.surname, name:item.name,
-                        patronymic:item.patronymic, isDeleted:item.isDeleted, isDoctor:item.isDoctor  };
+                    return { value: item.id+': '+item.surname };
                 })
 
             };

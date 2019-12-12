@@ -11,4 +11,6 @@ public interface DoctorService {
     List<StaffDto> getAllDoctors();
 
     List<StaffDto> getDoctorsForProcedure(String procedureTitle);
+
+    StaffDto getById(int id);
 }

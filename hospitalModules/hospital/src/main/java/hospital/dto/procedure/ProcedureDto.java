@@ -1,10 +1,10 @@
-package hospital.dto;
+package hospital.dto.procedure;
 
 import hospital.model.Prescription;
 
 import java.util.List;
 
-public class MedicineDto {
+public class ProcedureDto {
     private Integer id;
     private String title;
     private List<Prescription> prescriptions;

@@ -1,6 +1,6 @@
-package hospital.dto;
+package hospital.dto.procedure;
 
-public class MedicineTitleDto {
+public class ProcedureTitleDto {
     private Integer id;
     private String title;
 

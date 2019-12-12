@@ -1,6 +1,6 @@
 package hospital.service;
 
-import hospital.dto.ProcedureTitleDto;
+import hospital.dto.procedure.ProcedureTitleDto;
 import hospital.model.Procedure;
 
 import java.util.List;
