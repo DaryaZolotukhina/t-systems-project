@@ -18,17 +18,12 @@
 </head>
 <body>
 <style>.autocomplete-suggestions{background:#ffffff;}</style>
-<<<<<<< HEAD
 <div class="container">
     <div class="row justify-content-md-center">
     <h1 class="ml-3 mb-4 mt-2">Create patient</h1>
     </div>
     <div class="row justify-content-md-center">
     <form id="myform" class="col-sm-6">
-=======
-<h1 class="ml-3 mb-4 mt-2">Create patient</h1>
-<form id="myform" class="col-sm-8">
->>>>>>> 7a5823411932192251f5b44901b3a92c68c7a5d7
     <div class="form-group">
         <label for="surname">Surname</label>
         <input type="text" class="form-control" id="surname" name="surname" placeholder="Surname" value="${patient.surname}">

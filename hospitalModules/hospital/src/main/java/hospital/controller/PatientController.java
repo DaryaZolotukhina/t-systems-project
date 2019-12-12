@@ -2,6 +2,7 @@ package hospital.controller;
 
 import hospital.dto.*;
 import hospital.dto.patient.CreatePatientRequest;
+import hospital.dto.prescription.CreatePrescriptionRequest;
 import hospital.model.*;
 import hospital.service.DiagnosisService;
 import hospital.service.EventService;
@@ -16,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -73,24 +75,27 @@ public class PatientController {
 		return patientService.dischargePatient(id);
 	}
 
-
 	@RequestMapping(value = "/createPrescription/{id}", method = RequestMethod.POST)
-	public String createPresc(@PathVariable("id") int id,
-									@RequestParam("periodSelect") String period,
-									@RequestParam(value="daySchedule",defaultValue="") List<String> daySchedule,
-									@RequestParam(value="weekSchedule",defaultValue="") List<String> weekSchedule,
-							  @RequestParam("diagnosisType") String diagnosisType,
-							  @RequestParam("diagnosis") String diagnosis,
-							  @RequestParam(value="procedureSelect",defaultValue="") String procedure,
-							  @RequestParam(value="medicineSelect",defaultValue="") String medicine,
-							  @RequestParam(value="doctorSelect",defaultValue="") String doctor) {
+	public @ResponseBody CreatePrescriptionRequest createPresc(@PathVariable("id") int id, @Valid @RequestBody CreatePrescriptionRequest prescriptionRequest) {
+		if (prescriptionRequest.getProcedure()==null){
+			prescriptionRequest.setProcedure("");
+		}
+		if (prescriptionRequest.getMedicine()==null){
+			prescriptionRequest.setMedicine("");
+		}
+		if (prescriptionRequest.getWeekSchedule().isEmpty()){
+			prescriptionRequest.setWeekSchedule(new ArrayList<>());
+		}
+		if (prescriptionRequest.getDaySchedule().isEmpty()){
+			prescriptionRequest.setDaySchedule(new ArrayList<>());
+		}
+		diagnosisService.addDiagnosis(prescriptionRequest.getDiagnosis(),prescriptionRequest.getDiagnosisType());
+		patientService.addPrescription(id, prescriptionRequest.getDiagnosis(), prescriptionRequest.getProcedure(),
+				prescriptionRequest.getMedicine(), prescriptionRequest.getPeriod(), prescriptionRequest.getDaySchedule(),
+				prescriptionRequest.getWeekSchedule(), prescriptionRequest.getStaffId());
 
-		diagnosisService.addDiagnosis(diagnosis,diagnosisType);
-		patientService.addPrescription(id, diagnosis, procedure, medicine, period, daySchedule, weekSchedule, Integer.parseInt(doctor.substring(0,doctor.lastIndexOf(':'))));
-
-        return "redirect:/patient/{id}";
+		return prescriptionRequest;
 	}
-
 
 	@RequestMapping(value= "/patient/add", method = RequestMethod.GET)
 	public String getCreatePatientPage(){
