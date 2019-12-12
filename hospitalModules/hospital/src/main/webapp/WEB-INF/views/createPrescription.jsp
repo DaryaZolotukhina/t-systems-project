@@ -194,8 +194,12 @@
     });
 </script>
 <style>.autocomplete-suggestions{background:#ffffff;}</style>
+<div class="container">
+    <div class="row justify-content-md-center">
 <h1 class="ml-3 mb-4 mt-2">Create prescription</h1>
-<form id="myform" action="/createPrescription/${id}" method="post" class="col-sm-8">
+    </div>
+    <div class="row justify-content-md-center">
+<form id="myform" action="/createPrescription/${id}" method="post" class="col-sm-6">
     <div class="form-group">
         <label for="diagnosisType">Type of diagnosis</label>
         <label for="diagnosisType">(Choose from the available)</label>
@@ -303,5 +307,7 @@
         <input type="button" id="btn-ok" value="OK" onclick="AddPrescriptionFunction(${id})" disabled="true">
     </div>
 </form>
+    </div>
+</div>
 </body>
 </html>
