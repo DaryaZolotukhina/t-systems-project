@@ -32,8 +32,8 @@
         prescription["daySchedule"]= $("#daySchedule").val();
         prescription["weekSchedule"]= $("#weekSchedule").val();
         prescription["diagnosisType"]= $("#diagnosisType").val();
-        prescription["procedureSelect"]= $("#procedureSelect").val();
-        prescription["medicineSelect"]= $("#medicineSelect").val();
+        prescription["procedure"]= $("#procedureSelect").val();
+        prescription["medicine"]= $("#medicineSelect").val();
         prescription["staffId"]= $("#doctorSelect").val().split(':')[0];
         $.ajax({
             type : "POST",

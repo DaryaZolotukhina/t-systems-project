@@ -3,7 +3,9 @@ package hospital.service;
 import java.util.List;
 
 import hospital.dto.*;
+import hospital.dto.patient.CreatePatientRequest;
 import hospital.dto.patient.PatientDto;
+import hospital.dto.prescription.CreatePrescriptionRequest;
 import hospital.model.*;
 
 public interface PatientService {
@@ -20,14 +22,13 @@ public interface PatientService {
 
 	List<Patient> sortSurname(int pageid, String order);
 
-	void addPatient(String surname, String name, String patronymic, String insuranceNum, int idDoctor);
+	void addPatient(CreatePatientRequest patientRequest);
 
-	void addPrescription(int id, String diagnosis, String procedure, String medicine, String period,
-						 List<String> daySchedule, List<String> weekSchedule, int idDoctor);
+	void addPrescription(int id, CreatePrescriptionRequest prescriptionRequest);
 
-	List<Event> sortEventsDate(String order,int id);
+	List<Event> sortEventsDate(String order, int id);
 
 	ErrorMessage dischargePatient(int id);
 
-	void updatePatient(int id, String surname, String name, String patronymic, String insuranceNum, int idDoctor);
-	}
+	void updatePatient(int id, CreatePatientRequest patientRequest);
+}

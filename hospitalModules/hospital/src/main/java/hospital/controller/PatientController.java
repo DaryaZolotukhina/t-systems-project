@@ -76,23 +76,10 @@ public class PatientController {
 	}
 
 	@RequestMapping(value = "/createPrescription/{id}", method = RequestMethod.POST)
-	public @ResponseBody CreatePrescriptionRequest createPresc(@PathVariable("id") int id, @Valid @RequestBody CreatePrescriptionRequest prescriptionRequest) {
-		if (prescriptionRequest.getProcedure()==null){
-			prescriptionRequest.setProcedure("");
-		}
-		if (prescriptionRequest.getMedicine()==null){
-			prescriptionRequest.setMedicine("");
-		}
-		if (prescriptionRequest.getWeekSchedule().isEmpty()){
-			prescriptionRequest.setWeekSchedule(new ArrayList<>());
-		}
-		if (prescriptionRequest.getDaySchedule().isEmpty()){
-			prescriptionRequest.setDaySchedule(new ArrayList<>());
-		}
+	public @ResponseBody CreatePrescriptionRequest createPresc(@PathVariable("id") int id,
+															   @Valid @RequestBody CreatePrescriptionRequest prescriptionRequest) {
 		diagnosisService.addDiagnosis(prescriptionRequest.getDiagnosis(),prescriptionRequest.getDiagnosisType());
-		patientService.addPrescription(id, prescriptionRequest.getDiagnosis(), prescriptionRequest.getProcedure(),
-				prescriptionRequest.getMedicine(), prescriptionRequest.getPeriod(), prescriptionRequest.getDaySchedule(),
-				prescriptionRequest.getWeekSchedule(), prescriptionRequest.getStaffId());
+		patientService.addPrescription(id, prescriptionRequest);
 
 		return prescriptionRequest;
 	}
@@ -107,8 +94,7 @@ public class PatientController {
 	public @ResponseBody
 	CreatePatientRequest addPatient(@Valid @RequestBody CreatePatientRequest patientRequest){
 
-		patientService.addPatient(patientRequest.getSurname(), patientRequest.getName(), patientRequest.getPatronymic(),
-				patientRequest.getInsuranceNum(), patientRequest.getStaffId());
+		patientService.addPatient(patientRequest);
 		return patientRequest;
 
 	}
@@ -123,8 +109,7 @@ public class PatientController {
 	@RequestMapping(value="/updatePatient/{id}",method = RequestMethod.POST)
 	public @ResponseBody CreatePatientRequest updatePatient(@Valid @RequestBody CreatePatientRequest patientRequest,
 								@PathVariable("id") int id){
-		patientService.updatePatient(id, patientRequest.getSurname(), patientRequest.getName(), patientRequest.getPatronymic(),
-				patientRequest.getInsuranceNum(), patientRequest.getStaffId());
+		patientService.updatePatient(id, patientRequest);
 		return patientRequest;
 	}
 
