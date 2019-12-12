@@ -12,15 +12,49 @@
     <title>Create prescription</title>
     <script src="/jQuery/jquery-3.4.1.min.js"></script>
     <script src="/jQuery/jquery.autocomplete.min.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"/>
-    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-
+   <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"/> -->
+    <link rel="stylesheet" href="/bootstrap/bootstrap3.3.2.min.css"/>
+    <link type="text/css" href="/css/style1.css" rel="stylesheet">
+     <script type="text/javascript" src="/bootstrap/bootstrap3.3.2.min.js"> </script>
+    <!--  <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>-->
+    <script src="/css/jquery.validate.min.js"></script>
+    <script src="/css/additional-methods.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/js/bootstrap-multiselect.js"></script>
     <link rel="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/css/bootstrap-multiselect.css" type="text/css"/>
     <script src="/jQuery/createPrescription.js"></script>
 </head>
 <body>
 <script>
+    function AddPrescriptionFunction(id) {
+        var prescription = {}
+        prescription["diagnosis"]= $("#diagnosis").val();
+        prescription["period"]= $("#periodSelect").val();
+        prescription["daySchedule"]= $("#daySchedule").val();
+        prescription["weekSchedule"]= $("#weekSchedule").val();
+        prescription["diagnosisType"]= $("#diagnosisType").val();
+        prescription["procedureSelect"]= $("#procedureSelect").val();
+        prescription["medicineSelect"]= $("#medicineSelect").val();
+        prescription["staffId"]= $("#doctorSelect").val().split(':')[0];
+        $.ajax({
+            type : "POST",
+            contentType : "application/json",
+            url: '/createPrescription/'+id,
+            data : JSON.stringify(prescription),
+            dataType : 'json',
+            timeout : 100000,
+            success : function(response) {
+                console.log('1');
+                document.location.href = 'http://localhost:18080/patient/'+id, true;
+            },
+            error : function(e) {
+                console.log("ERROR: ", e);
+                console.log('2');
+            },
+            done : function() {
+                console.log('3');
+            }
+        });
+    }
     function GenerateSourceProcedure(o,diagnosis) {
         $('#medicineSelect').find('option').remove();
         $('#procedureSelect').find('option').remove();
@@ -108,6 +142,56 @@
             });
         }
     }
+
+    $(function() {
+        $.validator.setDefaults({
+            errorClass: 'help-block',
+            highlight: function(element) {
+                $(element)
+                    .closest('.form-group')
+                    .addClass('has-error');
+            },
+            unhighlight: function(element) {
+                $(element)
+                    .closest('.form-group')
+                    .removeClass('has-error');
+            },
+            errorPlacement: function (error, element) {
+                if (element.prop('type') === 'checkbox') {
+                    error.insertAfter(element.parent());
+                } else {
+                    error.insertAfter(element);
+                }
+            }
+        });
+
+        $("#myform").validate({
+            rules: {
+                diagnosisType: {
+                    required: true,
+                    minlength: 3,
+                    lettersonly: true
+                },
+                diagnosis: {
+                    required: true,
+                    minlength: 3,
+                    lettersonly: true
+                }
+            },
+            messages: {
+            }
+        });
+
+        $("#diagnosisType,#diagnosis,#periodSelect,#daySchedule,#weekSchedule,#procedureSelect," +
+            "#medicineSelect,#doctorSelect").on("blur", function(){
+            if($("#myform").valid())
+            {
+                $("#btn-ok").prop( "disabled", false );
+            }
+            else
+                $("#btn-ok").prop( "disabled", true );
+        });
+    });
 </script>
 <style>.autocomplete-suggestions{background:#ffffff;}</style>
 <h1 class="ml-3 mb-4 mt-2">Create prescription</h1>
@@ -215,9 +299,8 @@
             <option value="Saturday">Saturday</option>
             <option value="Sunday">Sunday</option>
         </select>
-            <input type="hidden"  name="${_csrf.parameterName}"   value="${_csrf.token}"/>
             </div>
-        <input type="submit" value="OK">
+        <input type="button" id="btn-ok" value="OK" onclick="AddPrescriptionFunction(${id})" disabled="true">
     </div>
 </form>
 </body>

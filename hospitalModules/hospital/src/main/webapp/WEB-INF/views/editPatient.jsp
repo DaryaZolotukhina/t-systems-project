@@ -19,9 +19,12 @@
 </head>
 <body>
 <style>.autocomplete-suggestions{background:#ffffff;}</style>
-
+<div class="container">
+    <div class="row justify-content-md-center">
 <h1 class="ml-3 mb-4 mt-2">Edit patient</h1>
-<form id="myform" class="col-sm-8">
+    </div>
+    <div class="row justify-content-md-center">
+<form id="myform" class="col-sm-6">
     <div class="form-group">
         <label for="surname">Surname</label>
         <input type="text" class="form-control" id="surname" name="surname" placeholder="Surname" value="${patient.surname}">
@@ -39,8 +42,8 @@
         <input type="text" class="form-control mdb-autocomplete" id="doctor" name="doctor" placeholder="Doctor surname" value="${patient.staff.id}: ${patient.staff.surname}">
     </div>
     <input type="button" id="btn-ok" value="OK" onclick="UpdatePatientFunction(${patient.id})" disabled="true">
-    </div>
 </form>
-
+</div>
+</div>
 </body>
 </html>

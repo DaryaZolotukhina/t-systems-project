@@ -33,15 +33,11 @@ for (i=0;i<result.length;i++) {
         "</td><td>" + $.format.date(result[i].dateTimeEvent,
             "yyyy-MM-dd HH:mm:ss.SSS") + "</td><td>" + result[i].statusEvent.title+
         "</td><td><button id='but1'>Complete</button></td><td><button id='but2'>Cancel</button></a></td>").appendTo('.events1');
-   // $(document).on("click","#but1",CompleteFunction(result[i].id,result[i].idStaff,'completed'));
-  //  $(document).on("click","#but2",CompleteFunction(result[i].id,result[i].idStaff,'canceled'));
     }
 
 
 }
     });
-    //var p=o.parentNode.parentNode;
-   // p.parentNode.removeChild(p);
     }
 </script>
 <h1>Events List</h1>

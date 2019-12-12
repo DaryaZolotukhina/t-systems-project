@@ -18,8 +18,12 @@
 </head>
 <body>
 <style>.autocomplete-suggestions{background:#ffffff;}</style>
-<h1 class="ml-3 mb-4 mt-2">Create patient</h1>
-<form id="myform" class="col-sm-8">
+<div class="container">
+    <div class="row justify-content-md-center">
+    <h1 class="ml-3 mb-4 mt-2">Create patient</h1>
+    </div>
+    <div class="row justify-content-md-center">
+    <form id="myform" class="col-sm-6">
     <div class="form-group">
         <label for="surname">Surname</label>
         <input type="text" class="form-control" id="surname" name="surname" placeholder="Surname" value="${patient.surname}">
@@ -38,6 +42,8 @@
     </div>
     <input type="button" id="btn-ok" value="OK" onclick="AddPatientFunction()" disabled="true">
 </form>
+</div>
+</div>
 
 </body>
 </html>
