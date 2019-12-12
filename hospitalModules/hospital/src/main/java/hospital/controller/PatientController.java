@@ -1,7 +1,7 @@
 package hospital.controller;
 
 import hospital.dto.*;
-import hospital.exception.DischargeException;
+import hospital.dto.patient.CreatePatientRequest;
 import hospital.model.*;
 import hospital.service.DiagnosisService;
 import hospital.service.EventService;
@@ -15,9 +15,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 
-import java.util.Collection;
+import javax.validation.Valid;
 import java.util.List;
-import java.util.Map;
 
 @Controller
 public class PatientController {
@@ -83,10 +82,11 @@ public class PatientController {
 							  @RequestParam("diagnosisType") String diagnosisType,
 							  @RequestParam("diagnosis") String diagnosis,
 							  @RequestParam(value="procedureSelect",defaultValue="") String procedure,
-							  @RequestParam(value="medicineSelect",defaultValue="") String medicine) {
+							  @RequestParam(value="medicineSelect",defaultValue="") String medicine,
+							  @RequestParam(value="doctorSelect",defaultValue="") String doctor) {
 
 		diagnosisService.addDiagnosis(diagnosis,diagnosisType);
-		patientService.addPrescription(id, diagnosis, procedure, medicine, period, daySchedule, weekSchedule);
+		patientService.addPrescription(id, diagnosis, procedure, medicine, period, daySchedule, weekSchedule, Integer.parseInt(doctor.substring(0,doctor.lastIndexOf(':'))));
 
         return "redirect:/patient/{id}";
 	}
@@ -98,24 +98,13 @@ public class PatientController {
 		return "createPatient";
 	}
 
-
-/*	public String addPatient(@RequestParam("surname") String surname,
-							 @RequestParam("name") String name,
-							 @RequestParam("patronymic") String patronymic,
-							 @RequestParam("insuranceNum") String insuranceNum,
-							 @RequestParam("doctor") String doctor){
-
-		patientService.addPatient(surname, name, patronymic, insuranceNum, doctor);
-		return "redirect:/patients";
-		
-	}*/
-
 	@RequestMapping(value= "/patient/add", method = RequestMethod.POST)
-	public String addPatient(@RequestBody CreatePatientRequest patientRequest){
+	public @ResponseBody
+	CreatePatientRequest addPatient(@Valid @RequestBody CreatePatientRequest patientRequest){
 
 		patientService.addPatient(patientRequest.getSurname(), patientRequest.getName(), patientRequest.getPatronymic(),
-				patientRequest.getInsuranceNum(), patientRequest.getStaffId().toString());
-		return "redirect:/patients";
+				patientRequest.getInsuranceNum(), patientRequest.getStaffId());
+		return patientRequest;
 
 	}
 	
@@ -126,15 +115,12 @@ public class PatientController {
         return "redirect:/patients";
     }
 
-	@RequestMapping(value="/updatePatient",method = RequestMethod.POST)
-	public String updatePatient(@RequestParam("surname") String surname,
-								@RequestParam("name") String name,
-								@RequestParam("patronymic") String patronymic,
-								@RequestParam("insuranceNum") String insuranceNum,
-								@RequestParam("doctor") String doctor,
-								@RequestParam("id") int id){
-		patientService.updatePatient(id, surname, name, patronymic, insuranceNum, doctor);
-		return "redirect:/patients";
+	@RequestMapping(value="/updatePatient/{id}",method = RequestMethod.POST)
+	public @ResponseBody CreatePatientRequest updatePatient(@Valid @RequestBody CreatePatientRequest patientRequest,
+								@PathVariable("id") int id){
+		patientService.updatePatient(id, patientRequest.getSurname(), patientRequest.getName(), patientRequest.getPatronymic(),
+				patientRequest.getInsuranceNum(), patientRequest.getStaffId());
+		return patientRequest;
 	}
 
 	@RequestMapping(value="/updateDeletePatient/{id}",method = RequestMethod.GET)

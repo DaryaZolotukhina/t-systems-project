@@ -3,22 +3,31 @@
 <html>
 <head>
     <meta charset="UTF-8">
-   <!-- <script src="/bootstrap/bootstrap.min.js"></script>
-    <script src="/bootstrap/bootstrap.min.css"></script>-->
     <link rel="stylesheet" href="/bootstrap/bootstrap.min.css">
     <title>Title Login Page</title>
 </head>
 <body>
-<h1>Login page</h1>
+<div class="container">
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="row justify-content-md-center">
+    <h1>Login page</h1>
+    </div>
 
-<c:if test="${not empty param.login_error}">
+    <div class="row justify-content-md-center">
+    <c:if test="${not empty param.login_error}">
   <span style="color: red; ">
     Your login attempt was not successful, try again.<br/><br/>
     Reason: <c:out value="${SPRING_SECURITY_LAST_EXCEPTION.message}"/>
   </span>
 </c:if>
+    </div>
 
-<form name="frm" action="<c:url value="login"/>" method="post" class="col-sm-3">
+    <div class="row justify-content-md-center">
+    <form name="frm" action="<c:url value="login"/>" method="post" class="col-sm-3">
     <div class="form-group">
         <label for="username">Username:</label>
         <input class="form-control" id="username" name="username">
@@ -31,8 +40,8 @@
     <input type="hidden" name="<c:out value="${_csrf.parameterName}"/>"
            value="<c:out value="${_csrf.token}"/>"/>
 </form>
-
-
+    </div>
+</div>
 </body>
 
 </html>

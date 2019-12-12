@@ -1,7 +1,6 @@
 package hospital.controller;
 
-import hospital.dto.ProcedureTitleDto;
-import hospital.service.MedicineService;
+import hospital.dto.procedure.ProcedureTitleDto;
 import hospital.service.ProcedureService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;

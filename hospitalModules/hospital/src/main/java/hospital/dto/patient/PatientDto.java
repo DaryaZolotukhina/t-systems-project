@@ -1,4 +1,4 @@
-package hospital.dto;
+package hospital.dto.patient;
 
 import hospital.model.Prescription;
 import hospital.model.Staff;

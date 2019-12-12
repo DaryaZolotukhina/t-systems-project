@@ -1,4 +1,4 @@
-package hospital.dto;
+package hospital.dto.prescription;
 
 public class PrescriptionError {
     private Integer id;
@@ -28,7 +28,5 @@ public class PrescriptionError {
     public void setDose(Float dose) {
         this.dose = dose;
     }
-
-
 
 }

@@ -2,7 +2,9 @@ package hospital.service.serviceImpl;
 
 import hospital.dao.EventDAO;
 import hospital.dao.PrescriptionDAO;
-import hospital.dto.*;
+import hospital.dto.event.EventAjax;
+import hospital.dto.event.EventDto;
+import hospital.dto.event.EventUIDto;
 import hospital.mappers.EventMapper;
 import hospital.mappers.StaffMapper;
 import hospital.model.*;
