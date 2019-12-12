@@ -13,4 +13,4 @@
 	border-color: #ebccd1;
 	padding:1px 20px 1px 20px;
 }
-input[aria-invalid='true'] {border-color: red;}
+input[aria-invalid='true'] {box-shadow: 0px 0px 6px 0 red;}
