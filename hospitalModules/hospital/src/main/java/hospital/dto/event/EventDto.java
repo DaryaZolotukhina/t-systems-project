@@ -1,4 +1,4 @@
-package hospital.dto;
+package hospital.dto.event;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import hospital.model.*;

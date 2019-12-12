@@ -36,12 +36,22 @@ public class Prescription {
     @Fetch(value = FetchMode.SUBSELECT)
     @OneToMany(mappedBy = "prescription", cascade = CascadeType.MERGE, orphanRemoval = true,fetch = FetchType.EAGER)
     private List<Event> events;
-
+    @ManyToOne(cascade = CascadeType.MERGE)
+    @JoinColumn(name = "id_staff")
+    private Staff staff;
     @ManyToOne(cascade = CascadeType.MERGE,fetch = FetchType.EAGER)
     @JoinColumn(name = "id_diagnosis")
     private Diagnosis diagnosis;
     @Column
     private boolean isDeleted;
+
+    public Staff getStaff() {
+        return staff;
+    }
+
+    public void setStaff(Staff staff) {
+        this.staff = staff;
+    }
 
     public Diagnosis getDiagnosis() {
         return diagnosis;

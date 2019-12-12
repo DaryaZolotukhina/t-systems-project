@@ -30,6 +30,13 @@ public class DoctorServiceImpl implements DoctorService {
 
     }
 
+    @Override
+    @Transactional
+    public StaffDto getById(int id) {
+        Staff staff = doctorDAO.getById(id);
+        return StaffMapper.STAFF_MAPPER.fromStaff(staff);
+    }
+
     @Transactional
     @Override
     public List<StaffDto> getAllDoctors(){

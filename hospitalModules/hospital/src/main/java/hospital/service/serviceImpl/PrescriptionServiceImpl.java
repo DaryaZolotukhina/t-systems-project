@@ -1,7 +1,7 @@
 package hospital.service.serviceImpl;
 
 import hospital.dao.PrescriptionDAO;
-import hospital.dto.PrescriptionDto;
+import hospital.dto.prescription.PrescriptionDto;
 import hospital.mappers.PrescriptionMapper;
 import hospital.model.Prescription;
 import hospital.service.PrescriptionService;
@@ -22,14 +22,6 @@ public class PrescriptionServiceImpl implements PrescriptionService {
     @Override
     @Transactional
     public List<Prescription> getAllPrescriptions(int id){
-        /*List<PrescriptionDto> listPrescriptionDto=new ArrayList<>();
-        List<Prescription> listPrescription= prescriptionDAO.getAllPrescriptions(id);
-        for (Prescription prescription : listPrescription){
-            PrescriptionDto prescriptionDto=PrescriptionMapper.PRESCRIPTION_MAPPER.fromPrescription(prescription);
-            prescriptionDto.setDiagnosis(prescription.getDiagnosis());
-            listPrescriptionDto.add(prescriptionDto);
-        }
-        return listPrescriptionDto;*/
         return prescriptionDAO.getAllPrescriptions(id);
     }
 

@@ -76,7 +76,7 @@
                     console.log(result)
                     var arr = [];
                     for (i = 0; i < result.length; i++) {
-                        arr.push(result[i].surname);
+                        arr.push(result[i].id+': '+result[i].surname);
                     }
                     console.log(arr)
                     for (i = 0; i < arr.length; i++) {
@@ -96,7 +96,7 @@
                     console.log(result)
                     var arr = [];
                     for (i = 0; i < result.length; i++) {
-                        arr.push(result[i].surname);
+                        arr.push(result[i].id+': '+result[i].surname);
                     }
                     console.log(arr)
                     for (i = 0; i < arr.length; i++) {
@@ -114,6 +114,7 @@
 <form id="myform" action="/createPrescription/${id}" method="post" class="col-sm-8">
     <div class="form-group">
         <label for="diagnosisType">Type of diagnosis</label>
+        <label for="diagnosisType">(Choose from the available)</label>
         <input type="text" class="form-control mdb-autocomplete" id="diagnosisType" name="diagnosisType" placeholder="Type of diagnosis">
         <label for="diagnosis">Title of diagnosis</label>
         <input type="text" class="form-control" id="diagnosis" name="diagnosis" placeholder="Title of diagnosis">

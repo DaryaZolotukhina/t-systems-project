@@ -1,8 +1,7 @@
 package hospital.service.serviceImpl;
 
 import hospital.dao.DiagnosisDAO;
-import hospital.dao.DoctorDAO;
-import hospital.dto.DiagnosisTypeTitleDto;
+import hospital.dto.diagnosis.DiagnosisTypeTitleDto;
 import hospital.mappers.DiagnosisTypeMapper;
 import hospital.model.Diagnosis;
 import hospital.model.DiagnosisType;
