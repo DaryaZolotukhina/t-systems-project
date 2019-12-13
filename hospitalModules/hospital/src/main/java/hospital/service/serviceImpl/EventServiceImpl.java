@@ -12,6 +12,7 @@ import hospital.service.DoctorService;
 import hospital.service.EventService;
 import hospital.service.PatientService;
 import hospital.service.PrescriptionService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -23,8 +24,10 @@ import static hospital.service.utils.CalculationDateUtils.calcDateTime;
 @Service
 public class EventServiceImpl implements EventService {
 
-    private EventDAO eventDAO;
-    public void setEventDAO(EventDAO eventDAO) {
+    private final EventDAO eventDAO;
+
+    @Autowired
+    public EventServiceImpl(EventDAO eventDAO) {
         this.eventDAO = eventDAO;
     }
 

@@ -1,5 +1,6 @@
 package hospital.service.serviceImpl;
 
+import hospital.dao.DiagnosisDAO;
 import hospital.dao.DoctorDAO;
 import hospital.dao.EventDAO;
 import hospital.dao.PatientDAO;
@@ -9,6 +10,7 @@ import hospital.model.Procedure;
 import hospital.model.Staff;
 import hospital.service.DoctorService;
 import hospital.service.PatientService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,8 +20,10 @@ import java.util.List;
 @Service
 public class DoctorServiceImpl implements DoctorService {
 
-    private DoctorDAO doctorDAO;
-    public void setDoctorDAO(DoctorDAO doctorDAO) {
+    private final DoctorDAO doctorDAO;
+
+    @Autowired
+    public DoctorServiceImpl(DoctorDAO doctorDAO) {
         this.doctorDAO = doctorDAO;
     }
 

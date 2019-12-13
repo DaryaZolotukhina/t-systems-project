@@ -6,6 +6,7 @@ import hospital.mappers.ProcedureMapper;
 import hospital.model.DiagnosisType;
 import hospital.model.Procedure;
 import hospital.service.ProcedureService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -15,8 +16,10 @@ import java.util.List;
 @Service
 public class ProcedureServiceImpl implements ProcedureService {
 
-    private ProcedureDAO procedureDAO;
-    public void setProcedureDAO(ProcedureDAO procedureDAO) {
+    private final ProcedureDAO procedureDAO;
+
+    @Autowired
+    public ProcedureServiceImpl(ProcedureDAO procedureDAO) {
         this.procedureDAO = procedureDAO;
     }
 

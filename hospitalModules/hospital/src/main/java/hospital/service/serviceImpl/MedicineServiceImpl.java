@@ -6,6 +6,7 @@ import hospital.mappers.MedicineMapper;
 import hospital.model.DiagnosisType;
 import hospital.model.Medicine;
 import hospital.service.MedicineService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -16,7 +17,8 @@ import java.util.List;
 public class MedicineServiceImpl implements MedicineService {
 
     private MedicineDAO medicineDAO;
-    public void setMedicineDAO(MedicineDAO medicineDAO) {
+    @Autowired
+    public MedicineServiceImpl(MedicineDAO medicineDAO) {
         this.medicineDAO = medicineDAO;
     }
 

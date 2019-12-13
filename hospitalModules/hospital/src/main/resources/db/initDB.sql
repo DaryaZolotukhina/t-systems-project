@@ -190,6 +190,7 @@ select * from staff;
 select * from patients;
 select * from events;
 select * from prescriptions;
+select * from medicines;
 truncate events;
     truncate events,prescriptions;
 

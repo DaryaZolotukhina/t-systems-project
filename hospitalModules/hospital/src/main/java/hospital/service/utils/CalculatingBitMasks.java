@@ -2,6 +2,7 @@ package hospital.service.utils;
 
 import org.springframework.stereotype.Component;
 
+import org.jetbrains.annotations.NotNull;
 import java.time.DayOfWeek;
 import java.util.List;
 
@@ -45,7 +46,8 @@ public class CalculatingBitMasks {
         }
     }
 
-    public Integer weekToBitMask(List<String> weeks) {
+    @NotNull
+    public Integer weekToBitMask(@NotNull List<String> weeks) {
         DayOfWeek[] dayOfWeeks = DayOfWeek.values();
         int result=0;
         for (String str : weeks) {
@@ -58,7 +60,8 @@ public class CalculatingBitMasks {
         return result;
     }
 
-    public Integer dayToBitMask(List<String> days) {
+    @NotNull
+    public Integer dayToBitMask(@NotNull List<String> days) {
         Hours[] hours = Hours.values();
         int result=0;
         for (String str : days) {

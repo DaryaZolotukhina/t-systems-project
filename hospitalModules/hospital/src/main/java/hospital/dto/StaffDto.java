@@ -15,7 +15,6 @@ public class StaffDto {
     private String name;
     private String patronymic;
     private boolean isDeleted;
-    //private List<Patient> patients;
 
     public Integer getId() {
         return id;
@@ -57,11 +56,4 @@ public class StaffDto {
         isDeleted = deleted;
     }
 
-    /*public List<Patient> getPatients() {
-        return patients;
-    }
-
-    public void setPatients(List<Patient> patients) {
-        this.patients = patients;
-    }*/
 }

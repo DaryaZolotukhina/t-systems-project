@@ -5,6 +5,7 @@ import hospital.dto.prescription.PrescriptionDto;
 import hospital.mappers.PrescriptionMapper;
 import hospital.model.Prescription;
 import hospital.service.PrescriptionService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -13,9 +14,10 @@ import java.util.List;
 @Service
 public class PrescriptionServiceImpl implements PrescriptionService {
 
-    private PrescriptionDAO prescriptionDAO;
+    private final PrescriptionDAO prescriptionDAO;
 
-    public void setPrescriptionDAO(PrescriptionDAO prescriptionDAO) {
+    @Autowired
+    public PrescriptionServiceImpl(PrescriptionDAO prescriptionDAO) {
         this.prescriptionDAO = prescriptionDAO;
     }
 

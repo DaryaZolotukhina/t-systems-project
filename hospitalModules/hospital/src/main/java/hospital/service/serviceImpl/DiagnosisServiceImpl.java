@@ -1,11 +1,13 @@
 package hospital.service.serviceImpl;
 
 import hospital.dao.DiagnosisDAO;
+import hospital.dao.PatientDAO;
 import hospital.dto.diagnosis.DiagnosisTypeTitleDto;
 import hospital.mappers.DiagnosisTypeMapper;
 import hospital.model.Diagnosis;
 import hospital.model.DiagnosisType;
 import hospital.service.DiagnosisService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -14,8 +16,13 @@ import java.util.List;
 
 @Service
 public class DiagnosisServiceImpl implements DiagnosisService {
-    private DiagnosisDAO diagnosisDAO;
-    public void setDiagnosisDAO(DiagnosisDAO diagnosisDAO) {
+    private final DiagnosisDAO diagnosisDAO;
+    /*public void setDiagnosisDAO(DiagnosisDAO diagnosisDAO) {
+        this.diagnosisDAO = diagnosisDAO;
+    }*/
+
+    @Autowired
+    public DiagnosisServiceImpl(DiagnosisDAO diagnosisDAO) {
         this.diagnosisDAO = diagnosisDAO;
     }
 

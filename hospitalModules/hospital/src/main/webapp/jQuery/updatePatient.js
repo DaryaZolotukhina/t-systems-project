@@ -5,6 +5,7 @@ function UpdatePatientFunction(id) {
     patient["patronymic"]= $("#patronymic").val();
     patient["insuranceNum"]= $("#insuranceNum").val();
     patient["staffId"]= $("#doctor").val().split(':')[0];
+    patient["id"]= id;
     $.ajax({
         type : "POST",
         contentType : "application/json",

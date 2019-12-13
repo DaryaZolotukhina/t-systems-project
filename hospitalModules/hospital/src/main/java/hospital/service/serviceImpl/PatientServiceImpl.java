@@ -6,7 +6,10 @@ import java.util.List;
 import hospital.dao.EventDAO;
 import hospital.dao.PrescriptionDAO;
 import hospital.dto.*;
+import hospital.dto.patient.CreatePatientRequest;
 import hospital.dto.patient.PatientDto;
+import hospital.dto.patient.UpdatePatientRequest;
+import hospital.dto.prescription.CreatePrescriptionRequest;
 import hospital.dto.prescription.PrescriptionDto;
 import hospital.dto.prescription.PrescriptionError;
 import hospital.mappers.*;
@@ -14,6 +17,8 @@ import hospital.exception.DischargeException;
 import hospital.model.*;
 import hospital.service.*;
 import hospital.service.utils.CalculatingBitMasks;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -26,7 +31,7 @@ public class PatientServiceImpl implements PatientService {
     private CalculatingBitMasks calculatingBitMasks;
 	private PrescriptionService prescriptionService;
 	private EventService eventService;
-	private PatientDAO patientDAO;
+	private final PatientDAO patientDAO;
 	private EventDAO eventDAO;
 	private PrescriptionDAO prescriptionDAO;
 	private DoctorService doctorService;
@@ -36,6 +41,12 @@ public class PatientServiceImpl implements PatientService {
 
 
 	private static final int NUMBER_OF_RESULTS_PER_PAGE = 5;
+
+    @Autowired
+	public PatientServiceImpl(PatientDAO patientDAO) {
+		this.patientDAO = patientDAO;
+	}
+
 
     public void setCalculatingBitMasks(CalculatingBitMasks calculatingBitMasks) {
         this.calculatingBitMasks= calculatingBitMasks;
@@ -47,10 +58,6 @@ public class PatientServiceImpl implements PatientService {
 
 	public void setEventDAO(EventDAO eventDAO) {
 		this.eventDAO = eventDAO;
-	}
-
-	public void setPatientDAO(PatientDAO patientDAO) {
-		this.patientDAO = patientDAO;
 	}
 
 	public void setPrescriptionService(PrescriptionService prescriptionService) {
@@ -174,63 +181,70 @@ public class PatientServiceImpl implements PatientService {
 
     @Override
     @Transactional
-    public void addPrescription(int id, String diagnosis, String procedure, String medicine, String period,
-								List<String> daySchedule, List<String> weekSchedule, int idDoctor){
+    public void addPrescription(int id, CreatePrescriptionRequest prescriptionRequest){
 	    PrescriptionDto p =new PrescriptionDto();
+		if (prescriptionRequest.getProcedure()==null){
+			prescriptionRequest.setProcedure("");
+		}
+		if (prescriptionRequest.getMedicine()==null){
+			prescriptionRequest.setMedicine("");
+		}
+		if (prescriptionRequest.getWeekSchedule().isEmpty()){
+			prescriptionRequest.setWeekSchedule(new ArrayList<>());
+		}
+		if (prescriptionRequest.getDaySchedule().isEmpty()){
+			prescriptionRequest.setDaySchedule(new ArrayList<>());
+		}
 	    p.setPatient(PatientMapper.PATIENT_MAPPER.toPatient(getById(id)));
-	    if (!procedure.equals("")) {
-            p.setProcedure(procedureService.getProcedureByTitle(procedure));
+	    if (!prescriptionRequest.getProcedure().equals("")) {
+            p.setProcedure(procedureService.getProcedureByTitle(prescriptionRequest.getProcedure()));
         }
 	    else
-	        p.setMedicine(medicineService.getMedicineByTitle(medicine));
-	   if (daySchedule.isEmpty()){
+	        p.setMedicine(medicineService.getMedicineByTitle(prescriptionRequest.getMedicine()));
+	   if (prescriptionRequest.getDaySchedule().isEmpty()){
 	        p.setDaySchedule(0);
         }
 	    else
-	        p.setDaySchedule(calculatingBitMasks.dayToBitMask(daySchedule));
-        if (weekSchedule.isEmpty()){
+	        p.setDaySchedule(calculatingBitMasks.dayToBitMask(prescriptionRequest.getDaySchedule()));
+        if (prescriptionRequest.getWeekSchedule().isEmpty()){
             p.setWeekSchedule(0);
         }
         else
-            p.setWeekSchedule(calculatingBitMasks.weekToBitMask(weekSchedule));
-		Staff staff=StaffMapper.STAFF_MAPPER.toStaff(doctorService.getById(idDoctor));
+            p.setWeekSchedule(calculatingBitMasks.weekToBitMask(prescriptionRequest.getWeekSchedule()));
+		Staff staff=StaffMapper.STAFF_MAPPER.toStaff(doctorService.getById(prescriptionRequest.getStaffId()));
 		p.setStaff(staff);
-        p.setPeriod(Integer.parseInt(period));
+        p.setPeriod(Integer.parseInt(prescriptionRequest.getPeriod()));
         p.setDose((float)1.0);
         p.setIsDeleted(false);
         p.setIsDone(false);
 
         Prescription presc=PrescriptionMapper.PRESCRIPTION_MAPPER.toPrescription(p);
-        presc.setDiagnosis(diagnosisService.getDiagnosisByTitle(diagnosis));
+        presc.setDiagnosis(diagnosisService.getDiagnosisByTitle(prescriptionRequest.getDiagnosis()));
         prescriptionDAO.addPresc(presc);
 
     }
 
 	@Override
 	@Transactional
-	public void addPatient(String surname, String name, String patronymic, String insuranceNum, int idDoctor){
-		PatientDto p=new PatientDto();
-		p.setSurname(surname);
-		p.setName(name);
-		p.setPatronymic(patronymic);
-		p.setInsuranceNum(insuranceNum);
-		Staff staff=StaffMapper.STAFF_MAPPER.toStaff(doctorService.getById(idDoctor));
+	public void addPatient(CreatePatientRequest patientRequest){
+		Patient p=PatientMapper.PATIENT_MAPPER.toPatientfromCreatePatientRequest(patientRequest);
+		Staff staff=StaffMapper.STAFF_MAPPER.toStaff(doctorService.getById(patientRequest.getStaffId()));
 		p.setStaff(staff);
 		p.setIsDeleted(false);
 		p.setIsDischarged(false);
 
-		patientDAO.addPatient(PatientMapper.PATIENT_MAPPER.toPatient(p));
+		this.patientDAO.addPatient(p);
 	}
 
     @Override
     @Transactional
-    public void updatePatient(int id, String surname, String name, String patronymic, String insuranceNum, int idDoctor) {
-	    Patient pat=patientDAO.getById(id);
-		pat.setSurname(surname);
-		pat.setName(name);
-		pat.setPatronymic(patronymic);
-		pat.setInsuranceNum(insuranceNum);
-		Staff staff=StaffMapper.STAFF_MAPPER.toStaff(doctorService.getById(idDoctor));
+    public void updatePatient(UpdatePatientRequest patientRequest) {
+	    Patient pat=patientDAO.getById(patientRequest.getId());
+		pat.setSurname(patientRequest.getSurname());
+		pat.setName(patientRequest.getName());
+		pat.setPatronymic(patientRequest.getPatronymic());
+		pat.setInsuranceNum(patientRequest.getInsuranceNum());
+		Staff staff=StaffMapper.STAFF_MAPPER.toStaff(doctorService.getById(patientRequest.getStaffId()));
 		pat.setStaff(staff);
 		pat.setIsDeleted(false);
 		pat.setIsDischarged(false);

@@ -12,11 +12,9 @@
     <title>Create prescription</title>
     <script src="/jQuery/jquery-3.4.1.min.js"></script>
     <script src="/jQuery/jquery.autocomplete.min.js"></script>
-   <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"/> -->
     <link rel="stylesheet" href="/bootstrap/bootstrap3.3.2.min.css"/>
     <link type="text/css" href="/css/style1.css" rel="stylesheet">
      <script type="text/javascript" src="/bootstrap/bootstrap3.3.2.min.js"> </script>
-    <!--  <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>-->
     <script src="/css/jquery.validate.min.js"></script>
     <script src="/css/additional-methods.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/js/bootstrap-multiselect.js"></script>
@@ -32,8 +30,8 @@
         prescription["daySchedule"]= $("#daySchedule").val();
         prescription["weekSchedule"]= $("#weekSchedule").val();
         prescription["diagnosisType"]= $("#diagnosisType").val();
-        prescription["procedureSelect"]= $("#procedureSelect").val();
-        prescription["medicineSelect"]= $("#medicineSelect").val();
+        prescription["procedure"]= $("#procedureSelect").val();
+        prescription["medicine"]= $("#medicineSelect").val();
         prescription["staffId"]= $("#doctorSelect").val().split(':')[0];
         $.ajax({
             type : "POST",
