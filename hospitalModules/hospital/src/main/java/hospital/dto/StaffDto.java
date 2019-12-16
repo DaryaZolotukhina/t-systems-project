@@ -7,20 +7,21 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
+import java.math.BigInteger;
 import java.util.List;
 
 public class StaffDto {
-    private Integer id;
+    private BigInteger id;
     private String surname;
     private String name;
     private String patronymic;
     private boolean isDeleted;
 
-    public Integer getId() {
+    public BigInteger getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(BigInteger id) {
         this.id = id;
     }
 

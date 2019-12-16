@@ -6,6 +6,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
 
+import java.math.BigInteger;
 import java.util.List;
 
 @Repository
@@ -23,14 +24,14 @@ public class PrescriptionDAOImpl implements PrescriptionDAO {
     }
 
     @Override
-    public Prescription getPrescriptionById(int id){
+    public Prescription getPrescriptionById(BigInteger id){
         Session session = sessionFactory.getCurrentSession();
         Prescription prescription = (Prescription) session.load(Prescription.class, id);
         return prescription;
     }
 
     @Override
-    public List<Prescription> getAllPrescriptions(int id){
+    public List<Prescription> getAllPrescriptions(BigInteger id){
         Session session = sessionFactory.getCurrentSession();
         Patient p = (Patient) session.load(Patient.class,id);
         List<Prescription> prescriptions=p.getPrescriptions();

@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.math.BigInteger;
 import java.util.List;
 
 @Service
@@ -23,12 +24,12 @@ public class PrescriptionServiceImpl implements PrescriptionService {
 
     @Override
     @Transactional
-    public List<Prescription> getAllPrescriptions(int id){
+    public List<Prescription> getAllPrescriptions(BigInteger id){
         return prescriptionDAO.getAllPrescriptions(id);
     }
 
     @Override
-    public PrescriptionDto getPrescriptionById(int id){
+    public PrescriptionDto getPrescriptionById(BigInteger id){
         Prescription prescription = prescriptionDAO.getPrescriptionById(id);
         return PrescriptionMapper.PRESCRIPTION_MAPPER.fromPrescription(prescription);
     }

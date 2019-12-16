@@ -18,6 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 
 import javax.validation.Valid;
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,7 +41,6 @@ public class PatientController {
 		this.diagnosisService= diagnosisService;
 	}
 
-
 	@Autowired(required=true)
 	@Qualifier(value="patientService")
 	public void setPatientService(PatientService ps){
@@ -61,7 +61,7 @@ public class PatientController {
 	}
 
 	@RequestMapping(value = "/patient/{id}",method = RequestMethod.GET)
-	public String getById(@PathVariable("id") int id, Model model){
+	public String getById(@PathVariable("id") BigInteger id, Model model){
 		model.addAttribute("patient", patientService.getById(id));
 		model.addAttribute("prescriptions",prescriptionService.getAllPrescriptions(id));
 		model.addAttribute("prescription",new Prescription());
@@ -70,14 +70,14 @@ public class PatientController {
 		return "showPatient";
 	}
 
-	@RequestMapping(value = "/dischargePatient/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "/patient/discharge/{id}", method = RequestMethod.GET)
 	@ResponseBody
-	public ErrorMessage dischargePatient(@PathVariable("id") int id) {
+	public ErrorMessage dischargePatient(@PathVariable("id") BigInteger id) {
 		return patientService.dischargePatient(id);
 	}
 
-	@RequestMapping(value = "/createPrescription/{id}", method = RequestMethod.POST)
-	public @ResponseBody CreatePrescriptionRequest createPresc(@PathVariable("id") int id,
+	@RequestMapping(value = "/prescriptions/{id}", method = RequestMethod.POST)
+	public @ResponseBody CreatePrescriptionRequest createPresc(@PathVariable("id") BigInteger id,
 															   @Valid @RequestBody CreatePrescriptionRequest prescriptionRequest) {
 		diagnosisService.addDiagnosis(prescriptionRequest.getDiagnosis(),prescriptionRequest.getDiagnosisType());
 		patientService.addPrescription(id, prescriptionRequest);
@@ -100,28 +100,28 @@ public class PatientController {
 
 	}
 	
-	@RequestMapping(value="/remove/{id}",method = RequestMethod.DELETE)
-    public String removePerson(@PathVariable("id") int id){
+	@RequestMapping(value="/patient/remove/{id}",method = RequestMethod.DELETE)
+    public String removePerson(@PathVariable("id") BigInteger id){
 		
         patientService.delete(id);
         return "redirect:/patients";
     }
 
-	@RequestMapping(value="/updatePatient/{id}",method = RequestMethod.POST)
+	@RequestMapping(value="/patient/update/{id}",method = RequestMethod.POST)
 	public @ResponseBody UpdatePatientRequest updatePatient(@Valid @RequestBody UpdatePatientRequest patientRequest,
-								@PathVariable("id") int id){
+								@PathVariable("id") BigInteger id){
 		patientService.updatePatient(patientRequest);
 		return patientRequest;
 	}
 
-	@RequestMapping(value="/updateDeletePatient/{id}",method = RequestMethod.GET)
-	public String updateDeletePatient(@PathVariable("id") int id){
+	@RequestMapping(value="/patient/delete/{id}",method = RequestMethod.GET)
+	public String updateDeletePatient(@PathVariable("id") BigInteger id){
 		patientService.updateDeletePatient(id);
 		return "redirect:/patients";
 	}
 
-	@RequestMapping(value="/update/{id}",method = RequestMethod.GET)
-	public String update(@PathVariable("id") int id, Model model){
+	@RequestMapping(value="/patient/update/{id}",method = RequestMethod.GET)
+	public String update(@PathVariable("id") BigInteger id, Model model){
 		model.addAttribute("patient",patientService.getById(id));
 		return "editPatient";
 	}
@@ -142,7 +142,7 @@ public class PatientController {
 	}
 
 	@RequestMapping(value= "/sortEventsDate/{idPat}/{order}", method= RequestMethod.GET)
-	public @ResponseBody List<Event> sortEventsDate(@PathVariable("idPat") int idPat,@PathVariable String  order) {
+	public @ResponseBody List<Event> sortEventsDate(@PathVariable("idPat") BigInteger idPat,@PathVariable String  order) {
 		return patientService.sortEventsDate(order,idPat);
 	}
 

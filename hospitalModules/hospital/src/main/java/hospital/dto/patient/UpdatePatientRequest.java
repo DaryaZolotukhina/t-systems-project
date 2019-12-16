@@ -3,9 +3,10 @@ package hospital.dto.patient;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
+import java.math.BigInteger;
 
 public class UpdatePatientRequest {
-    int id;
+    BigInteger id;
     @NotBlank(message = "Surname is mandatory")
     @Pattern(regexp = "^[A-z]+$")
     private String surname;
@@ -19,22 +20,22 @@ public class UpdatePatientRequest {
     @Pattern(regexp="^[0-9]+$")
     private String insuranceNum;
     @NotNull(message= "Doctor is mandatory")
-    private int staffId;
+    private BigInteger staffId;
 
 
-    public int getId() {
+    public BigInteger getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(BigInteger id) {
         this.id = id;
     }
 
-    public int getStaffId() {
+    public BigInteger getStaffId() {
         return staffId;
     }
 
-    public void setStaffId(int staffId) {
+    public void setStaffId(BigInteger staffId) {
         this.staffId = staffId;
     }
 

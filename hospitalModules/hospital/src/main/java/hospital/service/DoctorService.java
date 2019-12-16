@@ -2,6 +2,7 @@ package hospital.service;
 
 import hospital.dto.StaffDto;
 
+import java.math.BigInteger;
 import java.util.List;
 
 public interface DoctorService {
@@ -12,5 +13,5 @@ public interface DoctorService {
 
     List<StaffDto> getDoctorsForProcedure(String procedureTitle);
 
-    StaffDto getById(int id);
+    StaffDto getById(BigInteger id);
 }

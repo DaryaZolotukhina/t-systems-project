@@ -1,14 +1,16 @@
 package hospital.dto.procedure;
 
+import java.math.BigInteger;
+
 public class ProcedureTitleDto {
-    private Integer id;
+    private BigInteger id;
     private String title;
 
-    public Integer getId() {
+    public BigInteger getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(BigInteger id) {
         this.id = id;
     }
 

@@ -12,6 +12,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
 
+import java.math.BigInteger;
 import java.util.List;
 
 import static org.junit.Assert.*;
@@ -35,7 +36,7 @@ public class DiagnosisServiceImplTest {
     public void testGetDiagnosisByTitle_flu_returnEntityFlu(){
         diagnosis = new Diagnosis();
         diagnosis.setTitle("flu");
-        diagnosis.setId(1);
+        diagnosis.setId(BigInteger.valueOf(1));
 
         // when
         Mockito.when(diagnosisDAO.getDiagnosisByTitle("flu")).thenReturn(diagnosis);
@@ -49,7 +50,7 @@ public class DiagnosisServiceImplTest {
     public void testGetDiagnosisTypeByTitle_flu_returnEntityTypeFlu(){
         diagnosisType = new DiagnosisType();
         diagnosisType.setTitle("flu");
-        diagnosisType.setId(1);
+        diagnosisType.setId(BigInteger.valueOf(1));
 
         // when
         Mockito.when(diagnosisDAO.getDiagnosisTypeByTitle("flu")).thenReturn(diagnosisType);
@@ -61,7 +62,7 @@ public class DiagnosisServiceImplTest {
 
     @Test
     public void testGetAllDiagnosisType(){
-        List<DiagnosisTypeTitleDto> diagnosisTypeTitleDtoList=sut.getAllDiagnosisType();
+        sut.getAllDiagnosisType();
 
         Mockito.verify(diagnosisDAO, Mockito.times(1)).getAllDiagnosisType();
     }

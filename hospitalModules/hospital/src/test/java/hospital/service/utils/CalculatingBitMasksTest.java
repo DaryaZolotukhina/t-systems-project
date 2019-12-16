@@ -1,5 +1,6 @@
 package hospital.service.utils;
 
+import hospital.component.CalculatingBitMasks;
 import org.junit.Before;
 import org.junit.Test;
 

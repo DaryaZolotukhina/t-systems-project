@@ -4,10 +4,11 @@ import hospital.model.Diagnosis;
 import hospital.model.Medicine;
 import hospital.model.Procedure;
 
+import java.math.BigInteger;
 import java.util.List;
 
 public class DiagnosisTypeDto {
-    private Integer id;
+    private BigInteger id;
     private String title;
     private List<Diagnosis> diagnosises;
     private List<Procedure> procedures;
@@ -16,11 +17,11 @@ public class DiagnosisTypeDto {
         return procedures;
     }
 
-    public Integer getId() {
+    public BigInteger getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(BigInteger id) {
         this.id = id;
     }
 

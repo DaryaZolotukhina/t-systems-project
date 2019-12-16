@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.List;
 
 @Controller
+@RequestMapping("/diagnosis")
 public class DiagnosisController {
     private final DiagnosisService diagnosisService;
 
@@ -19,7 +20,7 @@ public class DiagnosisController {
         this.diagnosisService = diagnosisService;
     }
 
-    @RequestMapping(value = "/allDiagnosisType", method = RequestMethod.GET)
+    @RequestMapping(value = "/types", method = RequestMethod.GET)
     @ResponseBody
     public List<DiagnosisTypeTitleDto> getAllDiagnosisType() {
         return diagnosisService.getAllDiagnosisType();

@@ -19,6 +19,28 @@
 <body>
 <style>.autocomplete-suggestions{background:#ffffff;}</style>
 <div class="container">
+    <div class="row justify-content-md-end">
+        <nav class="col-sm-5 navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd; border:1px solid #B0C4DE;">
+            <a class="navbar-brand">Navbar</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/welcome">Home page</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/patients">Patients list</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/login.jsp">Login page</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
     <div class="row justify-content-md-center">
     <h1 class="ml-3 mb-4 mt-2">Create patient</h1>
     </div>

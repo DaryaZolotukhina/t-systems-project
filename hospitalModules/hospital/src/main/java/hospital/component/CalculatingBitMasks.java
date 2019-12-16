@@ -1,4 +1,4 @@
-package hospital.service.utils;
+package hospital.component;
 
 import org.springframework.stereotype.Component;
 

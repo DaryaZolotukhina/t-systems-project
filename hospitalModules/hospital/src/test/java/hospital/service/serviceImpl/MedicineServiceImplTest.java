@@ -11,6 +11,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
 
+import java.math.BigInteger;
 import java.util.List;
 
 import static org.junit.Assert.*;
@@ -33,7 +34,7 @@ public class MedicineServiceImplTest {
     public void testGetMedicineByTitle_analgin_returnEntityAnalgin() {
         medicine=new Medicine();
         medicine.setTitle("analgin");
-        medicine.setId(1);
+        medicine.setId(BigInteger.valueOf(1));
 
         // when
         Mockito.when(medicineDAO.getMedicineByTitle("analgin")).thenReturn(medicine);

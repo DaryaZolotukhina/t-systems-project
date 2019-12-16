@@ -1,5 +1,6 @@
 package hospital.dao;
 
+import java.math.BigInteger;
 import java.util.List;
 
 import hospital.model.*;
@@ -70,7 +71,7 @@ public class PatientDAOImpl implements PatientDAO {
     }
 
     @Override
-    public List<Event> sortEventsDate(String order, int id) {
+    public List<Event> sortEventsDate(String order, BigInteger id) {
         SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
         Session session = sessionFactory.getCurrentSession();
 		Transaction tx = session.beginTransaction();
@@ -110,14 +111,14 @@ public class PatientDAOImpl implements PatientDAO {
 	}
 
 	@Override
-	public Patient getById(int id) {
+	public Patient getById(BigInteger id) {
 		Session session = sessionFactory.getCurrentSession();
 		Patient p = (Patient) session.load(Patient.class, id);
 		return p;
 	}
 
 	@Override
-	public void delete(int id) {
+	public void delete(BigInteger id) {
 		Session session = sessionFactory.getCurrentSession();
 		Patient p = (Patient) session.load(Patient.class, id);
 		if(null != p){

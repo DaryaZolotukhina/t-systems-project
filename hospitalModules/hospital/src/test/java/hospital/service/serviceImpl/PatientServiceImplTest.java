@@ -10,6 +10,7 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.springframework.security.core.userdetails.User;
 
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -33,9 +34,9 @@ public class PatientServiceImplTest {
     @Test
     public void testGetById() {
 
-        PatientDto patientDto=sut.getById(2);
+        PatientDto patientDto=sut.getById(BigInteger.valueOf(2));
 
-        Mockito.verify(patientDAO, Mockito.times(1)).getById(2);
+        Mockito.verify(patientDAO, Mockito.times(1)).getById(BigInteger.valueOf(2));
 
     }
 
@@ -50,11 +51,11 @@ public class PatientServiceImplTest {
     public void testGetAll_returnAllPatients() {
         patientDto = new PatientDto();
         patientDto.setName("Petr");
-        patientDto.setId(1);
+        patientDto.setId(BigInteger.valueOf(1));
 
         patient = new Patient();
         patient.setName("Petr");
-        patient.setId(1);
+        patient.setId(BigInteger.valueOf(1));
 
         List<PatientDto> patientDtoList= Collections.singletonList(patientDto);
         List<Patient> patientList= Collections.singletonList(patient);
@@ -71,15 +72,15 @@ public class PatientServiceImplTest {
     public void testGetByIdTest_1_returnEntity1(){
         patientDto = new PatientDto();
         patientDto.setName("Petr");
-        patientDto.setId(1);
+        patientDto.setId(BigInteger.valueOf(1));
 
         patient = new Patient();
         patient.setName("Petr");
-        patient.setId(1);
+        patient.setId(BigInteger.valueOf(1));
 
         // when
-        Mockito.when(patientDAO.getById(1)).thenReturn(patient);
-        PatientDto result = sut.getById(1);
+        Mockito.when(patientDAO.getById(BigInteger.valueOf(1))).thenReturn(patient);
+        PatientDto result = sut.getById(BigInteger.valueOf(1));
 
         // then
         Assert.assertEquals(patientDto.getId(), result.getId());

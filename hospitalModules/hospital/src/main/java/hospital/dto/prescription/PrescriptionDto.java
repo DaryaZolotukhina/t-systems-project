@@ -6,10 +6,11 @@ import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
+import java.math.BigInteger;
 import java.util.List;
 
 public class PrescriptionDto {
-    private Integer id;
+    private BigInteger id;
     private Patient patient;
     private Medicine medicine;
     private Procedure procedure;
@@ -55,11 +56,11 @@ public class PrescriptionDto {
         this.procedure = procedure;
     }
 
-    public Integer getId() {
+    public BigInteger getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(BigInteger id) {
         this.id = id;
     }
 

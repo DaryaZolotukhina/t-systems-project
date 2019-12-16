@@ -12,6 +12,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
 
+import java.math.BigInteger;
 import java.util.Collections;
 import java.util.List;
 
@@ -34,13 +35,13 @@ public class PrescriptionServiceImplTest {
     @Test
     public void testGetAllPrescriptions_returnAllPrescriptions() {
         prescription = new Prescription();
-        prescription.setId(1);
+        prescription.setId(BigInteger.valueOf(1));
 
         List<Prescription> prescriptionList= Collections.singletonList(prescription);
 
         // when
-        Mockito.when(prescriptionDAO.getAllPrescriptions(1)).thenReturn(prescriptionList);
-        List<Prescription> result = sut.getAllPrescriptions(1);
+        Mockito.when(prescriptionDAO.getAllPrescriptions(BigInteger.valueOf(1))).thenReturn(prescriptionList);
+        List<Prescription> result = sut.getAllPrescriptions(BigInteger.valueOf(1));
 
         // then
         Assert.assertEquals(prescriptionList, result);
@@ -49,14 +50,14 @@ public class PrescriptionServiceImplTest {
     @Test
     public void testGetPrescriptionById_1_returnEntity1() {
         prescriptionDto = new PrescriptionDto();
-        prescriptionDto.setId(1);
+        prescriptionDto.setId(BigInteger.valueOf(1));
 
         prescription = new Prescription();
-        prescription.setId(1);
+        prescription.setId(BigInteger.valueOf(1));
 
         // when
-        Mockito.when(prescriptionDAO.getPrescriptionById(1)).thenReturn(prescription);
-        PrescriptionDto result = sut.getPrescriptionById(1);
+        Mockito.when(prescriptionDAO.getPrescriptionById(BigInteger.valueOf(1))).thenReturn(prescription);
+        PrescriptionDto result = sut.getPrescriptionById(BigInteger.valueOf(1));
 
         // then
         Assert.assertEquals(prescriptionDto.getId(), result.getId());

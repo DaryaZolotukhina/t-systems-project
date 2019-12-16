@@ -3,6 +3,7 @@ package hospital.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import java.math.BigInteger;
 import java.util.List;
 
 @Entity
@@ -11,7 +12,7 @@ public class Medicine {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id_medicine")
-    private Integer id;
+    private BigInteger id;
     @Column
     private String title;
     @OneToMany(mappedBy = "medicine", cascade = CascadeType.MERGE, orphanRemoval = true)
@@ -37,11 +38,11 @@ public class Medicine {
         this.events = events;
     }
 
-    public Integer getId() {
+    public BigInteger getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(BigInteger id) {
         this.id = id;
     }
 

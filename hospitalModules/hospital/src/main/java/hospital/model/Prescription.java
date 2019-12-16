@@ -5,6 +5,7 @@ import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
+import java.math.BigInteger;
 import java.util.List;
 
 @Entity
@@ -13,7 +14,7 @@ public class Prescription {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id_prescription")
-    private Integer id;
+    private BigInteger id;
     @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "id_patient")
     private Patient patient;
@@ -109,11 +110,11 @@ public class Prescription {
         isDone = done;
     }
 
-    public Integer getId() {
+    public BigInteger getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(BigInteger id) {
         this.id = id;
     }
 

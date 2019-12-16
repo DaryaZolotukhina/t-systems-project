@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.List;
 
 @Controller
+@RequestMapping("/doctors")
 public class DoctorController {
 
     private DoctorService doctorService;
@@ -24,13 +25,13 @@ public class DoctorController {
         this.doctorService= doctorService;
     }
 
-    @RequestMapping(value = "/allDoctors", method = RequestMethod.GET)
+    @RequestMapping(value = "", method = RequestMethod.GET)
     @ResponseBody
     public List<StaffDto> getAllDoctors() {
         return doctorService.getAllDoctors();
     }
 
-    @RequestMapping(value = "/doctorsForProcedure/{procedure}", method = RequestMethod.GET)
+    @RequestMapping(value = "/procedure/{procedure}", method = RequestMethod.GET)
     @ResponseBody
     public List<StaffDto> getDoctorsForProcedure(@PathVariable("procedure") String procedure)
     {

@@ -1,5 +1,5 @@
 function CompleteFunction(o,idP,idPresc) {
-    var str = '/prescription/' + idP + '/' + idPresc;
+    var str = '/events/prescription/' + idP + '/' + idPresc;
     $.ajax({
         type: 'GET',
         url: str,

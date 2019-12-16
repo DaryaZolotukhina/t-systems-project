@@ -9,7 +9,7 @@ function UpdatePatientFunction(id) {
     $.ajax({
         type : "POST",
         contentType : "application/json",
-        url: '/updatePatient/'+id,
+        url: '/patient/update/'+id,
         data : JSON.stringify(patient),
         dataType : 'json',
         timeout : 100000,

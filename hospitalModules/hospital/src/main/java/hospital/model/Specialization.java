@@ -1,6 +1,7 @@
 package hospital.model;
 
 import javax.persistence.*;
+import java.math.BigInteger;
 import java.util.List;
 
 @Entity
@@ -9,7 +10,7 @@ public class Specialization {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id_specialization")
-    private Integer id;
+    private BigInteger id;
     @Column
     private String title;
     @ManyToMany(cascade = CascadeType.MERGE)
@@ -29,11 +30,11 @@ public class Specialization {
         this.staff = staff;
     }
 
-    public Integer getId() {
+    public BigInteger getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(BigInteger id) {
         this.id = id;
     }
 

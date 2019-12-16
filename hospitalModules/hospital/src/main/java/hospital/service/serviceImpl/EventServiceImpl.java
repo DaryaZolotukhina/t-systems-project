@@ -1,5 +1,6 @@
 package hospital.service.serviceImpl;
 
+import hospital.component.CalculationDateUtils;
 import hospital.dao.EventDAO;
 import hospital.dao.PrescriptionDAO;
 import hospital.dto.event.EventAjax;
@@ -16,19 +17,24 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.math.BigInteger;
 import java.util.*;
-
-import static hospital.service.utils.CalculationDateUtils.calcDate;
-import static hospital.service.utils.CalculationDateUtils.calcDateTime;
 
 @Service
 public class EventServiceImpl implements EventService {
+
+    private CalculationDateUtils calculationDateUtils;
 
     private final EventDAO eventDAO;
 
     @Autowired
     public EventServiceImpl(EventDAO eventDAO) {
         this.eventDAO = eventDAO;
+    }
+
+    @Autowired
+    public void setCalculationDateUtils(CalculationDateUtils calculationDateUtils) {
+        this.calculationDateUtils= calculationDateUtils;
     }
 
     private PrescriptionService prescriptionService;
@@ -53,7 +59,7 @@ public class EventServiceImpl implements EventService {
 
     @Override
     @Transactional
-    public List<EventUIDto> getAllEvents(int id){
+    public List<EventUIDto> getAllEvents(BigInteger id){
         List<EventUIDto> listEventUIDto=new ArrayList<>();
         List<Event> listEvent= eventDAO.getAllEvents(id);
         for (Event event : listEvent){
@@ -64,7 +70,7 @@ public class EventServiceImpl implements EventService {
 
     @Override
     @Transactional
-    public List<EventAjax> getAllEventsForAjax(int id){
+    public List<EventAjax> getAllEventsForAjax(BigInteger id){
         List<EventAjax> listEventAjax=new ArrayList<>();
         List<Event> listEvent= eventDAO.getAllEvents(id);
         for (Event event : listEvent){
@@ -77,7 +83,7 @@ public class EventServiceImpl implements EventService {
     @Override
     @Transactional
     public List<EventAjax> eventsForStaff(String staffName){
-        int id=Integer. parseInt(staffName.substring(staffName.indexOf('_')+1));
+        BigInteger id=new BigInteger(staffName.substring(staffName.indexOf('_')+1));
         List<Event> listEvent= eventDAO.getAllEvents();
         List<EventAjax> listEventAjax=new ArrayList<>();
         Calendar date = Calendar.getInstance();
@@ -86,7 +92,8 @@ public class EventServiceImpl implements EventService {
             Calendar c = new GregorianCalendar();
             c.setTime(event.getDateTimeEvent());
 
-            if ((event.getStaff().getId()==id) && (c.get(Calendar.DAY_OF_MONTH)==(date.get(Calendar.DAY_OF_MONTH)+1))
+            if ((event.getStaff().getId().equals(id))
+                    && (c.get(Calendar.DAY_OF_MONTH)==(date.get(Calendar.DAY_OF_MONTH)+1))
                     && (c.get(Calendar.MONTH)==date.get(Calendar.MONTH))
                     && (c.get(Calendar.YEAR)==(date.get(Calendar.YEAR)))) {
                 listEventAjax.add(EventMapper.EVENT_MAPPER.fromEventAjax(event));
@@ -97,7 +104,7 @@ public class EventServiceImpl implements EventService {
 
     @Override
     @Transactional
-    public Event getById(int id) {
+    public Event getById(BigInteger id) {
         return eventDAO.getEventById(id);
     }
 
@@ -117,7 +124,7 @@ public class EventServiceImpl implements EventService {
 
     @Override
     @Transactional
-    public EventAjax changeStatus(String status, int id){
+    public EventAjax changeStatus(String status, BigInteger id){
         Event event=getById(id);
         StatusEvent statusEvent=getStatusEventByTitle(status);
         event.setStatusEvent(statusEvent);
@@ -140,7 +147,7 @@ public class EventServiceImpl implements EventService {
 
     @Override
     @Transactional
-    public List<Event> generateEvents(int id) {
+    public List<Event> generateEvents(BigInteger id) {
         Prescription presc = prescriptionDAO.getPrescriptionById(id);
         List<EventDto> eventsDto=new ArrayList<>();
         int period=presc.getPeriod();
@@ -148,11 +155,11 @@ public class EventServiceImpl implements EventService {
         List<Date> dates;
         int day = presc.getDaySchedule();
         if (day>0){
-            dates=calcDateTime(period,presc.getDaySchedule());
+            dates=calculationDateUtils.calcDateTime(period,presc.getDaySchedule());
             eventCnt=dates.size();
         }
         else{
-            dates=calcDate(period,presc.getWeekSchedule());
+            dates=calculationDateUtils.calcDate(period,presc.getWeekSchedule());
             eventCnt=dates.size();
         }
         for(int i=0;i<eventCnt;i++){
@@ -166,7 +173,7 @@ public class EventServiceImpl implements EventService {
             }
             eventDto.setPrescription(presc);
             eventDto.setDateTimeEvent(dates.get(i));
-            eventDto.setStatusEvent(eventDAO.getStatusEventById(1));
+            eventDto.setStatusEvent(eventDAO.getStatusEventById(BigInteger.valueOf(1)));
             eventsDto.add(eventDto);
         }
         List<Event> listEvent= new ArrayList<>();

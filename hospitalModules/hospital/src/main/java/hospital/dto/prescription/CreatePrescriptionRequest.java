@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
+import java.math.BigInteger;
 import java.util.List;
 
 public class CreatePrescriptionRequest {
@@ -21,7 +22,7 @@ public class CreatePrescriptionRequest {
     private String diagnosis;
     private String procedure;
     private String medicine;
-    private int staffId;
+    private BigInteger staffId;
 
     public String getPeriod() {
         return period;
@@ -79,11 +80,11 @@ public class CreatePrescriptionRequest {
         this.medicine = medicine;
     }
 
-    public int getStaffId() {
+    public BigInteger getStaffId() {
         return staffId;
     }
 
-    public void setStaffId(int staffId) {
+    public void setStaffId(BigInteger staffId) {
         this.staffId = staffId;
     }
 }

@@ -5,10 +5,11 @@ import hospital.model.Patient;
 import hospital.model.Procedure;
 import hospital.model.StatusEvent;
 
+import java.math.BigInteger;
 import java.util.Date;
 
 public class EventAjax {
-        private Integer id;
+        private BigInteger id;
         private Date dateTimeEvent;
         private String medicine;
         private String procedure;
@@ -41,11 +42,11 @@ public class EventAjax {
             this.surnamePatient = surnamePatient;
         }
 
-        public Integer getId() {
+        public BigInteger getId() {
                     return id;
                 }
 
-        public void setId(Integer id) {
+        public void setId(BigInteger id) {
             this.id = id;
         }
 

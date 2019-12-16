@@ -14,6 +14,7 @@
     <script src="/jQuery/jquery.autocomplete.min.js"></script>
     <link rel="stylesheet" href="/bootstrap/bootstrap3.3.2.min.css"/>
     <link type="text/css" href="/css/style1.css" rel="stylesheet">
+    <link type="text/css" href="/css/styles.css" rel="stylesheet">
      <script type="text/javascript" src="/bootstrap/bootstrap3.3.2.min.js"> </script>
     <script src="/css/jquery.validate.min.js"></script>
     <script src="/css/additional-methods.min.js"></script>
@@ -36,7 +37,7 @@
         $.ajax({
             type : "POST",
             contentType : "application/json",
-            url: '/createPrescription/'+id,
+            url: '/prescriptions/'+id,
             data : JSON.stringify(prescription),
             dataType : 'json',
             timeout : 100000,
@@ -56,7 +57,7 @@
     function GenerateSourceProcedure(o,diagnosis) {
         $('#medicineSelect').find('option').remove();
         $('#procedureSelect').find('option').remove();
-        var str = '/allProcedureForDiagnosis/'+diagnosis;
+        var str = '/procedures/diagnosis/'+diagnosis;
         $.ajax({
             type: 'GET',
             url: str,
@@ -78,7 +79,7 @@
     function GenerateSourceMedicine(o,diagnosis) {
         $('#medicineSelect').find('option').remove();
         $('#procedureSelect').find('option').remove();
-        var str = '/allMedicineForDiagnosis/'+diagnosis;
+        var str = '/medicines/diagnosis/'+diagnosis;
         $.ajax({
             type: 'GET',
             url: str,
@@ -100,7 +101,7 @@
     function GenerateSourceDoctor(o,procedure) {
         $('#doctorSelect').find('option').remove();
         if (procedure == undefined) {
-            var str = '/allDoctors';
+            var str = '/doctors';
             $.ajax({
                 type: 'GET',
                 url: str,
@@ -120,7 +121,7 @@
             });
         } else
             {
-            var str = /doctorsForProcedure/ + procedure;
+            var str = '/doctors/procedure/' + procedure;
             $.ajax({
                 type: 'GET',
                 url: str,
@@ -193,11 +194,33 @@
 </script>
 <style>.autocomplete-suggestions{background:#ffffff;}</style>
 <div class="container">
+    <div class="row justify-content-md-end">
+        <nav class="col-sm-5 navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd; border:1px solid #B0C4DE;">
+            <a class="navbar-brand">Navbar</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/welcome">Home page</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/patients">Patients list</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/login.jsp">Login page</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
     <div class="row justify-content-md-center">
 <h1 class="ml-3 mb-4 mt-2">Create prescription</h1>
     </div>
     <div class="row justify-content-md-center">
-<form id="myform" action="/createPrescription/${id}" method="post" class="col-sm-6">
+<form id="myform" action="/prescriptions/${id}" method="post" class="col-sm-6">
     <div class="form-group">
         <label for="diagnosisType">Type of diagnosis</label>
         <label for="diagnosisType">(Choose from the available)</label>

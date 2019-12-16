@@ -2,10 +2,11 @@ package hospital.dto.procedure;
 
 import hospital.model.Prescription;
 
+import java.math.BigInteger;
 import java.util.List;
 
 public class ProcedureDto {
-    private Integer id;
+    private BigInteger id;
     private String title;
     private List<Prescription> prescriptions;
     private List<Prescription> events;
@@ -26,11 +27,11 @@ public class ProcedureDto {
         this.events = events;
     }
 
-    public Integer getId() {
+    public BigInteger getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(BigInteger id) {
         this.id = id;
     }
 

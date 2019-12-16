@@ -14,6 +14,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
 
+import java.math.BigInteger;
 import java.util.List;
 
 import static org.junit.Assert.*;
@@ -35,11 +36,11 @@ public class EventServiceImplTest {
     @Test
     public void testGetById_1_returnEntity1() {
         event=new Event();
-        event.setId(1);
+        event.setId(BigInteger.valueOf(1));
 
         // when
-        Mockito.when(eventDAO.getEventById(1)).thenReturn(event);
-        Event result = sut.getById(1);
+        Mockito.when(eventDAO.getEventById(BigInteger.valueOf(1))).thenReturn(event);
+        Event result = sut.getById(BigInteger.valueOf(1));
 
         // then
         Assert.assertEquals(event, result);
@@ -48,7 +49,7 @@ public class EventServiceImplTest {
     @Test
     public void testGetStatusEventByTitle_completed_returnEntityCompleted() {
         statusEvent=new StatusEvent();
-        statusEvent.setId(1);
+        statusEvent.setId(BigInteger.valueOf(1));
         statusEvent.setTitle("completed");
 
         // when
@@ -61,8 +62,8 @@ public class EventServiceImplTest {
 
     @Test
     public void testGetAll() {
-        List<EventUIDto> eventUIDtoList=sut.getAllEvents(1);
+        List<EventUIDto> eventUIDtoList=sut.getAllEvents(BigInteger.valueOf(1));
 
-        Mockito.verify(eventDAO, Mockito.times(1)).getAllEvents(1);
+        Mockito.verify(eventDAO, Mockito.times(1)).getAllEvents(BigInteger.valueOf(1));
     }
 }

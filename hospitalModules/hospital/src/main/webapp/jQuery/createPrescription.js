@@ -22,7 +22,7 @@ $(document).ready(function() {
 $(document).ready(function() {
 
     $('#diagnosisType').autocomplete({
-        serviceUrl: '/allDiagnosisType',
+        serviceUrl: '/diagnosis/types',
         paramName: "title",
         delimiter: ",",
         transformResult: function(response) {

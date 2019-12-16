@@ -1,14 +1,16 @@
 package hospital.dto.medicine;
 
+import java.math.BigInteger;
+
 public class MedicineTitleDto {
-    private Integer id;
+    private BigInteger id;
     private String title;
 
-    public Integer getId() {
+    public BigInteger getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(BigInteger id) {
         this.id = id;
     }
 

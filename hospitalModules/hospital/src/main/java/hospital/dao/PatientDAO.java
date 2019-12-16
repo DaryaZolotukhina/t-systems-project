@@ -1,18 +1,19 @@
 package hospital.dao;
 
+import java.math.BigInteger;
 import java.util.List;
 
 import hospital.model.*;
 
 public interface PatientDAO {
 
-	Patient getById(int id);
+	Patient getById(BigInteger id);
 
 	void addPatient(Patient p);
 
 	void updatePatient(Patient p);
 
-	void delete(int id);
+	void delete(BigInteger id);
 
 	List<Patient> getAll();
 
@@ -20,6 +21,6 @@ public interface PatientDAO {
 
 	List<Patient> sortSurname(int pageid, String order);
 
-	List<Event> sortEventsDate(String order, int id);
+	List<Event> sortEventsDate(String order, BigInteger id);
 
 }

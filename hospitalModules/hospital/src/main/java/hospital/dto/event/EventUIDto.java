@@ -2,20 +2,21 @@ package hospital.dto.event;
 
 import hospital.model.*;
 
+import java.math.BigInteger;
 import java.util.Date;
 
 public class EventUIDto {
-    private Integer id;
+    private BigInteger id;
     private Date dateTimeEvent;
     private Medicine medicine;
     private Procedure procedure;
     private StatusEvent statusEvent;
 
-    public Integer getId() {
+    public BigInteger getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(BigInteger id) {
         this.id = id;
     }
 

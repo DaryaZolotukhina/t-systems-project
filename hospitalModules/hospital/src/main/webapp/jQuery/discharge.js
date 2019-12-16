@@ -1,5 +1,5 @@
 function DischargeFunction(o,idP) {
-    var str = '/dischargePatient/' + idP;
+    var str = '/patient/discharge/' + idP;
     $.ajax({
         type: 'GET',
         url: str,

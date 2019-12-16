@@ -1,15 +1,17 @@
 package hospital.dto.prescription;
 
+import java.math.BigInteger;
+
 public class PrescriptionError {
-    private Integer id;
+    private BigInteger id;
     private Integer period;
     private Float dose;
 
-    public Integer getId() {
+    public BigInteger getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(BigInteger id) {
         this.id = id;
     }
 

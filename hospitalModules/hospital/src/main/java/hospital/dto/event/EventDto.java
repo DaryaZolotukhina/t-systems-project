@@ -4,10 +4,11 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import hospital.model.*;
 
 import javax.persistence.*;
+import java.math.BigInteger;
 import java.util.Date;
 
 public class EventDto {
-    private Integer id;
+    private BigInteger id;
     private Patient patient;
     private Date dateTimeEvent;
     private Medicine medicine;
@@ -40,11 +41,11 @@ public class EventDto {
         this.procedure = procedure;
     }
 
-    public Integer getId() {
+    public BigInteger getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(BigInteger id) {
         this.id = id;
     }
 

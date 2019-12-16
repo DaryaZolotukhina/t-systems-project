@@ -5,24 +5,25 @@ import hospital.dto.event.EventUIDto;
 import hospital.model.Event;
 import hospital.model.StatusEvent;
 
+import java.math.BigInteger;
 import java.util.List;
 
 public interface EventService {
-    List<Event> generateEvents(int id);
+    List<Event> generateEvents(BigInteger id);
 
-    List<EventUIDto> getAllEvents(int id);
+    List<EventUIDto> getAllEvents(BigInteger id);
 
     void deleteEvent(Event event);
 
     void updateDeleteEvent(Event event);
 
-    List<EventAjax> getAllEventsForAjax(int id);
+    List<EventAjax> getAllEventsForAjax(BigInteger id);
 
     List<EventAjax> eventsForStaff(String staffName);
 
-    EventAjax changeStatus(String status, int id);
+    EventAjax changeStatus(String status, BigInteger id);
 
-    Event getById(int id);
+    Event getById(BigInteger id);
 
     StatusEvent getStatusEventByTitle(String title);
 

@@ -15,15 +15,15 @@
         <intercept-url pattern="/" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
         <intercept-url pattern="/login.jsp*" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
         <intercept-url pattern="/patient/add**" access="ROLE_DOCTOR"/>
-        <intercept-url pattern="/dischargePatient/{id}" access="ROLE_DOCTOR"/>
-        <intercept-url pattern="/createPrescription/{id}" access="ROLE_DOCTOR"/>
-        <intercept-url pattern="/remove/{id}" access="ROLE_DOCTOR"/>
+        <intercept-url pattern="/patient/discharge/{id}" access="ROLE_DOCTOR"/>
+        <intercept-url pattern="/prescriptions/{id}" access="ROLE_DOCTOR"/>
+        <intercept-url pattern="/patient/remove/{id}" access="ROLE_DOCTOR"/>
         <intercept-url pattern="/updatePatient" access="ROLE_DOCTOR"/>
-        <intercept-url pattern="/updateDeletePatient/{id}" access="ROLE_DOCTOR"/>
-        <intercept-url pattern="/update/{id}" access="ROLE_DOCTOR"/>
+        <intercept-url pattern="/patient/delete/{id}" access="ROLE_DOCTOR"/>
+        <intercept-url pattern="/patient/update/{id}" access="ROLE_DOCTOR"/>
 
         <intercept-url pattern="/exitUser*" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
-        <intercept-url pattern="/changeStatus/**" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
+        <intercept-url pattern="/events/status/**" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
         <intercept-url pattern="/events/**" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
         <!--<intercept-url pattern="/events/doctor_1" access="ROLE_DOCTOR_1"/>
         <intercept-url pattern="/events/doctor_2" access="ROLE_DOCTOR_2"/>
@@ -33,7 +33,7 @@
         <intercept-url pattern="/**" access="ROLE_NURSE"/>
         <intercept-url pattern="/patient/{id}" access="ROLE_NURSE"/>
         <intercept-url pattern="/allProcMed" access="ROLE_NURSE"/>
-        <intercept-url pattern="/prescription/{idPat}/{idPresc}" access="ROLE_NURSE"/>
+        <intercept-url pattern="/events/prescription/{idPat}/{idPresc}" access="ROLE_NURSE"/>
         <intercept-url pattern="/init/{page_id}" access="ROLE_NURSE"/>
         <intercept-url pattern="/sortSurname/{page_id}/{order}" access="ROLE_NURSE"/>
         <intercept-url pattern="/sortEventsDate/{idPat}/{order}" access="ROLE_NURSE"/>

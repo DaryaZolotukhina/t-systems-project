@@ -17,9 +17,6 @@ import java.util.List;
 @Service
 public class DiagnosisServiceImpl implements DiagnosisService {
     private final DiagnosisDAO diagnosisDAO;
-    /*public void setDiagnosisDAO(DiagnosisDAO diagnosisDAO) {
-        this.diagnosisDAO = diagnosisDAO;
-    }*/
 
     @Autowired
     public DiagnosisServiceImpl(DiagnosisDAO diagnosisDAO) {

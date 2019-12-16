@@ -30,7 +30,7 @@ export class ApiService {
   }
 
 statusChange(idEvent: number, idStaff: number, status: string): Observable<any> {
-    return this.http.get('http://localhost:18080/changeStatus/' + idEvent + '/' + idStaff + '/' + status);
+    return this.http.get('http://localhost:18080/events/status/' + idEvent + '/' + idStaff + '/' + status);
   }
 
 }

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 import javax.persistence.EntityManager;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
+import java.math.BigInteger;
 import java.util.List;
 
 import static hospital.dao.PatientDAOImpl.getEntityManager;
@@ -34,14 +35,14 @@ public class EventDAOImpl implements EventDAO {
     }
 
     @Override
-    public StatusEvent getStatusEventById(int id){
+    public StatusEvent getStatusEventById(BigInteger id){
         Session session = sessionFactory.getCurrentSession();
         StatusEvent statusEvent = (StatusEvent) session.load(StatusEvent.class, id);
         return statusEvent;
     }
 
     @Override
-    public List<Event> getAllEvents(int id){
+    public List<Event> getAllEvents(BigInteger id){
         Session session = sessionFactory.getCurrentSession();
         Patient p = (Patient) session.load(Patient.class, id);
         List<Event> events=p.getEvents();
@@ -63,7 +64,7 @@ public class EventDAOImpl implements EventDAO {
     }
 
     @Override
-    public Event getEventById(int id){
+    public Event getEventById(BigInteger id){
         Session session = sessionFactory.getCurrentSession();
         Event event = (Event) session.load(Event.class, id);
         return event;
@@ -84,6 +85,5 @@ public class EventDAOImpl implements EventDAO {
     @Override
     public void update(Event event) {
        sessionFactory.getCurrentSession().merge(event);
-        //session.update(event);
     }
 }

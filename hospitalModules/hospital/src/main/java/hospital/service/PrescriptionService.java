@@ -3,12 +3,13 @@ package hospital.service;
 import hospital.dto.prescription.PrescriptionDto;
 import hospital.model.Prescription;
 
+import java.math.BigInteger;
 import java.util.List;
 
 public interface PrescriptionService {
-    List<Prescription> getAllPrescriptions(int id);
+    PrescriptionDto getPrescriptionById(BigInteger id);
 
-    PrescriptionDto getPrescriptionById(int id);
+    List<Prescription> getAllPrescriptions(BigInteger id);
 
     void deletePrescription(Prescription presc);
 

@@ -1,5 +1,6 @@
 package hospital.service.serviceImpl;
 
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,9 +17,8 @@ import hospital.mappers.*;
 import hospital.exception.DischargeException;
 import hospital.model.*;
 import hospital.service.*;
-import hospital.service.utils.CalculatingBitMasks;
+import hospital.component.CalculatingBitMasks;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -86,7 +86,7 @@ public class PatientServiceImpl implements PatientService {
 
     @Override
     @Transactional
-    public void updateDeletePatient(int id) {
+    public void updateDeletePatient(BigInteger id) {
         Patient patient = patientDAO.getById(id);
         patient.setIsDeleted(true);
 	    patientDAO.updatePatient(patient);
@@ -105,7 +105,7 @@ public class PatientServiceImpl implements PatientService {
 
 	@Override
 	@Transactional
-	public PatientDto getById(int id) {
+	public PatientDto getById(BigInteger id) {
 		Patient patient = patientDAO.getById(id);
 		return PatientMapper.PATIENT_MAPPER.fromPatient(patient);
 	}
@@ -113,13 +113,13 @@ public class PatientServiceImpl implements PatientService {
 
 	@Override
 	@Transactional
-	public void delete(int id) {
+	public void delete(BigInteger id) {
 		patientDAO.delete(id);
 	}
 
 	@Override
 	@Transactional
-	public ErrorMessage dischargePatient(int id){
+	public ErrorMessage dischargePatient(BigInteger id){
 		List<PrescriptionError> notDonePrescList = new ArrayList<>();
 		List<Prescription> prescList = prescriptionService.getAllPrescriptions(id);
 		List<Event> listEvent = eventDAO.getAllEvents(id);
@@ -175,14 +175,14 @@ public class PatientServiceImpl implements PatientService {
 
 	@Override
 	@Transactional
-	public List<Event> sortEventsDate(String order,int id){
+	public List<Event> sortEventsDate(String order,BigInteger id){
 		return patientDAO.sortEventsDate(order,id);
 	}
 
     @Override
     @Transactional
-    public void addPrescription(int id, CreatePrescriptionRequest prescriptionRequest){
-	    PrescriptionDto p =new PrescriptionDto();
+    public void addPrescription(BigInteger id, CreatePrescriptionRequest prescriptionRequest){
+	    Prescription p =new Prescription();
 		if (prescriptionRequest.getProcedure()==null){
 			prescriptionRequest.setProcedure("");
 		}
@@ -218,9 +218,9 @@ public class PatientServiceImpl implements PatientService {
         p.setIsDeleted(false);
         p.setIsDone(false);
 
-        Prescription presc=PrescriptionMapper.PRESCRIPTION_MAPPER.toPrescription(p);
-        presc.setDiagnosis(diagnosisService.getDiagnosisByTitle(prescriptionRequest.getDiagnosis()));
-        prescriptionDAO.addPresc(presc);
+        //Prescription presc=PrescriptionMapper.PRESCRIPTION_MAPPER.toPrescription(p);
+        p.setDiagnosis(diagnosisService.getDiagnosisByTitle(prescriptionRequest.getDiagnosis()));
+        prescriptionDAO.addPresc(p);
 
     }
 

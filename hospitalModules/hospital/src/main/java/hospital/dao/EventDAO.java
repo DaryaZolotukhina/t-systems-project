@@ -3,20 +3,21 @@ package hospital.dao;
 import hospital.model.Event;
 import hospital.model.StatusEvent;
 
+import java.math.BigInteger;
 import java.util.List;
 
 public interface EventDAO {
     void saveEvent(Event event);
 
-    StatusEvent getStatusEventById(int id);
+    StatusEvent getStatusEventById(BigInteger id);
 
-    List<Event> getAllEvents(int id);
+    List<Event> getAllEvents(BigInteger id);
 
     void deleteEvent(Event event);
 
     void updateEvent(Event event);
 
-    Event getEventById(int id);
+    Event getEventById(BigInteger id);
 
     StatusEvent getStatusEventByTitle(String title);
 

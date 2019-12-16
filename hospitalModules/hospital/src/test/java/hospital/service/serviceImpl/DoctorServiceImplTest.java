@@ -12,6 +12,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
 
+import java.math.BigInteger;
 import java.util.List;
 
 import static org.junit.Assert.*;
@@ -34,11 +35,11 @@ public class DoctorServiceImplTest {
     @Test
     public void testGetDoctorBySurname_Petriv_returnEntityPetrov() {
         staffDto=new StaffDto();
-        staffDto.setId(1);
+        staffDto.setId(BigInteger.valueOf(1));
         staffDto.setSurname("Petrov");
 
         staff=new Staff();
-        staff.setId(1);
+        staff.setId(BigInteger.valueOf(1));
         staff.setSurname("Petrov");
 
         // when
@@ -52,16 +53,16 @@ public class DoctorServiceImplTest {
     @Test
     public void testGetById_1_returnEntity1() {
         staffDto=new StaffDto();
-        staffDto.setId(1);
+        staffDto.setId(BigInteger.valueOf(1));
         staffDto.setSurname("Petrov");
 
         staff=new Staff();
-        staff.setId(1);
+        staff.setId(BigInteger.valueOf(1));
         staff.setSurname("Petrov");
 
         // when
-        Mockito.when(doctorDAO.getById(1)).thenReturn(staff);
-        StaffDto result = sut.getById(1);
+        Mockito.when(doctorDAO.getById(BigInteger.valueOf(1))).thenReturn(staff);
+        StaffDto result = sut.getById(BigInteger.valueOf(1));
 
         // then
         Assert.assertEquals(staffDto.getId(), result.getId());

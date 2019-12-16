@@ -14,7 +14,7 @@
 <body>
 <script>
 function CompleteFunction(idEvent,idStaff,status) {
-var str = '/changeStatus/' + idEvent + '/' + idStaff+'/'+status;
+var str = '/events/status/' + idEvent + '/' + idStaff+'/'+status;
 $.ajax({
 type: 'GET',
 url: str,

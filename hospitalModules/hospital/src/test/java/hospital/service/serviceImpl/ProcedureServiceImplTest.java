@@ -14,6 +14,7 @@ import org.junit.Test;
 import org.mockito.Mockito;
 import org.springframework.security.access.method.P;
 
+import java.math.BigInteger;
 import java.util.List;
 
 import static org.junit.Assert.*;
@@ -36,7 +37,7 @@ public class ProcedureServiceImplTest {
 
         procedure=new Procedure();
         procedure.setTitle("injection");
-        procedure.setId(1);
+        procedure.setId(BigInteger.valueOf(1));
 
         // when
         Mockito.when(procedureDAO.getProcedureByTitle("injection")).thenReturn(procedure);

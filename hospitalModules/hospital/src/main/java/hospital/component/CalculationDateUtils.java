@@ -1,13 +1,24 @@
-package hospital.service.utils;
+package hospital.component;
 
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+@Component
 public class CalculationDateUtils {
-    public static Date getNearestDayOfWeek(int dayOfWeek, Calendar now) {
+    private final DateComponent dateComponent;
+
+    @Autowired
+    public CalculationDateUtils(DateComponent dateComponent){
+        this.dateComponent=dateComponent;
+    }
+
+    public Date getNearestDayOfWeek(int dayOfWeek, Calendar now) {
         int weekday = now.get(Calendar.DAY_OF_WEEK);
 
         int days = dayOfWeek - weekday;
@@ -21,9 +32,9 @@ public class CalculationDateUtils {
     }
 
 
-    public static List<Date> calcDate(int period, int result) {
+    public List<Date> calcDate(int period, int result) {
         List<Date> resultDate = new ArrayList<>();
-        Calendar now = Calendar.getInstance();
+        Calendar now = dateComponent.getCurrentInstance();
         for (int i = 0; i < period; i++) {
             for (int j = 0; j < 7; j++) {
                 int cnt = (int) Math.pow(2, j);
@@ -39,9 +50,10 @@ public class CalculationDateUtils {
         return resultDate;
     }
 
-    public static List<Date> calcDateTime(int period, int result) {
+    public List<Date> calcDateTime(int period, int result) {
         List<Date> resultDate = new ArrayList<>();
-        Calendar now = Calendar.getInstance();
+        Calendar now = dateComponent.getCurrentInstance();
+        Calendar now1=now;
         now.add(Calendar.DATE, 1);
         now.set(Calendar.HOUR_OF_DAY, 0);
         now.set(Calendar.MINUTE, 00);
@@ -53,8 +65,9 @@ public class CalculationDateUtils {
                     now.add(Calendar.HOUR_OF_DAY, j);
                     Date date = now.getTime();
                     resultDate.add(date);
-                    now = Calendar.getInstance();
-                    now.add(Calendar.DATE, i + 1);
+                    //now=now1;
+                    now = dateComponent.getCurrentInstance();
+                    now.add(Calendar.DATE, i+ 1);
                     now.set(Calendar.HOUR_OF_DAY, 0);
                     now.set(Calendar.MINUTE, 00);
                     now.set(Calendar.SECOND, 00);

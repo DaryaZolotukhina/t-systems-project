@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import javax.persistence.EntityManager;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
+import java.math.BigInteger;
 import java.util.List;
 
 import static hospital.dao.PatientDAOImpl.getEntityManager;
@@ -43,7 +44,7 @@ public class DoctorDAOImpl implements DoctorDAO{
     }
 
     @Override
-    public Staff getById(int id) {
+    public Staff getById(BigInteger id) {
         Session session = sessionFactory.getCurrentSession();
         Staff s = (Staff) session.load(Staff.class, id);
         return s;

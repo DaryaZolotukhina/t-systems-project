@@ -1,5 +1,6 @@
 package hospital.service;
 
+import java.math.BigInteger;
 import java.util.List;
 
 import hospital.dto.*;
@@ -11,13 +12,13 @@ import hospital.model.*;
 
 public interface PatientService {
 
-	PatientDto getById(int id);
+	PatientDto getById(BigInteger id);
 
-	void delete(int id);
+	void delete(BigInteger id);
 
 	List<PatientDto> getAll();
 
-	void updateDeletePatient(int id);
+	void updateDeletePatient(BigInteger id);
 
 	List<Patient> getPatientsByPage(int pageid);
 
@@ -25,11 +26,11 @@ public interface PatientService {
 
 	void addPatient(CreatePatientRequest patientRequest);
 
-	void addPrescription(int id, CreatePrescriptionRequest prescriptionRequest);
+	void addPrescription(BigInteger id, CreatePrescriptionRequest prescriptionRequest);
 
-	List<Event> sortEventsDate(String order, int id);
+	List<Event> sortEventsDate(String order,BigInteger id);
 
-	ErrorMessage dischargePatient(int id);
+	ErrorMessage dischargePatient(BigInteger id);
 
 	void updatePatient(UpdatePatientRequest patientRequest);
 }

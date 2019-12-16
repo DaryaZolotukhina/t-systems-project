@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.List;
 
 @Controller
+@RequestMapping("/medicines")
 public class MedicineController {
 
     private MedicineService medicineService;
@@ -23,7 +24,7 @@ public class MedicineController {
         this.medicineService= medicineService;
     }
 
-    @RequestMapping(value = "/allMedicineForDiagnosis/{diagTypeTitle}", method = RequestMethod.GET)
+    @RequestMapping(value = "/diagnosis/{diagTypeTitle}", method = RequestMethod.GET)
     @ResponseBody
     public List<MedicineTitleDto> getAllMedicineForDiagnosis(@PathVariable("diagTypeTitle") String diagTypeTitle) {
         return medicineService.getAllMedicineForDiagnosis(diagTypeTitle);

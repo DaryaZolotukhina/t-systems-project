@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,7 +37,7 @@ public class DoctorServiceImpl implements DoctorService {
 
     @Override
     @Transactional
-    public StaffDto getById(int id) {
+    public StaffDto getById(BigInteger id) {
         Staff staff = doctorDAO.getById(id);
         return StaffMapper.STAFF_MAPPER.fromStaff(staff);
     }
@@ -47,7 +48,7 @@ public class DoctorServiceImpl implements DoctorService {
         List<Staff> staffList=doctorDAO.getAllDoctors();
         List<StaffDto> listStaffDto=new ArrayList<>();
         for (Staff staff : staffList){
-            if (staff.getStaffType().getId()==1)
+            if (staff.getStaffType().getId()== BigInteger.valueOf(1))
                 listStaffDto.add(StaffMapper.STAFF_MAPPER.fromStaff(staff));
         }
         return listStaffDto;
